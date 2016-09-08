@@ -13,7 +13,7 @@ function theme_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 function custom_theme_enqueue_styles() {
-    wp_enqueue_style( 'viasaletravel-css', IFROOT . '/viasaletravel.css?' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_style( 'viasaletravel-css', IFROOT . '/assets/css/viasaletravel.css?' . ( (DEVMODE === true) ? time() : '' ) );
 }
 add_action( 'wp_enqueue_scripts', 'custom_theme_enqueue_styles', 100 );
 

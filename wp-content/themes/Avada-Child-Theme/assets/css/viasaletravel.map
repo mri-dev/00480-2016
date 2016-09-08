@@ -2,11 +2,13 @@
 	"version": 3,
 	"file": "sass/viasaletravel.css",
 	"sources": [
-		"sass/viasaletravel.scss"
+		"sass/viasaletravel.scss",
+		"sass/_settings.scss"
 	],
 	"sourcesContent": [
-		""
+		"@import 'settings';\n\n.fusion-secondary-main-menu{\n    background: $color-purple;\n}\n.fusion-main-menu > ul > li > a {\n    text-transform: uppercase;\n}\n",
+		"$color-purple: #662e91;\n$color-orange: #f7941d;\n"
 	],
-	"mappings": "",
+	"mappings": ";AAEA,AAAA,2BAA2B,CAAA;EACvB,UAAU,ECHC,OAAO,GDIrB;;;AACD,AAA8B,iBAAb,GAAG,EAAE,GAAG,EAAE,GAAG,CAAC,CAAC;EAC5B,cAAc,EAAE,SAAU,GAC7B",
 	"names": []
 }
