@@ -139,3 +139,36 @@
     max-height: $megamenu-height;
   }
 }
+.fusion-footer-widget-area .current-menu-item > a {
+  color: white !important;
+}
+.fusion-widget-area .widget_nav_menu li {
+  padding: 4px 0;
+}
+.fusion-footer-widget-area a{
+  text-align: left;
+  text-transform: uppercase;
+  &:before {
+    display: none;
+  }
+  &:hover {
+    color: white !important;
+  }
+}
+
+.fusion-widget-area > div.fusion-column {
+  border-right: 1px solid white;
+  height: 140px;
+}
+.fusion-widget-area > div.fusion-column-last {
+  border-right: none;
+  a {
+    text-transform: none !important;
+  }
+}
+#menu-labresz-bal{
+  li {
+    width: 50%;
+    float: left;
+  }
+}
