@@ -103,3 +103,39 @@
         }
     }
  }
+ .fusion-main-menu > ul > li:last-child{
+   padding-right: 0 !important;
+ }
+.copy-info-box{
+  background: lighten($color-purple, 20%);
+  padding: 15px 0;
+  text-align: center;
+  font-size: 12px;
+  color: lighten($color-purple, 50%);
+}
+.fusion-megamenu-title{
+  padding: 0;
+}
+
+.fusion-megamenu-wrapper .fusion-megamenu-submenu{
+  padding: 0;
+  height: $megamenu-height;
+}
+.fusion-megamenu-title{
+  a{
+    display: block;
+    height: $megamenu-height;
+  }
+}
+.fusion-megamenu-icon{
+  height: $megamenu-height;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: $megamenu-height;
+    max-height: $megamenu-height;
+  }
+}

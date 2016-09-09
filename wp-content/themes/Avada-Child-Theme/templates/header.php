@@ -192,6 +192,7 @@ if ( ! function_exists( 'avada_main_menu' ) ) {
     }
 }
 
+
 if ( ! function_exists( 'avada_default_menu_fallback' ) ) {
     function avada_default_menu_fallback( $args ) {
         return null;
