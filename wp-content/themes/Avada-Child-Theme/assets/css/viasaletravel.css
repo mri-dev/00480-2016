@@ -9,37 +9,39 @@
 /* line 4, sass/viasaletravel.scss */
 .fusion-secondary-main-menu {
   background: #662e91;
+  border: none !important;
+  border-color: none !important;
 }
 
-/* line 7, sass/viasaletravel.scss */
+/* line 9, sass/viasaletravel.scss */
 .fusion-main-menu > ul > li > a {
   text-transform: uppercase;
 }
 
-/* line 10, sass/viasaletravel.scss */
+/* line 12, sass/viasaletravel.scss */
 .fusion-header-v4 .fusion-header {
   padding: 8px 0;
 }
 
-/* line 13, sass/viasaletravel.scss */
+/* line 15, sass/viasaletravel.scss */
 .searchform .search-table .search-button input[type="submit"] {
   background: #f7941d;
   width: 50px;
 }
 
-/* line 17, sass/viasaletravel.scss */
+/* line 19, sass/viasaletravel.scss */
 #wrapper .search-table .search-field input {
   border: 1px solid #7d7d7d;
   border-right: none;
 }
 
-/* line 21, sass/viasaletravel.scss */
+/* line 23, sass/viasaletravel.scss */
 .fusion-social-networks .fusion-social-networks-wrapper {
   margin: 0;
   margin-left: 30px;
 }
 
-/* line 25, sass/viasaletravel.scss */
+/* line 27, sass/viasaletravel.scss */
 .fusion-social-networks .fusion-social-network-icon {
   background: #d7d7d7;
   padding: 2px 7px;
@@ -49,39 +51,39 @@
   margin: 0 4px;
   border-radius: 20px;
 }
-/* line 34, sass/viasaletravel.scss */
+/* line 36, sass/viasaletravel.scss */
 .fusion-social-networks .fusion-social-network-icon.fusion-facebook {
   background: #3e4da0;
 }
-/* line 37, sass/viasaletravel.scss */
+/* line 39, sass/viasaletravel.scss */
 .fusion-social-networks .fusion-social-network-icon.fusion-twitter {
   background: #589fd5;
 }
-/* line 40, sass/viasaletravel.scss */
+/* line 42, sass/viasaletravel.scss */
 .fusion-social-networks .fusion-social-network-icon.fusion-googleplus {
   background: #db4628;
 }
-/* line 43, sass/viasaletravel.scss */
+/* line 45, sass/viasaletravel.scss */
 .fusion-social-networks .fusion-social-network-icon.fusion-instagram {
   background: #9b519e;
 }
-/* line 46, sass/viasaletravel.scss */
+/* line 48, sass/viasaletravel.scss */
 .fusion-social-networks .fusion-social-network-icon.fusion-youtube {
   background: #da4726;
 }
 
-/* line 51, sass/viasaletravel.scss */
+/* line 53, sass/viasaletravel.scss */
 .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper {
   display: block;
   width: 70%;
   float: right;
   text-align: right;
 }
-/* line 57, sass/viasaletravel.scss */
+/* line 59, sass/viasaletravel.scss */
 .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper .katalogus-header-link, .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper .head-search {
   float: right;
 }
-/* line 62, sass/viasaletravel.scss */
+/* line 64, sass/viasaletravel.scss */
 .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper .primary-header-line .katalogus-header-link a {
   background: #f7941d;
   color: white;
@@ -97,24 +99,24 @@
   -moz-transition: all .4s;
   transition: all .4s;
 }
-/* line 77, sass/viasaletravel.scss */
+/* line 79, sass/viasaletravel.scss */
 .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper .primary-header-line .katalogus-header-link a:hover {
   background: #662e91;
 }
-/* line 83, sass/viasaletravel.scss */
+/* line 85, sass/viasaletravel.scss */
 .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper .secondary-header-line {
   margin-top: 25px;
 }
-/* line 86, sass/viasaletravel.scss */
+/* line 88, sass/viasaletravel.scss */
 .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper .secondary-header-line .fusion-secondary-menu-social, .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper .secondary-header-line .contact-phone {
   float: right;
 }
-/* line 90, sass/viasaletravel.scss */
+/* line 92, sass/viasaletravel.scss */
 .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper .secondary-header-line .contact-phone ul {
   margin: 0;
   padding: 0;
 }
-/* line 92, sass/viasaletravel.scss */
+/* line 94, sass/viasaletravel.scss */
 .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper .secondary-header-line .contact-phone ul li {
   color: #f7941d;
   line-height: 28px;
@@ -123,17 +125,17 @@
   *display: inline;
   zoom: 1;
 }
-/* line 99, sass/viasaletravel.scss */
+/* line 101, sass/viasaletravel.scss */
 .fusion-header-v4 .fusion-logo .fusion-header-content-3-wrapper .secondary-header-line .contact-phone ul li.sep {
   padding: 0 10px;
 }
 
-/* line 107, sass/viasaletravel.scss */
+/* line 109, sass/viasaletravel.scss */
 .fusion-main-menu > ul > li:last-child {
   padding-right: 0 !important;
 }
 
-/* line 110, sass/viasaletravel.scss */
+/* line 112, sass/viasaletravel.scss */
 .copy-info-box {
   background: #9a5acb;
   padding: 15px 0;
@@ -142,81 +144,102 @@
   color: #e1cef0;
 }
 
-/* line 117, sass/viasaletravel.scss */
+/* line 119, sass/viasaletravel.scss */
 .fusion-megamenu-title {
   padding: 0;
 }
 
-/* line 121, sass/viasaletravel.scss */
+/* line 123, sass/viasaletravel.scss */
 .fusion-megamenu-wrapper .fusion-megamenu-submenu {
   padding: 0;
   height: 125px;
 }
 
-/* line 126, sass/viasaletravel.scss */
+/* line 128, sass/viasaletravel.scss */
 .fusion-megamenu-title a {
   display: block;
   height: 125px;
 }
 
-/* line 131, sass/viasaletravel.scss */
+/* line 133, sass/viasaletravel.scss */
 .fusion-megamenu-icon {
   height: 125px;
   width: 100%;
   position: absolute;
   overflow: hidden;
 }
-/* line 137, sass/viasaletravel.scss */
+/* line 139, sass/viasaletravel.scss */
 .fusion-megamenu-icon img {
   width: 100%;
   height: 125px;
   max-height: 125px;
 }
 
-/* line 143, sass/viasaletravel.scss */
+/* line 145, sass/viasaletravel.scss */
 .fusion-footer-widget-area .current-menu-item > a {
   color: white !important;
 }
 
-/* line 146, sass/viasaletravel.scss */
+/* line 148, sass/viasaletravel.scss */
 .fusion-widget-area .widget_nav_menu li {
   padding: 6px 0;
 }
 
-/* line 149, sass/viasaletravel.scss */
+/* line 151, sass/viasaletravel.scss */
 .fusion-footer-widget-area a {
   text-align: left;
   text-transform: uppercase;
   font-size: 16px;
   line-height: 1;
 }
-/* line 154, sass/viasaletravel.scss */
+/* line 156, sass/viasaletravel.scss */
 .fusion-footer-widget-area a:before {
   display: none;
 }
-/* line 157, sass/viasaletravel.scss */
+/* line 159, sass/viasaletravel.scss */
 .fusion-footer-widget-area a:hover {
   color: white !important;
 }
 
-/* line 162, sass/viasaletravel.scss */
+/* line 164, sass/viasaletravel.scss */
 .fusion-widget-area > div.fusion-column {
   border-right: 1px solid white;
   height: 140px;
   padding: 0 40px;
 }
 
-/* line 167, sass/viasaletravel.scss */
+/* line 169, sass/viasaletravel.scss */
 .fusion-widget-area > div.fusion-column-last {
   border-right: none;
 }
-/* line 169, sass/viasaletravel.scss */
+/* line 171, sass/viasaletravel.scss */
 .fusion-widget-area > div.fusion-column-last a {
   text-transform: none !important;
 }
 
-/* line 174, sass/viasaletravel.scss */
+/* line 176, sass/viasaletravel.scss */
 #menu-labresz-bal li {
   width: 50%;
   float: left;
+}
+
+/* line 183, sass/viasaletravel.scss */
+.boxed-title h2 {
+  background: #d7d7d7;
+  width: 350px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-size: 22px !important;
+  font-weight: bold !important;
+  padding: 10px;
+}
+/* line 196, sass/viasaletravel.scss */
+.boxed-title.title-color-purple h2 {
+  background: #662e91;
+}
+/* line 201, sass/viasaletravel.scss */
+.boxed-title.title-color-orange h2 {
+  background: #f7941d;
 }

@@ -3,6 +3,8 @@
 
 .fusion-secondary-main-menu{
     background: $color-purple;
+    border: none !important;
+    border-color: none !important;
 }
 .fusion-main-menu > ul > li > a {
     text-transform: uppercase;
@@ -174,5 +176,30 @@
   li {
     width: 50%;
     float: left;
+  }
+}
+
+.boxed-title{
+  h2{
+    background: #d7d7d7;
+    width: 350px;
+    margin: 0 auto;
+    text-align:center;
+    color: white;
+    text-transform: uppercase;
+    font-size: 22px !important;
+    font-weight: bold !important;
+    padding: 10px;
+  }
+
+  &.title-color-purple {
+    h2 {
+      background: $color-purple;
+    }
+  }
+  &.title-color-orange {
+    h2 {
+      background: $color-orange;
+    }
   }
 }
