@@ -1,4 +1,5 @@
 @import 'settings';
+@import 'fonts';
 
 .fusion-secondary-main-menu{
     background: $color-purple;
@@ -143,11 +144,13 @@
   color: white !important;
 }
 .fusion-widget-area .widget_nav_menu li {
-  padding: 4px 0;
+  padding: 6px 0;
 }
 .fusion-footer-widget-area a{
   text-align: left;
-  text-transform: uppercase; 
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 1;
   &:before {
     display: none;
   }
@@ -159,6 +162,7 @@
 .fusion-widget-area > div.fusion-column {
   border-right: 1px solid white;
   height: 140px;
+  padding: 0 40px;
 }
 .fusion-widget-area > div.fusion-column-last {
   border-right: none;
