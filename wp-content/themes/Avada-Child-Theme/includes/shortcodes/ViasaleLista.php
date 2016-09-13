@@ -63,11 +63,17 @@ class ViasaleLista
     private function programok( $arg = array() )
     {
       $o = '';
-      
+
       $c = new ViasaleProgramok( $arg );
       $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__);
 
-      $o .= $t->load_template(array('xxx' => 12345));
+      $data = $c->getData();
+
+      if($data)
+      foreach ($data as $d)
+      {
+        $o .= $t->load_template($d);
+      }
 
       return $o;
     }
