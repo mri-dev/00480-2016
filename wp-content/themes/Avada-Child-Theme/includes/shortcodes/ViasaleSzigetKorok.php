@@ -26,9 +26,24 @@ class ViasaleSzigetKorok
         /* Parse the arguments. */
         $attr = shortcode_atts( $defaults, $attr );
 
+        $sziget_holder_id = 38;
 
+        $szigetek = get_posts(array(
+          'post_type'   => 'page',
+          'post_parent' => $sziget_holder_id
+        ));
 
-        $output .= 'Sziget körök sc</div>';
+        if($sziget_holder_id)
+        {
+          $t = new ShortcodeTemplates(__CLASS__.'/home-circle');
+
+          foreach ($szigetek as $sziget)
+          {
+            $output .= $t->load_template($sziget);
+          }
+        }
+
+        $output .= '</div>';
 
         /* Return the output of the tooltip. */
         return apply_filters( self::SCTAG, $output );

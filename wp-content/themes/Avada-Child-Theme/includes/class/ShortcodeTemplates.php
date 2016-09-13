@@ -21,6 +21,10 @@ class ShortcodeTemplates
       return '(!) A template fájl nem elérhető: '.$template_file;
     }
 
+    if(is_object($params))
+    {
+      $params = (array)$params;
+    }
     extract($params);
 
     ob_start();

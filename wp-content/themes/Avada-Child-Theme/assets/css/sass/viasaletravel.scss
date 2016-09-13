@@ -269,7 +269,7 @@
           .line-right {
             padding: 10px;
             -webkit-box-shadow: 0 0 20px -7px #000;
-            -moz-box-shadow: 0 0 20px -7px #000; 
+            -moz-box-shadow: 0 0 20px -7px #000;
             box-shadow: 0 0 20px -7px #000;
           }
           .title h3{
@@ -328,6 +328,15 @@
       }
 
     }
+  }
+}
+.sziget-korok-holder{
+  display: flex;
+  align-items: baseline;
+
+  .circle {
+    flex-basis: 25%;
+    text-align: center;
   }
 }
 
