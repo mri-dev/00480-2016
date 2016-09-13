@@ -1,2 +1,3 @@
-<?php 
-	require_once "rentDatePicker.php";
+<?php
+	require_once "ViasaleLista.php";
+	require_once "ViasaleSzigetKorok.php";
