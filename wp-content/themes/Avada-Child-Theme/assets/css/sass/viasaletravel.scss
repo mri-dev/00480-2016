@@ -337,7 +337,84 @@
   .circle {
     flex-basis: 25%;
     text-align: center;
+    padding: 20px 10px;
+    position:relative;
+
+    .circle-inside {
+      border: 5px solid #acacac;
+      position: relative;
+      overflow: hidden;
+      height: 250px;
+      width: 250px;
+      margin: 0 auto;
+      background: #d7d7d7;
+      border-radius: 200px;
+      z-index: 20;
+
+      .title {
+        padding: 10px;
+        background: #aaa;
+        color: white;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 20px;
+        font-size:18px;
+        text-transform: uppercase;
+      }
+    }
+
+    &.circle-tenerife {
+      .circle-inside {
+        border: 5px solid $color-tenerife;
+        .title {
+          background: $color-tenerife;
+        }
+      }
+    }
+
+    &.circle-gran-canaria {
+      .circle-inside {
+        border: 5px solid $color-gran-canaria;
+        .title {
+          background: $color-gran-canaria;
+        }
+      }
+    }
+
+    &.circle-fuerteventura {
+      .circle-inside {
+        border: 5px solid $color-fuerteventura;
+        .title {
+          background: $color-fuerteventura;
+        }
+      }
+    }
+
+    &.circle-lanzarote {
+      .circle-inside {
+        border: 5px solid $color-lanzarote;
+        .title {
+          background: $color-lanzarote;
+        }
+      }
+    }
   }
+
+  /*.circle:after {
+    content: "";
+    display: block;
+    width: 40px;
+    margin: 0 auto;
+    height: 40px;
+    position: absolute;
+    bottom: -30px;
+    background: #000;
+    left: 114px;
+    border-radius: 23px;
+    transform: scaleX(5);
+    z-index: 10;
+  }*/
 }
 
 .trans-on {

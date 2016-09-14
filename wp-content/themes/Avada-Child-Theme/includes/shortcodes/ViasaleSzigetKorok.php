@@ -26,6 +26,7 @@ class ViasaleSzigetKorok
         /* Parse the arguments. */
         $attr = shortcode_atts( $defaults, $attr );
 
+        // Settings
         $sziget_holder_id = 38;
 
         $szigetek = get_posts(array(
