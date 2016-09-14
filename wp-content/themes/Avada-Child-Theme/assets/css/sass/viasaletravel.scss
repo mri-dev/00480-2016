@@ -261,8 +261,212 @@
   overflow: hidden;
 }
 
-.viasale-lista-holder{
-  .viasale-lista-set-program{
+.viasale-lista-holder {
+
+  .viasale-lista-set-ajanlat {
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    .style-imagegrid {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -10px;
+
+      .item {
+        height: 280px;
+        flex-basis: 25%;
+        padding: 10px;
+
+        .item-wrapper {
+          height: 100%;
+          padding: 15px;
+          background: #dadada;
+          overflow: hidden;
+          position: relative;
+          color: white;
+
+          .image {
+            z-index: 100;
+            overflow: hidden;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            -moz-transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+
+            img{
+              width: auto;
+              max-width: initial;
+              height: 100%;
+            }
+          }
+
+          .overlay{
+            z-index: 200;
+            pointer-events: none;
+            width: 120%;
+            height: 120%;
+            position: absolute;
+            left: 10%;
+            top: 10%;
+            margin: -20%;
+          }
+
+          .titles, .price, .star {
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.8);
+          }
+
+          .prices, .titles {
+            padding: 15px;
+            position: absolute;
+            width: 100%;
+            z-index: 300;
+            left: 0;
+          }
+
+          .titles {
+            top: 0;
+          }
+
+          .prices {
+            bottom: 0;
+          }
+
+          .island {
+            font-size: 16px;
+            text-transform: uppercase;
+          }
+
+          .title {
+            font-family: 'Arial Black', arial;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+          }
+
+          .price {
+            font-family: 'Arial Black', arial;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 37px;
+          }
+
+          .star {
+            i {
+              margin-right: 4px;
+              font-size: 20px;
+            }
+          }
+
+          .action {
+            float: right;
+
+            a.link-btn {
+              background: $color-orange;
+              color: white;
+              padding: 5px 12px;
+              text-transform: uppercase;
+              font-size: 14px;
+              font-weight: bold;
+
+              &:hover {
+                background: $color-purple;
+              }
+            }
+
+          }
+        }
+      }
+
+      .item:hover{
+        .overlay{
+          width: 120%;
+          height: 120%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          margin: 0%;
+        }
+        .image {
+          img {
+            -webkit-transform: scale(1.2);
+            -moz-transform: scale(1.2);
+            transform: scale(1.2);
+            -webkit-filter: blur(2px);
+            -moz-filter: blur(2px);
+            -o-filter: blur(2px);
+            -ms-filter: blur(2px);
+            filter: blur(2px);
+          }
+        }
+      }
+
+      .item.island-Lanzarote {
+        .overlay {
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#DB2C23+0,DB2C23+100&0.8+0,0.34+45,0+60 */
+          background: -moz-linear-gradient(-45deg,  rgba(219,44,35,0.8) 0%, rgba(219,44,35,0.34) 45%, rgba(219,44,35,0) 60%, rgba(219,44,35,0) 100%); /* FF3.6-15 */
+          background: -webkit-linear-gradient(-45deg,  rgba(219,44,35,0.8) 0%,rgba(219,44,35,0.34) 45%,rgba(219,44,35,0) 60%,rgba(219,44,35,0) 100%); /* Chrome10-25,Safari5.1-6 */
+          background: linear-gradient(135deg,  rgba(219,44,35,0.8) 0%,rgba(219,44,35,0.34) 45%,rgba(219,44,35,0) 60%,rgba(219,44,35,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccdb2c23', endColorstr='#00db2c23',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        }
+      }
+
+      .item.island-Fuerteventura {
+        .overlay {/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ee8126+0,ee8126+100&0.8+0,0.34+45,0+60 */
+background: -moz-linear-gradient(-45deg,  rgba(238,129,38,0.8) 0%, rgba(238,129,38,0.34) 45%, rgba(238,129,38,0) 60%, rgba(238,129,38,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(238,129,38,0.8) 0%,rgba(238,129,38,0.34) 45%,rgba(238,129,38,0) 60%,rgba(238,129,38,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(238,129,38,0.8) 0%,rgba(238,129,38,0.34) 45%,rgba(238,129,38,0) 60%,rgba(238,129,38,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccee8126', endColorstr='#00ee8126',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+        }
+      }
+      .item.island-Tenerife {
+        .overlay {/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2578c7+0,2578c7+100&0.8+0,0.34+45,0+60 */
+background: -moz-linear-gradient(-45deg,  rgba(37,120,199,0.8) 0%, rgba(37,120,199,0.34) 45%, rgba(37,120,199,0) 60%, rgba(37,120,199,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(37,120,199,0.8) 0%,rgba(37,120,199,0.34) 45%,rgba(37,120,199,0) 60%,rgba(37,120,199,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(37,120,199,0.8) 0%,rgba(37,120,199,0.34) 45%,rgba(37,120,199,0) 60%,rgba(37,120,199,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc2578c7', endColorstr='#002578c7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+        }
+      }
+      .item.island-GranCanaria {
+        .overlay {/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcd736+0,fcd736+100&0.8+0,0.34+45,0+60 */
+background: -moz-linear-gradient(-45deg,  rgba(252,215,54,0.81) 0%, rgba(252,215,54,0.34) 45%, rgba(252,215,54,0) 60%, rgba(252,215,54,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(252,215,54,0.8) 0%,rgba(252,215,54,0.34) 45%,rgba(252,215,54,0) 60%,rgba(252,215,54,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(252,215,54,0.8) 0%,rgba(252,215,54,0.34) 45%,rgba(252,215,54,0) 60%,rgba(252,215,54,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', endColorstr='#00fcd736',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+        }
+      }
+
+      .item.big{
+        flex-basis: 50%;
+
+        .image {
+          width: 100%;
+          height: auto;
+          -moz-transform: translate(-50%, -50%);
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          top: 50%;
+
+          img {
+            height: auto;
+            width: 100%;
+          }
+        }
+      }
+    }
+    /* END: .style-imagegrid */
+  }
+  /* END: .viasale-lista-set-ajanlat */
+
+  .viasale-lista-set-program {
     padding-left: 100px;
     margin: 0 -35px;
 

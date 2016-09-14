@@ -4,6 +4,8 @@ class ViasaleLista
     const SCTAG = 'viasale-lista';
     // Elérhető set-ek
     public $sets = array('program', 'ajanlat');
+    public $type = null;
+    public $template = 'standard';
 
     public function __construct()
     {
@@ -23,7 +25,8 @@ class ViasaleLista
             self::SCTAG.'_defaults',
             array(
               'set'     => null,
-              'tipus'   => null
+              'tipus'   => null,
+              'stilus'  => 'standard'
             )
         );
 
@@ -37,6 +40,8 @@ class ViasaleLista
 
         /* Parse the arguments. */
         $attr = shortcode_atts( $defaults, $attr );
+        $this->type = $attr['tipus'];
+        $this->template = $attr['stilus'];
 
         if (!is_null($attr['set']))
         {
@@ -46,6 +51,10 @@ class ViasaleLista
             // PROGRAMOK
             case 'program':
               $output .= $this->programok();
+            break;
+            // AJÁNLAT
+            case 'ajanlat':
+              $output .= $this->ajanlat();
             break;
           }
           $output .= '</div>';
@@ -73,6 +82,40 @@ class ViasaleLista
       foreach ($data as $d)
       {
         $o .= $t->load_template($d);
+      }
+
+      return $o;
+    }
+    /**
+    * AJÁNLAT SET
+    **/
+    private function ajanlat()
+    {
+      $o = '';
+
+      $c = new ViasaleAjanlatok( $arg );
+      $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));
+
+      $data = $c->getData();
+
+      if($data)
+      {
+        $o .= '<div class="style-'.$this->template.'">';
+
+        $i = 0;
+        foreach ($data as $d)
+        {
+          $i++;
+          $d['item_index'] = $i;
+
+          $o .= $t->load_template($d);
+
+          if($this->template == 'imagegrid') {
+            if($i == 7) $i = 0;
+          }
+        }
+
+        $o .= '</div>';
       }
 
       return $o;

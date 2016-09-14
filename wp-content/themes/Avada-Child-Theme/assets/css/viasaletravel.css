@@ -302,23 +302,232 @@
   overflow: hidden;
 }
 
-/* line 265, sass/viasaletravel.scss */
+/* line 264, sass/viasaletravel.scss */
+.viasale-lista-holder {
+  /* END: .viasale-lista-set-ajanlat */
+}
+/* line 266, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  /* END: .style-imagegrid */
+}
+/* line 270, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+/* line 275, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item {
+  height: 280px;
+  flex-basis: 25%;
+  padding: 10px;
+}
+/* line 280, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper {
+  height: 100%;
+  padding: 15px;
+  background: #dadada;
+  overflow: hidden;
+  position: relative;
+  color: white;
+}
+/* line 288, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .image {
+  z-index: 100;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+/* line 299, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .image img {
+  width: auto;
+  max-width: initial;
+  height: 100%;
+}
+/* line 306, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .overlay {
+  z-index: 200;
+  pointer-events: none;
+  width: 120%;
+  height: 120%;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  margin: -20%;
+}
+/* line 317, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .titles, .viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .price, .viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .star {
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.8);
+}
+/* line 321, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .prices, .viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .titles {
+  padding: 15px;
+  position: absolute;
+  width: 100%;
+  z-index: 300;
+  left: 0;
+}
+/* line 329, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .titles {
+  top: 0;
+}
+/* line 333, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .prices {
+  bottom: 0;
+}
+/* line 337, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .island {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+/* line 342, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .title {
+  font-family: 'Arial Black', arial;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+/* line 350, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .price {
+  font-family: 'Arial Black', arial;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 37px;
+}
+/* line 359, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .star i {
+  margin-right: 4px;
+  font-size: 20px;
+}
+/* line 365, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .action {
+  float: right;
+}
+/* line 368, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .action a.link-btn {
+  background: #f7941d;
+  color: white;
+  padding: 5px 12px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+/* line 376, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .action a.link-btn:hover {
+  background: #662e91;
+}
+/* line 386, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item:hover .overlay {
+  width: 120%;
+  height: 120%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0%;
+}
+/* line 395, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item:hover .image img {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}
+/* line 409, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item.island-Lanzarote .overlay {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#DB2C23+0,DB2C23+100&0.8+0,0.34+45,0+60 */
+  background: -moz-linear-gradient(-45deg, rgba(219, 44, 35, 0.8) 0%, rgba(219, 44, 35, 0.34) 45%, rgba(219, 44, 35, 0) 60%, rgba(219, 44, 35, 0) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(219, 44, 35, 0.8) 0%, rgba(219, 44, 35, 0.34) 45%, rgba(219, 44, 35, 0) 60%, rgba(219, 44, 35, 0) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(219, 44, 35, 0.8) 0%, rgba(219, 44, 35, 0.34) 45%, rgba(219, 44, 35, 0) 60%, rgba(219, 44, 35, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ccdb2c23', endColorstr='#00db2c23',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+}
+/* line 419, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item.island-Fuerteventura .overlay {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ee8126+0,ee8126+100&0.8+0,0.34+45,0+60 */
+  background: -moz-linear-gradient(-45deg, rgba(238, 129, 38, 0.8) 0%, rgba(238, 129, 38, 0.34) 45%, rgba(238, 129, 38, 0) 60%, rgba(238, 129, 38, 0) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(238, 129, 38, 0.8) 0%, rgba(238, 129, 38, 0.34) 45%, rgba(238, 129, 38, 0) 60%, rgba(238, 129, 38, 0) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(238, 129, 38, 0.8) 0%, rgba(238, 129, 38, 0.34) 45%, rgba(238, 129, 38, 0) 60%, rgba(238, 129, 38, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ccee8126', endColorstr='#00ee8126',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+}
+/* line 428, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item.island-Tenerife .overlay {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2578c7+0,2578c7+100&0.8+0,0.34+45,0+60 */
+  background: -moz-linear-gradient(-45deg, rgba(37, 120, 199, 0.8) 0%, rgba(37, 120, 199, 0.34) 45%, rgba(37, 120, 199, 0) 60%, rgba(37, 120, 199, 0) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(37, 120, 199, 0.8) 0%, rgba(37, 120, 199, 0.34) 45%, rgba(37, 120, 199, 0) 60%, rgba(37, 120, 199, 0) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(37, 120, 199, 0.8) 0%, rgba(37, 120, 199, 0.34) 45%, rgba(37, 120, 199, 0) 60%, rgba(37, 120, 199, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc2578c7', endColorstr='#002578c7',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+}
+/* line 438, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item.island-GranCanaria .overlay {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fcd736+0,fcd736+100&0.8+0,0.34+45,0+60 */
+  background: -moz-linear-gradient(-45deg, rgba(252, 215, 54, 0.81) 0%, rgba(252, 215, 54, 0.34) 45%, rgba(252, 215, 54, 0) 60%, rgba(252, 215, 54, 0) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(252, 215, 54, 0.8) 0%, rgba(252, 215, 54, 0.34) 45%, rgba(252, 215, 54, 0) 60%, rgba(252, 215, 54, 0) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(252, 215, 54, 0.8) 0%, rgba(252, 215, 54, 0.34) 45%, rgba(252, 215, 54, 0) 60%, rgba(252, 215, 54, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ccfcd736', endColorstr='#00fcd736',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+}
+/* line 447, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item.big {
+  flex-basis: 50%;
+}
+/* line 450, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item.big .image {
+  width: 100%;
+  height: auto;
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+/* line 458, sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item.big .image img {
+  height: auto;
+  width: 100%;
+}
+/* line 469, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program {
   padding-left: 100px;
   margin: 0 -35px;
 }
-/* line 269, sass/viasaletravel.scss */
+/* line 473, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item {
   width: 49%;
   display: inline-block;
   *display: inline;
   zoom: 1;
 }
-/* line 275, sass/viasaletravel.scss */
+/* line 479, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder {
   padding: 20px 15px;
 }
-/* line 277, sass/viasaletravel.scss */
+/* line 481, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper {
   background: #fff;
   display: flex;
@@ -327,48 +536,48 @@
   box-shadow: 8px 8px 38px -10px #984b03;
   overflow: hidden;
 }
-/* line 285, sass/viasaletravel.scss */
+/* line 489, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper > div {
   height: 183px;
   flex-basis: 50%;
   align-items: center;
   vertical-align: middle;
 }
-/* line 291, sass/viasaletravel.scss */
+/* line 495, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .line-left {
   overflow: hidden;
 }
-/* line 293, sass/viasaletravel.scss */
+/* line 497, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .line-left .image {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-/* line 297, sass/viasaletravel.scss */
+/* line 501, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .line-left .image img {
   width: 100%;
   max-width: 100%;
   height: auto;
 }
-/* line 304, sass/viasaletravel.scss */
+/* line 508, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .line-right {
   padding: 10px;
   -webkit-box-shadow: 0 0 20px -7px black;
   -moz-box-shadow: 0 0 20px -7px black;
   box-shadow: 0 0 20px -7px black;
 }
-/* line 310, sass/viasaletravel.scss */
+/* line 514, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .title h3 {
   margin: 0;
 }
-/* line 313, sass/viasaletravel.scss */
+/* line 517, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .title h3 a {
   text-transform: uppercase;
   color: #f7941d;
   font-size: 18px;
   line-height: 1;
 }
-/* line 321, sass/viasaletravel.scss */
+/* line 525, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .desc {
   color: #9c9c9c;
   text-align: justify;
@@ -379,26 +588,26 @@
   max-height: 90px;
   overflow: hidden;
 }
-/* line 332, sass/viasaletravel.scss */
+/* line 536, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action {
   display: flex;
 }
-/* line 335, sass/viasaletravel.scss */
+/* line 539, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action > div {
   line-height: 26px;
 }
-/* line 339, sass/viasaletravel.scss */
+/* line 543, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action .price {
   flex-basis: 40%;
   color: #f7941d;
   font-weight: bold;
   font-size: 24px;
 }
-/* line 345, sass/viasaletravel.scss */
+/* line 549, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action .button-link {
   flex-basis: 60%;
 }
-/* line 347, sass/viasaletravel.scss */
+/* line 551, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action .button-link a {
   background: #f7941d !important;
   display: block;
@@ -407,12 +616,12 @@
   text-transform: uppercase;
   color: white;
 }
-/* line 355, sass/viasaletravel.scss */
+/* line 559, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action .button-link a:hover {
   background: #662e91 !important;
 }
 
-/* line 368, sass/viasaletravel.scss */
+/* line 572, sass/viasaletravel.scss */
 .sziget-korok-holder {
   display: flex;
   align-items: baseline;
@@ -431,14 +640,14 @@
     z-index: 10;
   }*/
 }
-/* line 372, sass/viasaletravel.scss */
+/* line 576, sass/viasaletravel.scss */
 .sziget-korok-holder .circle {
   flex-basis: 25%;
   text-align: center;
   padding: 20px 10px;
   position: relative;
 }
-/* line 378, sass/viasaletravel.scss */
+/* line 582, sass/viasaletravel.scss */
 .sziget-korok-holder .circle .circle-inside {
   border: 5px solid #acacac;
   position: relative;
@@ -450,7 +659,7 @@
   border-radius: 200px;
   z-index: 20;
 }
-/* line 389, sass/viasaletravel.scss */
+/* line 593, sass/viasaletravel.scss */
 .sziget-korok-holder .circle .circle-inside .title {
   padding: 10px 0;
   background: #aaa;
@@ -464,39 +673,39 @@
   pointer-events: none;
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
 }
-/* line 405, sass/viasaletravel.scss */
+/* line 609, sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-tenerife .circle-inside {
   border: 5px solid #2578c7;
 }
-/* line 407, sass/viasaletravel.scss */
+/* line 611, sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-tenerife .circle-inside .title {
   background: #2578c7;
 }
-/* line 414, sass/viasaletravel.scss */
+/* line 618, sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-gran-canaria .circle-inside {
   border: 5px solid #fcd736;
 }
-/* line 416, sass/viasaletravel.scss */
+/* line 620, sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-gran-canaria .circle-inside .title {
   background: #fcd736;
 }
-/* line 423, sass/viasaletravel.scss */
+/* line 627, sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-fuerteventura .circle-inside {
   border: 5px solid #ee8126;
 }
-/* line 425, sass/viasaletravel.scss */
+/* line 629, sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-fuerteventura .circle-inside .title {
   background: #ee8126;
 }
-/* line 432, sass/viasaletravel.scss */
+/* line 636, sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-lanzarote .circle-inside {
   border: 5px solid #db2c23;
 }
-/* line 434, sass/viasaletravel.scss */
+/* line 638, sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-lanzarote .circle-inside .title {
   background: #db2c23;
 }
-/* line 442, sass/viasaletravel.scss */
+/* line 646, sass/viasaletravel.scss */
 .sziget-korok-holder .circle:hover .image img {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
@@ -507,7 +716,7 @@
   -ms-filter: blur(2px);
   filter: blur(2px);
 }
-/* line 452, sass/viasaletravel.scss */
+/* line 656, sass/viasaletravel.scss */
 .sziget-korok-holder .circle:hover .title {
   bottom: 50%;
   padding: 20px 0;
@@ -516,7 +725,7 @@
   transform: translateY(50%);
 }
 
-/* line 477, sass/viasaletravel.scss */
+/* line 681, sass/viasaletravel.scss */
 .trans-on {
   -webkit-transition: all .4s;
   -moz-transition: all .4s;
