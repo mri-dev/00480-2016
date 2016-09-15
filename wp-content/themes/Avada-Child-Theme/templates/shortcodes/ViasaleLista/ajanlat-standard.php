@@ -1,9 +1,9 @@
 <div class="item item-index-<?php echo $item_index; ?> island-<?php echo str_replace(' ','',$island_text); ?><?php if($discount): echo ' discounted'; endif; ?>">
+  <?php if($discount): ?>
+  <div class="discount-info"><span class="d">-<?php echo $discount; ?>%</span></div>
+  <?php endif;?>
   <div class="item-wrapper trans-on">
     <div class="item-contents trans-on">
-      <?php if($discount): ?>
-      <div class="discount-info">-<?php echo $discount; ?>%</div>
-      <?php endif;?>
       <div class="image">
         <img src="<?php echo $image; ?>" alt="<?php echo $title; ?> &mdash; <?php echo $island_text; ?>" class="trans-on" />
         <?php if($features && !empty($features)): ?>

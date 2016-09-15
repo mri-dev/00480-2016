@@ -477,6 +477,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
       .item {
         flex-basis: 33.33333%;
         padding: 10px;
+        position: relative;
+
+        .discount-info{
+          position: absolute;
+          top: 9px;
+          right: 18px;
+          z-index: 300;
+          width: 40px;
+          height: 98px;
+          font-size: 6px;
+          line-height: 98px;
+          padding-top: 15px;
+          color: white;
+          text-align: center;
+          background: url('../../images/discount-card-v1.png');
+
+          .d{
+            font-size: 14px !important;
+          }
+        }
 
         .item-wrapper {
           height: 100%;
@@ -492,6 +512,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           .item-contents {
             border: 1px solid #f1f1f1;
           }
+
 
           .image {
             overflow: hidden;
@@ -786,7 +807,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               a{
                 background: $color-orange !important;
                 display: block;
-                font-size: 18px;
+                font-size: 16px;
                 text-align: center;
                 text-transform: uppercase;
                 color: white;
