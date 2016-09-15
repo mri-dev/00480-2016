@@ -281,7 +281,7 @@
 /* line 218, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .boxed-title h2.box-title {
   background: #d7d7d7;
-  width: 350px;
+  width: 355px;
   margin: 0 auto;
   text-align: center;
   color: white;
@@ -591,14 +591,17 @@
   overflow: hidden;
   position: relative;
   color: #5c5c5c;
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.22);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.22);
 }
 
-/* line 489, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 492, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .item-contents {
   border: 1px solid #f1f1f1;
 }
 
-/* line 493, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 496, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .image {
   overflow: hidden;
   height: 220px;
@@ -606,7 +609,7 @@
   position: relative;
 }
 
-/* line 499, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 502, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .image img {
   z-index: 100;
   left: 50%;
@@ -620,7 +623,7 @@
   transform: translateX(-50%);
 }
 
-/* line 512, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 515, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .image .features {
   position: absolute;
   bottom: -100%;
@@ -632,43 +635,43 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
-/* line 522, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 525, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .image .features .feature-wrapper {
   display: flex;
   flex-wrap: wrap;
 }
 
-/* line 526, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 529, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .image .features .feature-wrapper > div:not(.feat-divider) {
   flex-basis: 50%;
   padding: 5px 10px;
 }
 
-/* line 531, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 534, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .image .features .feature-wrapper .feat-value {
   color: black;
   font-weight: bold;
 }
 
-/* line 536, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 539, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .image .features .feature-wrapper .feat-divider {
   flex-basis: 100%;
   background: #e2e2e2;
   height: 1px;
 }
 
-/* line 546, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 549, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .star i {
   font-size: 12px;
   color: #dadada;
 }
 
-/* line 551, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 554, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .star i.star-active {
-  color: #3C7C34;
+  color: #65b75b;
 }
 
-/* line 556, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 559, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .titles {
   display: flex;
   align-items: center;
@@ -676,12 +679,12 @@
   padding: 10px 10px 0 10px;
 }
 
-/* line 562, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 565, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .titles .title, .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .titles .star {
   flex-basis: 50%;
 }
 
-/* line 566, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 569, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .titles .title {
   color: #662e91;
   font-size: 15px;
@@ -689,23 +692,23 @@
   font-family: 'Arial Black', arial;
 }
 
-/* line 572, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 575, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .titles .star {
   text-align: right;
 }
 
-/* line 577, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 580, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .place {
   padding: 10px;
   color: #f7941d;
 }
 
-/* line 581, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 584, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .place .city {
   color: #f8a036;
 }
 
-/* line 586, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 589, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions {
   display: flex;
   align-items: stretch;
@@ -714,7 +717,7 @@
   border-top: 1px solid #d9d9d9;
 }
 
-/* line 593, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 596, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions > div {
   flex-basis: 33.3333%;
   text-align: center;
@@ -726,22 +729,45 @@
   box-shadow: inset -1px 0 0 #f9f9f9;
 }
 
-/* line 603, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 606, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions > div:last-child {
   border-right: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
-/* line 606, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 612, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .price-eur {
   position: relative;
 }
 
-/* line 608, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 614, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .price-eur .previous-price {
   position: absolute;
 }
 
-/* line 611, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 617, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .price-eur .previous-price span {
+  position: relative;
+}
+
+/* line 620, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .price-eur .previous-price span:after {
+  content: "";
+  background: #111;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  bottom: 8px;
+  left: 0;
+  -webkit-transform: rotate(-15deg);
+  -moz-transform: rotate(-15deg);
+  transform: rotate(-15deg);
+}
+
+/* line 634, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .price-eur .current-price {
   line-height: 50px;
   color: #f7941d;
@@ -749,18 +775,19 @@
   font-size: 22px;
 }
 
-/* line 618, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 641, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .price-huf {
+  font-size: 14px;
   line-height: 50px;
   color: #9c9c9c;
 }
 
-/* line 623, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 647, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .link-read {
-  padding-top: 25px;
+  padding-top: 22px;
 }
 
-/* line 626, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 650, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .link-read a.link-btn {
   color: white;
   background: #f7941d;
@@ -768,27 +795,27 @@
   padding: 4px 10px;
 }
 
-/* line 632, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 656, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .link-read a.link-btn:hover {
   background: #662e91;
 }
 
-/* line 643, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 667, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item:hover .item-wrapper {
   border: 10px solid #662e91;
 }
 
-/* line 646, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 670, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item:hover .item-contents {
   border: 1px solid #662e91;
 }
 
-/* line 649, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 673, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item:hover .features {
   bottom: 0 !important;
 }
 
-/* line 653, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 677, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item:hover .image img {
   -webkit-transform: scale(1.2) translateX(-50%);
   -moz-transform: scale(1.2) translateX(-50%);
@@ -800,20 +827,25 @@
   filter: blur(2px);
 }
 
-/* line 666, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 690, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item.discounted .previous-price {
-  top: 2px;
+  top: 10px;
   width: 100%;
   margin: 0 -8px;
 }
 
-/* line 677, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 695, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item.discounted .price-eur {
+  padding: 20px 10px 10px 10px !important;
+}
+
+/* line 704, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program {
   padding-left: 100px;
   margin: 0 -35px;
 }
 
-/* line 681, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 708, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item {
   width: 49%;
   display: inline-block;
@@ -821,12 +853,12 @@
   zoom: 1;
 }
 
-/* line 687, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 714, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder {
   padding: 20px 15px;
 }
 
-/* line 689, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 716, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper {
   background: #fff;
   display: flex;
@@ -836,7 +868,7 @@
   overflow: hidden;
 }
 
-/* line 697, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 724, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper > div {
   height: 183px;
   flex-basis: 50%;
@@ -844,26 +876,26 @@
   vertical-align: middle;
 }
 
-/* line 703, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 730, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .line-left {
   overflow: hidden;
 }
 
-/* line 705, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 732, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .line-left .image {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-/* line 709, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 736, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .line-left .image img {
   width: 100%;
   max-width: 100%;
   height: auto;
 }
 
-/* line 716, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 743, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .line-right {
   padding: 10px;
   -webkit-box-shadow: 0 0 20px -7px #000;
@@ -871,12 +903,12 @@
   box-shadow: 0 0 20px -7px #000;
 }
 
-/* line 722, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 749, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .title h3 {
   margin: 0;
 }
 
-/* line 725, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 752, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .title h3 a {
   text-transform: uppercase;
   color: #f7941d;
@@ -884,7 +916,7 @@
   line-height: 1;
 }
 
-/* line 733, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 760, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .desc {
   color: #9c9c9c;
   text-align: justify;
@@ -896,17 +928,17 @@
   overflow: hidden;
 }
 
-/* line 744, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 771, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action {
   display: flex;
 }
 
-/* line 747, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 774, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action > div {
   line-height: 26px;
 }
 
-/* line 751, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 778, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action .price {
   flex-basis: 40%;
   color: #f7941d;
@@ -914,12 +946,12 @@
   font-size: 24px;
 }
 
-/* line 757, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 784, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action .button-link {
   flex-basis: 60%;
 }
 
-/* line 759, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 786, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action .button-link a {
   background: #f7941d !important;
   display: block;
@@ -929,12 +961,12 @@
   color: white;
 }
 
-/* line 767, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 794, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-program > .item .item-holder .item-wrapper .action .button-link a:hover {
   background: #662e91 !important;
 }
 
-/* line 780, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 807, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder {
   display: flex;
   align-items: baseline;
@@ -954,7 +986,7 @@
   }*/
 }
 
-/* line 784, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 811, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle {
   flex-basis: 25%;
   text-align: center;
@@ -962,7 +994,7 @@
   position: relative;
 }
 
-/* line 790, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 817, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle .circle-inside {
   border: 5px solid #acacac;
   position: relative;
@@ -975,7 +1007,7 @@
   z-index: 20;
 }
 
-/* line 801, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 828, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle .circle-inside .title {
   padding: 10px 0;
   background: #aaa;
@@ -990,47 +1022,47 @@
   text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
 }
 
-/* line 817, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 844, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-tenerife .circle-inside {
   border: 5px solid #2578C7;
 }
 
-/* line 819, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 846, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-tenerife .circle-inside .title {
   background: #2578C7;
 }
 
-/* line 826, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 853, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-gran-canaria .circle-inside {
   border: 5px solid #FCD736;
 }
 
-/* line 828, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 855, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-gran-canaria .circle-inside .title {
   background: #FCD736;
 }
 
-/* line 835, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 862, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-fuerteventura .circle-inside {
   border: 5px solid #EE8126;
 }
 
-/* line 837, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 864, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-fuerteventura .circle-inside .title {
   background: #EE8126;
 }
 
-/* line 844, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 871, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-lanzarote .circle-inside {
   border: 5px solid #DB2C23;
 }
 
-/* line 846, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 873, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle.circle-lanzarote .circle-inside .title {
   background: #DB2C23;
 }
 
-/* line 854, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 881, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle:hover .image img {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
@@ -1042,7 +1074,7 @@
   filter: blur(2px);
 }
 
-/* line 864, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 891, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .sziget-korok-holder .circle:hover .title {
   bottom: 50%;
   padding: 20px 0;
@@ -1051,7 +1083,7 @@
   transform: translateY(50%);
 }
 
-/* line 889, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 916, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .trans-on {
   -webkit-transition: all .4s;
   -moz-transition: all .4s;

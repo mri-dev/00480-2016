@@ -29,16 +29,17 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
 
     for ($i=1; $i <= $limit ; $i++)
     {
-
+      $discount = false;
       $key = array_rand($szigetek);
       $sziget = $szigetek[$key];
 
       $price = rand(390, 1200);
 
       if ($price > 800) {
-        $discount = true;
         $origin_price = $price;
-        $price = round($price - ($price/5));
+        $discount     = rand(5, 25);
+
+        $price = round($price - ($price/ 100 * $discount));
       }
 
       $data[$i] = array(
@@ -63,6 +64,19 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
     }
 
     return $data;
+  }
+
+  private function calc_discount_percent( $origin = 0, $new = 0 )
+  {
+    $d = false;
+
+    if($origin == 0 || $new == 0) return $d;
+
+    $d = 100 - ($new / ($origin / 100));
+
+    $d = floor($d);
+
+    return $d;
   }
 }
 ?>

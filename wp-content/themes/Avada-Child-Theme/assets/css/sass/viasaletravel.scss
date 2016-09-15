@@ -217,7 +217,7 @@
 .boxed-title{
   h2.box-title{
     background: #d7d7d7;
-    width: 350px;
+    width: 355px;
     margin: 0 auto;
     text-align:center;
     color: white;
@@ -485,6 +485,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           overflow: hidden;
           position: relative;
           color: #5c5c5c;
+          -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.22);
+          -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.22);
+          box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.22);
 
           .item-contents {
             border: 1px solid #f1f1f1;
@@ -549,7 +552,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             }
 
             i.star-active {
-              color: #3C7C34;
+              color: #65b75b;
             }
           }
 
@@ -602,11 +605,31 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             }
             & > div:last-child{
               border-right: none;
+              -webkit-box-shadow: none;
+              -moz-box-shadow: none;
+              box-shadow: none;
             }
             .price-eur {
               position: relative;
               .previous-price {
                 position: absolute;
+
+                span {
+                  position: relative;
+                }
+                span:after{
+                  content:"";
+                  background: #111;
+                  height: 1px;
+                  width: 100%;
+                  position: absolute;
+                  bottom:0;
+                  bottom: 8px;
+                  left: 0;
+                  -webkit-transform: rotate(-15deg);
+                  -moz-transform: rotate(-15deg);
+                  transform: rotate(-15deg);
+                }
               }
               .current-price{
                 line-height: 50px;
@@ -616,12 +639,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               }
             }
             .price-huf{
+              font-size: 14px;
               line-height: 50px;
               color: #9c9c9c;
             }
 
             .link-read {
-              padding-top: 25px;
+              padding-top: 22px;
 
               a.link-btn{
                 color:white;
@@ -664,9 +688,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
       }
       .item.discounted{
         .previous-price{
-          top: 2px;
+          top: 10px;
           width: 100%;
           margin: 0 -8px;
+        }
+        .price-eur {
+          padding: 20px 10px 10px 10px !important;
         }
       }
     }
