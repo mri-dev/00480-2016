@@ -382,6 +382,12 @@
         }
       }
 
+      .item.big {
+        .overlay{
+          top: 25%;
+        }
+      }
+
       .item:hover{
         .overlay{
           width: 120%;
@@ -457,12 +463,214 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 
           img {
             height: auto;
-            width: 100%;
+            width: 102%;
           }
         }
       }
     }
     /* END: .style-imagegrid */
+    .style-standard {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -10px;
+
+      .item {
+        flex-basis: 33.33333%;
+        padding: 10px;
+
+        .item-wrapper {
+          height: 100%;
+          background: #ffffff;
+          border: 10px solid white;
+          overflow: hidden;
+          position: relative;
+          color: #5c5c5c;
+
+          .item-contents {
+            border: 1px solid #f1f1f1;
+          }
+
+          .image {
+            overflow: hidden;
+            height: 220px;
+            max-height: 220px;
+            position: relative;
+
+            img{
+              z-index: 100;
+              left: 50%;
+              top:0;
+              position: absolute;
+              width: auto;
+              max-width: initial;
+              height: 102%;
+              -moz-transform: translateX(-50%);
+              -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+            }
+
+            .features{
+              position: absolute;
+              bottom: -100%;
+              font-size: 12px;
+              color: #8c8c8c;
+              left: 0;
+              width: 66.6666%;
+              z-index: 200;
+              background: rgba(255, 255, 255, 0.9);
+
+              .feature-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+
+                & > div:not(.feat-divider) {
+                  flex-basis: 50%;
+                  padding: 5px 10px;
+                }
+
+                .feat-value {
+                  color: black;
+                  font-weight: bold;
+                }
+
+                .feat-divider {
+                  flex-basis: 100%;
+                  background: #e2e2e2;
+                  height: 1px;
+                }
+              }
+            }
+          }
+
+          .star {
+            i{
+              font-size: 12px;
+              color: #dadada;
+            }
+
+            i.star-active {
+              color: #3C7C34;
+            }
+          }
+
+          .titles {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 10px 0 10px;
+
+            .title, .star {
+              flex-basis: 50%;
+            }
+
+            .title {
+              color: $color-purple;
+              font-size: 15px;
+              text-align: left;
+              font-family: 'Arial Black', arial;
+            }
+            .star {
+              text-align: right;
+            }
+          }
+
+          .place {
+            padding: 10px;
+            color: $color-orange;
+
+            .city{
+              color: lighten($color-orange, 5%);
+            }
+          }
+
+          .actions{
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            background: #f1f1f1;
+            border-top: 1px solid #d9d9d9;
+
+            & > div {
+              flex-basis: 33.3333%;
+              text-align: center;
+              border-right: 1px solid #e3e3e3;
+              padding: 8px;
+              height: 65px;
+              -webkit-box-shadow: inset -1px 0 0 #f9f9f9;
+              -moz-box-shadow: inset -1px 0 0 #f9f9f9;
+              box-shadow: inset -1px 0 0 #f9f9f9;
+            }
+            & > div:last-child{
+              border-right: none;
+            }
+            .price-eur {
+              position: relative;
+              .previous-price {
+                position: absolute;
+              }
+              .current-price{
+                line-height: 50px;
+                color: $color-orange;
+                font-family: 'Arial Black', arial;
+                font-size: 22px;
+              }
+            }
+            .price-huf{
+              line-height: 50px;
+              color: #9c9c9c;
+            }
+
+            .link-read {
+              padding-top: 25px;
+
+              a.link-btn{
+                color:white;
+                background: $color-orange;
+                text-transform: uppercase;
+                padding:4px 10px;
+
+                &:hover {
+                  background: $color-purple;
+                }
+              }
+            }
+          }
+
+        }
+      }
+
+      .item:hover {
+        .item-wrapper {
+          border: 10px solid $color-purple;
+        }
+        .item-contents {
+          border: 1px solid $color-purple;
+        }
+        .features{
+          bottom: 0 !important;
+        }
+        .image{
+          img{
+            -webkit-transform: scale(1.2) translateX(-50%);
+            -moz-transform: scale(1.2) translateX(-50%);
+            transform: scale(1.2) translateX(-50%);
+            -webkit-filter: blur(2px);
+            -moz-filter: blur(2px);
+            -o-filter: blur(2px);
+            -ms-filter: blur(2px);
+            filter: blur(2px);
+          }
+        }
+      }
+      .item.discounted{
+        .previous-price{
+          top: 2px;
+          width: 100%;
+          margin: 0 -8px;
+        }
+      }
+    }
+    /* END: .style-standard */
   }
   /* END: .viasale-lista-set-ajanlat */
 

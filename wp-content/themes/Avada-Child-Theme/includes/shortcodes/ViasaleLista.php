@@ -3,6 +3,7 @@ class ViasaleLista
 {
     const SCTAG = 'viasale-lista';
     // Elérhető set-ek
+    public $params = array();
     public $sets = array('program', 'ajanlat');
     public $type = null;
     public $template = 'standard';
@@ -26,7 +27,8 @@ class ViasaleLista
             array(
               'set'     => null,
               'tipus'   => null,
-              'stilus'  => 'standard'
+              'stilus'  => 'standard',
+              'limit'   => 5
             )
         );
 
@@ -39,8 +41,9 @@ class ViasaleLista
         }
 
         /* Parse the arguments. */
-        $attr = shortcode_atts( $defaults, $attr );
-        $this->type = $attr['tipus'];
+        $attr           = shortcode_atts( $defaults, $attr );
+        $this->params   = $attr;
+        $this->type     = $attr['tipus'];
         $this->template = $attr['stilus'];
 
         if (!is_null($attr['set']))
@@ -73,7 +76,7 @@ class ViasaleLista
     {
       $o = '';
 
-      $c = new ViasaleProgramok( $arg );
+      $c = new ViasaleProgramok( $this->params );
       $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__);
 
       $data = $c->getData();
@@ -93,7 +96,7 @@ class ViasaleLista
     {
       $o = '';
 
-      $c = new ViasaleAjanlatok( $arg );
+      $c = new ViasaleAjanlatok( $this->params );
       $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));
 
       $data = $c->getData();

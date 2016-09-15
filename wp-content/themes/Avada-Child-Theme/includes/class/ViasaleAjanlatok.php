@@ -1,10 +1,11 @@
 <?php
 class ViasaleAjanlatok extends ViasaleAPIFactory
 {
+  public $arg = array();
 
   public function __construct( $arg = array() )
   {
-
+    $this->arg = $arg;
   }
 
   public function getData()
@@ -24,20 +25,40 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
         3 => 'http://viasaletravel.ideafontana.eu/wp-content/uploads/2016/09/5306324966_4cb48288a0_o_lanzarote.jpg'
     );
 
-    for ($i=1; $i <= 7 ; $i++)
+    $limit = ($this->arg[limit]) ? $this->arg[limit] : 5;
+
+    for ($i=1; $i <= $limit ; $i++)
     {
 
       $key = array_rand($szigetek);
       $sziget = $szigetek[$key];
 
+      $price = rand(390, 1200);
+
+      if ($price > 800) {
+        $discount = true;
+        $origin_price = $price;
+        $price = round($price - ($price/5));
+      }
+
       $data[$i] = array(
         'link'  => 'http://viasaletravel.ideafontana.eu/',
         'island_text' => $sziget,
+        'place' => 'Los Cristianos',
         'title' => 'Hotel rent #'.$i,
         'star'  => rand(2,4),
-        'price' => rand(150, 999),
+        'discount' => $discount,
+        'price_origin' => $origin_price,
+        'price' => $price,
+        'price_huf' => round($price * 314),
         'price_v' => '€',
-        'image' => $kep[$key]
+        'image' => $kep[$key],
+        'features' => array(
+          'time' => array('text' => 'Időpont', 'value' => '2016-10-01'),
+          'days' => array('text' => 'Napok száma', 'value' => 8),
+          'supply' => array('text' => 'Ellátás', 'value' => 'Teljes ellátás'),
+          'transport' => array('text' => 'Közlekedés', 'value' => 'Repülő'),
+        )
       );
     }
 
