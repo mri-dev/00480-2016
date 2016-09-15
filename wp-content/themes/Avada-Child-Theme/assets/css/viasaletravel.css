@@ -1106,6 +1106,200 @@
 }
 
 /* line 937, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder {
+  margin-top: -186px;
+}
+
+/* line 940, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel {
+  width: 80%;
+  margin: 0 auto;
+  /*END: .search-panel.v1*/
+}
+
+/* line 944, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 {
+  background: #f7941d;
+  /*END:.head-labels{*/
+}
+
+/* line 947, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .head-labels {
+  margin-bottom: 10px;
+}
+
+/* line 949, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .head-labels ul, .viasale-kereso-holder .search-panel.v1 .head-labels li {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 953, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .head-labels ul {
+  list-style: none;
+  margin-left: 20px;
+}
+
+/* line 957, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .head-labels ul li {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 45px;
+  padding: 0;
+  margin-right: 5px;
+}
+
+/* line 968, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] {
+  display: none;
+}
+
+/* line 972, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] + label {
+  display: block;
+  padding: 0 25px;
+  background: #d97a08;
+  cursor: pointer;
+}
+
+/* line 977, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] + label:hover {
+  background: #65b75b;
+}
+
+/* line 982, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio]:checked + label {
+  background: #65b75b;
+}
+
+/* line 986, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .head-labels ul li.title-label {
+  background: #662e91;
+  padding: 0 20px 0 10px;
+}
+
+/* line 995, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: 10px 0 0 15px;
+}
+
+/* line 1001, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input {
+  padding: 0 5px;
+}
+
+/* line 1004, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input label {
+  display: block;
+  color: white;
+  padding: 0px 0px 4px 0px;
+  font-size: 15px;
+}
+
+/* line 1010, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input.w60 {
+  flex-basis: 60%;
+}
+
+/* line 1013, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input.w40 {
+  flex-basis: 40%;
+}
+
+/* line 1016, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input.w20 {
+  flex-basis: 20%;
+}
+
+/* line 1020, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input select, .viasale-kereso-holder .search-panel.v1 .inputs > .input input[type=text] {
+  border: none;
+  line-height: 35px;
+  padding: 0 10px;
+  display: block;
+  width: 100%;
+  max-height: initial;
+  height: auto;
+  font-size: 14px;
+  color: #5c5c5c;
+}
+
+/* line 1032, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input select {
+  height: 37px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+/* line 1039, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button {
+  text-align: center;
+  background: #f9ab4e;
+  border-color: #fab767;
+  border-style: solid;
+  border-width: 1px;
+  border-bottom-width: 0px;
+  border-right-width: 0px;
+}
+
+/* line 1048, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button .button-wrapper {
+  line-height: 83px;
+}
+
+/* line 1052, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button button {
+  cursor: pointer;
+  padding: 0 15px 0 0;
+  background: #662e91;
+  color: white;
+  font-size: 17px;
+  line-height: 40px;
+  border: none;
+  text-transform: uppercase;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* line 1067, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button i {
+  padding: 0 10px;
+  margin-right: 10px;
+  background: #56277a;
+  color: white;
+  line-height: 40px;
+  -webkit-border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
+}
+
+/* line 1078, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input.row-bottom {
+  padding-bottom: 20px;
+}
+
+/* line 1081, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs > .input.last-item {
+  padding-right: 20px;
+}
+
+/* line 1085, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+.viasale-kereso-holder .search-panel.v1 .inputs .row-divider {
+  margin: 10px 0;
+  display: block;
+  flex-basis: 100%;
+}
+
+/* line 1096, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .trans-on {
   -webkit-transition: all .4s;
   -moz-transition: all .4s;

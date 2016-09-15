@@ -25,7 +25,8 @@ class ShortcodeTemplates
     {
       $params = (array)$params;
     }
-    extract($params);
+
+    if($params) extract($params);
 
     ob_start();
     include($template_file);
