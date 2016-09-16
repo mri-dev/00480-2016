@@ -30,10 +30,17 @@ class ViasaleKereso
         $attr           = shortcode_atts( $defaults, $attr );
         $this->params   = $attr;
 
-        $c = new ViasaleKeresok( $this->params );
+        $searcher = new ViasaleKeresok( $this->params );
         $t = new ShortcodeTemplates(__CLASS__.'/v1');
 
-        $output .= $t->load_template($d);
+        //////////////////////////////////////////////
+        $this->params[zones] = $searcher->getZonesTree();
+        echo '<pre>';
+        print_r($this->params[zones]);
+        echo '</pre>';
+        //////////////////////////////////////////////
+
+        $output .= $t->load_template($this->params);
         $output .= '</div>';
 
         /* Return the output of the tooltip. */
