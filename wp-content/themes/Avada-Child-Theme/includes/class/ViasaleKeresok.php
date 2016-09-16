@@ -2,7 +2,7 @@
 class ViasaleKeresok extends ViasaleAPIFactory
 {
   // A zóna mélységének kontrollálása
-  protected $min_zone_deep = 2;
+  public $min_zone_deep = 1;
 
   public function __construct( $arg = array() )
   {
@@ -18,14 +18,12 @@ class ViasaleKeresok extends ViasaleAPIFactory
     $temp_zones = array();
 
     $raw_result_array   = $this->getZones();
-    $zones_max_level    = $this->zones_max_level;
-    $childed_zones_id   = $this->childed_zones_id;
 
     if(!$raw_result_array) return $zones;
 
     foreach ($raw_result_array as $zone)
     {
-      if($zone['parent_id']) continue;
+      if($zone['level'] != $this->min_zone_deep ) continue;
 
       $children = $this->getZoneChild($raw_result_array, $zone['id']);
       $zone['child_count'] = count($children);
@@ -34,7 +32,6 @@ class ViasaleKeresok extends ViasaleAPIFactory
 
       $zones[] = $zone;
     }
-
 
     return $zones;
   }

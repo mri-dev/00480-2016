@@ -16,9 +16,35 @@
               <i class="fa fa-map-marker"></i>
             </div>
             <label for="search_form_place">Melyik régióba utazna?</label>
-            <input type="text" id="search_form_place" name="place_text" placeholder="Kanári-szigetek" readonly="readonly">
+            <input type="text" id="search_form_place" class="tglwatcher" name="place_text" tglwatcher="zone_multiselect" placeholder="Kanári-szigetek" readonly="readonly">
             <i class="dropdown-ico fa fa-caret-down"></i>
             <input type="hidden" id="zones" name="zones">
+            <div class="multi-selector-holder" id="zone_multiselect">
+              <div class="selector-wrapper">
+                <?
+                $lvl = 0;
+                foreach($zones as $zone): ?>
+                  <div class="lvl-0 zone<?=$zone['id']?>"><input type="checkbox" name="zone[]" id="zone_<?=$zone['id']?>" value="<?=$zone['id']?>"> <label for="zone_<?=$zone['id']?>"><?=$zone['name']?></label></div>
+
+                  <? if($zone['children']){ ?>
+                    <div class="">
+                  <?php
+                    foreach($zone['children'] as $zone_d2): ?>
+                      <div class="lvl-1 childof<?=$zone['id']?> zone<?=$zone_d2['id']?>"><input type="checkbox" name="zone[]" id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>" value="<?=$zone_d2['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>"><?=$zone_d2['name']?></label></div>
+
+                      <? if($zone_d2['children']){ ?>
+                        <div class="sub-lvl">
+                      <?php
+                        foreach($zone_d2['children'] as $zone_d3): ?>
+                        <div class="lvl-2 childof<?=$zone_d2['id']?> zone<?=$zone_d3['id']?>"><input type="checkbox" name="zone[]" id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>" value="<?=$zone_d3['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>"><?=$zone_d3['name']?></label></div>
+
+                      <? endforeach; } ?>
+                      </div>
+                  <? endforeach; } ?>
+                </div>
+                <? endforeach; ?>
+              </div>
+            </div>
           </div>
           <div class="input w60 last-item">
             <div class="ico">
@@ -70,3 +96,30 @@
       </div>
   </div>
 </div>
+<script type="text/javascript">
+(function($) {
+  $(window).click(function() {
+    if (!$(event.target).closest('.toggler-opener').length) {
+      $('.toggler-opener').removeClass('opened toggler-opener');
+      $('.tglwatcher.toggled').removeClass('toggled');
+    }
+  });
+
+  $('.tglwatcher').click(function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var e = $(this);
+    var target_id = e.attr('tglwatcher');
+    var opened = e.hasClass('toggled');
+
+    if(opened) {
+      e.removeClass('toggled');
+      $('#'+target_id).removeClass('opened toggler-opener');
+    } else {
+      e.addClass('toggled');
+      $('#'+target_id).addClass('opened toggler-opener');
+    }
+  });
+})( jQuery );
+
+</script>

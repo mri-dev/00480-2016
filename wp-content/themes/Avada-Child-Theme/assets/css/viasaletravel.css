@@ -1058,14 +1058,16 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  padding: 10px 0 0 15px;
+  padding-left: 15px;
 }
 /* line 1007, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input {
-  padding: 0 5px;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 0px 5px;
   position: relative;
 }
-/* line 1011, sass/viasaletravel.scss */
+/* line 1014, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input .ico {
   position: absolute;
   color: #444;
@@ -1075,33 +1077,33 @@
   font-size: 18px;
   line-height: 35px;
 }
-/* line 1021, sass/viasaletravel.scss */
+/* line 1024, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input .dropdown-ico {
   position: absolute;
   right: 11px;
   top: 37px;
   color: #444;
 }
-/* line 1028, sass/viasaletravel.scss */
+/* line 1031, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input label {
   display: block;
   color: white;
   padding: 0px 0px 4px 0px;
   font-size: 15px;
 }
-/* line 1034, sass/viasaletravel.scss */
+/* line 1037, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.w60 {
   flex-basis: 60%;
 }
-/* line 1037, sass/viasaletravel.scss */
+/* line 1040, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.w40 {
   flex-basis: 40%;
 }
-/* line 1040, sass/viasaletravel.scss */
+/* line 1043, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.w20 {
   flex-basis: 20%;
 }
-/* line 1044, sass/viasaletravel.scss */
+/* line 1047, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input select, .viasale-kereso-holder .search-panel.v1 .inputs > .input input[type=text] {
   border: none;
   line-height: 35px;
@@ -1114,16 +1116,16 @@
   font-size: 13px;
   color: #5c5c5c;
 }
-/* line 1057, sass/viasaletravel.scss */
+/* line 1060, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input input[type=text].datepicker {
   font-size: 20px;
   cursor: pointer;
 }
-/* line 1062, sass/viasaletravel.scss */
+/* line 1065, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input input[type=text][readonly] {
   cursor: pointer;
 }
-/* line 1066, sass/viasaletravel.scss */
+/* line 1069, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input select {
   cursor: pointer;
   height: 35px;
@@ -1131,7 +1133,7 @@
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
-/* line 1074, sass/viasaletravel.scss */
+/* line 1077, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button {
   text-align: center;
   background: #f9ab4e;
@@ -1141,11 +1143,11 @@
   border-bottom-width: 0px;
   border-right-width: 0px;
 }
-/* line 1083, sass/viasaletravel.scss */
+/* line 1086, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button .button-wrapper {
   line-height: 83px;
 }
-/* line 1087, sass/viasaletravel.scss */
+/* line 1090, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button button {
   cursor: pointer;
   padding: 0 15px 0 0;
@@ -1159,7 +1161,7 @@
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
-/* line 1102, sass/viasaletravel.scss */
+/* line 1105, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button i {
   padding: 0 10px;
   margin-right: 10px;
@@ -1170,22 +1172,89 @@
   -moz-border-radius: 10px 0 0 10px;
   border-radius: 10px 0 0 10px;
 }
-/* line 1113, sass/viasaletravel.scss */
+/* line 1116, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.row-bottom {
   padding-bottom: 20px;
 }
-/* line 1116, sass/viasaletravel.scss */
+/* line 1119, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.last-item {
   padding-right: 20px;
 }
-/* line 1120, sass/viasaletravel.scss */
+/* line 1123, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs .row-divider {
   margin: 10px 0;
   display: block;
   flex-basis: 100%;
 }
 
-/* line 1131, sass/viasaletravel.scss */
+/* line 1134, sass/viasaletravel.scss */
+.multi-selector-holder {
+  display: none;
+  z-index: 1000;
+  position: absolute;
+  top: 61px;
+  left: 0;
+  width: 100%;
+  max-height: 400px;
+  overflow: auto;
+  box-shadow: 0 5px 15px -5px black;
+  border-top: 1px solid #f7941d;
+}
+/* line 1146, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper {
+  background: #fff;
+  font-size: 13px !important;
+}
+/* line 1150, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper .sub-lvl {
+  display: block;
+}
+/* line 1154, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper .lvl-1 {
+  border-left: 10px solid #d7d7d7;
+}
+/* line 1156, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper .lvl-1 label {
+  font-size: 12px !important;
+}
+/* line 1160, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper .lvl-2 {
+  border-left: 20px solid #d7d7d7;
+}
+/* line 1162, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper .lvl-2 label {
+  font-size: 11px !important;
+}
+/* line 1166, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper .lvl-3 {
+  border-left: 30px solid #d7d7d7;
+}
+/* line 1168, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper .lvl-3 label {
+  font-size: 10px !important;
+}
+/* line 1173, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper input[type=checkbox] {
+  float: left;
+  line-height: 30px;
+  margin: 9px 5px;
+}
+/* line 1179, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper label {
+  color: #4c4c4c !important;
+  line-height: 30px;
+  cursor: pointer;
+}
+/* line 1184, sass/viasaletravel.scss */
+.multi-selector-holder .selector-wrapper label:hover {
+  background: #f4f4f4;
+}
+/* line 1190, sass/viasaletravel.scss */
+.multi-selector-holder.opened {
+  display: block;
+}
+
+/* line 1195, sass/viasaletravel.scss */
 .trans-on {
   -webkit-transition: all .4s;
   -moz-transition: all .4s;

@@ -46,6 +46,7 @@ class ViasaleAPIFactory
   protected function getZoneChild( $raw, $parent_id = 0 )
   {
     $child = array();
+
     if($raw == '' or !is_array($raw)) return $child;
 
     $group = $this->child_groups[$parent_id];
@@ -63,6 +64,11 @@ class ViasaleAPIFactory
     }
 
     return $child;
+  }
+
+  public function getZonesDeeps()
+  {
+    return $this->zones_max_level;
   }
 
   private function load_api_content( $exc_uri = false )

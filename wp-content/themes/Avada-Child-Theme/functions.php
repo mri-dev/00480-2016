@@ -12,10 +12,11 @@ function theme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
-function custom_theme_enqueue_styles() {
+function custom_theme_enqueue_scripts() {
     wp_enqueue_style( 'viasaletravel-css', IFROOT . '/assets/css/viasaletravel.css?' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_script('viasaletravel-search-js', IFROOT . '/assets/js/viasale-searcher.js?' . ( (DEVMODE === true) ? time() : '' ) );
 }
-add_action( 'wp_enqueue_scripts', 'custom_theme_enqueue_styles', 100 );
+add_action( 'wp_enqueue_scripts', 'custom_theme_enqueue_scripts', 100 );
 
 function avada_lang_setup() {
 	$lang = get_stylesheet_directory() . '/languages';
@@ -31,4 +32,3 @@ function catalog_url()
 {
     return '/';
 }
-

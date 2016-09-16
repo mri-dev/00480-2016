@@ -35,9 +35,12 @@ class ViasaleKereso
 
         //////////////////////////////////////////////
         $this->params[zones] = $searcher->getZonesTree();
+        $this->params[zone_deep] = $searcher->getZonesDeeps() - $searcher->min_zone_deep;
+        /*
         echo '<pre>';
         print_r($this->params[zones]);
         echo '</pre>';
+        */
         //////////////////////////////////////////////
 
         $output .= $t->load_template($this->params);
