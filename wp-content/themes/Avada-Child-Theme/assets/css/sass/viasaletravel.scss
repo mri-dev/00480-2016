@@ -1058,7 +1058,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           }
 
           input[type=text].datepicker {
-            font-size: 20px;
+            font-size: 15px;
+            padding-left: 35px;
             cursor: pointer;
           }
 
@@ -1145,7 +1146,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 
   .selector-wrapper{
     background: #fff;
-    font-size: 13px !important;
+    font-size: 14px !important;
 
     .sub-lvl {
       display: block;
@@ -1154,32 +1155,33 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
     .lvl-1 {
       border-left: 10px solid #d7d7d7;
       label{
-        font-size: 12px !important;
+        font-size: 13px !important;
       }
     }
     .lvl-2 {
       border-left: 20px solid #d7d7d7;
       label{
-        font-size: 11px !important;
+        font-size: 12px !important;
       }
     }
     .lvl-3 {
       border-left: 30px solid #d7d7d7;
       label{
-        font-size: 10px !important;
+        font-size: 11px !important;
       }
     }
 
     input[type=checkbox] {
       float: left;
       line-height: 30px;
-      margin: 9px 5px;
+      margin: 9px 12px;
     }
 
     label {
       color: #4c4c4c !important;
       line-height: 30px;
       cursor: pointer;
+      padding-bottom: 1px !important;
 
       &:hover {
         background: #f4f4f4;

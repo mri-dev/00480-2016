@@ -1118,14 +1118,15 @@
 }
 /* line 1060, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input input[type=text].datepicker {
-  font-size: 20px;
+  font-size: 15px;
+  padding-left: 35px;
   cursor: pointer;
 }
-/* line 1065, sass/viasaletravel.scss */
+/* line 1066, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input input[type=text][readonly] {
   cursor: pointer;
 }
-/* line 1069, sass/viasaletravel.scss */
+/* line 1070, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input select {
   cursor: pointer;
   height: 35px;
@@ -1133,7 +1134,7 @@
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
-/* line 1077, sass/viasaletravel.scss */
+/* line 1078, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button {
   text-align: center;
   background: #f9ab4e;
@@ -1143,11 +1144,11 @@
   border-bottom-width: 0px;
   border-right-width: 0px;
 }
-/* line 1086, sass/viasaletravel.scss */
+/* line 1087, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button .button-wrapper {
   line-height: 83px;
 }
-/* line 1090, sass/viasaletravel.scss */
+/* line 1091, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button button {
   cursor: pointer;
   padding: 0 15px 0 0;
@@ -1161,7 +1162,7 @@
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
-/* line 1105, sass/viasaletravel.scss */
+/* line 1106, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button i {
   padding: 0 10px;
   margin-right: 10px;
@@ -1172,22 +1173,22 @@
   -moz-border-radius: 10px 0 0 10px;
   border-radius: 10px 0 0 10px;
 }
-/* line 1116, sass/viasaletravel.scss */
+/* line 1117, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.row-bottom {
   padding-bottom: 20px;
 }
-/* line 1119, sass/viasaletravel.scss */
+/* line 1120, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs > .input.last-item {
   padding-right: 20px;
 }
-/* line 1123, sass/viasaletravel.scss */
+/* line 1124, sass/viasaletravel.scss */
 .viasale-kereso-holder .search-panel.v1 .inputs .row-divider {
   margin: 10px 0;
   display: block;
   flex-basis: 100%;
 }
 
-/* line 1134, sass/viasaletravel.scss */
+/* line 1135, sass/viasaletravel.scss */
 .multi-selector-holder {
   display: none;
   z-index: 1000;
@@ -1200,61 +1201,62 @@
   box-shadow: 0 5px 15px -5px black;
   border-top: 1px solid #f7941d;
 }
-/* line 1146, sass/viasaletravel.scss */
+/* line 1147, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper {
   background: #fff;
-  font-size: 13px !important;
+  font-size: 14px !important;
 }
-/* line 1150, sass/viasaletravel.scss */
+/* line 1151, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper .sub-lvl {
   display: block;
 }
-/* line 1154, sass/viasaletravel.scss */
+/* line 1155, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper .lvl-1 {
   border-left: 10px solid #d7d7d7;
 }
-/* line 1156, sass/viasaletravel.scss */
+/* line 1157, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper .lvl-1 label {
-  font-size: 12px !important;
+  font-size: 13px !important;
 }
-/* line 1160, sass/viasaletravel.scss */
+/* line 1161, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper .lvl-2 {
   border-left: 20px solid #d7d7d7;
 }
-/* line 1162, sass/viasaletravel.scss */
+/* line 1163, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper .lvl-2 label {
-  font-size: 11px !important;
+  font-size: 12px !important;
 }
-/* line 1166, sass/viasaletravel.scss */
+/* line 1167, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper .lvl-3 {
   border-left: 30px solid #d7d7d7;
 }
-/* line 1168, sass/viasaletravel.scss */
+/* line 1169, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper .lvl-3 label {
-  font-size: 10px !important;
+  font-size: 11px !important;
 }
-/* line 1173, sass/viasaletravel.scss */
+/* line 1174, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper input[type=checkbox] {
   float: left;
   line-height: 30px;
-  margin: 9px 5px;
+  margin: 9px 12px;
 }
-/* line 1179, sass/viasaletravel.scss */
+/* line 1180, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper label {
   color: #4c4c4c !important;
   line-height: 30px;
   cursor: pointer;
+  padding-bottom: 1px !important;
 }
-/* line 1184, sass/viasaletravel.scss */
+/* line 1186, sass/viasaletravel.scss */
 .multi-selector-holder .selector-wrapper label:hover {
   background: #f4f4f4;
 }
-/* line 1190, sass/viasaletravel.scss */
+/* line 1192, sass/viasaletravel.scss */
 .multi-selector-holder.opened {
   display: block;
 }
 
-/* line 1195, sass/viasaletravel.scss */
+/* line 1197, sass/viasaletravel.scss */
 .trans-on {
   -webkit-transition: all .4s;
   -moz-transition: all .4s;
