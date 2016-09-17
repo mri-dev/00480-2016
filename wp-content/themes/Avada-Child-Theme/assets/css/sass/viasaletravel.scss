@@ -1199,3 +1199,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
   -moz-transition: all .4s;
   transition: all .4s;
 }
+
+body.page-template.page-template-100-sziget{
+  #main{
+    padding: 0;
+  }
+  #main > div.fusion-row{
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.fusion-tabs .nav-tabs > li .fusion-tab-heading{
+  color: white;
+  text-transform: uppercase;
+}
+.fusion-tabs .nav-tabs > li.active .fusion-tab-heading {
+  color:black;
+}
+
+.sziget-info-tabs {
+  .fusion-tabs .tab-pane{
+    font-size: 15px !important;
+    color: #000000 !important;
+    padding: 15px;
+  }
+}
