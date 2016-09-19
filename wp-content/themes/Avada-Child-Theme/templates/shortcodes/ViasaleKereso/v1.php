@@ -53,11 +53,7 @@
             <label for="search_form_hotel">Hotel</label>
             <input type="text" id="search_form_hotel" name="hotel_text" placeholder="Összes Hotel">
             <input type="hidden" id="hotel_id" name="hotel_id">
-            <div class="multi-selector-holder" id="hotel_autocomplete">
-              <div class="selector-wrapper">
-                <div class="autocomplete_results"></div>
-              </div>
-            </div>
+            <div class="autocomplete-result-conteiner" id="hotel_autocomplete"></div>
           </div>
           <div class="row-divider"></div>
           <div class="input w20 row-bottom">
@@ -126,6 +122,38 @@
     }
   });
 
+  // Autocomplete
+  (function ($) {
+      'use strict';
+
+      $('#search_form_hotel').autocomplete({
+          serviceUrl: 'http://viasale.net/api/v2/hotels/autocomplete?zones=3',
+          appendTo: '#hotel_autocomplete',
+          paramName: 'term',
+          type: 'GET',
+          dataType: 'json',
+          transformResult: function(response) {
+              return {
+                  suggestions: $.map(response, function(dataItem) {
+                      return { value: dataItem.label, data: dataItem.value };
+                  })
+              };
+          },
+          onSelect: function(suggestion) {
+            console.log(suggestion);
+          },
+          onSearchComplete: function(query, suggestions){
+            console.log(suggestions);
+          },
+          onSearchStart: function(query){
+            //console.log(query);
+          },
+          onSearchError: function(query, jqXHR, textStatus, errorThrown){
+              //console.log(jqXHR);
+          }
+      });
+  })(jQuery);
+
 
   $('#zone_multiselect input[type=checkbox]').change(function(){
     var e = $(this);
@@ -154,7 +182,7 @@ function collect_zone_checkbox()
   var arr = [];
   jQuery('#zone_multiselect input[type=checkbox]').each(function(e,i)
   {
-    if(jQuery(this).is(':checked')){      
+    if(jQuery(this).is(':checked')){
       arr.push(jQuery(this).val());
     }
   });
