@@ -12,6 +12,17 @@ class ViasaleAPIFactory
   public $childed_zones_id = array();
   public $child_groups = array();
 
+  public $boardTypeMap = [
+     '1' => [ 'shortName' => "SC", 'fullName' => 'Ellátás nélkül' ],
+     '2' => [ 'shortName' => "BB", 'fullName' => 'Reggeli' ],
+     '3' => [ 'shortName' => "HB", 'fullName' => 'Félpanzió' ],
+     '4' => [ 'shortName' => "FB", 'fullName' => 'Teljes ellátás' ],
+     '5' => [ 'shortName' => "AI", 'fullName' => 'All inclusive' ],
+     '6' => [ 'shortName' => "AI+", 'fullName' => 'All inclusive plus' ]
+  ];
+
+  public $hotel_stars = [2, 3, 4, 5];
+
   public function __construct()
   {
 
@@ -94,6 +105,16 @@ class ViasaleAPIFactory
         curl_close($ch);
         return $data;
     }
+  }
+
+  public function getBoardTypes()
+  {
+    return $this->boardTypeMap;
+  }
+
+  public function getHotelStars()
+  {
+    return $this->hotel_stars;
   }
 }
 ?>

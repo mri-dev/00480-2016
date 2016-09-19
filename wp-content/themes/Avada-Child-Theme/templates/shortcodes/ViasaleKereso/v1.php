@@ -62,7 +62,11 @@
             </div>
             <label for="search_form_kategoria">Kategória</label>
             <select class="" id="search_form_kategoria" name="kategoria">
-              <option value="">Bármely</option>
+              <option value="" selected="selected">Bármely</option>
+              <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
+              <? if($hotelStars) foreach ($hotelStars as $star) { ?>
+                <option value="<?=$star?>">legalább <?=$star?> csillag</option>
+              <?  } ?>
             </select>
           </div>
           <div class="input w20 row-bottom">
@@ -71,7 +75,11 @@
             </div>
             <label for="search_form_ellatas">Ellátás</label>
             <select class="" id="search_form_ellatas" name="ellatas">
-              <option value="">Bármely</option>
+              <option value="" selected="selected">Bármely</option>
+              <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
+              <? if($boardTypes) foreach ($boardTypes as $board_id => $board) { ?>
+                <option value="<?=$board_id?>"><?=$board['fullName']?></option>
+              <?  } ?>
             </select>
           </div>
           <div class="input w20 row-bottom">
@@ -79,14 +87,14 @@
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_indulas">Indulás</label>
-            <input type="text" class="datepicker" id="search_form_indulas" name="indulas" value="<?php echo date('Y / m / d'); ?>" readonly="readonly">
+            <input type="text" class="search-datepicker" dtp="from" id="search_form_indulas" name="indulas" value="<?php echo date('Y / m / d', strtotime('+1 days')); ?>" readonly="readonly">
           </div>
           <div class="input w20 row-bottom last-item">
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_erkezes">Érkezés</label>
-            <input type="text" class="datepicker" id="search_form_erkezes" name="erkezes" value="<?php echo date('Y / m / d', strtotime('+30 days')); ?>" readonly="readonly">
+            <input type="text" class="search-datepicker" dtp="to" id="search_form_erkezes" name="erkezes" value="<?php echo date('Y / m / d', strtotime('+30 days')); ?>">
           </div>
           <div class="input search-button w20">
             <div class="button-wrapper">
@@ -98,7 +106,96 @@
   </div>
 </div>
 <script type="text/javascript">
+// Autocomplete
+(function ($) {
+    'use strict';
+
+    $('#search_form_hotel').autocomplete({
+        serviceUrl: 'http://viasale.net/api/v2/hotels/autocomplete',
+        appendTo: '#hotel_autocomplete',
+        paramName: 'term',
+        params : { "zones": 1 },
+        type: 'GET',
+        dataType: 'json',
+        transformResult: function(response) {
+            return {
+                suggestions: $.map(response, function(dataItem) {
+                    return { value: dataItem.label.toLowerCase().capitalizeFirstLetter(), data: dataItem.value };
+                })
+            };
+        },
+        onSelect: function(suggestion) {
+          $('#hotel_id').val(suggestion.data);
+        },
+        onSearchComplete: function(query, suggestions){
+
+        },
+        onSearchStart: function(query){
+          $('#hotel_id').val('');
+          // Pass current selected zones
+          $(this).autocomplete().options.params.zones = get_selected_zone_ids();
+        },
+        onSearchError: function(query, jqXHR, textStatus, errorThrown){
+            console.log('Autocomplete error: '+textStatus);
+        }
+    });
+
+    String.prototype.capitalizeFirstLetter = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+
+    function get_selected_zone_ids() {
+      var selected = $('#zones').val();
+      if(selected == '') return "1";
+      return selected;
+    }
+
+})(jQuery);
+// END: Autocomplete
+
 (function($) {
+  var dp_options = {
+  	closeText: "bezár",
+  	prevText: "vissza",
+  	nextText: "előre",
+  	currentText: "ma",
+  	monthNames: [ "Január", "Február", "Március", "Április", "Május", "Június",
+  	"Július", "Augusztus", "Szeptember", "Október", "November", "December" ],
+  	monthNamesShort: [ "Jan", "Feb", "Már", "Ápr", "Máj", "Jún",
+  	"Júl", "Aug", "Szep", "Okt", "Nov", "Dec" ],
+  	dayNames: [ "Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat" ],
+  	dayNamesShort: [ "Vas", "Hét", "Ked", "Sze", "Csü", "Pén", "Szo" ],
+  	dayNamesMin: [ "V", "H", "K", "Sze", "Cs", "P", "Szo" ],
+  	weekHeader: "Hét",
+  	dateFormat: "yy / mm / dd",
+  	firstDay: 1,
+  	isRTL: false,
+  	minDate: +1,
+  	showMonthAfterYear: true,
+  	yearSuffix: "",
+    onSelect: function(dt, i){
+      if($(this).attr('dtp') == 'from')
+      {
+        var selected_date = new Date(i.currentYear, i.currentMonth, i.currentDay);
+      
+        if(!isNaN(selected_date.getTime())){
+            selected_date.setDate(selected_date.getDate() + 7);
+            $("#search_form_erkezes").val(selected_date.toInputFormat());
+        }
+
+      }
+    }
+  };
+
+  Date.prototype.toInputFormat = function() {
+    var yyyy = this.getFullYear().toString();
+    var mm = (this.getMonth()+1).toString();
+    var dd  = this.getDate().toString();
+    return yyyy + " / " + (mm[1]?mm:"0"+mm[0]) + " / " + (dd[1]?dd:"0"+dd[0]);
+  };
+
+  $( ".search-datepicker" ).datepicker( dp_options );
+
   $(window).click(function() {
     if (!$(event.target).closest('.toggler-opener').length) {
       $('.toggler-opener').removeClass('opened toggler-opener');
@@ -121,39 +218,6 @@
       $('#'+target_id).addClass('opened toggler-opener');
     }
   });
-
-  // Autocomplete
-  (function ($) {
-      'use strict';
-
-      $('#search_form_hotel').autocomplete({
-          serviceUrl: 'http://viasale.net/api/v2/hotels/autocomplete?zones=3',
-          appendTo: '#hotel_autocomplete',
-          paramName: 'term',
-          type: 'GET',
-          dataType: 'json',
-          transformResult: function(response) {
-              return {
-                  suggestions: $.map(response, function(dataItem) {
-                      return { value: dataItem.label, data: dataItem.value };
-                  })
-              };
-          },
-          onSelect: function(suggestion) {
-            console.log(suggestion);
-          },
-          onSearchComplete: function(query, suggestions){
-            console.log(suggestions);
-          },
-          onSearchStart: function(query){
-            //console.log(query);
-          },
-          onSearchError: function(query, jqXHR, textStatus, errorThrown){
-              //console.log(jqXHR);
-          }
-      });
-  })(jQuery);
-
 
   $('#zone_multiselect input[type=checkbox]').change(function(){
     var e = $(this);

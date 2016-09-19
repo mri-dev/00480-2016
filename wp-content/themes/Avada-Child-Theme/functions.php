@@ -9,7 +9,10 @@ require_once "includes/include.php";
 function theme_enqueue_styles() {
     wp_enqueue_style( 'avada-parent-stylesheet', get_template_directory_uri() . '/style.css?' . ( (DEVMODE === true) ? time() : '' )  );
     wp_enqueue_style( 'avada-child-stylesheet', IFROOT . '/style.css?' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_style( 'jquery-ui-str', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.structure.min.css');
+    wp_enqueue_style( 'jquery-ui', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.theme.min.css');
 
+    wp_enqueue_script('jquery-ui', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.min.js', array('jquery'));
     wp_enqueue_script('mocjax', IFROOT . '/assets/js/autocomplete/scripts/jquery.mockjax.js');
     wp_enqueue_script('autocomplete', IFROOT . '/assets/js/autocomplete/dist/jquery.autocomplete.min.js');
 }

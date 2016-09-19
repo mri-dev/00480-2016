@@ -36,6 +36,8 @@ class ViasaleKereso
         //////////////////////////////////////////////
         $this->params[zones] = $searcher->getZonesTree();
         $this->params[zone_deep] = $searcher->getZonesDeeps() - $searcher->min_zone_deep;
+        $this->params[boardTypes] = $searcher->getBoardTypes();
+        $this->params[hotelStars] = $searcher->getHotelStars();
         /*
         echo '<pre>';
         print_r($this->params[zones]);
