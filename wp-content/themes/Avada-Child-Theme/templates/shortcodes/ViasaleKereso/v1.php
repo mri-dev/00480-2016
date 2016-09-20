@@ -1,5 +1,6 @@
 <div class="search-panel v1">
   <div class="search-wrapper">
+    <form  action="/utazas-kereso" method="get">
       <div class="head-labels">
         <ul>
           <li class="title-label"><i class="fa fa-search"></i> Utazáskereső</li>
@@ -16,27 +17,27 @@
               <i class="fa fa-map-marker"></i>
             </div>
             <label for="search_form_place">Melyik régióba utazna?</label>
-            <input type="text" id="search_form_place" class="tglwatcher" name="place_text" tglwatcher="zone_multiselect" placeholder="Kanári-szigetek" readonly="readonly">
+            <input type="text" id="search_form_place" class="tglwatcher" tglwatcher="zone_multiselect" placeholder="Kanári-szigetek" readonly="readonly">
             <i class="dropdown-ico fa fa-caret-down"></i>
-            <input type="hidden" id="zones" name="zones">
+            <input type="hidden" id="zones" name="zona">
             <div class="multi-selector-holder" id="zone_multiselect">
               <div class="selector-wrapper">
                 <?
                 $lvl = 0;
                 foreach($zones as $zone): ?>
-                  <div class="lvl-0 zone<?=$zone['id']?>"><input class="<? if($zone['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" name="zone[]" id="zone_<?=$zone['id']?>" value="<?=$zone['id']?>"> <label for="zone_<?=$zone['id']?>"><?=$zone['name']?></label></div>
+                  <div class="lvl-0 zone<?=$zone['id']?>"><input class="<? if($zone['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" id="zone_<?=$zone['id']?>" value="<?=$zone['id']?>"> <label for="zone_<?=$zone['id']?>"><?=$zone['name']?></label></div>
 
                   <? if($zone['children']){ ?>
                     <div class="">
                   <?php
                     foreach($zone['children'] as $zone_d2): ?>
-                      <div class="lvl-1 childof<?=$zone['id']?> zone<?=$zone_d2['id']?><? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>"><input class="<? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" name="zone[]" id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>" value="<?=$zone_d2['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>"><?=$zone_d2['name']?></label></div>
+                      <div class="lvl-1 childof<?=$zone['id']?> zone<?=$zone_d2['id']?><? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>"><input class="<? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>" value="<?=$zone_d2['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>"><?=$zone_d2['name']?></label></div>
 
                       <? if($zone_d2['children']){ ?>
                         <div class="sub-lvl sub-lvl-of<?=$zone_d2[id]?>">
                       <?php
                         foreach($zone_d2['children'] as $zone_d3): ?>
-                        <div class="lvl-2 childof<?=$zone_d2['id']?> zone<?=$zone_d3['id']?><? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>"><input class="<? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" name="zone[]" id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>" value="<?=$zone_d3['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>"><?=$zone_d3['name']?></label></div>
+                        <div class="lvl-2 childof<?=$zone_d2['id']?> zone<?=$zone_d3['id']?><? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>"><input class="<? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox"id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>" value="<?=$zone_d3['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>"><?=$zone_d3['name']?></label></div>
 
                       <? endforeach; } ?>
                       </div>
@@ -51,8 +52,8 @@
               <i class="fa fa-building"></i>
             </div>
             <label for="search_form_hotel">Hotel</label>
-            <input type="text" id="search_form_hotel" name="hotel_text" placeholder="Összes Hotel">
-            <input type="hidden" id="hotel_id" name="hotel_id">
+            <input type="text" id="search_form_hotel" name="hotel" placeholder="Összes Hotel">
+            <input type="hidden" id="hotel_id" name="hid">
             <div class="autocomplete-result-conteiner" id="hotel_autocomplete"></div>
           </div>
           <div class="row-divider"></div>
@@ -61,7 +62,7 @@
               <i class="fa fa-star"></i>
             </div>
             <label for="search_form_kategoria">Kategória</label>
-            <select class="" id="search_form_kategoria" name="kategoria">
+            <select class="" id="search_form_kategoria" name="c">
               <option value="" selected="selected">Bármely</option>
               <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
               <? if($hotelStars) foreach ($hotelStars as $star) { ?>
@@ -74,7 +75,7 @@
               <i class="fa fa-coffee"></i>
             </div>
             <label for="search_form_ellatas">Ellátás</label>
-            <select class="" id="search_form_ellatas" name="ellatas">
+            <select class="" id="search_form_ellatas" name="e">
               <option value="" selected="selected">Bármely</option>
               <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
               <? if($boardTypes) foreach ($boardTypes as $board_id => $board) { ?>
@@ -87,22 +88,23 @@
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_indulas">Indulás</label>
-            <input type="text" class="search-datepicker" dtp="from" id="search_form_indulas" name="indulas" value="<?php echo date('Y / m / d', strtotime('+1 days')); ?>" readonly="readonly">
+            <input type="text" class="search-datepicker" dtp="from" id="search_form_indulas" name="tt" value="<?php echo date('Y / m / d', strtotime('+1 days')); ?>" readonly="readonly">
           </div>
           <div class="input w20 row-bottom last-item">
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_erkezes">Érkezés</label>
-            <input type="text" class="search-datepicker" dtp="to" id="search_form_erkezes" name="erkezes" value="<?php echo date('Y / m / d', strtotime('+30 days')); ?>">
+            <input type="text" class="search-datepicker" dtp="to" id="search_form_erkezes" name="tf" value="<?php echo date('Y / m / d', strtotime('+30 days')); ?>">
           </div>
           <div class="input search-button w20">
             <div class="button-wrapper">
-              <button type="button" name="sub"><i class="fa fa-search"></i> Keresés</button>
+              <button type="submit"><i class="fa fa-search"></i> Keresés</button>
             </div>
           </div>
         </div>
       </div>
+      </form>
   </div>
 </div>
 <script type="text/javascript">
@@ -177,7 +179,7 @@
       if($(this).attr('dtp') == 'from')
       {
         var selected_date = new Date(i.currentYear, i.currentMonth, i.currentDay);
-      
+
         if(!isNaN(selected_date.getTime())){
             selected_date.setDate(selected_date.getDate() + 7);
             $("#search_form_erkezes").val(selected_date.toInputFormat());
@@ -244,12 +246,23 @@
 function collect_zone_checkbox()
 {
   var arr = [];
+  var str = [];
+  var seln = 0;
+
   jQuery('#zone_multiselect input[type=checkbox]').each(function(e,i)
   {
     if(jQuery(this).is(':checked')){
+      seln++;
       arr.push(jQuery(this).val());
+      str.push(jQuery(this).next('label').text());
     }
   });
+
+  if(seln <= 3 ){
+    jQuery('#search_form_place').val(str.join(", "));
+  } else {
+    jQuery('#search_form_place').val(seln + " zóna kiválasztva");
+  }
 
   return arr.join(",");
 }

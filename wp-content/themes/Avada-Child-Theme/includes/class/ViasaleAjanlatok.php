@@ -11,59 +11,61 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
   public function getData()
   {
     $data = array();
+    $search = array();
 
-    $szigetek = array(
-      0 => 'Tenerife',
-      1 => 'Gran Canaria',
-      2 => 'Fuerteventura',
-      3 => 'Lanzarote'
-    );
-    $kep = array(
-        0 => 'http://viasaletravel.ideafontana.eu/wp-content/uploads/2016/09/ARC_15_002_tenerife.jpg',
-        1 => 'http://viasaletravel.ideafontana.eu/wp-content/uploads/2016/09/02aSolBarbacan-GeneralPool_grancanaria.jpg',
-        2 => 'http://viasaletravel.ideafontana.eu/wp-content/uploads/2016/09/Pool3Pan_fuerteventura.jpg',
-        3 => 'http://viasaletravel.ideafontana.eu/wp-content/uploads/2016/09/5306324966_4cb48288a0_o_lanzarote.jpg'
-    );
+    //$search['zones'][] = 3;
+    if(isset($this->arg['limit'])) {
+      $search['limit'] = $this->arg['limit'];
+      //$search['limit'] = ;
+    }
 
-    $limit = ($this->arg[limit]) ? $this->arg[limit] : 5;
+    if(isset($this->arg['tipus']) && $this->arg['tipus'] == 'lastminute') {
+      $search['max_hotels'] = $this->arg['limit'];
+      $search['limit'] = 1;
+    }
 
-    for ($i=1; $i <= $limit ; $i++)
+    if(isset($this->arg['tipus'])) {
+      $search['offers'] = $this->arg['tipus'];
+    }
+
+    // Ajánlatok betöltése
+    $terms = $this->getTerms($search);
+    // Deviza árfolyam EUR > HUF
+    $exchange_rate = (float)$terms['exchange_rate'];
+
+    if(!empty($terms['hotels']) && true)
     {
-      $discount = false;
-      $key = array_rand($szigetek);
-      $sziget = $szigetek[$key];
+      $i = 0;
+      foreach ($terms['hotels'] as $key => $hotel)
+      { $i++;
 
-      $price = rand(390, 1200);
+        $price = (int)$hotel['price_from'];
 
-      if ($price > 800) {
-        $origin_price = $price;
-        $discount     = rand(5, 25);
+        $data[] = array(
+          'link'  => 'http://viasaletravel.ideafontana.eu/',
+          'island_text' => $hotel['zone_list'][2]['name'],
+          'place' => $hotel['zone_list'][3]['name'],
+          'title' => $hotel['hotel_name'],
+          'star'  => (int)$hotel['hotel_category'],
+          'discount' => $discount,
+          'price_origin' => $origin_price,
+          'price' => $price,
+          'price_huf' => round($price * $exchange_rate),
+          'price_v' => '€',
+          'image' => $hotel['picture']['url'],
+          'features' => array(
+            'time' => array('text' => 'Időpont', 'value' => $this->format_date($hotel['date_from'])),
+            'days' => array('text' => 'Napok száma', 'value' => $hotel['term_duration']),
+            'supply' => array('text' => 'Ellátás', 'value' => $hotel['board_type']),
+            //'transport' => array('text' => 'Ajánlatok száma', 'value' => $hotel['term_count']),
+          )
+        );
 
-        $price = round($price - ($price/ 100 * $discount));
       }
-
-      $data[$i] = array(
-        'link'  => 'http://viasaletravel.ideafontana.eu/',
-        'island_text' => $sziget,
-        'place' => 'Los Cristianos',
-        'title' => 'Hotel rent #'.$i,
-        'star'  => rand(2,4),
-        'discount' => $discount,
-        'price_origin' => $origin_price,
-        'price' => $price,
-        'price_huf' => round($price * 314),
-        'price_v' => '€',
-        'image' => $kep[$key],
-        'features' => array(
-          'time' => array('text' => 'Időpont', 'value' => '2016-10-01'),
-          'days' => array('text' => 'Napok száma', 'value' => 8),
-          'supply' => array('text' => 'Ellátás', 'value' => 'Teljes ellátás'),
-          'transport' => array('text' => 'Közlekedés', 'value' => 'Repülő'),
-        )
-      );
     }
 
     return $data;
+
   }
 
   private function calc_discount_percent( $origin = 0, $new = 0 )
@@ -78,5 +80,6 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
 
     return $d;
   }
+
 }
 ?>

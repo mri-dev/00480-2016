@@ -2,7 +2,9 @@
 class ViasaleAPIFactory
 {
   const ZONES_TAG   = 'zones';
+  const TERMS_TAG   = 'terms';
   public $api_uri   = 'http://viasale.net/api/v2/';
+  public $date_format = 'Y / m / d';
 
   // Settings
   protected $streamer_timeout = 30;
@@ -29,13 +31,64 @@ class ViasaleAPIFactory
   }
 
   /**
+  * Utazási ajánlatok
+  **/
+  public function getTerms( $params = array() )
+  {
+    $data = array();
+
+    // Get search params
+    $query = array();
+
+    if(isset($params['zones']) && !empty($params['zones'])){
+      $query['zones'] = implode(",", $params['zones']);
+    }
+    if(isset($params['limit'])) {
+      $query['limit'] = $params['limit'];
+    }
+    if(isset($params['offers'])) {
+      $query['offers'] = $params['offers'];
+    }
+    if(isset($params['max_hotels'])) {
+      $query['max_hotels'] = $params['max_hotels'];
+    }
+
+    $query = $this->build_search($query);
+
+    $uri = $this->api_uri . self::TERMS_TAG.'/'.$query;
+
+    //echo $uri . '<br>';
+
+    $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
+
+    if(!$result || empty($result)) return false;
+
+    foreach ($result as $k => $r )
+    {
+      $data[$k] = $r;
+    }
+    unset($result);
+
+    return $data;
+  }
+
+  public function format_date($date)
+  {
+    return date($this->date_format, strtotime($date));
+  }
+
+  /**
   * Nyers zónaadatok letöltése
   */
   protected function getZones()
   {
     $data = array();
 
-    $uri = $this->api_uri . self::ZONES_TAG.'/';
+    // Get search params
+    $query = array();
+    $query = $this->build_search($query);
+
+    $uri = $this->api_uri . self::ZONES_TAG.'/'.$query;
 
     $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
 
@@ -115,6 +168,13 @@ class ViasaleAPIFactory
   public function getHotelStars()
   {
     return $this->hotel_stars;
+  }
+
+  private function build_search( $array = array() )
+  {
+    if(empty($array)) return '';
+
+    return '?'.http_build_query($array);
   }
 }
 ?>
