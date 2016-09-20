@@ -31,6 +31,30 @@ function avada_lang_setup() {
 }
 add_action( 'after_setup_theme', 'avada_lang_setup' );
 
+function vs_rewrite_rules() {
+    add_rewrite_rule( 'hotel/kanari-szigetek/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[1]&varos=$matches[2]&hotel_id=$matches[3]', 'top' );
+}
+add_action( 'init', 'vs_rewrite_rules' );
+
+function vs_query_vars($aVars) {
+  $aVars[] = "hotel_id";
+  $aVars[] = "sziget";
+  $aVars[] = "varos";
+  return $aVars;
+}
+add_filter('query_vars', 'vs_query_vars');
+
+
+function vs_custom_template($template) {
+  global $post, $wp_query;
+  if ( isset($wp_query->query_vars['hotel_id']) && !empty($wp_query->query_vars['hotel_id']) ) {
+    return get_stylesheet_directory() . '/hotel.php';
+  } else {
+    return $template;
+  }
+}
+add_filter( 'template_include', 'vs_custom_template' );
+
 /**
 *  FUNKCIÓK
 * */
