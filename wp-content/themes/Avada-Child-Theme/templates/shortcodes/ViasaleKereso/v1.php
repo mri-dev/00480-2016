@@ -4,10 +4,10 @@
       <div class="head-labels">
         <ul>
           <li class="title-label"><i class="fa fa-search"></i> Utazáskereső</li>
-          <li><input type="radio" name="cat" id="cat_lm" value="lm"><label class="trans-on" for="cat_lm"><i class="fa fa-percent"></i> Lastminute</label></li>
-          <li><input type="radio" name="cat" id="cat_fm" value="fm"><label class="trans-on" for="cat_fm"><i class="fa fa-percent"></i> Firstminute</label></li>
-          <li><input type="radio" name="cat" id="cat_prog" value="prog"><label class="trans-on" for="cat_prog"><i class="fa fa-bicycle"></i> Programok</label></li>
-          <li><input type="radio" name="cat" id="cat_trans" value="trans"><label class="trans-on" for="cat_trans"><i class="fa fa-bus"></i> Transfer</label></li>
+          <li><input type="radio" <?=($_GET['cat'] == 'lastminute')?'checked="checked"':''?> name="cat" id="cat_lm" value="lastminute"><label class="trans-on" for="cat_lm"><i class="fa fa-percent"></i> Lastminute</label></li>
+          <li><input type="radio" <?=($_GET['cat'] == 'firstmunute')?'checked="checked"':''?> name="cat" id="cat_fm" value="firstmunute"><label class="trans-on" for="cat_fm"><i class="fa fa-percent"></i> Firstminute</label></li>
+          <li><input type="radio" <?=($_GET['cat'] == 'prog')?'checked="checked"':''?> name="cat" id="cat_prog" value="prog"><label class="trans-on" for="cat_prog"><i class="fa fa-bicycle"></i> Programok</label></li>
+          <li><input type="radio" <?=($_GET['cat'] == 'trans')?'checked="checked"':''?> name="cat" id="cat_trans" value="trans"><label class="trans-on" for="cat_trans"><i class="fa fa-bus"></i> Transfer</label></li>
         </ul>
       </div>
       <div class="input-holder">
@@ -16,6 +16,12 @@
             <div class="ico">
               <i class="fa fa-map-marker"></i>
             </div>
+            <?php
+              $zonak = array();
+              if(!empty($_GET['zona'])){
+                $zonak = explode(",", $_GET['zona']);
+              }
+            ?>
             <label for="search_form_place">Melyik régióba utazna?</label>
             <input type="text" id="search_form_place" class="tglwatcher" tglwatcher="zone_multiselect" placeholder="Kanári-szigetek" readonly="readonly">
             <i class="dropdown-ico fa fa-caret-down"></i>
@@ -25,19 +31,19 @@
                 <?
                 $lvl = 0;
                 foreach($zones as $zone): ?>
-                  <div class="lvl-0 zone<?=$zone['id']?>"><input class="<? if($zone['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" id="zone_<?=$zone['id']?>" value="<?=$zone['id']?>"> <label for="zone_<?=$zone['id']?>"><?=$zone['name']?></label></div>
+                  <div class="lvl-0 zone<?=$zone['id']?>"><input <?=(in_array($zone['id'], $zonak))?'checked="checked"':''?> class="<? if($zone['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" id="zone_<?=$zone['id']?>" value="<?=$zone['id']?>"> <label for="zone_<?=$zone['id']?>"><?=$zone['name']?></label></div>
 
                   <? if($zone['children']){ ?>
                     <div class="">
                   <?php
                     foreach($zone['children'] as $zone_d2): ?>
-                      <div class="lvl-1 childof<?=$zone['id']?> zone<?=$zone_d2['id']?><? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>"><input class="<? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>" value="<?=$zone_d2['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>"><?=$zone_d2['name']?></label></div>
+                      <div class="lvl-1 childof<?=$zone['id']?> zone<?=$zone_d2['id']?><? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>"><input <?=(in_array($zone_d2['id'], $zonak))?'checked="checked"':''?> class="<? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>" value="<?=$zone_d2['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>"><?=$zone_d2['name']?></label></div>
 
                       <? if($zone_d2['children']){ ?>
                         <div class="sub-lvl sub-lvl-of<?=$zone_d2[id]?>">
                       <?php
                         foreach($zone_d2['children'] as $zone_d3): ?>
-                        <div class="lvl-2 childof<?=$zone_d2['id']?> zone<?=$zone_d3['id']?><? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>"><input class="<? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox"id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>" value="<?=$zone_d3['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>"><?=$zone_d3['name']?></label></div>
+                        <div class="lvl-2 childof<?=$zone_d2['id']?> zone<?=$zone_d3['id']?><? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>"><input <?=(in_array($zone_d3['id'], $zonak))?'checked="checked"':''?> class="<? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox"id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>" value="<?=$zone_d3['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>"><?=$zone_d3['name']?></label></div>
 
                       <? endforeach; } ?>
                       </div>
@@ -52,8 +58,8 @@
               <i class="fa fa-building"></i>
             </div>
             <label for="search_form_hotel">Hotel</label>
-            <input type="text" id="search_form_hotel" name="hotel" placeholder="Összes Hotel">
-            <input type="hidden" id="hotel_id" name="hid">
+            <input type="text" id="search_form_hotel" name="hotel" value="<?php echo $_GET["hotel"]; ?>" placeholder="Összes Hotel">
+            <input type="hidden" id="hotel_id" name="hid" value="<?php echo $_GET["hid"]; ?>">
             <div class="autocomplete-result-conteiner" id="hotel_autocomplete"></div>
           </div>
           <div class="row-divider"></div>
@@ -156,6 +162,9 @@
 // END: Autocomplete
 
 (function($) {
+  var szones = collect_zone_checkbox();
+  $('#zones').val(szones);
+
   var dp_options = {
   	closeText: "bezár",
   	prevText: "vissza",

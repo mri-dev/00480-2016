@@ -43,6 +43,9 @@ class ViasaleAPIFactory
     if(isset($params['zones']) && !empty($params['zones'])){
       $query['zones'] = implode(",", $params['zones']);
     }
+    if(isset($params['hotels']) && !empty($params['hotels'])){
+      $query['hotels'] = implode(",", $params['hotels']);
+    }
     if(isset($params['limit'])) {
       $query['limit'] = $params['limit'];
     }
@@ -51,6 +54,9 @@ class ViasaleAPIFactory
     }
     if(isset($params['max_hotels'])) {
       $query['max_hotels'] = $params['max_hotels'];
+    }
+    if(isset($params['order'])) {
+      $query['sort_by'] = $params['order'];
     }
 
     $query = $this->build_search($query);

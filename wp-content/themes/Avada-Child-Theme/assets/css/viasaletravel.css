@@ -684,7 +684,7 @@
 
 /* line 570, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .star i {
-  font-size: 12px;
+  font-size: 14px;
   color: #dadada;
 }
 
@@ -695,27 +695,26 @@
 
 /* line 580, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .titles {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  position: relative;
   padding: 10px 10px 0 10px;
 }
 
-/* line 586, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
-.viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .titles .title, .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .titles .star {
-  flex-basis: 50%;
-}
-
-/* line 590, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 585, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .titles .title {
+  display: block;
   color: #662e91;
   font-size: 15px;
   text-align: left;
   font-family: 'Arial Black', arial;
 }
 
-/* line 596, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
+/* line 592, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .titles .star {
+  position: absolute;
+  right: 10px;
+  top: 43px;
+  z-index: 999;
   text-align: right;
 }
 

@@ -28,7 +28,9 @@ class ViasaleLista
               'set'     => null,
               'tipus'   => null,
               'stilus'  => 'standard',
-              'limit'   => 5
+              'limit'   => 1,
+              'order'   => 'price|asc',
+              'max_hotels' => 999
             )
         );
 
@@ -95,6 +97,25 @@ class ViasaleLista
     private function ajanlat()
     {
       $o = '';
+
+      // Kereső eredmény params
+      if (is_null($this->params['tipus'])) {
+
+        if(isset($_GET[zona]) && !empty($_GET[zona])){
+          $this->params[zones] = explode(",",$_GET[zona]);
+        }
+
+        if(isset($_GET[cat]) && !empty($_GET[cat])){
+          if(in_array($_GET[cat], array('firstminute', 'lastminute'))){
+            $this->params[tipus] = $_GET[cat];
+          }
+        }
+
+        if(isset($_GET[hid]) && !empty($_GET[hid])){
+          $this->params[hotels] = explode(",",$_GET[hid]);
+        }
+
+      }
 
       $c = new ViasaleAjanlatok( $this->params );
       $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));

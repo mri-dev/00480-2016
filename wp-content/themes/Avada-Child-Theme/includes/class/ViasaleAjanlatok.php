@@ -13,10 +13,22 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
     $data = array();
     $search = array();
 
-    //$search['zones'][] = 3;
+    if(isset($this->arg['zones']) && !empty($this->arg['zones'])) {
+      foreach ( $this->arg['zones'] as $zid ) {
+        if($zid == '') continue;
+        $search['zones'][] = $zid;
+      }
+    }
+
+    if(isset($this->arg['hotels']) && !empty($this->arg['hotels'])) {
+      foreach ( $this->arg['hotels'] as $hid ) {
+        if($hid == '') continue;
+        $search['hotels'][] = $hid;
+      }
+    }
+
     if(isset($this->arg['limit'])) {
       $search['limit'] = $this->arg['limit'];
-      //$search['limit'] = ;
     }
 
     if(isset($this->arg['tipus']) && $this->arg['tipus'] == 'lastminute') {
@@ -24,8 +36,16 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
       $search['limit'] = 1;
     }
 
-    if(isset($this->arg['tipus'])) {
+    if(isset($this->arg['tipus']) ) {
       $search['offers'] = $this->arg['tipus'];
+    }
+
+    if(isset($this->arg['max_hotels']) ) {
+      $search['max_hotels'] = $this->arg['max_hotels'];
+    }
+
+    if(isset($this->arg['order'])) {
+      $search['order'] = $this->arg['order'];
     }
 
     // Ajánlatok betöltése

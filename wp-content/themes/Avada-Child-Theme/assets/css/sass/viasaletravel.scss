@@ -568,7 +568,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 
           .star {
             i{
-              font-size: 12px;
+              font-size: 14px;
               color: #dadada;
             }
 
@@ -578,22 +578,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           }
 
           .titles {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
+            position: relative;
             padding: 10px 10px 0 10px;
 
-            .title, .star {
-              flex-basis: 50%;
-            }
-
             .title {
+              display: block;
               color: $color-purple;
               font-size: 15px;
               text-align: left;
               font-family: 'Arial Black', arial;
             }
             .star {
+              position: absolute;
+              right: 10px;
+              top: 43px;
+              z-index: 999;
               text-align: right;
             }
           }
