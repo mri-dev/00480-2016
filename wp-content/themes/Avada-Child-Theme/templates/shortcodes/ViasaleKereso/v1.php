@@ -1,6 +1,6 @@
 <div class="search-panel v1">
   <div class="search-wrapper">
-    <form  action="/utazas-kereso" method="get">
+    <form  action="/<?=KERESO_SLUG?>" method="get">
       <div class="head-labels">
         <ul>
           <li class="title-label"><i class="fa fa-search"></i> Utazáskereső</li>

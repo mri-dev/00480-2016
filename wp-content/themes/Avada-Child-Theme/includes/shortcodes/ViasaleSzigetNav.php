@@ -1,5 +1,5 @@
 <?php
-class ViasaleSzigetNav
+class ViasaleSzigetNav extends ViasaleKeresok
 {
     const SCTAG = 'viasale-sziget-nav';
 
@@ -14,6 +14,8 @@ class ViasaleSzigetNav
 
     public function do_shortcode( $attr, $content = null )
     {
+        global $post;
+
         $output = '<div class="'.self::SCTAG.'-holder">';
 
     	  /* Set up the default arguments. */
@@ -27,7 +29,10 @@ class ViasaleSzigetNav
         $attr = shortcode_atts( $defaults, $attr );
 
         $t = new ShortcodeTemplates(__CLASS__.'/default');
-        
+
+        $attr['zones'] = $this->getZonesTree();
+        $attr['sziget_slug'] = $post->post_name;
+
         $output .= $t->load_template($attr);
 
         $output .= '</div>';

@@ -1265,6 +1265,78 @@ body.page-template.page-template-100-sziget{
       width: 100%;
       padding: 15px;
     }
+
+    .sziget-nav-container{
+      border: 1px solid #d7d7d7;
+      margin-top: 15px;
+
+      ul, li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul{
+        li {
+          position: relative;
+          a{
+            font-family: 'Arial';
+            display: block;
+            background: #ebeded;
+            color: #6b6b6b;
+            line-height: 45px;
+            padding: 0 15px;
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #d7d7d7;
+          }
+
+          &.current {
+            &:after {
+              content:"";
+              position: absolute;
+              right: -46px;
+              z-index: 999;
+              top: 0;
+              background: transparent;
+              border-color:  transparent transparent transparent darken($color-orange, 10%) ;
+              border-width: 23px;
+              border-style: solid;
+              pointer-events: none;
+            }
+            a{
+              background: darken($color-orange, 10%);
+              color: white;
+            }
+          }
+        }
+      }
+
+      ul.sub {
+        display: none;
+
+        li {
+          a {
+            background: #fff;
+            font-size: 13px;
+            color: #333;
+            text-transform: none;
+            padding: 0 15px;
+            line-height: 25px;
+            border: none;
+            font-weight: normal;
+
+            &:hover {
+              color: $color-purple;
+            }
+          }
+        }
+
+        &.opened {
+          display: block;
+        }
+      }
+    }
   }
 }
 .fusion-tabs .tab-pane{

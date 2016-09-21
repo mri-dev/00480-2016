@@ -2,6 +2,8 @@
 
 define('IFROOT', get_stylesheet_directory_uri());
 define('DEVMODE', true);
+define('SZIGET_SLUG', 'kanari-szigetek');
+define('KERESO_SLUG', 'utazas-kereso');
 
 // Includes
 require_once "includes/include.php";
@@ -32,7 +34,7 @@ function avada_lang_setup() {
 add_action( 'after_setup_theme', 'avada_lang_setup' );
 
 function vs_rewrite_rules() {
-    add_rewrite_rule( 'hotel/kanari-szigetek/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[1]&varos=$matches[2]&hotel_id=$matches[3]', 'top' );
+    add_rewrite_rule( 'hotel/'.SZIGET_SLUG.'/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[1]&varos=$matches[2]&hotel_id=$matches[3]', 'top' );
 }
 add_action( 'init', 'vs_rewrite_rules' );
 
