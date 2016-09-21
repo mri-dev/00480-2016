@@ -58,6 +58,18 @@ class ViasaleAPIFactory
     if(isset($params['order'])) {
       $query['sort_by'] = $params['order'];
     }
+    if(isset($params['date_from']) && !empty($params['date_from'])) {
+      $query['date_from'] = $params['date_from'];
+    }
+    if(isset($params['date_to']) && !empty($params['date_to'])) {
+      $query['date_to'] = $params['date_to'];
+    }
+    if(isset($params['board_type']) && !empty($params['board_type'])) {
+      $query['min_board'] = $params['board_type'];
+    }
+    if(isset($params['min_star']) && !empty($params['min_star'])) {
+      $query['min_category'] = $params['min_star'];
+    }
 
     $query = $this->build_search($query);
 

@@ -115,6 +115,22 @@ class ViasaleLista
           $this->params[hotels] = explode(",",$_GET[hid]);
         }
 
+        if(isset($_GET[tt])){
+          $this->params[date_to] = str_replace(' / ', '-', $_GET[tt]);
+        }
+
+        if(isset($_GET[tf])){
+          $this->params[date_from] = str_replace(' / ', '-', $_GET[tf]);
+        }
+
+        if(isset($_GET[e])){
+          $this->params[board_type] = $_GET[e];
+        }
+
+        if(isset($_GET[c])){
+          $this->params[min_star] = $_GET[c];
+        }
+
       }
 
       $c = new ViasaleAjanlatok( $this->params );

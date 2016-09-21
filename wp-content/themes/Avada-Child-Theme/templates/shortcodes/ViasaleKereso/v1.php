@@ -72,7 +72,7 @@
               <option value="" selected="selected">Bármely</option>
               <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
               <? if($hotelStars) foreach ($hotelStars as $star) { ?>
-                <option value="<?=$star?>">legalább <?=$star?> csillag</option>
+                <option value="<?=$star?>" <?=($_GET['c'] == $star)? 'selected="selected"':''?>>legalább <?=$star?> csillag</option>
               <?  } ?>
             </select>
           </div>
@@ -85,7 +85,7 @@
               <option value="" selected="selected">Bármely</option>
               <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
               <? if($boardTypes) foreach ($boardTypes as $board_id => $board) { ?>
-                <option value="<?=$board_id?>"><?=$board['fullName']?></option>
+                <option value="<?=$board_id?>" <?=($_GET['e'] == $board_id)? 'selected="selected"':''?>><?=$board['fullName']?></option>
               <?  } ?>
             </select>
           </div>
@@ -94,14 +94,14 @@
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_indulas">Indulás</label>
-            <input type="text" class="search-datepicker" dtp="from" id="search_form_indulas" name="tt" value="<?php echo date('Y / m / d', strtotime('+1 days')); ?>" readonly="readonly">
+            <input type="text" class="search-datepicker" dtp="from" id="search_form_indulas" name="tf" value="<?php if(isset($_GET['tf'])) { echo str_replace('-'," / ", $_GET['tf']); } else { echo date('Y / m / d', strtotime('+1 days')); }  ?>" readonly="readonly">
           </div>
           <div class="input w20 row-bottom last-item">
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_erkezes">Érkezés</label>
-            <input type="text" class="search-datepicker" dtp="to" id="search_form_erkezes" name="tf" value="<?php echo date('Y / m / d', strtotime('+30 days')); ?>">
+            <input type="text" class="search-datepicker" dtp="to" id="search_form_erkezes" name="tt" value="<?php if(isset($_GET['tt'])) { echo str_replace('-'," / ", $_GET['tt']); } else { echo date('Y / m / d', strtotime('+30 days')); }  ?>">
           </div>
           <div class="input search-button w20">
             <div class="button-wrapper">
@@ -190,7 +190,7 @@
         var selected_date = new Date(i.currentYear, i.currentMonth, i.currentDay);
 
         if(!isNaN(selected_date.getTime())){
-            selected_date.setDate(selected_date.getDate() + 7);
+            selected_date.setDate(selected_date.getDate() + 30);
             $("#search_form_erkezes").val(selected_date.toInputFormat());
         }
 

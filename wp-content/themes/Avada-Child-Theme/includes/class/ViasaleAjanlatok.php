@@ -48,6 +48,19 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
       $search['order'] = $this->arg['order'];
     }
 
+    if(isset($this->arg['date_from']) ) {
+      $search['date_from'] = $this->arg['date_from'];
+    }
+    if(isset($this->arg['date_to']) ) {
+      $search['date_to'] = $this->arg['date_to'];
+    }
+    if(isset($this->arg['board_type']) ) {
+      $search['board_type'] = $this->arg['board_type'];
+    }
+    if(isset($this->arg['min_star']) ) {
+      $search['min_star'] = $this->arg['min_star'];
+    }
+
     // Ajánlatok betöltése
     $terms = $this->getTerms($search);
     // Deviza árfolyam EUR > HUF

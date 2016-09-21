@@ -586,6 +586,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               display: block;
               color: $color-purple;
               font-size: 15px;
+              height: 45px;
               text-align: left;
               font-family: 'Arial Black', arial;
             }
@@ -935,7 +936,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 }
 
 .viasale-kereso-holder {
-  margin-top: -186px;
+  margin-top: -157px; 
 
   .search-panel{
     width: 80%;
