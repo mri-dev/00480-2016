@@ -936,7 +936,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 }
 
 .viasale-kereso-holder {
-  margin-top: -157px; 
+  margin-top: -157px;
 
   .search-panel{
     width: 80%;
@@ -1254,6 +1254,16 @@ body.page-template.page-template-100-sziget{
       strong {
         color: white;
       }
+    }
+  }
+}
+/* Sziget oldal template */
+.page-template-100-sziget{
+  .sziget-top-left{
+    padding-right: 10px !important;
+    .fusion-imageframe{
+      width: 100%;
+      padding: 15px;
     }
   }
 }

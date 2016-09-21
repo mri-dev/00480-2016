@@ -1324,7 +1324,18 @@ body.page-template.page-template-100-sziget #main > div.fusion-row {
   color: white;
 }
 
-/* line 1260, sass/viasaletravel.scss */
+/* Sziget oldal template */
+/* line 1262, sass/viasaletravel.scss */
+.page-template-100-sziget .sziget-top-left {
+  padding-right: 10px !important;
+}
+/* line 1264, sass/viasaletravel.scss */
+.page-template-100-sziget .sziget-top-left .fusion-imageframe {
+  width: 100%;
+  padding: 15px;
+}
+
+/* line 1270, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane {
   font-family: 'Arial';
   font-size: 16px !important;
@@ -1332,36 +1343,36 @@ body.page-template.page-template-100-sziget #main > div.fusion-row {
   padding: 20px 30px;
 }
 
-/* line 1266, sass/viasaletravel.scss */
+/* line 1276, sass/viasaletravel.scss */
 .fusion-tabs.fusion-tabs-1 .nav-tabs li a {
   background: #f7941d !important;
 }
 
-/* line 1269, sass/viasaletravel.scss */
+/* line 1279, sass/viasaletravel.scss */
 .fusion-tabs.fusion-tabs-1 .nav-tabs li a:hover {
   background: #f7941d !important;
   color: black !important;
 }
 
-/* line 1273, sass/viasaletravel.scss */
+/* line 1283, sass/viasaletravel.scss */
 .fusion-tabs.fusion-tabs-1 .nav-tabs li.active a {
   background: white !important;
 }
 
-/* line 1276, sass/viasaletravel.scss */
+/* line 1286, sass/viasaletravel.scss */
 .ui-state-default, .ui-widget-content .ui-state-default {
   color: #662e91;
   text-align: center;
 }
 
-/* line 1280, sass/viasaletravel.scss */
+/* line 1290, sass/viasaletravel.scss */
 .ui-state-default, .ui-widget-content .ui-state-active {
   color: #fff;
   background: #f7941d;
   border: 1px solid #d97a08;
 }
 
-/* line 1285, sass/viasaletravel.scss */
+/* line 1295, sass/viasaletravel.scss */
 #ui-datepicker-div {
   z-index: 9999 !important;
 }

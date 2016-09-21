@@ -31,6 +31,20 @@ class ViasaleAPIFactory
   }
 
   /**
+  * Utazási ajánlat adatok
+  **/
+  public function getTerm($id)
+  {
+    $uri = $this->api_uri . self::TERMS_TAG.'/'.$id;
+
+    $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
+
+    if(!$result || empty($result)) return false;
+
+    return $result;
+  }
+
+  /**
   * Utazási ajánlatok
   **/
   public function getTerms( $params = array() )
