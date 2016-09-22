@@ -4,8 +4,8 @@
 	$ajanlat 	= new ViasaleAjanlat($hotel_id);
 ?>
 <div id="content" class="full-width travel-content" stlye="max-width:100%;">
-	<div class="fusion-row" stlye="max-width:100%;">
-		<div class="fusion-two-third fusion-layout-column fusion-spacing-no">
+	<div class="hotel-row" stlye="max-width:100%;">
+		<div class="hotel-column hotel-column-left">
 			<div class="image-set-galery">
 				<div class="profil">
 					<?php $profil = $ajanlat->getProfilImage(); ?>
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="fusion-one-third fusion-layout-column fusion-spacing-no fusion-column-last">
+		<div class="hotel-column hotel-column-right">
 			<div class="hotel-data">
 				<h1 class="title"><?=$ajanlat->getHotelName()?></h1>
 				<?php $zones = $ajanlat->getHotelZones(); if($zones): ?>
@@ -33,7 +33,7 @@
 				<?php endif; ?>
 				<div class="star"><?php echo str_repeat('<i class="fa fa-star star-active"></i>',$ajanlat->getStar()); ?><?php echo str_repeat('<i class="fa fa-star"></i>',5-$ajanlat->getStar()); ?></div>
 				<?php $offer = $ajanlat->getOfferKey(); ?>
-				<?php if($offer != 'standard'): ?>
+				<?php if($offer == 'lastminute' || $offer == 'firstminute'): ?>
 					<div class="offer-label lb-<?=$offer?>"><?php
 						switch($offer){
 							case 'lastminute':
@@ -52,24 +52,31 @@
 					<a href="#more-travel" class="more-trans">További időpontok (<?=$ajanlat->getMoreTravelCount()?>) »</a>
 				</div>
 
-				<div class="travel-offer">
-						<div class="fusion-row">
-							<div class="fusion-one-half fusion-layout-column fusion-spacing-no fusion-column-last">
-								<div class="prices">
-									<label>Alapár:</label>
-									<div class="origin p-eur"><span class="eur-price"><?php echo number_format($ajanlat->getPriceOriginalEUR(), 0, '.', ' '); ?>€</span></div>
-									<div class="origin p-huf"><span class="huf-price"><?php echo number_format($ajanlat->getPriceOriginalHUF(), 0, '.', ' '); ?> Ft</span></div>
+				<div class="travel-info-box">
+					<div class="travel-features">
+						<div class="feat"><div class="feat-wrapper" title="Ellátás"><i class="fa fa-cutlery"></i> <div>Reggeli</div></div></div>
+						<div class="feat feat-main"><div class="feat-wrapper" title="Az utazás időtartama"><i class="fa fa-calendar"></i> <div>7 nap</div></div></div>
+						<div class="feat"><div class="feat-wrapper" title="Elérhető szobatípusok"><i class="fa fa-bed"></i> <div>2 szobatípus</div></div></div>
+					</div>
+					<div class="travel-offer">
+							<div class="fusion-row">
+								<div class="fusion-one-half fusion-layout-column fusion-spacing-no fusion-column-last">
+									<div class="prices">
+										<label>Alapár:</label>
+										<div class="origin p-eur"><span class="eur-price"><?php echo number_format($ajanlat->getPriceOriginalEUR(), 0, '.', ' '); ?>€</span></div>
+										<div class="origin p-huf"><span class="huf-price"><?php echo number_format($ajanlat->getPriceOriginalHUF(), 0, '.', ' '); ?> Ft</span></div>
+									</div>
+								</div>
+								<div class="fusion-one-half fusion-layout-column fusion-spacing-no fusion-column-last">
+									<div class="travel-info">
+										<label>Utazás száma</label>
+										<div class="travel-number"><?=$ajanlat->getTravelID()?></div>
+										<a href="/eub-utazasbiztositas-feltetelek/" class="info-link">EUB utazásbiztosítás</a>
+										<a href="/utazasi-szerzodes/" class="info-link">Utazási szerződés</a>
+									</div>
 								</div>
 							</div>
-							<div class="fusion-one-half fusion-layout-column fusion-spacing-no fusion-column-last">
-								<div class="travel-info">
-									<label>Utazás száma</label>
-									<div class="travel-number"><?=$ajanlat->getTravelID()?></div>
-									<a href="/eub-utazasbiztositas-feltetelek/" class="info-link">EUB utazásbiztosítás</a>
-									<a href="/utazasi-szerzodes/" class="info-link">Utazási szerződés</a>
-								</div>
-							</div>
-						</div>
+					</div>
 				</div>
 
 			</div>
@@ -77,8 +84,8 @@
 	</div>
 
 	<div class="travel-content-box">
-		<div class="fusion-row">
-			<div class="fusion-two-third fusion-layout-column fusion-spacing-yes">
+		<div class="hotel-row">
+			<div class="hotel-column hotel-column-left">
 				<div class="info-box-container">
 					<div class="fusion-tabs fusion-tabs-1 classic nav-not-justified horizontal-tabs">
 						<div class="nav">
@@ -108,7 +115,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="fusion-one-third fusion-layout-column fusion-spacing-yes fusion-column-last">
+			<div class="hotel-column hotel-column-right">
 				<div class="travel-calculator-container">
 					kalkulátor
 				</div>
