@@ -38,6 +38,7 @@ function vs_rewrite_rules() {
 }
 add_action( 'init', 'vs_rewrite_rules' );
 
+
 function vs_query_vars($aVars) {
   $aVars[] = "hotel_id";
   $aVars[] = "sziget";
@@ -50,12 +51,18 @@ add_filter('query_vars', 'vs_query_vars');
 function vs_custom_template($template) {
   global $post, $wp_query;
   if ( isset($wp_query->query_vars['hotel_id']) && !empty($wp_query->query_vars['hotel_id']) ) {
+      add_filter( 'body_class','vs_hotel_page_class_body' );
     return get_stylesheet_directory() . '/hotel.php';
   } else {
     return $template;
   }
 }
 add_filter( 'template_include', 'vs_custom_template' );
+
+function vs_hotel_page_class_body( $classes ) {
+  $classes[] = 'hotel-travel-page';
+  return $classes;
+}
 
 /**
 *  FUNKCIÓK

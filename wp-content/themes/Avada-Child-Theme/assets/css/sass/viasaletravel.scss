@@ -1339,6 +1339,193 @@ body.page-template.page-template-100-sziget{
     }
   }
 }
+
+body.hotel-travel-page{
+  #main {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  #main > .fusion-row{
+    max-width: 100%;
+  }
+  .travel-content{
+    padding-top: 30px;
+  }
+  .image-set-galery{
+    padding-right: 25px;
+    .image-set{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 2px -2px;
+
+      .image-set-holder{
+        position: relative;
+        flex-basis: 20%;
+        height: 80px;
+        overflow: hidden;
+        max-height: 80px;
+        padding: 2px;
+
+        a{
+          overflow: hidden;
+          position: relative;
+          display:block;
+          height: 100%;
+        }
+
+        img{
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          max-width: 110%;
+          width: 110%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+
+  .hotel-data{
+    h1.title {
+      margin: 0 0 10px 0;
+      color: $color-orange;
+      font-family: 'Arial';
+      line-height: 1;
+      font-size: 28px;
+    }
+    .zone-nav{
+      margin-bottom: 10px;
+      font-size: 13px;
+      .sep{
+        color: #eaeaea !important;
+        font-size: 16px;
+        margin: 0 4px;
+      }
+      .sep:last-child{
+        display: none;
+      }
+    }
+    .star{
+      margin-bottom: 10px;
+      i{
+        font-size: 20px;
+        color: #dadada;
+      }
+      i.star-active{
+        color: $color-green;
+      }
+    }
+    .offer-label {
+      font-family: 'Arial';
+      font-size: 24px;
+      color: white;
+      background: $color-purple;
+      padding: 14px 10px;
+      line-height: 1;
+      margin-right: 10px;
+      float: left;
+    }
+    .trans-date {
+      margin: 20px 0;
+
+      label {
+        font-weight: bold;
+        color: black;
+        font-size: 16px;
+      }
+      .date{
+        font-family: 'Arial';
+        font-weight: bold;
+        color: $color-blue;
+        font-size: 22px;
+        letter-spacing: -1px;
+      }
+      .more-trans {
+        text-decoration: underline;
+        font-size: 11px;
+        color: #828181;
+      }
+    }
+
+    .travel-offer{
+      background: #f2f2f2;
+      padding: 10px;
+
+      label {
+        font-weight: bold;
+        color: #5c5c5c;
+        font-size: 13px;
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .travel-info{
+        text-align: right;
+
+        .travel-number{
+          font-size: 16px;
+          color: black;
+          font-family: 'Arial';
+          margin-bottom: 5px;
+        }
+
+        .info-link {
+          display: block;
+          font-size: 11px;
+          font-style: italic;
+          text-decoration: underline;
+          color: #969696;
+        }
+      }
+    }
+  }
+
+  .nav{
+    .nav-tabs{
+      border-left: 1px solid #cfd3d3;
+      background: transparent;
+      .tab-link{
+        border-top: 3px solid $color-orange;
+      }
+    }
+  }
+
+  .fusion-tabs{
+    margin: 0;
+  }
+
+  .travel-content-box{
+    background: #e5e9e9;
+    padding: 30px 0;
+    margin: 0 -30px;
+    margin-top: 30px;
+
+    .info-box-container {
+      .tab-content{
+        background: #fff;
+        margin-top: -1px;
+        .tab-pane{
+          border: 1px solid #cfd3d3;
+
+          h2{
+            font-size: 22px;
+            font-weight: bold;
+            color: black;
+            margin: 0 0 10px 0;
+          }
+          p{
+            font-size: 14px;
+            color: #5c5c5c;
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
 .fusion-tabs .tab-pane{
   font-family: 'Arial';
   font-size: 16px !important;
