@@ -76,6 +76,21 @@ function vs_utazas_page_class_body( $classes ) {
   $classes[] = 'utazas-travel-page';
   return $classes;
 }
+/**
+* AJAX REQUESTS
+*/
+function vs_ajax_requests()
+{
+  $ajax = new AjaxRequests();
+  $ajax->get_term_offer();
+}
+add_action( 'init', 'vs_ajax_requests' );
+
+// AJAX URL
+function get_ajax_url( $function )
+{
+  return admin_url('admin-ajax.php?action='.$function);
+}
 
 /**
 *  FUNKCIÓK

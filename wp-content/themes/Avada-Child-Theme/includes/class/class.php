@@ -5,4 +5,5 @@
   require_once "ViasaleAjanlatok.php";
   require_once "ViasaleAjanlat.php";
   require_once "ViasaleKeresok.php";
+  require_once "AjaxRequests.php";
 ?>

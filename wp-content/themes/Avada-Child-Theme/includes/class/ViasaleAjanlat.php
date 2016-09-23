@@ -49,6 +49,10 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   {
     return count($this->term_data['rooms']);
   }
+  public function getRooms()
+  {
+    return $this->term_data['rooms'];
+  }
   public function getBoardName()
   {
     return $this->term_data['board_name'];
@@ -77,7 +81,12 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   }
   public function getMaxChildren()
   {
-    $a = 1;
+    $a = 0;
+    $adult_num = 1;
+
+    $def_room = $this->getDefaultRoomData();
+
+    $a = (int)$def_room['adults'][$adult_num]['max_children'];
 
     return $a;
   }

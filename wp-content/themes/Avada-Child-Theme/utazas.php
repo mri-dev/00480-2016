@@ -148,12 +148,40 @@
 									<?php endfor; ?>
 								</select>
 							</div>
+              <div class="calc-row">
+								<h3>Ajánlatok</h3>
+                <div id="term-ajanlat-result">
+
+                </div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+  <script type="text/javascript">
+  (function ($) {
+    var offers = [];
+    var termid = <?=$ajanlat->getTravelID()?>;
+    var adults = 1;
+    var children = 0;
+
+    getOffers(termid, adults, children);
+
+    function getOffers( termid, adults, children){
+      $.post(
+        '<?php echo get_ajax_url('get_term_offer'); ?>',
+        {
+          termid: termid,
+          adults: adults,
+          children: children
+        }, function(data){
+          console.log(data);
+        },"html");
+    }
+  })(jQuery);
+  </script>
 	<!--
  	<pre>
 		<? print_r($ajanlat->term_data); ?>
