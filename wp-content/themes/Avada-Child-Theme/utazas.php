@@ -136,7 +136,7 @@
 									<?php
 									$max_adults = $ajanlat->getMaxAdults();
 									for($adn = 1; $adn <= $max_adults; $adn++): ?>
-									<option value=""><?php echo $adn; ?></option>
+									<option value="<?php echo $adn; ?>"><?php echo $adn; ?></option>
 									<?php endfor; ?>
 								</select>
 								<label for="Children">Gyermekek</label>
@@ -144,7 +144,7 @@
 									<?php
 									$max_children = $ajanlat->getMaxChildren();
 									for($adn = 0; $adn <= $max_children; $adn++): ?>
-									<option value=""><?php echo $adn; ?></option>
+									<option value="<?php echo $adn; ?>"><?php echo $adn; ?></option>
 									<?php endfor; ?>
 								</select>
 							</div>
@@ -170,6 +170,7 @@
     getOffers(termid, adults, children);
 
     function getOffers( termid, adults, children){
+      $('#term-ajanlat-result').html('<i class="fa fa-spinner fa-spin"></i> Ajánlatok betöltése...');
       $.post(
         '<?php echo get_ajax_url('get_term_offer'); ?>',
         {
@@ -177,9 +178,22 @@
           adults: adults,
           children: children
         }, function(data){
+          //var datas = $.parseJSON(data);
+          //buildOffers(datas);
           console.log(data);
         },"html");
     }
+
+    function buildOffers(obj) {
+      var html = '';
+      $('#term-ajanlat-result').html(html);
+    }
+
+    $('#Adults, #Children').change(function(){
+      var s_adults = $('#Adults').val();
+      var s_children = $('#Children').val();
+      getOffers(termid, s_adults, s_children);
+    });
   })(jQuery);
   </script>
 	<!--
