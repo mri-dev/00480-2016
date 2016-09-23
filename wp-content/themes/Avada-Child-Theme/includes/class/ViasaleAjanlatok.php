@@ -75,7 +75,7 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
         $price = (int)$hotel['price_from'];
 
         $data[] = array(
-          'link'  => get_option('siteurl', '/').'/hotel/kanari-szigetek/'.sanitize_title($hotel['zone_list'][2]['name']).'/'.sanitize_title($hotel['zone_list'][3]['name']).'/'.$hotel['term_id'],
+          'link'  => get_option('siteurl', '/').'/'.UTAZAS_SLUG.'/kanari-szigetek/'.sanitize_title($hotel['zone_list'][2]['name']).'/'.sanitize_title($hotel['zone_list'][3]['name']).'/'.sanitize_title($hotel['hotel_name']).'/'.$hotel['term_id'],
           'island_text' => $hotel['zone_list'][2]['name'],
           'place' => $hotel['zone_list'][3]['name'],
           'title' => $hotel['hotel_name'],

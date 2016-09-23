@@ -4,6 +4,8 @@ define('IFROOT', get_stylesheet_directory_uri());
 define('DEVMODE', true);
 define('SZIGET_SLUG', 'kanari-szigetek');
 define('KERESO_SLUG', 'utazas-kereso');
+define('HOTEL_SLUG', 'hotel');
+define('UTAZAS_SLUG', 'utazas');
 
 // Includes
 require_once "includes/include.php";
@@ -34,13 +36,15 @@ function avada_lang_setup() {
 add_action( 'after_setup_theme', 'avada_lang_setup' );
 
 function vs_rewrite_rules() {
-    add_rewrite_rule( 'hotel/'.SZIGET_SLUG.'/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[1]&varos=$matches[2]&hotel_id=$matches[3]', 'top' );
+    add_rewrite_rule( HOTEL_SLUG.'/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[1]&hotel_id=$matches[2]', 'top' );
+    add_rewrite_rule( UTAZAS_SLUG.'/'.SZIGET_SLUG.'/([^/]+)/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[1]&varos=$matches[2]&utazas_id=$matches[4]', 'top' );
 }
 add_action( 'init', 'vs_rewrite_rules' );
 
 
 function vs_query_vars($aVars) {
   $aVars[] = "hotel_id";
+  $aVars[] = "utazas_id";
   $aVars[] = "sziget";
   $aVars[] = "varos";
   return $aVars;
@@ -50,8 +54,12 @@ add_filter('query_vars', 'vs_query_vars');
 
 function vs_custom_template($template) {
   global $post, $wp_query;
-  if ( isset($wp_query->query_vars['hotel_id']) && !empty($wp_query->query_vars['hotel_id']) ) {
-      add_filter( 'body_class','vs_hotel_page_class_body' );
+  if ( isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id']) ) {
+      add_filter( 'body_class','vs_utazas_page_class_body' );
+    return get_stylesheet_directory() . '/utazas.php';
+  } else
+  if(isset($wp_query->query_vars['hotel_id']) && !empty($wp_query->query_vars['hotel_id'])) {
+    add_filter( 'body_class','vs_hotel_page_class_body' );
     return get_stylesheet_directory() . '/hotel.php';
   } else {
     return $template;
@@ -61,6 +69,11 @@ add_filter( 'template_include', 'vs_custom_template' );
 
 function vs_hotel_page_class_body( $classes ) {
   $classes[] = 'hotel-travel-page';
+  return $classes;
+}
+
+function vs_utazas_page_class_body( $classes ) {
+  $classes[] = 'utazas-travel-page';
   return $classes;
 }
 
