@@ -22,6 +22,7 @@
 			</div>
 		</div>
 		<div class="hotel-column hotel-column-right">
+			<div class="hotel-column-wrapper">
 			<div class="hotel-data">
 				<h1 class="title"><?=$ajanlat->getHotelName()?></h1>
 				<?php $zones = $ajanlat->getHotelZones(); if($zones): ?>
@@ -54,9 +55,9 @@
 
 				<div class="travel-info-box">
 					<div class="travel-features">
-						<div class="feat"><div class="feat-wrapper" title="Ellátás"><i class="fa fa-cutlery"></i> <div>Reggeli</div></div></div>
-						<div class="feat feat-main"><div class="feat-wrapper" title="Az utazás időtartama"><i class="fa fa-calendar"></i> <div>7 nap</div></div></div>
-						<div class="feat"><div class="feat-wrapper" title="Elérhető szobatípusok"><i class="fa fa-bed"></i> <div>2 szobatípus</div></div></div>
+						<div class="feat"><div class="feat-wrapper" title="Ellátás"><i class="fa fa-cutlery"></i> <div><?php echo $ajanlat->getBoardName(); ?></div></div></div>
+						<div class="feat feat-main"><div class="feat-wrapper" title="Az utazás időtartama"><i class="fa fa-calendar"></i> <div><?php echo $ajanlat->getDayDuration()?> nap</div></div></div>
+						<div class="feat"><div class="feat-wrapper" title="Elérhető szobatípusok"><i class="fa fa-bed"></i> <div><?php echo $ajanlat->getRoomsCount()?> szobatípus</div></div></div>
 					</div>
 					<div class="travel-offer">
 							<div class="fusion-row">
@@ -80,6 +81,7 @@
 				</div>
 
 			</div>
+		</div>
 		</div>
 	</div>
 
@@ -117,7 +119,37 @@
 			</div>
 			<div class="hotel-column hotel-column-right">
 				<div class="travel-calculator-container">
-					kalkulátor
+					<div class="calc-head">
+						<div class="calc-wrapper">
+							<h2>Ajánlat kalkulátor</h2>
+							<p>
+								Számolja ki álomutazását!
+							</p>
+						</div>
+					</div>
+					<div class="calc-content">
+						<div class="calc-wrapper">
+							<div class="calc-row">
+								<h3>Hányan szeretnének utazni?</h3>
+								<label for="Adults">Felnőttek</label>
+								<select class="" name="Adults" id="Adults">
+									<?php
+									$max_adults = $ajanlat->getMaxAdults();
+									for($adn = 1; $adn <= $max_adults; $adn++): ?>
+									<option value=""><?php echo $adn; ?></option>
+									<?php endfor; ?>
+								</select>
+								<label for="Children">Gyermekek</label>
+								<select class="" name="Children" id="Children">
+									<?php
+									$max_children = $ajanlat->getMaxChildren();
+									for($adn = 0; $adn <= $max_children; $adn++): ?>
+									<option value=""><?php echo $adn; ?></option>
+									<?php endfor; ?>
+								</select>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

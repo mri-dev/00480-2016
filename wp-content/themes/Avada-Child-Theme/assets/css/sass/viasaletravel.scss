@@ -1356,6 +1356,11 @@ body.hotel-travel-page{
       flex-basis: 40%;
       position: relative;
     }
+
+    .hotel-column-wrapper{
+      position: relative;
+      height: 100%;
+    }
   }
   #main {
     padding-left: 0 !important;
@@ -1368,6 +1373,11 @@ body.hotel-travel-page{
     padding-top: 30px;
   }
   .image-set-galery{
+    .profil {
+      img {
+        width: 100%;
+      }
+    }
     .image-set{
       display: flex;
       flex-wrap: wrap;
@@ -1587,14 +1597,75 @@ body.hotel-travel-page{
         }
       }
     }
+    .travel-calculator-container{
+      background: #fff;
+      border: 5px solid #b9b9b9;
+      position: relative;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+
+      .calc-head{
+        background: #f8f8f8;
+        text-align: center;
+        border-bottom: 1px solid #f1f1f1;
+        text-shadow: 0 1px #fff;
+
+        h2{
+          color: black;
+          font-size: 18px;
+          margin: 4px 0;
+          font-family: 'Arial' !important;
+          text-transform: uppercase;
+          letter-spacing: -1px !important;
+          font-weight: bold !important;
+        }
+
+        p{
+          line-height: 1.3;
+          margin: 4px 0;
+        }
+      }
+
+      .calc-wrapper{
+        padding: 10px;
+      }
+
+      &:before{
+        content: "";
+        top: -135px;
+        left: 50%;
+        position: absolute;
+        border-width: 65px;
+        border-style: solid;
+        border-color: transparent transparent #b9b9b9 transparent;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        transform: translateX(-50%);
+      }
+    }
   }
 }
 
 .fusion-tabs .tab-pane{
   font-family: 'Arial';
-  font-size: 16px !important;
-  color: #000000 !important;
+  font-size: 15px !important;
+  color: #444444 !important;
   padding: 20px 30px;
+
+  h1, h2, h3 {
+    color: black !important;
+    font-family: 'Arial' !important;
+  }
+  h1{
+    font-size: 26px !important;
+  }
+  h2{
+    font-size: 20px !important;
+  }
+  h2{
+    font-size: 18px !important;
+  }
 }
 .fusion-tabs.fusion-tabs-1 .nav-tabs li a{
   background: $color-orange !important;

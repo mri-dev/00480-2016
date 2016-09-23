@@ -7,6 +7,7 @@ class ViasaleLista
     public $sets = array('program', 'ajanlat');
     public $type = null;
     public $template = 'standard';
+    
 
     public function __construct()
     {
@@ -30,7 +31,8 @@ class ViasaleLista
               'stilus'  => 'standard',
               'limit'   => 1,
               'order'   => 'price|asc',
-              'max_hotels' => 999
+              'max_hotels' => 999,
+              'sziget'  => false
             )
         );
 
@@ -97,6 +99,13 @@ class ViasaleLista
     private function ajanlat()
     {
       $o = '';
+
+      // Sziget listázás
+      if(isset($this->params['sziget']) && !empty($this->params['sziget']))
+      {
+        $szid = $this->sziget_ids[$this->params['sziget']]['id'];
+        $this->params[zones][] = $szid;
+      }
 
       // Kereső eredmény params
       if (is_null($this->params['tipus'])) {

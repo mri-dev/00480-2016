@@ -37,6 +37,50 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   {
     return date(self::DATEFORMAT, strtotime($this->term_data['date_'.$what]));
   }
+  public function getDayDuration()
+  {
+    $day = 60*60*24;
+
+    $div = strtotime($this->term_data['date_to']) - strtotime($this->term_data['date_from']);
+
+    return $div / $day;
+  }
+  public function getRoomsCount()
+  {
+    return count($this->term_data['rooms']);
+  }
+  public function getBoardName()
+  {
+    return $this->term_data['board_name'];
+  }
+  public function getDefaultRoomData()
+  {
+    foreach ($this->term_data['rooms'] as $room_id => $room)
+    {
+      if($room['default_room'] == 1) {
+        return $room;
+      }
+    }
+    return false;
+  }
+  public function getMaxAdults()
+  {
+    $a = 1;
+
+    foreach ($this->term_data['rooms'] as $room_id => $room)
+    {
+      $ma = (int)$room['max_adults'];
+      if($ma > $a ) $a = $ma;
+    }
+
+    return $a;
+  }
+  public function getMaxChildren()
+  {
+    $a = 1;
+
+    return $a;
+  }
   public function getStar()
   {
     return (float)$this->term_data['hotel']['category'];

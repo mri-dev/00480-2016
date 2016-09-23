@@ -22,6 +22,12 @@ class ViasaleAPIFactory
      '5' => [ 'shortName' => "AI", 'fullName' => 'All inclusive' ],
      '6' => [ 'shortName' => "AI+", 'fullName' => 'All inclusive plus' ]
   ];
+  public $sziget_ids = array(
+    'tenerife' =>       array( 'id' => 3, 'name' => 'Tenerife'),
+    'gran-canaria' =>   array( 'id' => 6, 'name' => 'Gran Canari'),
+    'fuerteventura' =>  array( 'id' => 10, 'name' => 'Fuerteventura'),
+    'lanzarote' =>      array( 'id' => 8, 'name' => 'Lanzarote'),
+  );
 
   public $hotel_stars = [2, 3, 4, 5];
 
