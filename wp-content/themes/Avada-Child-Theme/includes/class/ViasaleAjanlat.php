@@ -67,6 +67,18 @@ class ViasaleAjanlat extends ViasaleAPIFactory
     }
     return false;
   }
+  public function getMinAdults()
+  {
+    $a = 999;
+
+    foreach ($this->term_data['rooms'] as $room_id => $room)
+    {
+      $ma = (int)$room['min_adults'];
+      if($ma < $a ) $a = $ma;
+    }
+
+    return $a;
+  }
   public function getMaxAdults()
   {
     $a = 1;

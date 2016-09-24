@@ -1631,6 +1631,64 @@ body.utazas-travel-page{
         padding: 10px;
       }
 
+      .calc-content{
+        .room {
+          .room-head{
+            background: #f2f2f2;
+            font-weight: bold;
+            color: black;
+            padding: 10px;
+            margin: 8px 0 0 0;
+            display: flex;
+            justify-content: space-between;
+
+            .room-name{
+              color: $color-purple;
+              font-family: 'Arial';
+              font-size: 14px;
+            }
+            .room-price-sum{
+              font-size: 15px;
+              color: darken($color-orange, 10%);
+            }
+          }
+          .configs{
+            .cfg{
+              margin: 0;
+              padding: 4px 0;
+              border-bottom: 1px solid #d7d7d7;
+              color: black;
+              font-size: 12px;
+
+              & > div {
+                display: inline-block;
+                *display: inline;
+                zoom: 1;
+                padding: 5px 10px;
+
+                &.name{
+                  width: 45%;
+                  font-weight: bold;
+                }
+                &.part-price{
+                  text-align: center;
+                  width: 25%;
+                }
+                &.sum-price{
+                  text-align: right;
+                  width: 30%;
+                  color: $color-orange;
+                }
+              }
+
+              .cfg:last-child{
+                border-bottom: none;
+              }
+            }
+          }
+        }
+      }
+
       &:before{
         content: "";
         top: -135px;

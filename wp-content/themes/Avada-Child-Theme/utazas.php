@@ -119,6 +119,9 @@
 			</div>
 			<div class="hotel-column hotel-column-right">
 				<div class="travel-calculator-container">
+					<?php
+						$default_room = $ajanlat->getDefaultRoomData();
+					?>
 					<div class="calc-head">
 						<div class="calc-wrapper">
 							<h2>Ajánlat kalkulátor</h2>
@@ -134,9 +137,10 @@
 								<label for="Adults">Felnőttek</label>
 								<select class="" name="Adults" id="Adults">
 									<?php
+									$min_adults = $ajanlat->getMinAdults();
 									$max_adults = $ajanlat->getMaxAdults();
-									for($adn = 1; $adn <= $max_adults; $adn++): ?>
-									<option value="<?php echo $adn; ?>"><?php echo $adn; ?></option>
+									for($adn = $min_adults; $adn <= $max_adults; $adn++): ?>
+									<option value="<?php echo $adn; ?>" <?php if($default_room['min_adults']==$adn): echo 'selected="selected"'; endif; ?>><?php echo $adn; ?></option>
 									<?php endfor; ?>
 								</select>
 								<label for="Children">Gyermekek</label>
@@ -164,7 +168,7 @@
   (function ($) {
     var offers = [];
     var termid = <?=$ajanlat->getTravelID()?>;
-    var adults = 1;
+    var adults = <?php echo $default_room['min_adults']?>;
     var children = 0;
 
     getOffers(termid, adults, children);
@@ -178,14 +182,37 @@
           adults: adults,
           children: children
         }, function(data){
-          //var datas = $.parseJSON(data);
-          //buildOffers(datas);
-          console.log(data);
+          var datas = $.parseJSON(data);
+          console.log(datas);
+          buildOffers(datas);
         },"html");
     }
 
     function buildOffers(obj) {
       var html = '';
+			$.each(obj.rooms, function(room_id,room_cfg){
+				var room_name = obj.room_info[room_id].name;
+				var room_sum_price = obj.price_by_rooms[room_id];
+				var configs = obj.room_info[room_id].configs;
+
+				html +=
+				'<div class="room">'+
+					'<div class="room-head">'+
+						'<div class="room-name">'+room_name+'</div>'+
+						'<div class="room-price-sum">'+room_sum_price+'€</div>'+
+					'</div>'+
+					'<div class="configs">';
+						$.each(configs, function(cfgid, cnf){
+							html +=
+							'<div class="cfg">'+
+								'<div class="name">'+cnf.name+'</div>'+
+								'<div class="part-price">'+cnf.count+' x '+cnf.price+'€</div>'+
+								'<div class="sum-price">'+(cnf.price*cnf.count)+'€</div>'+
+							'</div>';
+						});
+				html += '</div>'+
+				'</div>';
+			});
       $('#term-ajanlat-result').html(html);
     }
 
