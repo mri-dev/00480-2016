@@ -10,6 +10,7 @@ class AjaxRequests
   public function get_term_offer()
   {
     add_action( 'wp_ajax_'.__FUNCTION__, array( $this, 'getTravelOfferContent'));
+    add_action( 'wp_ajax_nopriv_'.__FUNCTION__, array( $this, 'getTravelOfferContent'));
   }
 
   public function getTravelOfferContent()
@@ -70,7 +71,7 @@ class AjaxRequests
           }
 
           $room_info[$off_room_id]['configs'] = $buckets;
-          
+
         }else {
           $price = -1;
         }
