@@ -4,10 +4,10 @@ class ViasaleLista
     const SCTAG = 'viasale-lista';
     // Elérhető set-ek
     public $params = array();
-    public $sets = array('program', 'ajanlat');
+    public $sets = array('program', 'ajanlat', 'hotel');
     public $type = null;
     public $template = 'standard';
-    
+
 
     public function __construct()
     {
@@ -62,6 +62,10 @@ class ViasaleLista
             // AJÁNLAT
             case 'ajanlat':
               $output .= $this->ajanlat();
+            break;
+            // HOTEL
+            case 'hotel':
+              $output .= $this->hotel();
             break;
           }
           $output .= '</div>';
@@ -162,6 +166,43 @@ class ViasaleLista
           if($this->template == 'imagegrid') {
             if($i == 7) $i = 0;
           }
+        }
+
+        $o .= '</div>';
+      }
+
+      return $o;
+    }
+
+    /**
+    * HOTEL SET
+    **/
+    private function hotel()
+    {
+      $o = '';
+
+      // Sziget listázás
+      if(isset($this->params['sziget']) && !empty($this->params['sziget']))
+      {
+        $szid = $this->sziget_ids[$this->params['sziget']]['id'];
+        $this->params[zones][] = $szid;
+      }
+
+      $c = new ViasaleHotelok( $this->params );
+      $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));
+
+      $data = $c->getData();
+
+      if($data)
+      {
+        $o .= '<div class="style-'.$this->template.'">';
+
+        $i = 0;
+        foreach ($data as $d)
+        {
+          $i++;
+          $d['item_index'] = $i;
+          $o .= $t->load_template($d);
         }
 
         $o .= '</div>';
