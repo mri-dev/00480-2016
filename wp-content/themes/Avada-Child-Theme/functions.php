@@ -41,7 +41,6 @@ function vs_rewrite_rules() {
 }
 add_action( 'init', 'vs_rewrite_rules' );
 
-
 function vs_query_vars($aVars) {
   $aVars[] = "hotel_id";
   $aVars[] = "utazas_id";
@@ -71,6 +70,28 @@ function vs_hotel_page_class_body( $classes ) {
   $classes[] = 'hotel-travel-page';
   return $classes;
 }
+
+function vs_title($title) {
+  global $wp_query;
+  $new = array();
+
+  if ( isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id']) ) {
+      $ajanlat = new ViasaleAjanlat($wp_query->query_vars['utazas_id']);
+      $star = $ajanlat->getStar();
+
+      $utazas_title = $ajanlat->getHotelName();
+      $utazas_title .= str_repeat('*', $star);
+
+      $new[] = $utazas_title;
+  }
+
+  foreach ($title as $t) {
+    $new[] = $t;
+  }
+
+  return $new;
+}
+add_filter('document_title_parts', 'vs_title');
 
 function vs_utazas_page_class_body( $classes ) {
   $classes[] = 'utazas-travel-page';

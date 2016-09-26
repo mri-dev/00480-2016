@@ -2,6 +2,7 @@
 <?
 	$hotel_id = $wp_query->query_vars['utazas_id'];
 	$ajanlat 	= new ViasaleAjanlat($hotel_id);
+	$children_by_adults = $ajanlat->getChildrenByAdults();
 ?>
 <div id="content" class="full-width travel-content" stlye="max-width:100%;">
 	<div class="hotel-row" stlye="max-width:100%;">
@@ -134,23 +135,30 @@
 						<div class="calc-wrapper">
 							<div class="calc-row">
 								<h3>Hányan szeretnének utazni?</h3>
-								<label for="Adults">Felnőttek</label>
-								<select class="" name="Adults" id="Adults">
-									<?php
-									$min_adults = $ajanlat->getMinAdults();
-									$max_adults = $ajanlat->getMaxAdults();
-									for($adn = $min_adults; $adn <= $max_adults; $adn++): ?>
-									<option value="<?php echo $adn; ?>" <?php if($default_room['min_adults']==$adn): echo 'selected="selected"'; endif; ?>><?php echo $adn; ?></option>
-									<?php endfor; ?>
-								</select>
-								<label for="Children">Gyermekek</label>
-								<select class="" name="Children" id="Children">
-									<?php
-									$max_children = $ajanlat->getMaxChildren();
-									for($adn = 0; $adn <= $max_children; $adn++): ?>
-									<option value="<?php echo $adn; ?>"><?php echo $adn; ?></option>
-									<?php endfor; ?>
-								</select>
+								<div class="fusion-row">
+									<div class="fusion-column fusion-spacing-yes fusion-layout-column fusion-one-half select-form">
+										<label for="Adults">Felnőttek</label>
+										<select class="" name="Adults" id="Adults">
+											<?php
+											$min_adults = $ajanlat->getMinAdults();
+											$max_adults = $ajanlat->getMaxAdults();
+											for($adn = $min_adults; $adn <= $max_adults; $adn++): ?>
+											<option value="<?php echo $adn; ?>" <?php if($default_room['min_adults']==$adn): echo 'selected="selected"'; endif; ?>><?php echo $adn; ?></option>
+											<?php endfor; ?>
+										</select>
+									</div>
+									<div class="fusion-column fusion-spacing-yes fusion-layout-column fusion-one-half fusion-column-last select-form">
+										<label for="Children">Gyermekek</label>
+										<select class="" name="Children" id="Children">
+											<?php
+											$default_room_children_min = $ajanlat->getDefaultRoomMinChildren();
+											$default_room_children_max = $ajanlat->getDefaultRoomMaxChildren();
+											for($adn = $default_room_children_min; $adn <= $default_room_children_max; $adn++): ?>
+											<option value="<?php echo $adn; ?>"><?php echo $adn; ?></option>
+											<?php endfor; ?>
+										</select>
+									</div>
+								</div>
 							</div>
               <div class="calc-row">
 								<h3>Ajánlatok</h3>
@@ -170,12 +178,23 @@
     var termid = <?=$ajanlat->getTravelID()?>;
     var adults = <?php echo $default_room['min_adults']?>;
     var children = 0;
+		var children_by_adults = {<?php if($children_by_adults){
+			 $jsarr = '';
+			 	foreach ($children_by_adults as $adults => $minmax):
+					$jsarr .= $adults.' : { min: '.$minmax['min'].', max: '.$minmax['max'].' }, ';
+				endforeach;
+				$jsarr = rtrim($jsarr, ', ');
+				echo $jsarr;
+		}?>};
 
     getOffers(termid, adults, children);
 
     function getOffers( termid, adults, children){
       $('#term-ajanlat-result').html('<i class="fa fa-spinner fa-spin"></i> Ajánlatok betöltése...');
-      $.post(
+
+			var child_vars = children_by_adults[adults];
+
+			$.post(
         '<?php echo get_ajax_url('get_term_offer'); ?>',
         {
           termid: termid,
@@ -186,7 +205,23 @@
           console.log(datas);
           buildOffers(datas);
         },"html");
+
+				recreateChildrenSelect(child_vars);
     }
+
+		function recreateChildrenSelect(child_vars) {
+			var html = '';
+			var min = child_vars.min;
+			var max = child_vars.max;
+			var is_selected = false;
+
+			for (i = min; i <= max; i++) {
+				is_selected = (children == i) ? true : false;
+		  	html += '<option value="'+i+'" '+ ( (is_selected) ? 'selected="selected"' : '' ) +'>'+i+'</option>';
+			}
+
+			$('#Children').html(html);
+		}
 
     function buildOffers(obj) {
       var html = '';
@@ -219,6 +254,7 @@
     $('#Adults, #Children').change(function(){
       var s_adults = $('#Adults').val();
       var s_children = $('#Children').val();
+			children = s_children;
       getOffers(termid, s_adults, s_children);
     });
   })(jQuery);

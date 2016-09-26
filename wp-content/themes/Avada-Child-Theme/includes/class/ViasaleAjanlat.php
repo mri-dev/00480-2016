@@ -91,16 +91,47 @@ class ViasaleAjanlat extends ViasaleAPIFactory
 
     return $a;
   }
-  public function getMaxChildren()
+  public function getChildrenByAdults()
   {
-    $a = 0;
-    $adult_num = 1;
+    $c = array();
 
-    $def_room = $this->getDefaultRoomData();
+    if($this->term_data['rooms'])
+    foreach ($this->term_data['rooms'] as $i => $r) {
+      if($r['adults'])
+      foreach ($r['adults'] as $adult_num => $adult_obj) {
+        $min = (int)$adult_obj['min_children'];
+        $max = (int)$adult_obj['max_children'];
 
-    $a = (int)$def_room['adults'][$adult_num]['max_children'];
+        if(!isset($c[$adult_num]['min'])) {
+          $c[$adult_num]['min'] = (int)$min;
+        } else {
+          if($min < $c[$adult_num]['min']) $c[$adult_num]['min'] = (int)$min;
+        }
 
-    return $a;
+        if(!isset($c[$adult_num]['max'])) {
+          $c[$adult_num]['max'] = (int)$max;
+        } else {
+          if($max > $c[$adult_num]['max']) $c[$adult_num]['max'] = (int)$max;
+        }
+
+      }
+    }
+
+    ksort($c);
+
+    return $c;
+  }
+  public function getDefaultRoomMinChildren()
+  {
+    $default_room = $this->getDefaultRoomData();
+
+    return (int)$default_room['adults'][$default_room['min_adults']]['min_children'];
+  }
+  public function getDefaultRoomMaxChildren()
+  {
+    $default_room = $this->getDefaultRoomData();
+
+    return (int)$default_room['adults'][$default_room['min_adults']]['max_children'];
   }
   public function getStar()
   {
