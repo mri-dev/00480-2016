@@ -6,6 +6,7 @@ define('SZIGET_SLUG', 'kanari-szigetek');
 define('KERESO_SLUG', 'utazas-kereso');
 define('HOTEL_SLUG', 'hotel');
 define('UTAZAS_SLUG', 'utazas');
+define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
 
 // Includes
 require_once "includes/include.php";
@@ -19,6 +20,8 @@ function theme_enqueue_styles() {
     wp_enqueue_script('jquery-ui', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.min.js', array('jquery'));
     wp_enqueue_script('mocjax', IFROOT . '/assets/js/autocomplete/scripts/jquery.mockjax.js');
     wp_enqueue_script('autocomplete', IFROOT . '/assets/js/autocomplete/dist/jquery.autocomplete.min.js');
+    wp_enqueue_script('g-map','https://maps.googleapis.com/maps/api/js?key='.GOOGLE_MAP_API_KEY.'&callback=initMap', array(), '1.0', true  );
+
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 

@@ -45,9 +45,34 @@ class ViasaleAjanlat extends ViasaleAPIFactory
 
     return $div / $day;
   }
+  public function getURISlug( $after_id = '' )
+  {
+    $seo_title_list = '';
+    $zone_list = $this->getHotelZones();
+
+    foreach ($zone_list as $z ) {
+      $seo_title_list .= sanitize_title($z).'/';
+    }
+
+    $seo_title_list .= sanitize_title($this->getHotelName()).'/';
+
+    if( $after_id != '') {
+      $seo_title_list .= $after_id.'/';
+    }
+
+    return UTAZAS_SLUG.'/'.SZIGET_SLUG.'/'.$seo_title_list;
+  }
   public function getRoomsCount()
   {
     return count($this->term_data['rooms']);
+  }
+  public function getGPS()
+  {
+    $hotel = $this->getHotelData($this->term_data['hotel']['id']);
+    return array(
+      'lat' => (float)$hotel['gpsx'],
+      'lng' => (float)$hotel['gpsy']
+    );
   }
   public function getRooms()
   {
@@ -158,11 +183,29 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   {
     return $this->hotel_data['hotels'][0]['more_term_count'];
   }
-  public function getMoreTravel()
+  /**
+  * További hotel ajánlatok
+  * @param array $param Paraméterek
+  *                     array $except_term_ids kizárt term_id-k
+  * @return array Hotel lista API kimenet /terms/hotels=xxx
+  **/
+  public function getMoreTravel( $param = array() )
   {
-    if(!$this->hotel_data['hotels']['more_terms']){ return false; }
+    $ajanlatok = array();
 
-    return $this->hotel_data['hotels']['more_terms'];
+    if(!$this->hotel_data['hotels'][0]['more_terms']){ return false; }
+
+    $api_ajanlatok = $this->hotel_data['hotels'][0]['more_terms'];
+
+    foreach ($api_ajanlatok as $k => $a)
+    {
+      if( isset($param['except_term_ids']) && is_array($param['except_term_ids']) && in_array($a['term_id'], $param['except_term_ids']) ) continue;
+
+      $a['price_from_huf'] = round((float)$a['price_from'] * (float)$this->term_data['exchange_rate']);
+      $ajanlatok[] = $a;
+    }
+
+    return  $ajanlatok;
   }
   public function getPriceOriginalEUR()
   {
@@ -197,6 +240,19 @@ class ViasaleAjanlat extends ViasaleAPIFactory
     $this->getHotelInfo($this->getHotelID());
   }
 
+  /**
+  * Hotel adatlap adatok
+  * @uses ViasaleAPIFactory::getHotel($id)
+  * @link http://viasale.net/api/v2/hotels/{hotel_id}
+  **/
+  private function getHotelData($hotel_id)
+  {
+    return $this->getHotel($hotel_id);
+  }
+
+  /**
+  * Ajánlatokkal együtt a hotel adatok
+  **/
   private function getHotelInfo($hotel_id)
   {
     $this->hotel_data = $this->getTerms(array(

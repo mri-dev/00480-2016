@@ -3,6 +3,7 @@ class ViasaleAPIFactory
 {
   const ZONES_TAG   = 'zones';
   const TERMS_TAG   = 'terms';
+  const HOTELS_TAG   = 'hotels';
   public $api_uri   = 'http://viasale.net/api/v2/';
   public $date_format = 'Y / m / d';
 
@@ -34,6 +35,20 @@ class ViasaleAPIFactory
   public function __construct()
   {
 
+  }
+
+  /**
+  * Hotel adatok
+  **/
+  public function getHotel($id)
+  {
+    $uri = $this->api_uri . self::HOTELS_TAG.'/'.$id;
+
+    $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
+
+    if(!$result || empty($result)) return false;
+
+    return $result;
   }
 
   /**

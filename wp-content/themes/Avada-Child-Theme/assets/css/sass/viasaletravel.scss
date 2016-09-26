@@ -1,6 +1,11 @@
 @import 'settings';
 @import 'fonts';
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 .fusion-secondary-main-menu{
     background: $color-purple;
     border: none !important;
@@ -1575,6 +1580,114 @@ body.utazas-travel-page{
     padding: 30px 0;
     margin: 0 -30px;
     margin-top: 30px;
+
+    .more-travel-list{
+      font-size: 12px;
+      color: #8c8c8c;
+
+      .more-travel-row{
+        margin: 2px 0;
+        padding: 4px 0;
+        & > div {
+          display: inline-block;
+          *display: inline;
+          zoom: 1;
+          vertical-align: middle;
+          margin: 0 -2px;
+          padding: 0 10px;
+
+          &.more-travel-date,
+          &.more-travel-header-date {
+            width: 30%;
+            text-align: left;
+          }
+
+          &.more-travel-board,
+          &.more-travel-header-board {
+            width: 20%;
+            text-align: center;
+          }
+
+          &.more-travel-duration,
+          &.more-travel-header-duration {
+            width: 10%;
+            text-align: center;
+          }
+
+          &.more-travel-priceplan,
+          &.more-travel-header-priceplan {
+            width: 25%;
+            text-align: center;
+          }
+
+          &.more-travel-redirect,
+          &.more-travel-header-redirect {
+            width: 15%;
+            text-align: right;
+          }
+
+          &.more-travel-date{
+            color: black;
+            font-weight: bold;
+          }
+
+          &.more-travel-priceplan{
+            font-weight: bold;
+            .price-eur {
+              color: darken($color-orange, 10%);
+              font-size: 14px;
+              font-family: 'Arial';
+            }
+            .price-huf {
+              color: #444444;
+            }
+          }
+
+          &.more-travel-redirect{
+            a {
+              background: lighten($color-orange, 5%);
+              display: block;
+              color: white;
+              text-align: center;
+              padding: 5px;
+
+              &:hover {
+                background: $color-purple;
+              }
+            }
+          }
+        }
+        & > div[class^=more-travel-header] {
+          border-bottom: 2px solid $color-orange;
+          font-weight: bold;
+          color: black;
+          font-size: 13px;
+          padding: 10px 0;
+        }
+
+        &.group-header{
+          text-align: center;
+          font-size: 16px;
+          padding: 10px;
+          color: $color-purple;
+          font-family: 'Arial';
+          font-weight: bold;
+          background: #ffffff !important;
+        }
+      }
+      .more-travel-row:not(.more-travel-header):not(.group-header):nth-child(odd) {
+        background: #f8f8f8;
+      }
+    }
+
+    #map {
+      #travel-gmap {
+        position: relative;
+        width: 100%;
+        height: 450px;
+        max-height: 450px;
+      }
+    }
 
     .info-box-container {
       .tab-content{

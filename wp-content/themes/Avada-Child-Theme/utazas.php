@@ -109,10 +109,69 @@
 								<?php endforeach; ?>
 							</div>
 							<div class="tab-pane fade" id="more-travel">
-								lista
+								<div class="more-travel-list">
+								<?
+									$date_group = false;
+									$more_terms = $ajanlat->getMoreTravel(array( 'except_term_ids' => array($ajanlat->getTravelID())));
+								?>
+								<?php if (!empty($more_terms) && !$more_terms): ?>
+									<div class="no-more-travel">
+										<h4>Jelenleg nincs további utazási időpontunk.</h4>
+										<p>
+											Kérjük, hogy nézzen vissza később az aktuális ajánlatokért!
+										</p>
+									</div>
+								<?php else: ?>
+									<div class="more-travel-row more-travel-header">
+										<div class="more-travel-header-date">
+											Időtartam
+										</div>
+										<div class="more-travel-header-board">
+											Ellátás
+										</div>
+										<div class="more-travel-header-duration">
+											Időtartam
+										</div>
+										<div class="more-travel-header-priceplan">
+											Alapár
+										</div>
+										<div class="more-travel-header-redirect">&nbsp;</div>
+									</div>
+									<?php foreach ($more_terms as $u): ?>
+										<?
+												if($u['date_from'] != $date_group ) {
+													$date_group = $u['date_from'];
+													?>
+													<div class="more-travel-row group-header">
+														<?php echo $date_group; ?>
+													</div>
+													<?
+												}
+										?>
+										<div class="more-travel-row">
+											<div class="more-travel-date">
+												<?php echo $u['date_from']; ?> &mdash; <?php echo $u['date_to']; ?>
+											</div>
+											<div class="more-travel-board">
+												<?php echo $u['board_type']; ?>
+											</div>
+											<div class="more-travel-duration">
+												<?php echo $u['term_duration']; ?> nap
+											</div>
+											<div class="more-travel-priceplan">
+												<div class="price-eur"><?php echo number_format($u['price_from'], 0, ".", " "); ?>€</div>
+												<div class="price-huf"><?php echo number_format($u['price_from_huf'], 0, ".", " "); ?> Ft</div>
+											</div>
+											<div class="more-travel-redirect">
+												<a href="/<?php echo $ajanlat->getURISlug($u['term_id']); ?>" class="trans-on">Tovább <i class="fa fa-arrow-circle-right"></i></a>
+											</div>
+										</div>
+									<?php endforeach; ?>
+								<?php endif; ?>
+								</div>
 							</div>
 							<div class="tab-pane fade" id="map">
-								térkép
+									<div id="travel-gmap"></div>
 							</div>
 						</div>
 					</div>
@@ -172,7 +231,20 @@
 			</div>
 		</div>
 	</div>
+	<?php
+		$hotel_gps = $ajanlat->getGPS();
+	?>
   <script type="text/javascript">
+	var map;
+	function initMap() {
+		map = new google.maps.Map( document.getElementById( 'travel-gmap' ), {
+			center:  new google.maps.LatLng( <?=$hotel_gps['lat']?>, <?=$hotel_gps['lng']?> ),
+			zoom:	12,
+		});
+
+		console.log(map);
+	}
+
   (function ($) {
     var offers = [];
     var termid = <?=$ajanlat->getTravelID()?>;
@@ -259,9 +331,6 @@
     });
   })(jQuery);
   </script>
-	<!--
- 	<pre>
-		<? print_r($ajanlat->term_data); ?>
- 	</pre>-->
+
 </div>
 <?php get_footer();
