@@ -60,7 +60,7 @@ class ViasaleAjanlat extends ViasaleAPIFactory
       $seo_title_list .= $after_id.'/';
     }
 
-    return UTAZAS_SLUG.'/'.SZIGET_SLUG.'/'.$seo_title_list;
+    return UTAZAS_SLUG.'/'.$seo_title_list;
   }
   public function getRoomsCount()
   {
@@ -70,8 +70,8 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   {
     $hotel = $this->getHotelData($this->term_data['hotel']['id']);
     return array(
-      'lat' => (float)$hotel['gpsx'],
-      'lng' => (float)$hotel['gpsy']
+      'lat' => (float)$hotel['gpsy'],
+      'lng' => (float)$hotel['gpsx']
     );
   }
   public function getRooms()

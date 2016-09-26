@@ -181,13 +181,6 @@ class ViasaleLista
     {
       $o = '';
 
-      // Sziget listázás
-      if(isset($this->params['sziget']) && !empty($this->params['sziget']))
-      {
-        $szid = $this->sziget_ids[$this->params['sziget']]['id'];
-        $this->params[zones][] = $szid;
-      }
-
       $c = new ViasaleHotelok( $this->params );
       $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));
 

@@ -6,17 +6,12 @@
     <div class="item-contents trans-on">
       <div class="image">
         <img src="<?php echo $image; ?>" alt="<?php echo $title; ?> &mdash; <?php echo $island_text; ?>" class="trans-on" />
-        <?php if($features && !empty($features)): ?>
-        <div class="features trans-on">
-          <div class="feature-wrapper">
-          <?php foreach ($features as $feat_key => $feature): ?>
-            <div class="feat-title"><?php echo $feature['text']?></div>
-            <div class="feat-value"><?php echo $feature['value']?></div>
-            <div class="feat-divider"></div>
-          <?php endforeach; ?>
+        <div class="offer trans-on">
+          <div class="count">
+            <?php echo $total_travel_count; ?>
           </div>
+          elérhető ajnálat
         </div>
-        <?php endif; ?>
       </div>
       <div class="titles">
         <div class="title"><?php echo $title; ?></div>
@@ -26,15 +21,18 @@
         <i class="fa fa-map-marker"></i> <span class="island"><?php echo $island_text; ?></span> / <span class="city"><?php echo $place; ?></span>
       </div>
       <div class="actions">
-        <div class="price-eur">
-          <?php if($discount): ?>
-          <div class="previous-price"><span><?php echo $price_origin; ?><?php echo $price_v; ?></span></div>
-          <?php endif;?>
-          <div class="current-price"><?php echo $price; ?><?php echo $price_v; ?></div>
+        <div class="list-button">
+          <a href="<?php echo $link; ?>" class="link-btn trans-on">Tovább az ajánlatokhoz <i class="fa fa-arrow-circle-right"></i> </a>
         </div>
-        <div class="price-huf"><?php echo number_format($price_huf, 0, ".", " "); ?> Ft</div>
-        <div class="link-read">
-          <a href="<?php echo $link; ?>" class="link-btn trans-on">Tovább</a>
+        <div class="near-offer">
+          <div class="near-date">
+            <div class="label">
+              Következő út:
+            </div>
+            <?php echo $date_from; ?> &mdash; <?php echo $date_to; ?>
+          </div>
+          <div class="current-price"><?php echo $price; ?><?php echo $price_v; ?></div>
+          <a href="<?php echo $offer_link; ?>" class="link-btn trans-on">Érdekel az ajánlat!</a>
         </div>
       </div>
     </div>
