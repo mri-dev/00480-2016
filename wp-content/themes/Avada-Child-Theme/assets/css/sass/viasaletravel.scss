@@ -1598,8 +1598,9 @@ body.page-template.page-template-100-sziget{
   }
 }
 
-body.utazas-travel-page{
-
+body.utazas-travel-page,
+body.hotel-travel-page
+{
   .hotel-row{
     display: flex;
     width: 1100px;
@@ -1612,6 +1613,10 @@ body.utazas-travel-page{
     .hotel-column-right{
       padding-left: 25px;
       flex-basis: 40%;
+      position: relative;
+    }
+    .hotel-column-full{
+      flex-basis: 100%;
       position: relative;
     }
 
@@ -1677,6 +1682,10 @@ body.utazas-travel-page{
       font-family: 'Arial';
       line-height: 1;
       font-size: 30px;
+    }
+    .main-description{
+      font-weight: bold;
+      margin-top: 25px;
     }
     .zone-nav{
       margin-bottom: 10px;

@@ -1654,53 +1654,69 @@ body.page-template.page-template-100-sziget #main > div.fusion-row {
   display: block;
 }
 
-/* line 1603, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-row {
+/* line 1604, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-row,
+body.hotel-travel-page .hotel-row {
   display: flex;
   width: 1100px;
   margin: 0 auto;
 }
-/* line 1608, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-row .hotel-column-left {
+/* line 1609, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-row .hotel-column-left,
+body.hotel-travel-page .hotel-row .hotel-column-left {
   flex-basis: 60%;
   position: relative;
 }
-/* line 1612, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-row .hotel-column-right {
+/* line 1613, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-row .hotel-column-right,
+body.hotel-travel-page .hotel-row .hotel-column-right {
   padding-left: 25px;
   flex-basis: 40%;
   position: relative;
 }
 /* line 1618, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-row .hotel-column-wrapper {
+body.utazas-travel-page .hotel-row .hotel-column-full,
+body.hotel-travel-page .hotel-row .hotel-column-full {
+  flex-basis: 100%;
+  position: relative;
+}
+/* line 1623, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-row .hotel-column-wrapper,
+body.hotel-travel-page .hotel-row .hotel-column-wrapper {
   position: relative;
   height: 100%;
 }
-/* line 1623, sass/viasaletravel.scss */
-body.utazas-travel-page #main  {
+/* line 1628, sass/viasaletravel.scss */
+body.utazas-travel-page #main ,
+body.hotel-travel-page #main  {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-/* line 1627, sass/viasaletravel.scss */
-body.utazas-travel-page #main > .fusion-row {
+/* line 1632, sass/viasaletravel.scss */
+body.utazas-travel-page #main > .fusion-row,
+body.hotel-travel-page #main > .fusion-row {
   max-width: 100%;
 }
-/* line 1630, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content {
+/* line 1635, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content,
+body.hotel-travel-page .travel-content {
   padding-top: 30px;
 }
-/* line 1635, sass/viasaletravel.scss */
-body.utazas-travel-page .image-set-galery .profil img {
+/* line 1640, sass/viasaletravel.scss */
+body.utazas-travel-page .image-set-galery .profil img,
+body.hotel-travel-page .image-set-galery .profil img {
   width: 100%;
 }
-/* line 1639, sass/viasaletravel.scss */
-body.utazas-travel-page .image-set-galery .image-set {
+/* line 1644, sass/viasaletravel.scss */
+body.utazas-travel-page .image-set-galery .image-set,
+body.hotel-travel-page .image-set-galery .image-set {
   display: flex;
   flex-wrap: wrap;
   margin: 2px -2px;
 }
-/* line 1644, sass/viasaletravel.scss */
-body.utazas-travel-page .image-set-galery .image-set .image-set-holder {
+/* line 1649, sass/viasaletravel.scss */
+body.utazas-travel-page .image-set-galery .image-set .image-set-holder,
+body.hotel-travel-page .image-set-galery .image-set .image-set-holder {
   position: relative;
   flex-basis: 20%;
   height: 80px;
@@ -1708,15 +1724,17 @@ body.utazas-travel-page .image-set-galery .image-set .image-set-holder {
   max-height: 80px;
   padding: 2px;
 }
-/* line 1652, sass/viasaletravel.scss */
-body.utazas-travel-page .image-set-galery .image-set .image-set-holder a {
+/* line 1657, sass/viasaletravel.scss */
+body.utazas-travel-page .image-set-galery .image-set .image-set-holder a,
+body.hotel-travel-page .image-set-galery .image-set .image-set-holder a {
   overflow: hidden;
   position: relative;
   display: block;
   height: 100%;
 }
-/* line 1659, sass/viasaletravel.scss */
-body.utazas-travel-page .image-set-galery .image-set .image-set-holder img {
+/* line 1664, sass/viasaletravel.scss */
+body.utazas-travel-page .image-set-galery .image-set .image-set-holder img,
+body.hotel-travel-page .image-set-galery .image-set .image-set-holder img {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -1726,44 +1744,58 @@ body.utazas-travel-page .image-set-galery .image-set .image-set-holder img {
   -moz-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 1674, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data h1.title {
+/* line 1679, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data h1.title,
+body.hotel-travel-page .hotel-data h1.title {
   margin: 0 0 10px 0;
   color: #f7941d;
   font-family: 'Arial';
   line-height: 1;
   font-size: 30px;
 }
-/* line 1681, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .zone-nav {
+/* line 1686, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .main-description,
+body.hotel-travel-page .hotel-data .main-description {
+  font-weight: bold;
+  margin-top: 25px;
+}
+/* line 1690, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .zone-nav,
+body.hotel-travel-page .hotel-data .zone-nav {
   margin-bottom: 10px;
   font-size: 15px;
 }
-/* line 1684, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .zone-nav .sep {
+/* line 1693, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .zone-nav .sep,
+body.hotel-travel-page .hotel-data .zone-nav .sep {
   color: #eaeaea !important;
   font-size: 17px;
   margin: 0 4px;
 }
-/* line 1689, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .zone-nav .sep:last-child {
+/* line 1698, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .zone-nav .sep:last-child,
+body.hotel-travel-page .hotel-data .zone-nav .sep:last-child {
   display: none;
 }
-/* line 1693, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .star {
+/* line 1702, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .star,
+body.hotel-travel-page .hotel-data .star {
   margin-bottom: 10px;
 }
-/* line 1695, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .star i {
+/* line 1704, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .star i,
+body.hotel-travel-page .hotel-data .star i {
   font-size: 24px;
   color: #dadada;
 }
-/* line 1699, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .star i.star-active {
+/* line 1708, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .star i.star-active,
+body.hotel-travel-page .hotel-data .star i.star-active {
   color: #408333;
 }
-/* line 1703, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .offer-label {
+/* line 1712, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .offer-label,
+body.hotel-travel-page .hotel-data .offer-label {
   font-family: 'Arial';
   font-size: 24px;
   color: white;
@@ -1773,142 +1805,166 @@ body.utazas-travel-page .hotel-data .offer-label {
   margin-right: 10px;
   float: left;
 }
-/* line 1713, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-features {
+/* line 1722, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-features,
+body.hotel-travel-page .hotel-data .travel-features {
   display: flex;
   align-items: flex-end;
 }
-/* line 1717, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-features > div {
+/* line 1726, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-features > div,
+body.hotel-travel-page .hotel-data .travel-features > div {
   flex-basis: 33.33%;
 }
-/* line 1721, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-features .feat-wrapper {
+/* line 1730, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-features .feat-wrapper,
+body.hotel-travel-page .hotel-data .travel-features .feat-wrapper {
   background: #369ddc;
   text-align: center;
   color: white;
   padding: 25px 0;
 }
-/* line 1726, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-features .feat-wrapper i {
+/* line 1735, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-features .feat-wrapper i,
+body.hotel-travel-page .hotel-data .travel-features .feat-wrapper i {
   font-size: 28px;
   margin-bottom: 10px;
 }
-/* line 1733, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-features .feat-main .feat-wrapper {
+/* line 1742, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-features .feat-main .feat-wrapper,
+body.hotel-travel-page .hotel-data .travel-features .feat-main .feat-wrapper {
   border-top: 5px solid #2182be;
   background: #2182be;
 }
-/* line 1739, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .trans-date {
+/* line 1748, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .trans-date,
+body.hotel-travel-page .hotel-data .trans-date {
   margin: 20px 0;
 }
-/* line 1742, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .trans-date label {
+/* line 1751, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .trans-date label,
+body.hotel-travel-page .hotel-data .trans-date label {
   font-weight: bold;
   color: black;
   font-size: 16px;
 }
-/* line 1747, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .trans-date .date {
+/* line 1756, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .trans-date .date,
+body.hotel-travel-page .hotel-data .trans-date .date {
   font-family: 'Arial';
   font-weight: bold;
   color: #369ddc;
   font-size: 28px;
   letter-spacing: -1px;
 }
-/* line 1754, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .trans-date .more-trans {
+/* line 1763, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .trans-date .more-trans,
+body.hotel-travel-page .hotel-data .trans-date .more-trans {
   text-decoration: underline;
   font-size: 11px;
   color: #828181;
 }
-/* line 1761, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-info-box {
+/* line 1770, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-info-box,
+body.hotel-travel-page .hotel-data .travel-info-box {
   position: absolute;
   width: 100%;
   bottom: 0;
 }
-/* line 1767, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-offer {
+/* line 1776, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-offer,
+body.hotel-travel-page .hotel-data .travel-offer {
   background: #f2f2f2;
   padding: 10px;
   border-bottom: 5px solid #d8d8d8;
 }
-/* line 1772, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-offer label {
+/* line 1781, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-offer label,
+body.hotel-travel-page .hotel-data .travel-offer label {
   font-weight: bold;
   color: #5c5c5c;
   font-size: 13px;
   display: block;
   margin-bottom: 2px;
 }
-/* line 1781, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-offer .prices .origin.p-eur {
+/* line 1790, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-offer .prices .origin.p-eur,
+body.hotel-travel-page .hotel-data .travel-offer .prices .origin.p-eur {
   font-family: 'Arial';
   color: #d97a08;
   font-weight: bold;
   font-size: 48px;
   line-height: 1;
 }
-/* line 1788, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-offer .prices .origin.p-huf {
+/* line 1797, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-offer .prices .origin.p-huf,
+body.hotel-travel-page .hotel-data .travel-offer .prices .origin.p-huf {
   font-family: 'Arial';
   color: #767676;
   font-size: 18px;
   line-height: 1.5;
 }
-/* line 1796, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-offer .travel-info {
+/* line 1805, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-offer .travel-info,
+body.hotel-travel-page .hotel-data .travel-offer .travel-info {
   text-align: right;
 }
-/* line 1799, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-offer .travel-info .travel-number {
+/* line 1808, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-offer .travel-info .travel-number,
+body.hotel-travel-page .hotel-data .travel-offer .travel-info .travel-number {
   font-size: 16px;
   color: black;
   font-family: 'Arial';
   margin-bottom: 15px;
 }
-/* line 1806, sass/viasaletravel.scss */
-body.utazas-travel-page .hotel-data .travel-offer .travel-info .info-link {
+/* line 1815, sass/viasaletravel.scss */
+body.utazas-travel-page .hotel-data .travel-offer .travel-info .info-link,
+body.hotel-travel-page .hotel-data .travel-offer .travel-info .info-link {
   display: block;
   font-size: 11px;
   font-style: italic;
   text-decoration: underline;
   color: #969696;
 }
-/* line 1818, sass/viasaletravel.scss */
-body.utazas-travel-page .nav .nav-tabs {
+/* line 1827, sass/viasaletravel.scss */
+body.utazas-travel-page .nav .nav-tabs,
+body.hotel-travel-page .nav .nav-tabs {
   border-left: 1px solid #cfd3d3;
   background: transparent;
 }
-/* line 1821, sass/viasaletravel.scss */
-body.utazas-travel-page .nav .nav-tabs .tab-link {
+/* line 1830, sass/viasaletravel.scss */
+body.utazas-travel-page .nav .nav-tabs .tab-link,
+body.hotel-travel-page .nav .nav-tabs .tab-link {
   border-top: 3px solid #f7941d;
 }
-/* line 1827, sass/viasaletravel.scss */
-body.utazas-travel-page .fusion-tabs {
+/* line 1836, sass/viasaletravel.scss */
+body.utazas-travel-page .fusion-tabs,
+body.hotel-travel-page .fusion-tabs {
   margin: 0;
 }
-/* line 1831, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box {
+/* line 1840, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box,
+body.hotel-travel-page .travel-content-box {
   background: #e5e9e9;
   padding: 30px 0;
   margin: 0 -30px;
   margin-top: 30px;
 }
-/* line 1837, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list {
+/* line 1846, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list,
+body.hotel-travel-page .travel-content-box .more-travel-list {
   font-size: 12px;
   color: #8c8c8c;
 }
-/* line 1841, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row {
+/* line 1850, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row {
   margin: 2px 0;
   padding: 4px 0;
 }
-/* line 1844, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div {
+/* line 1853, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -1916,72 +1972,90 @@ body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row >
   margin: 0 -2px;
   padding: 0 10px;
 }
-/* line 1853, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-date, body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-date {
+/* line 1862, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-date, body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-date,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-date,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-date {
   width: 30%;
   text-align: left;
 }
-/* line 1859, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-board, body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-board {
+/* line 1868, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-board, body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-board,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-board,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-board {
   width: 20%;
   text-align: center;
 }
-/* line 1865, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-duration, body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-duration {
+/* line 1874, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-duration, body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-duration,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-duration,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-duration {
   width: 10%;
   text-align: center;
 }
-/* line 1871, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan, body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-priceplan {
+/* line 1880, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan, body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-priceplan,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-priceplan {
   width: 25%;
   text-align: center;
 }
-/* line 1877, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-redirect, body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-redirect {
+/* line 1886, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-redirect, body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-redirect,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-redirect,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-header-redirect {
   width: 15%;
   text-align: right;
 }
-/* line 1882, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-date {
+/* line 1891, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-date,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-date {
   color: black;
   font-weight: bold;
 }
-/* line 1887, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan {
+/* line 1896, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan {
   font-weight: bold;
 }
-/* line 1889, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan .price-eur {
+/* line 1898, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan .price-eur,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan .price-eur {
   color: #d97a08;
   font-size: 14px;
   font-family: 'Arial';
 }
-/* line 1894, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan .price-huf {
+/* line 1903, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan .price-huf,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-priceplan .price-huf {
   color: #444444;
 }
-/* line 1900, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-redirect a {
+/* line 1909, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-redirect a,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-redirect a {
   background: #f8a036;
   display: block;
   color: white;
   text-align: center;
   padding: 5px;
 }
-/* line 1907, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-redirect a:hover {
+/* line 1916, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-redirect a:hover,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div.more-travel-redirect a:hover {
   background: #662e91;
 }
-/* line 1913, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div[class^=more-travel-header] {
+/* line 1922, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row > div[class^=more-travel-header],
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row > div[class^=more-travel-header] {
   border-bottom: 2px solid #f7941d;
   font-weight: bold;
   color: black;
   font-size: 13px;
   padding: 10px 0;
 }
-/* line 1921, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row.group-header {
+/* line 1930, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row.group-header,
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row.group-header {
   text-align: center;
   font-size: 16px;
   padding: 10px;
@@ -1990,41 +2064,48 @@ body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row.g
   font-weight: bold;
   background: #ffffff !important;
 }
-/* line 1931, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row:not(.more-travel-header):not(.group-header):nth-child(odd) {
+/* line 1940, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .more-travel-list .more-travel-row:not(.more-travel-header):not(.group-header):nth-child(odd),
+body.hotel-travel-page .travel-content-box .more-travel-list .more-travel-row:not(.more-travel-header):not(.group-header):nth-child(odd) {
   background: #f8f8f8;
 }
-/* line 1937, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box #map #travel-gmap {
+/* line 1946, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box #map #travel-gmap,
+body.hotel-travel-page .travel-content-box #map #travel-gmap {
   position: relative;
   width: 100%;
   height: 450px;
   max-height: 450px;
 }
-/* line 1946, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .info-box-container .tab-content {
+/* line 1955, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .info-box-container .tab-content,
+body.hotel-travel-page .travel-content-box .info-box-container .tab-content {
   background: #fff;
   margin-top: -1px;
 }
-/* line 1949, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .info-box-container .tab-content .tab-pane {
+/* line 1958, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .info-box-container .tab-content .tab-pane,
+body.hotel-travel-page .travel-content-box .info-box-container .tab-content .tab-pane {
   border: 1px solid #cfd3d3;
 }
-/* line 1952, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .info-box-container .tab-content .tab-pane h2 {
+/* line 1961, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .info-box-container .tab-content .tab-pane h2,
+body.hotel-travel-page .travel-content-box .info-box-container .tab-content .tab-pane h2 {
   font-size: 22px;
   font-weight: bold;
   color: black;
   margin: 0 0 10px 0;
 }
-/* line 1958, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .info-box-container .tab-content .tab-pane p {
+/* line 1967, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .info-box-container .tab-content .tab-pane p,
+body.hotel-travel-page .travel-content-box .info-box-container .tab-content .tab-pane p {
   font-size: 14px;
   color: #5c5c5c;
   margin-bottom: 20px;
 }
-/* line 1966, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container {
+/* line 1975, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container,
+body.hotel-travel-page .travel-content-box .travel-calculator-container {
   background: #fff;
   border: 5px solid #b9b9b9;
   position: relative;
@@ -2032,15 +2113,17 @@ body.utazas-travel-page .travel-content-box .travel-calculator-container {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 1974, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-head {
+/* line 1983, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-head,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-head {
   background: #f8f8f8;
   text-align: center;
   border-bottom: 1px solid #f1f1f1;
   text-shadow: 0 1px #fff;
 }
-/* line 1980, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-head h2 {
+/* line 1989, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-head h2,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-head h2 {
   color: black;
   font-size: 18px;
   margin: 4px 0;
@@ -2049,27 +2132,33 @@ body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-h
   letter-spacing: -1px !important;
   font-weight: bold !important;
 }
-/* line 1990, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-head p {
+/* line 1999, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-head p,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-head p {
   line-height: 1.3;
   margin: 4px 0;
 }
-/* line 1996, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-wrapper {
+/* line 2005, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-wrapper,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-wrapper {
   padding: 10px;
 }
-/* line 2001, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row {
+/* line 2010, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row {
   margin-bottom: 11px;
 }
-/* line 2003, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row h3 {
+/* line 2012, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row h3,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row h3 {
   color: #5a5a5a;
   font-size: 14px;
   margin: 0 0 10px 0;
 }
-/* line 2010, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form select, body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form label {
+/* line 2019, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form select, body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form label,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form select,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form label {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -2078,8 +2167,9 @@ body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-c
   width: 50%;
   margin: 0 -1px;
 }
-/* line 2020, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form label {
+/* line 2029, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form label,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form label {
   line-height: 32px;
   font-size: 14px;
   text-align: center;
@@ -2091,8 +2181,9 @@ body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-c
   -moz-border-radius: 5px 0 0 5px;
   border-radius: 5px 0 0 5px;
 }
-/* line 2033, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form select {
+/* line 2042, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form select,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .calc-row .select-form select {
   margin-left: -3px;
   border: 1px solid #d7d7d7;
   border-left: none;
@@ -2104,8 +2195,9 @@ body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-c
   -moz-border-radius: 0 5px 5px 0;
   border-radius: 0 5px 5px 0;
 }
-/* line 2049, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .room-head {
+/* line 2058, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .room-head,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .room .room-head {
   background: #662e91;
   font-weight: bold;
   color: white;
@@ -2114,54 +2206,63 @@ body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-c
   display: flex;
   justify-content: space-between;
 }
-/* line 2058, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .room-head .room-name {
+/* line 2067, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .room-head .room-name,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .room .room-head .room-name {
   color: white;
   font-family: 'Arial';
   font-size: 14px;
 }
-/* line 2063, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .room-head .room-price-sum {
+/* line 2072, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .room-head .room-price-sum,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .room .room-head .room-price-sum {
   font-size: 15px;
   color: #f9ab4e;
 }
-/* line 2069, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg {
+/* line 2078, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg {
   margin: 0;
   padding: 4px 0;
   border-bottom: 1px solid #d7d7d7;
   color: black;
   font-size: 12px;
 }
-/* line 2076, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div {
+/* line 2085, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div {
   display: inline-block;
   *display: inline;
   zoom: 1;
   padding: 5px 10px;
 }
-/* line 2082, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div.name {
+/* line 2091, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div.name,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div.name {
   width: 45%;
   font-weight: bold;
 }
-/* line 2086, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div.part-price {
+/* line 2095, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div.part-price,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div.part-price {
   text-align: center;
   width: 25%;
 }
-/* line 2090, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div.sum-price {
+/* line 2099, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div.sum-price,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg > div.sum-price {
   text-align: right;
   width: 30%;
   color: #f7941d;
 }
-/* line 2097, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg .cfg:last-child {
+/* line 2106, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg .cfg:last-child,
+body.hotel-travel-page .travel-content-box .travel-calculator-container .calc-content .room .configs .cfg .cfg:last-child {
   border-bottom: none;
 }
-/* line 2105, sass/viasaletravel.scss */
-body.utazas-travel-page .travel-content-box .travel-calculator-container:before {
+/* line 2114, sass/viasaletravel.scss */
+body.utazas-travel-page .travel-content-box .travel-calculator-container:before,
+body.hotel-travel-page .travel-content-box .travel-calculator-container:before {
   content: "";
   top: -135px;
   left: 50%;
@@ -2174,61 +2275,61 @@ body.utazas-travel-page .travel-content-box .travel-calculator-container:before 
   transform: translateX(-50%);
 }
 
-/* line 2121, sass/viasaletravel.scss */
+/* line 2130, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane {
   font-family: 'Arial';
   font-size: 15px !important;
   color: #444444 !important;
   padding: 20px 30px;
 }
-/* line 2127, sass/viasaletravel.scss */
+/* line 2136, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane h1, .fusion-tabs .tab-pane h2, .fusion-tabs .tab-pane h3 {
   color: black !important;
   font-family: 'Arial' !important;
 }
-/* line 2131, sass/viasaletravel.scss */
+/* line 2140, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane h1 {
   font-size: 26px !important;
 }
-/* line 2134, sass/viasaletravel.scss */
+/* line 2143, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane h2 {
   font-size: 20px !important;
 }
-/* line 2137, sass/viasaletravel.scss */
+/* line 2146, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane h2 {
   font-size: 18px !important;
 }
 
-/* line 2141, sass/viasaletravel.scss */
+/* line 2150, sass/viasaletravel.scss */
 .fusion-tabs.fusion-tabs-1 .nav-tabs li a {
   background: #f7941d !important;
 }
 
-/* line 2144, sass/viasaletravel.scss */
+/* line 2153, sass/viasaletravel.scss */
 .fusion-tabs.fusion-tabs-1 .nav-tabs li a:hover {
   background: #f7941d !important;
   color: black !important;
 }
 
-/* line 2148, sass/viasaletravel.scss */
+/* line 2157, sass/viasaletravel.scss */
 .fusion-tabs.fusion-tabs-1 .nav-tabs li.active a {
   background: white !important;
 }
 
-/* line 2151, sass/viasaletravel.scss */
+/* line 2160, sass/viasaletravel.scss */
 .ui-state-default, .ui-widget-content .ui-state-default {
   color: #662e91;
   text-align: center;
 }
 
-/* line 2155, sass/viasaletravel.scss */
+/* line 2164, sass/viasaletravel.scss */
 .ui-state-default, .ui-widget-content .ui-state-active {
   color: #fff;
   background: #f7941d;
   border: 1px solid #d97a08;
 }
 
-/* line 2160, sass/viasaletravel.scss */
+/* line 2169, sass/viasaletravel.scss */
 #ui-datepicker-div {
   z-index: 9999 !important;
 }

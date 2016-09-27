@@ -39,7 +39,7 @@ function avada_lang_setup() {
 add_action( 'after_setup_theme', 'avada_lang_setup' );
 
 function vs_rewrite_rules() {
-    add_rewrite_rule( HOTEL_SLUG.'/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[1]&hotel_id=$matches[2]', 'top' );
+    add_rewrite_rule( HOTEL_SLUG.'/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[2]&hotel_id=$matches[5]', 'top' );
     add_rewrite_rule( UTAZAS_SLUG.'/'.SZIGET_SLUG.'/([^/]+)/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[1]&varos=$matches[2]&utazas_id=$matches[4]', 'top' );
 }
 add_action( 'init', 'vs_rewrite_rules' );
