@@ -2323,6 +2323,21 @@ body.hotel-travel-page
   }
 }
 
+.no-search-result {
+  color: #5c5c5c;
+  margin: 40px 0;
+  text-align: center;
+
+  h3 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+  }
+  small {
+    color: #8c8c8c;
+  }
+}
+
 .fusion-tabs .tab-pane{
   font-family: 'Arial';
   font-size: 15px !important;

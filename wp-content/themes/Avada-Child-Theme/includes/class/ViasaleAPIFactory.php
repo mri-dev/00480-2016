@@ -4,6 +4,7 @@ class ViasaleAPIFactory
   const ZONES_TAG   = 'zones';
   const TERMS_TAG   = 'terms';
   const HOTELS_TAG   = 'hotels';
+  const TRANSFER_TAG   = 'transfers';
   public $api_uri   = 'http://viasale.net/api/v2/';
   public $date_format = 'Y / m / d';
 
@@ -63,6 +64,59 @@ class ViasaleAPIFactory
     if(!$result || empty($result)) return false;
 
     return $result;
+  }
+
+  /**
+  * Transzfer repterek
+  **/
+  public function getTransferAirports( $params = array() )
+  {
+    // Get search params
+    $data   = array();
+    $query  = array();
+
+
+    $query = $this->build_search($query);
+    $uri = $this->api_uri . self::TRANSFER_TAG.'/'.$query;
+    //echo $uri . '<br>';
+    $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
+
+    if(!$result || empty($result)) return false;
+    foreach ($result as $k => $r )
+    {
+      $data[$k] = $r;
+    }
+    unset($result);
+
+    return $data;
+  }
+
+  /**
+  * Transzferek repterektől
+  **/
+  public function getTransfers( $airport_zone_id = false, $params = array() )
+  {
+    // Get search params
+    $data   = array();
+    $query  = array();
+
+    if(!$airport_zone_id) return $data;
+
+    $query['pickup_zone'] = $airport_zone_id;
+
+    $query = $this->build_search($query);
+    $uri = $this->api_uri . self::TRANSFER_TAG.'/'.$query;
+    //echo $uri . '<br>';
+    $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
+
+    if(!$result || empty($result)) return false;
+    foreach ($result as $k => $r )
+    {
+      $data[$k] = $r;
+    }
+    unset($result);
+
+    return $data;
   }
 
   /**
@@ -128,6 +182,21 @@ class ViasaleAPIFactory
   public function format_date($date)
   {
     return date($this->date_format, strtotime($date));
+  }
+
+  public function getZone( $zone_id, $params = array() )
+  {
+    // Get search params
+    $query = array();
+    $query = $this->build_search($query);
+
+    $uri = $this->api_uri . self::ZONES_TAG.'/'.$zone_id;
+
+    $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
+
+    if(!$result || empty($result)) return false;
+
+    return $result;
   }
 
   /**

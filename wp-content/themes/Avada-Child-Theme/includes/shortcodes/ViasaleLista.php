@@ -4,7 +4,7 @@ class ViasaleLista
     const SCTAG = 'viasale-lista';
     // Elérhető set-ek
     public $params = array();
-    public $sets = array('program', 'ajanlat', 'hotel');
+    public $sets = array('program', 'ajanlat', 'hotel', 'transzfer');
     public $type = null;
     public $template = 'standard';
 
@@ -66,6 +66,10 @@ class ViasaleLista
             // HOTEL
             case 'hotel':
               $output .= $this->hotel();
+            break;
+            // TRANSZFER
+            case 'transzfer':
+              $output .= $this->transzfer();
             break;
           }
           $output .= '</div>';
@@ -170,6 +174,55 @@ class ViasaleLista
         }
 
         $o .= '</div>';
+      } else {
+        $o .= '<div class="no-search-result">
+        <h3>Nem találtunk elérhető ajánlatokat.</h3>
+        A keresési feltételek alapján nem találtunk ajánlatokat az Ön részére. <br>
+        <small>Próbáljon más szűrőfeltételek alapján is keresni.</small>
+        </div>';
+      }
+
+      return $o;
+    }
+
+    /**
+    * TRANSZFER SET
+    **/
+    private function transzfer()
+    {
+      $o = '';
+
+      if(isset($_GET[zona]) && !empty($_GET[zona])){
+        $this->params[zones] = explode(",",$_GET[zona]);
+      }
+
+      $c = new ViasaleTranszferek( $this->params );
+      $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));
+
+      $data = $c->getData();
+
+      //echo '<pre>'; print_r($data); echo '</pre>';
+
+      if($data)
+      {
+        $o .= '<div class="style-'.$this->template.'">';
+
+        $i = 0;
+        foreach ($data as $d)
+        {
+          $i++;
+          $d['item_index'] = $i;
+
+          $o .= $t->load_template($d);
+        }
+
+        $o .= '</div>';
+      } else {
+        $o .= '<div class="no-search-result">
+        <h3>Nem találtunk elérhető transzfert.</h3>
+        A keresési feltételek alapján nem találtunk transzfert az Ön részére. <br>
+        <small>Próbáljon más szűrőfeltételek alapján is keresni.</small>
+        </div>';
       }
 
       return $o;

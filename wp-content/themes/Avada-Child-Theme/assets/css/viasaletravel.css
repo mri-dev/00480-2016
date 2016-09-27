@@ -2467,60 +2467,77 @@ body.hotel-travel-page .utazas-ajanlat-container .no-travel:before {
 }
 
 /* line 2326, sass/viasaletravel.scss */
+.no-search-result {
+  color: #5c5c5c;
+  margin: 40px 0;
+  text-align: center;
+}
+/* line 2331, sass/viasaletravel.scss */
+.no-search-result h3 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 15px 0;
+}
+/* line 2336, sass/viasaletravel.scss */
+.no-search-result small {
+  color: #8c8c8c;
+}
+
+/* line 2341, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane {
   font-family: 'Arial';
   font-size: 15px !important;
   color: #444444 !important;
   padding: 20px 30px;
 }
-/* line 2332, sass/viasaletravel.scss */
+/* line 2347, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane h1, .fusion-tabs .tab-pane h2, .fusion-tabs .tab-pane h3 {
   color: black !important;
   font-family: 'Arial' !important;
 }
-/* line 2336, sass/viasaletravel.scss */
+/* line 2351, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane h1 {
   font-size: 26px !important;
 }
-/* line 2339, sass/viasaletravel.scss */
+/* line 2354, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane h2 {
   font-size: 20px !important;
 }
-/* line 2342, sass/viasaletravel.scss */
+/* line 2357, sass/viasaletravel.scss */
 .fusion-tabs .tab-pane h2 {
   font-size: 18px !important;
 }
 
-/* line 2346, sass/viasaletravel.scss */
+/* line 2361, sass/viasaletravel.scss */
 .fusion-tabs.fusion-tabs-1 .nav-tabs li a {
   background: #f7941d !important;
 }
 
-/* line 2349, sass/viasaletravel.scss */
+/* line 2364, sass/viasaletravel.scss */
 .fusion-tabs.fusion-tabs-1 .nav-tabs li a:hover {
   background: #f7941d !important;
   color: black !important;
 }
 
-/* line 2353, sass/viasaletravel.scss */
+/* line 2368, sass/viasaletravel.scss */
 .fusion-tabs.fusion-tabs-1 .nav-tabs li.active a {
   background: white !important;
 }
 
-/* line 2356, sass/viasaletravel.scss */
+/* line 2371, sass/viasaletravel.scss */
 .ui-state-default, .ui-widget-content .ui-state-default {
   color: #662e91;
   text-align: center;
 }
 
-/* line 2360, sass/viasaletravel.scss */
+/* line 2375, sass/viasaletravel.scss */
 .ui-state-default, .ui-widget-content .ui-state-active {
   color: #fff;
   background: #f7941d;
   border: 1px solid #d97a08;
 }
 
-/* line 2365, sass/viasaletravel.scss */
+/* line 2380, sass/viasaletravel.scss */
 #ui-datepicker-div {
   z-index: 9999 !important;
 }

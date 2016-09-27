@@ -1,13 +1,13 @@
 <div class="search-panel v1">
   <div class="search-wrapper">
-    <form  action="/<?=KERESO_SLUG?>" method="get">
+    <form id="modul-page-searcher-form-v1" action="/<?=KERESO_SLUG?>" method="get">
       <div class="head-labels">
         <ul>
           <li class="title-label"><i class="fa fa-search"></i> Utazáskereső</li>
           <li><input type="radio" <?=($_GET['cat'] == 'lastminute')?'checked="checked"':''?> name="cat" id="cat_lm" value="lastminute"><label class="trans-on" for="cat_lm"><i class="fa fa-percent"></i> Lastminute</label></li>
-          <li><input type="radio" <?=($_GET['cat'] == 'firstmunute')?'checked="checked"':''?> name="cat" id="cat_fm" value="firstmunute"><label class="trans-on" for="cat_fm"><i class="fa fa-percent"></i> Firstminute</label></li>
+          <li><input type="radio" <?=($_GET['cat'] == 'firstminute')?'checked="checked"':''?> name="cat" id="cat_fm" value="firstminute"><label class="trans-on" for="cat_fm"><i class="fa fa-percent"></i> Firstminute</label></li>
           <li><input type="radio" <?=($_GET['cat'] == 'prog')?'checked="checked"':''?> name="cat" id="cat_prog" value="prog"><label class="trans-on" for="cat_prog"><i class="fa fa-bicycle"></i> Programok</label></li>
-          <li><input type="radio" <?=($_GET['cat'] == 'trans')?'checked="checked"':''?> name="cat" id="cat_trans" value="trans"><label class="trans-on" for="cat_trans"><i class="fa fa-bus"></i> Transfer</label></li>
+          <li><input type="radio" <?=($_GET['cat'] == 'trans')?'checked="checked"':''?> name="cat" id="cat_trans" value="trans"><label class="trans-on" for="cat_trans"><i class="fa fa-bus"></i> Transzfer</label></li>
         </ul>
       </div>
       <div class="input-holder">
@@ -114,6 +114,12 @@
   </div>
 </div>
 <script type="text/javascript">
+var search_form_uri = {
+  'firstminute' : '/utazas-kereso',
+  'lastminute' : '/utazas-kereso',
+  'prog' : '/program-kereso',
+  'trans' : '/transzfer-kereso'
+};
 // Autocomplete
 (function ($) {
     'use strict';
@@ -164,6 +170,7 @@
 (function($) {
   var szones = collect_zone_checkbox();
   $('#zones').val(szones);
+  bindSearchFormURI();
 
   var dp_options = {
   	closeText: "bezár",
@@ -214,6 +221,10 @@
     }
   });
 
+  $('form#modul-page-searcher-form-v1 input[type=radio][name=cat]').change(function(e){
+    bindSearchFormURI();
+  });
+
   $('.tglwatcher').click(function(event){
     event.stopPropagation();
     event.preventDefault();
@@ -251,6 +262,12 @@
   });
 
 })( jQuery );
+
+function bindSearchFormURI() {
+  var sel_cat_key = jQuery('form#modul-page-searcher-form-v1 input[type=radio][name=cat]:checked').val();
+  if(typeof sel_cat_key === 'undefined') return;
+  jQuery('form#modul-page-searcher-form-v1').attr('action', search_form_uri[sel_cat_key]);
+}
 
 function collect_zone_checkbox()
 {

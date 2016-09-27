@@ -7,5 +7,6 @@
   require_once "ViasaleHotelok.php";
   require_once "ViasaleHotel.php";
   require_once "ViasaleKeresok.php";
+  require_once "ViasaleTranszferek.php";
   require_once "AjaxRequests.php";
 ?>

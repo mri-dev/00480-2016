@@ -12,6 +12,7 @@ define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
 require_once "includes/include.php";
 
 function theme_enqueue_styles() {
+  global $wp_query;
     wp_enqueue_style( 'avada-parent-stylesheet', get_template_directory_uri() . '/style.css?' . ( (DEVMODE === true) ? time() : '' )  );
     wp_enqueue_style( 'avada-child-stylesheet', IFROOT . '/style.css?' . ( (DEVMODE === true) ? time() : '' ) );
     wp_enqueue_style( 'jquery-ui-str', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.structure.min.css');
@@ -20,8 +21,13 @@ function theme_enqueue_styles() {
     wp_enqueue_script('jquery-ui', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.min.js', array('jquery'));
     wp_enqueue_script('mocjax', IFROOT . '/assets/js/autocomplete/scripts/jquery.mockjax.js');
     wp_enqueue_script('autocomplete', IFROOT . '/assets/js/autocomplete/dist/jquery.autocomplete.min.js');
-    wp_enqueue_script('g-map','https://maps.googleapis.com/maps/api/js?key='.GOOGLE_MAP_API_KEY.'&callback=initMap', array(), '1.0', true  );
 
+    if (
+      (isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id'])) ||
+      (isset($wp_query->query_vars['hotel_id']) && !empty($wp_query->query_vars['hotel_id']))
+    ) {
+      wp_enqueue_script('g-map','https://maps.googleapis.com/maps/api/js?key='.GOOGLE_MAP_API_KEY.'&callback=initMap', array(), '1.0', true  );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
@@ -78,12 +84,24 @@ function vs_title($title) {
   global $wp_query;
   $new = array();
 
+  // Utazás title
   if ( isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id']) ) {
       $ajanlat = new ViasaleAjanlat($wp_query->query_vars['utazas_id']);
       $star = $ajanlat->getStar();
 
       $utazas_title = $ajanlat->getHotelName();
-      $utazas_title .= str_repeat('*', $star);
+      $utazas_title .= str_repeat('*', $star). ' szálloda utazási ajánlat, Kanári-szigetek.';
+
+      $new[] = $utazas_title;
+  }
+
+  // Hotel title
+  if ( isset($wp_query->query_vars['hotel_id']) && !empty($wp_query->query_vars['hotel_id']) ) {
+      $hotel = new ViasaleHotel($wp_query->query_vars['hotel_id']);
+      $star = $hotel->getStar();
+
+      $utazas_title = $hotel->getHotelName();
+      $utazas_title .= str_repeat('*', $star). ' szálloda adatlap, utazási ajánlatok, Kanári-szigetek.';
 
       $new[] = $utazas_title;
   }
