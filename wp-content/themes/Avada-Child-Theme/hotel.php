@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 <?
-	$hotel_id = $wp_query->query_vars['hotel_id'];
-	$hotel 	= new ViasaleHotel($hotel_id);
+	$hotel_id  = $wp_query->query_vars['hotel_id'];
+	$hotel 	   = new ViasaleHotel($hotel_id);
+  $ajanlatok = $hotel->getTravels();
 ?>
 <div id="content" class="full-width travel-content" stlye="max-width:100%;">
 	<div class="hotel-row" stlye="max-width:100%;">
@@ -36,6 +37,10 @@
         <div class="main-description">
           <?php echo nl2br($hotel->getInfo()); ?>
         </div>
+        <div class="info-links">
+          <a href="#travels"><div class="n"><?=$ajanlatok['total_terms_count']?></div> Utazási ajánlat <i class="fa fa-angle-right"></i></a>
+        </div>
+        <div class="fusion-clearfix"></div>
 			</div>
 		</div>
 		</div>
@@ -45,23 +50,38 @@
 		<div class="hotel-row">
 			<div class="hotel-column hotel-column-full">
 				<div class="info-box-container">
+          <?php $desc = $hotel->getDescriptions(); ?>
 					<div class="fusion-tabs fusion-tabs-1 classic nav-not-justified horizontal-tabs">
 						<div class="nav">
 							<ul class="nav-tabs">
-								<li class="active"><a class="tab-link" data-toggle="tab" href="#info"><h4 class="fusion-tab-heading">Információk</h4></a></li>
+                <?php
+                  if($desc) {
+                    $dn = 0;
+                    foreach ($desc as $did => $de):
+                      $dn++;
+                ?>
+                <li class="<?=($dn==1)?'active':''?>"><a class="tab-link" data-toggle="tab" href="#<?=sanitize_title($de['name'])?>"><h4 class="fusion-tab-heading"><?=$de['name']?></h4></a></li>
+                <?php
+                    endforeach;
+                  }
+                ?>
 								<li><a class="tab-link" data-toggle="tab" href="#map"><h4 class="fusion-tab-heading">Térkép</h4></a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div class="tab-pane fade active in" id="info">
-								<?php $desc = $hotel->getDescriptions(); ?>
-								<?php if($desc) foreach ($desc as $did => $de): ?>
-									<h2><?php echo $de['name']; ?></h2>
-									<p>
-										<?php echo nl2br($de['description']); ?>
-									</p>
-								<?php endforeach; ?>
+              <?php
+                if($desc) {
+                  $dn = 0;
+                  foreach ($desc as $did => $de):
+                    $dn++;
+              ?>
+							<div class="tab-pane fade <?=($dn==1)?'active in':''?>" id="<?=sanitize_title($de['name'])?>">
+							 <?php echo nl2br($de['description']); ?>
 							</div>
+              <?php
+                  endforeach;
+                }
+              ?>
 							<div class="tab-pane fade" id="map">
 
 							</div>
@@ -71,5 +91,88 @@
 			</div>
 		</div>
 	</div>
+
+  <a name="travels"></a>
+  <div class="utazas-ajanlat-container">
+    <div class="hotel-row">
+      <div class="hotel-column hotel-column-full">
+        <div class="boxed-title title-up title-color-orange">
+          <h2 class="box-title">Utazási ajánlatok</h2>
+        </div>
+        <div class="ajanlat-lista">
+          <?php if($ajanlatok['terms']): ?>
+          <div class="travels more-travel-list">
+            <div class="more-travel-row more-travel-header">
+              <div class="more-travel-header-date">
+                Időtartam
+              </div>
+              <div class="more-travel-header-board">
+                Ellátás
+              </div>
+              <div class="more-travel-header-duration">
+                Időtartam
+              </div>
+              <div class="more-travel-header-priceplan">
+                Alapár
+              </div>
+              <div class="more-travel-header-redirect">&nbsp;</div>
+            </div>
+          <?php
+	           $date_group = false;
+          ?>
+          <?php foreach ($ajanlatok['terms'] as $term): ?>
+            <?
+                if($term['date_from'] != $date_group ) {
+                  $date_group = $term['date_from'];
+                  ?>
+                  <div class="more-travel-row group-header">
+                    <?php echo $date_group; ?>
+                  </div>
+                  <?
+                }
+            ?>
+            <div class="travel more-travel-row">
+                <div class="more-travel-date">
+                  <?php echo $term['date_from']; ?> &mdash; <?php echo $term['date_to']; ?>
+                  <? if( in_array($term['offer'], array('lastminute', 'firstminute')) ): ?>
+                    <?
+                      switch ($term['offer']) {
+                        case 'lastminute':
+                          echo '<span class="label-offer offer-'.$term['offer'].'" title="Lastminte">LM</span>';
+                        break;
+                        case 'firstminute':
+                          echo '<span class="label-offer offer-'.$term['offer'].'" title="Firstminte">FM</span>';
+                        break;
+                      }
+                    ?>
+                  <? endif; ?>
+                </div>
+                <div class="more-travel-board">
+                  <?php echo $term['board_type']; ?>
+                </div>
+                <div class="more-travel-duration">
+                  <?php echo $term['term_duration']; ?> nap
+                </div>
+                <div class="more-travel-priceplan">
+                  <span class="price-eur"><?php echo number_format($term['price_from'], 0, ".", " "); ?>€</span>
+                  <span class="price-huf">(<?php echo number_format($term['price_from_huf'], 0, ".", " "); ?> Ft)</span>
+                </div>
+                <div class="more-travel-redirect">
+                  <a href="<?php echo $term['link']; ?>" class="trans-on">Tovább <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+          <?php endforeach; ?>
+          </div>
+          <?php else: ?>
+          <div class="no-travel">
+            <h3>Jelenleg nincs aktív utazási ajánlat</h3>
+            Kérjük, hogy nézzen vissza később.
+          </div>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 <?php get_footer();

@@ -110,6 +110,48 @@ class ViasaleHotel extends ViasaleAPIFactory
     return $set;
   }
 
+  public function getTravels()
+  {
+    $travels = array();
+
+    $ajanlatok = $this->getTerms(array(
+      'hotels'  => array($this->hotel_id),
+      'limit'   => 999,
+      'order'   => 'date|asc'
+    ));
+
+
+    if($ajanlatok)
+    {
+      $exchange_rate = (float)$ajanlatok['exchange_rate'];
+      $more = $ajanlatok['hotels'][0]['more_terms'];
+      $travels['total_terms_count'] = count($more);
+      $first = $ajanlatok['hotels'][0];
+      $travels['terms'][] = array(
+        'link'            => get_option('siteurl', '/').'/'.UTAZAS_SLUG.'/'.SZIGET_SLUG.'/'.sanitize_title($first['zone_list'][2]['name']).'/'.sanitize_title($first['zone_list'][3]['name']).'/'.sanitize_title($first['hotel_name']).'/'.$first['term_id'],
+        'term_id'         => $first['term_id'],
+        'board_id'        => $first['board_id'],
+        'board_type'      => $first['board_type'],
+        'date_from'       => $first['date_from'],
+        'date_to'         => $first['date_to'],
+        'term_duration'   => $first['term_duration'],
+        'price_from'      => $first['price_from'],
+        'price_original'  => $first['price_original'],
+        'price_from_huf'  => round((float)$first['price_from'] * (float)$exchange_rate),
+        'hotel_status'    => $first['hotel_status'],
+        'offer'           => /*$first['offer']*/ 'lastminute'
+      );
+      if($more)
+      foreach ($more as $term ) {
+        $term['link']           = get_option('siteurl', '/').'/'.UTAZAS_SLUG.'/'.SZIGET_SLUG.'/'.sanitize_title($first['zone_list'][2]['name']).'/'.sanitize_title($first['zone_list'][3]['name']).'/'.sanitize_title($first['hotel_name']).'/'.$term['term_id'];
+        $term['price_from_huf'] = round((float)$term['price_from'] * (float)$exchange_rate );
+        $travels['terms'][] = $term;
+      }
+    }
+
+    return $travels;
+  }
+
   private function load()
   {
     $this->hotel_data = $this->getHotel($this->hotel_id);

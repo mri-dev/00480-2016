@@ -22,7 +22,7 @@
       </div>
       <div class="actions">
         <div class="list-button">
-          <a href="<?php echo $link; ?>" class="link-btn trans-on">Tovább az ajánlatokhoz <i class="fa fa-arrow-circle-right"></i> </a>
+          <a href="<?php echo $link; ?>" class="link-btn trans-on">Hotel adatlap, ajánlatok <i class="fa fa-arrow-circle-right"></i> </a>
         </div>
         <div class="near-offer">
           <div class="near-date">

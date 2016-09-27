@@ -2127,6 +2127,202 @@ body.hotel-travel-page
   }
 }
 
+body.hotel-travel-page
+{
+  .hotel-data {
+    .info-links{
+      margin-top: 25px;
+      a {
+        display: block;
+        float: left;
+        background: $color-purple;
+        color: white;
+        text-decoration: none;
+        padding: 0 10px 0 0;
+        border-radius: 4px;
+        line-height: 28px;
+
+        .n {
+          line-height: 28px;
+          background: #f79447;
+          font-size: 12px;
+          padding: 0 8px;
+          margin-right: 10px;
+          float: left;
+        }
+      }
+    }
+  }
+  .travel-content-box{
+    padding-bottom: 50px;
+  }
+  .utazas-ajanlat-container {
+    background: darken($color-purple, 20%);
+    margin: 0 -30px;
+
+    .more-travel-list{
+      font-size: 15px;
+      color: #8c8c8c;
+
+      .more-travel-row{
+        margin: 2px 0;
+        padding: 4px 0;
+        & > div {
+          display: inline-block;
+          *display: inline;
+          zoom: 1;
+          vertical-align: middle;
+          margin: 0 -2px;
+          padding: 0 10px;
+
+          &.more-travel-date,
+          &.more-travel-header-date {
+            width: 30%;
+            text-align: left;
+          }
+          &.more-travel-header-date{
+            padding-left: 15px !important;
+          }
+
+          &.more-travel-board,
+          &.more-travel-header-board {
+            width: 20%;
+            text-align: center;
+          }
+
+          &.more-travel-duration,
+          &.more-travel-header-duration {
+            width: 10%;
+            text-align: center;
+          }
+
+          &.more-travel-priceplan,
+          &.more-travel-header-priceplan {
+            width: 25%;
+            text-align: center;
+          }
+
+          &.more-travel-redirect,
+          &.more-travel-header-redirect {
+            width: 15%;
+            text-align: right;
+          }
+
+          &.more-travel-date{
+            color: $color-orange;
+            font-size: 18px;
+            font-weight: bold;
+
+            .label-offer {
+              background: $color-purple;
+              color: white;
+              font-size: 10px;
+              text-transform: uppercase;
+              padding: 5px;
+              margin: 0 4px;
+              font-weight: inherit;
+              font-family: 'Arial';
+            }
+          }
+
+          &.more-travel-priceplan{
+            .price-eur {
+              color: darken($color-orange, 10%);
+              font-size: 20px;
+              font-weight: bold;
+              font-family: 'Arial';
+            }
+            .price-huf {
+              color: #444444;
+              font-size: 13px;
+            }
+          }
+
+          &.more-travel-redirect{
+            a {
+              background: lighten($color-orange, 5%);
+              display: block;
+              color: white;
+              text-align: center;
+              padding: 5px;
+
+              &:hover {
+                background: darken($color-orange, 10%);
+              }
+            }
+          }
+        }
+        & > div[class^=more-travel-header] {
+          font-weight: inherit;
+          color: white;
+          font-size: 13px;
+          padding: 10px 0;
+        }
+
+        &.group-header{
+          text-align: center;
+          font-size: 20px;
+          padding: 10px;
+          color: $color-orange;
+          font-family: 'Arial';
+          font-weight: bold;
+          background: none !important;
+        }
+      }
+    }
+
+    .travels {
+      position: relative;
+      margin: 20px 0;
+
+      .travel {
+        position: relative;
+        background: #fff;
+        padding: 10px;
+        text-align: center;
+        margin: 10px 0;
+        color: #5c5c5c;
+        -webkit-box-shadow: 3px 4px 7px -4px #000;
+        -moz-box-shadow: 3px 4px 7px -4px #000;
+        box-shadow: 3px 4px 7px -4px #000;
+      }
+    }
+
+    .no-travel{
+      position: relative;
+      background: #fff;
+      padding: 25px;
+      text-align: center;
+      margin: 25px 0;
+      color: #5c5c5c;
+      -webkit-box-shadow: 3px 4px 7px -4px #000;
+      -moz-box-shadow: 3px 4px 7px -4px #000;
+      box-shadow: 3px 4px 7px -4px #000;
+
+      h3 {
+        margin: 0 0 15px 0;
+        font-size: 20px;
+        color: #222;
+      }
+      &:before{
+        content:"";
+        position: absolute;
+        left: 50%;
+        z-index: 999;
+        top: -50px;
+        background: transparent;
+        border-color:  transparent transparent #fff transparent;
+        border-width: 25px;
+        border-style: solid;
+        pointer-events: none;
+        -webkit-transform:translateX(-50%);
+        -moz-transform:translateX(-50%);
+        transform:translateX(-50%);
+      }
+    }
+  }
+}
+
 .fusion-tabs .tab-pane{
   font-family: 'Arial';
   font-size: 15px !important;

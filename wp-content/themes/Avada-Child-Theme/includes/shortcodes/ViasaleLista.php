@@ -102,6 +102,7 @@ class ViasaleLista
     **/
     private function ajanlat()
     {
+      global $wp_query;
       $o = '';
 
       // Sziget listázás
