@@ -23,6 +23,17 @@ class ViasaleTranszferek extends ViasaleAPIFactory
       $this->zone_ids = $this->arg['zones'];
     }
 
+    if(isset($this->arg['sziget']) && !empty($this->arg['sziget'])) {
+      $zona_lista = $this->getZones();
+      $sziget_varosok = $this->getZoneChild($zona_lista, $this->sziget_ids[$this->arg['sziget']]['id']);
+      $sziget_varosok_ids = $this->getZonesToIDSet($sziget_varosok);
+
+      unset($sziget_varosok);
+      unset($zona_lista);
+
+      $this->zone_ids = $sziget_varosok_ids;
+    }
+
     $this->airports   = $this->getTransferAirports();
     // Zónák szerinti reptér csoporosítás
     $this->groupingAirportsByZone($this->airports);
@@ -52,7 +63,6 @@ class ViasaleTranszferek extends ViasaleAPIFactory
       }
       unset($gettable_airport_ids);
 
-
       foreach ($this->zone_ids as $zid) {
         $airports = array();
         $pid  = $this->zone_datas[$zid]['parent_id'];
@@ -63,11 +73,21 @@ class ViasaleTranszferek extends ViasaleAPIFactory
 
         if($aids)
         foreach ($aids as $airport_row ) {
-          $airport = $this->collected_transfers_by_zone[$airport_row['id']];
-          $translist = array_merge($translist, $airport['retail_transfers_to']);
+          $airport  = $this->collected_transfers_by_zone[$airport_row['id']];
+          $trans    = array();
+
+          if($airport['retail_transfers_to'])
+          foreach ($airport['retail_transfers_to'] as $tr ) {
+            if($tr['dropoff_zone_id'] == $zid) $trans[] = $tr;
+          }
+
           unset($airport['retail_transfers_to']);
+          $translist = array_merge($translist, $trans);
+
           $airports[$airport_row['id']] = $airport;
+          $airports[$airport_row['id']]['count'] += count($trans);
         }
+        unset($trans);
         unset($aids);
 
         $zone =$this->zone_datas[$zid];

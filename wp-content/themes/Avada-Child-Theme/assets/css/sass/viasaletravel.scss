@@ -267,6 +267,273 @@ html, body {
 }
 
 .viasale-lista-holder {
+  /* Transzfer lista */
+  .viasale-lista-set-transzfer{
+    .style-standard {
+      .airports {
+        text-align: center;
+
+        label {
+          font-weight: bold;
+          font-size: 12px;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+          color: #444;
+          i {
+            font-weight: normal;
+          }
+        }
+
+        ul {
+          margin: 0 auto;
+          padding: 0;
+
+          li {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+
+            .airport {
+              background: white;
+              line-height: 30px;
+              color: black;
+              font-size: 13px;
+              padding: 0 10px 0 0;
+
+              .airport-code {
+                background: $color-purple;
+                color: white;
+                padding: 0 5px;
+                line-height: 30px;
+                display: block;
+                float: left;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
+      .transfer {
+        border-bottom: 5px solid #d7d7d7;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+
+        .transfer-zone-header{
+          h2{
+            text-align: center;
+            font-weight: bold !important;
+            color: darken($color-orange, 10%);
+            margin: 0 0 10px 0 !important;
+            font-size: 32px !important;
+
+            .city {
+              font-family: 'Arial';
+            }
+          }
+        }
+        .transfer-list{
+          display: flex;
+          font-size: 13px;
+
+          & > div {
+            padding: 0 10px;
+            flex-basis: 50%;
+
+            .title h3 {
+              text-align: center;
+              font-size: 18px !important;
+              font-weight: bold !important;
+              color: #444;
+              margin: 10px 0;
+            }
+
+            .transfer-header,
+            .transfer-group-list .transfer{
+              display: flex;
+              align-items: center;
+
+              & > div.airport {
+                flex-basis: 35%;
+              }
+              & > div.dropoff {
+                flex-basis: 30%;
+              }
+              & > div.pax {
+                flex-basis: 10%;
+              }
+              & > div.price-one-way,
+              & > div.price-return {
+                flex-basis: 15%;
+              }
+            }
+
+            .transfer-header{
+              font-size: 12px;
+              height: 45px;
+
+              & > div {
+                text-align: center;
+                line-height: 1;
+
+              }
+            }
+
+            .no-transfer-group{
+              background: #fff;
+              padding: 10px;
+              text-align: center;
+            }
+
+            .transfer-group-list .transfer{
+              border: 1px solid #d6d6d6;
+              line-height: 1;
+              margin: 5px 0;
+              padding: 4px 0;
+              background: #fff;
+
+              & > div{
+                text-align: center;
+                padding: 0 5px;
+              }
+              & > div.airport{
+                color: $color-purple;
+                font-weight: bold;
+              }
+              & > div.price-return{
+                font-weight: bold;
+              }
+              & > div.dropoff{
+                color: $color-orange;
+                font-weight: bold;
+              }
+              & > div.airport,
+              & > div.dropoff{
+              }
+            }
+
+          }
+          .trans-group {
+            .price-one-way,
+            .price-return{
+              flex-basis: 17% !important;
+            }
+          }
+        }
+      }
+    }
+
+    .style-szigetlanding {
+      .transfer {
+        margin-bottom: 10px;
+        .transfer-zone-header{
+          h2{
+            background: #eaeaea;
+            text-align: center;
+            font-weight: bold !important;
+            color: darken($color-orange, 10%) !important;
+            margin: 5px !important;
+            padding: 10px !important;
+            font-size: 24px !important;
+
+            .city {
+              font-family: 'Arial';
+            }
+          }
+        }
+        .transfer-list{
+          display: flex;
+          font-size: 13px;
+          margin: 0 -5px;
+
+          & > div {
+            padding: 0 10px;
+            flex-basis: 50%;
+
+            .title h3 {
+              text-align: center;
+              font-size: 18px !important;
+              font-weight: bold !important;
+              color: #444;
+              margin: 10px 0;
+            }
+
+            .transfer-header,
+            .transfer-group-list .transfer{
+              display: flex;
+              align-items: center;
+
+              & > div.airport {
+                flex-basis: 35%;
+              }
+              & > div.dropoff {
+                flex-basis: 30%;
+              }
+              & > div.pax {
+                flex-basis: 10%;
+              }
+              & > div.price-one-way,
+              & > div.price-return {
+                flex-basis: 15%;
+              }
+            }
+
+            .transfer-header{
+              font-size: 12px;
+              height: 45px;
+
+              & > div {
+                text-align: center;
+                line-height: 1;
+
+              }
+            }
+
+            .no-transfer-group{
+              background: #fff;
+              padding: 10px;
+              text-align: center;
+            }
+
+            .transfer-group-list .transfer{
+              border: 1px solid #d6d6d6;
+              line-height: 1;
+              margin: 5px 0;
+              padding: 4px 0;
+              background: #fff;
+
+              & > div{
+                text-align: center;
+                padding: 0 5px;
+              }
+              & > div.airport{
+                color: $color-purple;
+                font-weight: bold;
+              }
+              & > div.price-return{
+                font-weight: bold;
+              }
+              & > div.dropoff{
+                color: $color-orange;
+                font-weight: bold;
+              }
+              & > div.airport,
+              & > div.dropoff{
+              }
+            }
+
+          }
+          .trans-group {
+            .price-one-way,
+            .price-return{
+              flex-basis: 17% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  /* END: Transzfer lista */
+
   /* Hotel lista */
   .viasale-lista-set-hotel{
     .style-standard {

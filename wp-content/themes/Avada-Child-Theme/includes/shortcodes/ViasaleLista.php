@@ -203,7 +203,7 @@ class ViasaleLista
 
       //echo '<pre>'; print_r($data); echo '</pre>';
 
-      if($data)
+      if($data && !empty($c->collected_transfers_by_zone))
       {
         $o .= '<div class="style-'.$this->template.'">';
 
@@ -221,7 +221,8 @@ class ViasaleLista
         $o .= '<div class="no-search-result">
         <h3>Nem találtunk elérhető transzfert.</h3>
         A keresési feltételek alapján nem találtunk transzfert az Ön részére. <br>
-        <small>Próbáljon más szűrőfeltételek alapján is keresni.</small>
+        Figyeljen arra, hogy a célállomás csak város lehet, így szigetre nem kereshet. <br>
+        <small>Próbáljon más szűrőfeltételek alapján is keresni.</small><br>
         </div>';
       }
 

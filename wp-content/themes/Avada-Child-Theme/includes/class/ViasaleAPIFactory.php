@@ -205,6 +205,8 @@ class ViasaleAPIFactory
   protected function getZones()
   {
     $data = array();
+    $this->child_groups = array();
+    $this->childed_zones_id = array();
 
     // Get search params
     $query = array();
@@ -280,6 +282,18 @@ class ViasaleAPIFactory
         curl_close($ch);
         return $data;
     }
+  }
+
+  public function getZonesToIDSet($zone_list_arr = array())
+  {
+    $set = array();
+    if(empty($zone_list_arr)) return array();
+
+    foreach ($zone_list_arr as $z) {
+      $set[] = $z['id'];
+    }
+
+    return $set;
   }
 
   public function getBoardTypes()
