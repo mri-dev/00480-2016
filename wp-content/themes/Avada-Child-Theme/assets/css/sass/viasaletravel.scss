@@ -2247,6 +2247,10 @@ body.hotel-travel-page
       -moz-border-radius: 5px;
       border-radius: 5px;
 
+      .rejtve {
+        display: none;
+      }
+
       .calc-head{
         background: #f8f8f8;
         text-align: center;
@@ -2274,6 +2278,7 @@ body.hotel-travel-page
       }
 
       .calc-content{
+
         .calc-row {
           margin-bottom: 11px;
           h3{
@@ -2318,62 +2323,119 @@ body.hotel-travel-page
               -webkit-border-radius: 0 5px 5px 0;
               -moz-border-radius: 0 5px 5px 0;
               border-radius: 0 5px 5px 0;
+
+              &.rejtve {
+                display: none;
+              }
             }
           }
         }
-        .room {
+        table.room {
+          font-size: 13px;
+          width: 100%;
+          margin: 2px 0;
+
           .room-head{
             background: $color-purple;
             font-weight: bold;
             color: white;
             padding: 10px;
             margin: 8px 0 0 0;
-            display: flex;
-            justify-content: space-between;
+
+            & > th {
+              padding: 5px;
+            }
 
             .room-name{
               color: white;
               font-family: 'Arial';
-              font-size: 14px;
+              font-size: 16px;
             }
-            .room-price-sum{
+            .fullPrice{
               font-size: 15px;
               color: lighten($color-orange, 10%);
             }
           }
-          .configs{
-            .cfg{
-              margin: 0;
-              padding: 4px 0;
-              border-bottom: 1px solid #d7d7d7;
-              color: black;
-              font-size: 12px;
 
-              & > div {
-                display: inline-block;
-                *display: inline;
-                zoom: 1;
-                padding: 5px 10px;
+          tr.priceLine {
+            .price {
+              text-align: center;
+              width: 20%;
+              font-weight: bold;
+              color: $color-orange;
+            }
+            .price.phuf {
+              font-weight: normal;
+              text-align: right;
+              color: #5c5c5c;
+            }
+            &.rejtve {
+              display: none;
+            }
+          }
 
-                &.name{
-                  width: 45%;
-                  font-weight: bold;
-                }
-                &.part-price{
-                  text-align: center;
-                  width: 25%;
-                }
-                &.sum-price{
-                  text-align: right;
-                  width: 30%;
-                  color: $color-orange;
-                }
-              }
-
-              .cfg:last-child{
-                border-bottom: none;
+          &.rejtve {
+            .room-head {
+              background: #5c5c5c;
+              .fullPrice {
+                color: #adadad;
+                font-size: 12px;
               }
             }
+          }
+        }
+        #childAgeRow{
+          position: relative;
+          background: #f3f3f3;
+          border: 1px solid #e2e2e2;
+          -webkit-box-shadow: 3px 3px 10px -5px #000;
+          -moz-box-shadow: 3px 3px 10px -5px #000;
+          box-shadow: 3px 3px 10px -5px #000;
+
+          &:before {
+            content: "";
+            top: -40px;
+            right: 0px;
+            position: absolute;
+            border-width: 20px 10px;
+            border-style: solid;
+            border-style: solid;
+            border-color: transparent transparent #bbbbbb transparent;
+          }
+
+          .child-header{
+            background: #d8d8d8;
+            text-align: center;
+            color: #222;
+            font-weight: bold;
+            padding: 5px;
+            font-size: 12px;
+          }
+          .child-age-holder {
+            background: #f2f2f2;
+          }
+          .child-age-column {
+            width: 50%;
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            padding: 8px !important;
+            margin: 0 -1px !important;
+
+            &.rejtve {
+              display: none;
+            }
+          }
+
+          select {
+            width: 100%;
+            border: 1px solid #d7d7d7;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            color: $color-orange;
+            font-size: 13px;
+            font-weight: bold;
           }
         }
       }

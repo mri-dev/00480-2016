@@ -178,56 +178,7 @@
 				</div>
 			</div>
 			<div class="hotel-column hotel-column-right">
-				<div class="travel-calculator-container">
-					<?php
-						$default_room = $ajanlat->getDefaultRoomData();
-					?>
-					<div class="calc-head">
-						<div class="calc-wrapper">
-							<h2>Ajánlat kalkulátor</h2>
-							<p>
-								Számolja ki álomutazását!
-							</p>
-						</div>
-					</div>
-					<div class="calc-content">
-						<div class="calc-wrapper">
-							<div class="calc-row">
-								<h3>Hányan szeretnének utazni?</h3>
-								<div class="fusion-row">
-									<div class="fusion-column fusion-spacing-yes fusion-layout-column fusion-one-half select-form">
-										<label for="Adults">Felnőttek</label>
-										<select class="" name="Adults" id="Adults">
-											<?php
-											$min_adults = $ajanlat->getMinAdults();
-											$max_adults = $ajanlat->getMaxAdults();
-											for($adn = $min_adults; $adn <= $max_adults; $adn++): ?>
-											<option value="<?php echo $adn; ?>" <?php if($default_room['min_adults']==$adn): echo 'selected="selected"'; endif; ?>><?php echo $adn; ?></option>
-											<?php endfor; ?>
-										</select>
-									</div>
-									<div class="fusion-column fusion-spacing-yes fusion-layout-column fusion-one-half fusion-column-last select-form">
-										<label for="Children">Gyermekek</label>
-										<select class="" name="Children" id="Children">
-											<?php
-											$default_room_children_min = $ajanlat->getDefaultRoomMinChildren();
-											$default_room_children_max = $ajanlat->getDefaultRoomMaxChildren();
-											for($adn = $default_room_children_min; $adn <= $default_room_children_max; $adn++): ?>
-											<option value="<?php echo $adn; ?>"><?php echo $adn; ?></option>
-											<?php endfor; ?>
-										</select>
-									</div>
-								</div>
-							</div>
-              <div class="calc-row">
-								<h3>Ajánlatok</h3>
-                <div id="term-ajanlat-result">
-
-                </div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<? include(locate_template('templates/travelcalc/v1.php')); ?>
 			</div>
 		</div>
 	</div>
