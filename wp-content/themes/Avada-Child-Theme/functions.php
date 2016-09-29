@@ -116,7 +116,6 @@ function vs_title($title) {
   if ( isset($wp_query->query_vars['hotel_id']) && !empty($wp_query->query_vars['hotel_id']) ) {
       $hotel = new ViasaleHotel($wp_query->query_vars['hotel_id']);
       $star = $hotel->getStar();
-      unset($hotel);
       $utazas_title = $hotel->getHotelName();
       if(empty($utazas_title)) {
           wp_redirect( get_option('siteurl') );
