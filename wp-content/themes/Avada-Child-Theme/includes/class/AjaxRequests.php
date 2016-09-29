@@ -7,86 +7,85 @@ class AjaxRequests
     return $this;
   }
 
-  public function get_term_offer()
+  public function send_travel_request()
   {
-    add_action( 'wp_ajax_'.__FUNCTION__, array( $this, 'getTravelOfferContent'));
-    add_action( 'wp_ajax_nopriv_'.__FUNCTION__, array( $this, 'getTravelOfferContent'));
+    add_action( 'wp_ajax_'.__FUNCTION__, array( $this, 'sendTravelRequest'));
+    add_action( 'wp_ajax_nopriv_'.__FUNCTION__, array( $this, 'sendTravelRequest'));
   }
 
-  public function getTravelOfferContent()
+  public function sendTravelRequest()
   {
     extract($_POST);
-    $offered_rooms  = array();
-    $offer_data     = array();
-    $rooms_price    = array();
-    $room_info      = array();
+    $return = array(
+      'error' => 0,
+      'msg'   => '',
+      'missing_elements' => [],
+      'missing' => 0,
+      'passed_params' => false
+    );
 
-    if(!$termid) return false;
+    $return['passed_params'] = $_POST;
 
-    // Utazás betöltése
-    $ajanlat = new ViasaleAjanlat($termid);
+    if(empty($_POST['keresztnev'])) $return['missing_elements'][] = 'keresztnev';
+    if(empty($_POST['vezeteknev'])) $return['missing_elements'][] = 'vezeteknev';
+    if(empty($_POST['cim'])) $return['missing_elements'][] = 'cim';
+    if(empty($_POST['telefon'])) $return['missing_elements'][] = 'telefon';
+    if(empty($_POST['szuletesi_datum'])) $return['missing_elements'][] = 'szuletesi_datum';
+    if(empty($_POST['email'])) $return['missing_elements'][] = 'email';
 
-    // Összes elérhető szoba
-    $rooms = $ajanlat->getRooms();
-
-    foreach ($rooms as $room_id => $room )
-    {
-      $part = $room['adults'][$adults];
-
-      if($part && ($children >= $part['min_children'] && $children <= $part['max_children'])) {
-        $offered_rooms[$room_id] = $part['children'][$children];
-
-
-        $room_info[$room_id] = array(
-          'name' => $rooms[$room_id]['name'],
-          'min_adults' => $rooms[$room_id]['min_adults'],
-          'max_adults' => $rooms[$room_id]['max_adults'],
-          'prices' => $rooms[$room_id]['price_types'],
-          'config' => $buckets
-        );
-      }
-
+    if(!empty($return['missing_elements'])) {
+      $return['error']  = 1;
+      $return['msg']    = 'Kérjük, hogy töltse ki az összes mezőt az ajánlatkérés elküldéséhez.';
+      $return['missing']= count($return['missing_elements']);
+      $this->returnJSON($return);
     }
 
-    if($offered_rooms) {
-      foreach ( $offered_rooms as $off_room_id => $off_room ) {
-        $price = 0;
-        $buckets = array();
+    $to       = get_option('admin_email');
+    $subject  = 'Utazási ajánlatkérés: '.$_POST['vezeteknev'] . ' '.$_POST['keresztnev'];
 
-        if($off_room['config_count'] == 1) {
-          if($off_room['configs']){
-            foreach ($off_room['configs'] as $cfg_id => $cfg) {
-              foreach ($cfg['buckets'] as $bucket) {
-                $bucket_price = (float)$rooms[$off_room_id]['price_types'][$bucket['price_type_id']]['price'];
-                $price += $bucket_price * $bucket['count'];
+    ob_start();
+  	  include(locate_template('templates/mails/utazasi-ajanlatkero-ertesites.php'));
+      $message = ob_get_contents();
+		ob_end_clean();
 
-                $buckets[] = array(
-                  'name'  => $rooms[$off_room_id]['price_types'][$bucket['price_type_id']]['name'],
-                  'count' => $bucket['count'],
-                  'price' => $rooms[$off_room_id]['price_types'][$bucket['price_type_id']]['price']
-                );
+    //add_filter( 'wp_mail_from', array($this, 'getMailSender') );
+    add_filter( 'wp_mail_from_name', array($this, 'getMailSenderName') );
+    add_filter( 'wp_mail_content_type', array($this, 'getMailFormat') );
 
-              }
-            }
-          }
+    $headers    = array();
+    $headers[]  = 'Reply-To: '.$_POST['vezeteknev'].' '.$_POST['keresztnev'].' <'.$_POST['email'].'>';
 
-          $room_info[$off_room_id]['configs'] = $buckets;
+    /* */
+    $alert = wp_mail( $to, $subject, $message, $headers );
 
-        }else {
-          $price = -1;
-        }
-
-        $rooms_price[$off_room_id] = $price;
-      }
+    if(!$alert) {
+      $return['error']  = 1;
+      $return['msg']    = 'Az ajánlatkérését jelenleg nem tudtuk elküldeni. Próbálja meg később.';
+      $this->returnJSON($return);
     }
+    /* */
 
-    $offer_data['rooms'] = $offered_rooms;
-    $offer_data['room_info'] = $room_info;
-    $offer_data['price_by_rooms'] = $rooms_price;
+    echo json_encode($return);
+    die();
+  }
 
-    echo json_encode($offer_data);
-    //print_r($offer_data);
+  public function getMailFormat(){
+      return "text/html";
+  }
 
+  public function getMailSender($default)
+  {
+    return get_option('admin_email');
+  }
+
+  public function getMailSenderName($default)
+  {
+    return get_option('blogname', 'Wordpress');
+  }
+
+  private function returnJSON($array)
+  {
+    echo json_encode($array);
     die();
   }
 

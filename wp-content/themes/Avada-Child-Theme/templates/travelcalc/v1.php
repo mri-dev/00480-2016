@@ -42,7 +42,7 @@
             <div class="child-age-column">
               <select class="form-control occupancy" id="childAge4" name="childAge4"></select>
             </div>
-          </div>          
+          </div>
         </div>
       </div>
       <div class="calc-row">
@@ -50,6 +50,58 @@
         <div id="term-ajanlat-result">
 
         </div>
+      </div>
+      <div id="travel-contact">
+        <form id="mailsend" onsubmit="return false;" method="post">
+        <div class="calc-head">
+          <h3>Ajánlatkérés</h3>
+          <label>Személyes adatok megadása</label>
+        </div>
+        <div class="calc-row">
+          <div>
+              <div class="contact-form">
+                <div class="megszolitas">
+                  <label for="megszolitas">Megszólítás</label>
+                  <select name="megszolitas" id="megszolitas">
+                    <option value="Úr">Úr</option>
+                    <option value="Hölgy">Hölgy</option>
+                  </select>
+                </div>
+                <div class="vezeteknev">
+                  <label for="vezeteknev">Vezetéknév</label>
+                  <input type="text" name="vezeteknev" id="vezeteknev" placeholder="" value="">
+                </div>
+                <div class="keresztnev">
+                  <label for="vezeteknev">Keresztnév</label>
+                  <input type="text" name="keresztnev" id="keresztnev" placeholder="" value="">
+                </div>
+                <div class="szuletesi_datum">
+                  <label for="szuletesi_datum">Születési dátum</label>
+                  <input type="text" class="datepicker" id="szuletesi_datum" name="szuletesi_datum" placeholder="" value="">
+                </div>
+                <div class="cim">
+                  <label for="cim">Cím</label>
+                  <input type="text" class="datepicker" id="cim" name="cim" placeholder="" value="">
+                </div>
+                <div class="telefon">
+                  <label for="telefon">Telefonszám</label>
+                  <input type="text" id="telefon" name="telefon" placeholder="+36 XX XXXXXX" value="">
+                </div>
+                <div class="email">
+                  <label for="email">E-mail cím</label>
+                  <input type="email" id="email" name="email" placeholder="" value="">
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="selected-travel-room">
+          <h4>Kiválasztott ajánlat:</h4>
+          <div id="selected-travel-room"></div>
+        </div>
+        <div class="send-mail">
+          <button type="button" id="mail-sending-btn" class="fusion-button" onclick="ajanlatkeresKuldes();" name="button">Ajánlatkérés küldése <i class="fa fa-envelope-o"></i></button>
+        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -108,9 +160,11 @@
                result = "Nem foglalható!";
                    jQuery('table[data-roomid="'+roomid+'"]').addClass('rejtve');
                    jQuery('table[data-roomid="'+roomid+'"] tr.priceLine').addClass('rejtve');
+                   jQuery('table[data-roomid="'+roomid+'"] input[type=radio]').prop('disabled', true);
            } else {
                   jQuery('table[data-roomid="'+roomid+'"]').removeClass('rejtve');
                    jQuery('table[data-roomid="'+roomid+'"] tr.priceLine').removeClass('rejtve');
+                   jQuery('table[data-roomid="'+roomid+'"] input[type=radio]').prop('disabled', false);
            }
            jQuery('table[data-roomid="'+roomid+'"] th.fullPrice').html(result);
        });
@@ -137,6 +191,57 @@ function setchildren(){
    jQuery('.occupancy').trigger("change");
 }
 
+function resetRoomCheck() {
+  jQuery('table.room input[type=radio]').prop('checked', false);
+  jQuery('#travel-contact').removeClass('show');
+}
+
+var mail_sending_progress = 0;
+var mail_sended = 0;
+function ajanlatkeresKuldes()
+{
+  if(mail_sending_progress == 0 && mail_sended == 0){
+    jQuery('#mail-sending-btn').html('Küldés folyamatban <i class="fa fa-spinner fa-spin"></i>').addClass('in-progress');
+    jQuery('#mailsend .missing').removeClass('missing');
+
+    mail_sending_progress = 1;
+    var mailparam  = jQuery('#mailsend').serializeArray();
+
+    jQuery.post(
+      '<?php echo admin_url('admin-ajax.php'); ?>?action=send_travel_request',
+      mailparam,
+      function(data){
+        var resp = jQuery.parseJSON(data);
+        if(resp.error == 0) {
+          mail_sended = 1;
+          jQuery('#mail-sending-btn').html('Ajánlatkérése elküldve <i class="fa fa-check-circle"></i>').removeClass('in-progress').addClass('sended');
+        } else {
+          jQuery('#mail-sending-btn').html('Ajánlatkérése küldése <i class="fa fa-envelope-o"></i>').removeClass('in-progress')
+          mail_sending_progress = 0;
+          if(resp.missing != 0) {
+            jQuery.each(resp.missing_elements, function(i,e){
+              jQuery('#mailsend #'+e).addClass('missing');
+            });
+          }
+          alert(resp.msg);
+        }
+
+        console.log(resp);
+      }
+    );
+  }
+}
+
+function trimChar(string, charToRemove) {
+    while(string.charAt(0)==charToRemove) {
+        string = string.substring(1);
+    }
+    while(string.charAt(string.length-1)==charToRemove) {
+        string = string.substring(0,string.length-1);
+    }
+    return string;
+}
+
 (function ($) {
 
   var result = "";
@@ -157,10 +262,11 @@ function setchildren(){
           if (parseInt(room['max_adults']) > maxadult) { maxadult = parseInt(room['max_adults']); };
           stopsales = (room['stop_sales']=="1")?"danger":"success";
           result += "<table class='room' data-roomid='"+roomid+"'><tr class='"+stopsales+" room-head' ><th colspan='3'>";
-          result += "<span class='glyphicon glyphicon-";
-          result += (stopsales=="danger")?"remove":"ok";
-          result += "'></span> ";
-          result += room['name'] + "</th><th style='text-align: right;' class='fullPrice'></th>";
+          result += "<input type='radio' id='sroom"+roomid+"' class='roomcheck' name='room_selected' value='"+roomid+"'/><label for='sroom"+roomid+"'>";
+          result += "<i class='fa fa-";
+          result += (stopsales=="danger")?"times":"check";
+          result += "'></i> ";
+          result += room['name'] + "</label></th><th style='text-align: right;' class='fullPrice'></th>";
 
           $.each(room['price_types'], function ( pricetypeid, pricetype ) {
               result += "<tr class='priceLine'>";
@@ -194,7 +300,6 @@ function setchildren(){
 
       setchildren();
       priceCalculate();
-
   });
 
   $('.occupancy').change( function() {
@@ -225,7 +330,31 @@ function setchildren(){
       for (var i=1; i<=children; i++) {
           childages[i-1]=($("#childAge"+i).val())
       };
+      resetRoomCheck();
       priceCalculate();
+  });
+
+  var selected_room = 0;
+
+  $(document).on( 'change', '.roomcheck', function() {
+    var rid = $(this).val();
+    var calc_price = $('table.room[data-roomid='+rid+'] .fullPrice').text();
+    var room_data = termdata['rooms'][rid];
+    var peoples = adults+' felnőtt';
+
+    if (children != 0) {
+      var c_ages = '';
+      $.each(childages, function(i,e){
+        c_ages += e+' éves, ';
+      });
+      c_ages = c_ages.replace(/, $/g,"");
+      peoples += ', '+children+' gyermek ('+c_ages+')';
+
+      console.log(childages);
+    }
+
+    $('#travel-contact').addClass('show');
+    $('#selected-travel-room').html('<div class="room"><input type="hidden" name="term[id]" value="'+termdata.term_id+'"><input type="hidden" name="term[url]" value="<?=get_option('siteurl').$_SERVER['REQUEST_URI']?>"><input type="hidden" name="term[date_from]" value="'+termdata.date_from+'"><input type="hidden" name="term[date_to]" value="'+termdata.date_to+'"><input type="hidden" name="term[board]" value="'+termdata.board_name+'"><input type="hidden" name="hotel[name]" value="'+termdata.hotel.name+'"><input type="hidden" name="room[name]" value="'+room_data.name+'"><input type="hidden" name="room[price]" value="'+calc_price+'"><input type="hidden" name="room[people]" value="'+peoples+'"><div class="name">'+room_data.name+'<div class="ppl">'+peoples+'</div></div><div class="price">'+calc_price+'</div></div>');
   });
 
 })(jQuery);

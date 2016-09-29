@@ -124,7 +124,7 @@ function vs_utazas_page_class_body( $classes ) {
 function vs_ajax_requests()
 {
   $ajax = new AjaxRequests();
-  $ajax->get_term_offer();
+  $ajax->send_travel_request();
 }
 add_action( 'init', 'vs_ajax_requests' );
 
