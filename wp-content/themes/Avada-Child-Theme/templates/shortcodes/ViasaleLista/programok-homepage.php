@@ -2,7 +2,7 @@
   <div class="item-holder">
     <div class="item-wrapper">
       <div class="line-left">
-        <div class="image"><img src="<?php echo $image; ?>" alt="<?php echo $title; ?>"></div>
+        <div class="image orientation-<?=strtolower($image_obj['o'])?>"><img src="<?php echo $image; ?>" alt="<?php echo $title; ?>"></div>
       </div>
       <div class="line-right">
         <div class="title"><h3><a href="<?php echo $link; ?>"><?php echo $title; ?></a></h3></div>

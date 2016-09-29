@@ -89,15 +89,28 @@ class ViasaleLista
       $o = '';
 
       $c = new ViasaleProgramok( $this->params );
-      $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__);
+      $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));
 
       $data = $c->getData();
 
+      $o .= '<div class="style-'.$this->template.'">';
+
       if($data)
-      foreach ($data as $d)
       {
-        $o .= $t->load_template($d);
+        foreach ($data as $d)
+        {
+          $o .= $t->load_template($d);
+        }
+
+      } else {
+        $o .= '<div class="no-search-result">
+        <h3>Nem találtunk elérhető programokat.</h3>
+        A keresési feltételek alapján nem találtunk programokat az Ön részére. <br>
+        <small>Próbáljon más szűrőfeltételek alapján is keresni.</small>
+        </div>';
       }
+
+      $o .= '</div>';
 
       return $o;
     }

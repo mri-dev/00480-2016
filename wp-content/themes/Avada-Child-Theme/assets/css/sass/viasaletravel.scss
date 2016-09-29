@@ -1249,108 +1249,260 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
   /* END: .viasale-lista-set-ajanlat */
 
   .viasale-lista-set-program {
-    padding-left: 100px;
-    margin: 0 -35px;
+    .style-homepage {
+      padding-left: 100px;
+      margin: 0 -35px;
+      min-height: 360px;
 
-    & > .item {
-      width: 49%;
-      display: inline-block;
-      *display: inline;
-      zoom: 1;
+      & > .item {
+        width: 49%;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
 
-      .item-holder{
-        padding: 20px 15px;
-        .item-wrapper{
-          background: #fff;
-          display: flex;
-          -webkit-box-shadow: 8px 8px 38px -10px #984b03;
-          -moz-box-shadow: 8px 8px 38px -10px #984b03;
-          box-shadow: 8px 8px 38px -10px #984b03;
-          overflow: hidden;
-
-          & > div {
-            height: 183px;
-            flex-basis: 50%;
-            align-items: center;
-            vertical-align: middle;
-          }
-          .line-left {
-            overflow:hidden;
-            .image {
-              width: 100%;
-              height: 100%;
-              overflow: hidden;
-              img{
-                width: 100%;
-                max-width: 100%;
-                height: auto;
-              }
-            }
-          }
-          .line-right {
-            padding: 10px;
-            -webkit-box-shadow: 0 0 20px -7px #000;
-            -moz-box-shadow: 0 0 20px -7px #000;
-            box-shadow: 0 0 20px -7px #000;
-          }
-          .title h3{
-            margin:0;
-
-            a {
-              text-transform: uppercase;
-              color: $color-orange;
-              font-size: 18px;
-              line-height: 1;
-            }
-          }
-
-          .desc {
-            color: #9c9c9c;
-            text-align: justify;
-            font-size: 12px;
-            line-height: 1.3;
-            margin: 10px 0;
-            height: 90px;
-            max-height: 90px;
-            overflow: hidden;
-          }
-
-          .action {
+        .item-holder{
+          padding: 20px 15px;
+          .item-wrapper{
+            background: #fff;
             display: flex;
+            -webkit-box-shadow: 8px 8px 38px -10px #984b03;
+            -moz-box-shadow: 8px 8px 38px -10px #984b03;
+            box-shadow: 8px 8px 38px -10px #984b03;
+            overflow: hidden;
 
             & > div {
-              line-height: 26px;
+              height: 183px;
+              flex-basis: 50%;
+              align-items: center;
+              vertical-align: middle;
             }
+            .line-left {
+              overflow:hidden;
+              .image {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
 
-            .price {
-              flex-basis: 40%;
-              color: $color-orange;
-              font-weight: bold;
-              font-size: 24px;
-            }
-            .button-link {
-              flex-basis: 60%;
-              a{
-                background: $color-orange !important;
-                display: block;
-                font-size: 16px;
-                text-align: center;
-                text-transform: uppercase;
-                color: white;
-
-                &:hover {
-                  background: $color-purple !important;
+                img{
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  -webkit-transform: translate(-50%, -50%);
+                  -moz-transform: translate(-50%, -50%);
+                  transform: translate(-50%, -50%);
+                }
+                &.orientation-l{
+                  img {
+                    height: 115%;
+                    max-height: 115%;
+                    width: auto;
+                    max-width: none;
+                  }
+                }
+                &.orientation-h{
+                  width: 115%;
+                  max-width: 115%;
+                  height: auto;
+                  max-height: none;
                 }
               }
             }
-          }
+            .line-right {
+              padding: 10px;
+              -webkit-box-shadow: 0 0 20px -7px #000;
+              -moz-box-shadow: 0 0 20px -7px #000;
+              box-shadow: 0 0 20px -7px #000;
+            }
+            .title {
+              height: 44px;
+              max-height: 44px;
+              overflow: hidden;
+            }
+            .title h3{
+              margin:0;
 
+              a {
+                text-transform: uppercase;
+                color: $color-orange;
+                font-size: 16px;
+                line-height: 1;
+              }
+            }
+
+            .desc {
+              color: #9c9c9c;
+              text-align: justify;
+              font-size: 12px;
+              line-height: 1.3;
+              margin: 10px 0;
+              height: 70px;
+              max-height: 70px;
+              overflow: hidden;
+            }
+
+            .action {
+              display: flex;
+
+              & > div {
+                line-height: 26px;
+              }
+
+              .price {
+                flex-basis: 40%;
+                color: $color-orange;
+                font-weight: bold;
+                font-size: 24px;
+              }
+              .button-link {
+                flex-basis: 60%;
+                a{
+                  background: $color-orange !important;
+                  display: block;
+                  font-size: 16px;
+                  text-align: center;
+                  text-transform: uppercase;
+                  color: white;
+
+                  &:hover {
+                    background: $color-purple !important;
+                  }
+                }
+              }
+            }
+
+          }
         }
       }
+    }
+    .style-standard {
+      margin: 0 -35px;
+      min-height: 360px;
 
+      & > .item {
+        width: 49%;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+
+        .item-holder{
+          padding: 20px 15px;
+          .item-wrapper{
+            background: #fff;
+            display: flex;
+            -webkit-box-shadow: 8px 8px 38px -10px #984b03;
+            -moz-box-shadow: 8px 8px 38px -10px #984b03;
+            box-shadow: 8px 8px 38px -10px #984b03;
+            overflow: hidden;
+
+            & > div {
+              height: 183px;
+              flex-basis: 50%;
+              align-items: center;
+              vertical-align: middle;
+            }
+            .line-left {
+              overflow:hidden;
+              .image {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+
+                img{
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  -webkit-transform: translate(-50%, -50%);
+                  -moz-transform: translate(-50%, -50%);
+                  transform: translate(-50%, -50%);
+                }
+                &.orientation-l{
+                  img {
+                    height: 115%;
+                    max-height: 115%;
+                    width: auto;
+                    max-width: none;
+                  }
+                }
+                &.orientation-h{
+                  width: 115%;
+                  max-width: 115%;
+                  height: auto;
+                  max-height: none;
+                }
+              }
+            }
+            .line-right {
+              padding: 10px;
+              -webkit-box-shadow: 0 0 20px -7px #000;
+              -moz-box-shadow: 0 0 20px -7px #000;
+              box-shadow: 0 0 20px -7px #000;
+            }
+            .title {
+              height: 44px;
+              max-height: 44px;
+              overflow: hidden;
+            }
+            .title h3{
+              margin:0;
+
+              a {
+                text-transform: uppercase;
+                color: $color-orange;
+                font-size: 16px;
+                line-height: 1;
+              }
+            }
+
+            .desc {
+              color: #9c9c9c;
+              text-align: justify;
+              font-size: 12px;
+              line-height: 1.3;
+              margin: 10px 0;
+              height: 70px;
+              max-height: 70px;
+              overflow: hidden;
+            }
+
+            .action {
+              display: flex;
+
+              & > div {
+                line-height: 26px;
+              }
+
+              .price {
+                flex-basis: 40%;
+                color: $color-orange;
+                font-weight: bold;
+                font-size: 24px;
+              }
+              .button-link {
+                flex-basis: 60%;
+                a{
+                  background: $color-orange !important;
+                  display: block;
+                  font-size: 16px;
+                  text-align: center;
+                  text-transform: uppercase;
+                  color: white;
+
+                  &:hover {
+                    background: $color-purple !important;
+                  }
+                }
+              }
+            }
+
+          }
+        }
+      }
     }
   }
 }
+
 .sziget-korok-holder{
   display: flex;
   align-items: baseline;
@@ -1864,7 +2016,77 @@ body.page-template.page-template-100-sziget{
     }
   }
 }
+body.viasale-program-page {
+  .program-content {
+    padding: 25px 0;
+    .program-info{
+      display: flex;
+      margin-top: 25px;
 
+      & > div.description{
+        flex-basis: 40%;
+        padding: 0 0 0 25px;
+
+        h2.desc-title{
+          color: black;
+          margin: 0 0 8px 0;
+          font-size: 24px;
+        }
+      }
+      & > div.profil-img{
+        flex-basis: 60%;
+      }
+    }
+  }
+  h2.galery-title{
+    color: black;
+    margin: 8px 0;
+    font-size: 24px;
+  }
+  h1.program-title {
+    color: $color-orange;
+    font-size: 38px;
+    line-height: 1;
+    margin: 0 0 15px 0;
+    font-weight: bold;
+  }
+  .galery-container {
+    margin-top: 25px;
+
+    .image-set{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 2px -2px;
+
+      .image-set-holder{
+        position: relative;
+        flex-basis: 20%;
+        height: 120px;
+        overflow: hidden;
+        max-height: 120px;
+        padding: 2px;
+
+        a{
+          overflow: hidden;
+          position: relative;
+          display:block;
+          height: 100%;
+        }
+
+        img{
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          max-width: 110%;
+          width: 110%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}
 body.utazas-travel-page,
 body.hotel-travel-page
 {
@@ -2501,7 +2723,7 @@ body.hotel-travel-page
             font-size: 13px;
             color: $color-orange;
             line-height: 28px;
-            padding: 0 8px; 
+            padding: 0 8px;
           }
 
           select.missing, input[type=text].missing, input[type=email].missing {

@@ -227,6 +227,7 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   {
     $set = array();
 
+    if($this->term_data['hotel']['pictures'])
     foreach ($this->term_data['hotel']['pictures'] as $key => $value) {
       if($key == 0) continue;
       $set[] = $value;

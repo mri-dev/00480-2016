@@ -1,10 +1,11 @@
 <?php
 class ViasaleAPIFactory
 {
-  const ZONES_TAG   = 'zones';
-  const TERMS_TAG   = 'terms';
-  const HOTELS_TAG   = 'hotels';
-  const TRANSFER_TAG   = 'transfers';
+  const ZONES_TAG       = 'zones';
+  const TERMS_TAG       = 'terms';
+  const HOTELS_TAG      = 'hotels';
+  const TRANSFER_TAG    = 'transfers';
+  const EVENTS_TAG      = 'events';
   public $api_uri   = 'http://viasale.net/api/v2/';
   public $date_format = 'Y / m / d';
 
@@ -33,10 +34,7 @@ class ViasaleAPIFactory
 
   public $hotel_stars = [2, 3, 4, 5];
 
-  public function __construct()
-  {
-
-  }
+  public function __construct() { }
 
   /**
   * Hotel adatok
@@ -179,11 +177,6 @@ class ViasaleAPIFactory
     return $data;
   }
 
-  public function format_date($date)
-  {
-    return date($this->date_format, strtotime($date));
-  }
-
   public function getZone( $zone_id, $params = array() )
   {
     // Get search params
@@ -259,6 +252,35 @@ class ViasaleAPIFactory
     return $this->zones_max_level;
   }
 
+  /**
+  * Programok listája
+  **/
+  public function getEvents( $params = array() )
+  {
+    $data = array();
+    // Get search params
+    $query = array();
+
+    $query = $this->build_search($query);
+
+    $uri = $this->api_uri . self::EVENTS_TAG.'/'.$query;
+
+    //echo $uri . '<br>';
+
+    $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
+
+    if(!$result || empty($result)) return false;
+
+    foreach ($result as $k => $r )
+    {
+      if(isset($params['id']) && $params['id'] != $r['id']) continue;
+      $data[] = $r;
+    }
+    unset($result);
+
+    return $data;
+  }
+
   private function load_api_content( $exc_uri = false )
   {
     if (!$exc_uri) {
@@ -294,6 +316,11 @@ class ViasaleAPIFactory
     }
 
     return $set;
+  }
+
+  public function format_date($date)
+  {
+    return date($this->date_format, strtotime($date));
   }
 
   public function getBoardTypes()
