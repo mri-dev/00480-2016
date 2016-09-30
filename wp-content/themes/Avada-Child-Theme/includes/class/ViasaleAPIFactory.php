@@ -37,6 +37,19 @@ class ViasaleAPIFactory
   public function __construct() { }
 
   /**
+  * Visszaadja egy sziget zóna ID sziget slug-ját.
+  **/
+  public function thisZoneIDSzigetSlug($id = 0)
+  {
+    if($this->sziget_ids)
+    foreach ($this->sziget_ids as $sziget => $sz ) {
+      if($id == $sz['id']) return $sziget;
+    }
+
+    return false;
+  }
+
+  /**
   * Hotel adatok
   **/
   public function getHotel($id)
@@ -260,6 +273,25 @@ class ViasaleAPIFactory
     $data = array();
     // Get search params
     $query = array();
+
+    if(isset($params['zones']) && !empty($params['zones'])){
+      $query['zones'] = implode(",", $params['zones']);
+    }
+    if(isset($params['hotels']) && !empty($params['hotels'])){
+      $query['hotels'] = implode(",", $params['hotels']);
+    }
+    if(isset($params['limit'])) {
+      $query['limit'] = $params['limit'];
+    }
+    if(isset($params['order'])) {
+      $query['sort_by'] = $params['order'];
+    }
+    if(isset($params['date_from']) && !empty($params['date_from'])) {
+      $query['date_from'] = $params['date_from'];
+    }
+    if(isset($params['date_to']) && !empty($params['date_to'])) {
+      $query['date_to'] = $params['date_to'];
+    }
 
     $query = $this->build_search($query);
 

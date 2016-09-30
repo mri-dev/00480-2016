@@ -18,6 +18,15 @@ class ViasaleHotelok extends ViasaleAPIFactory
       $szid = $this->sziget_ids[$this->arg['sziget']]['id'];
       $search[zones][] = $szid;
     }
+
+
+    if(isset($_GET['zona']) && !empty($_GET['zona'])) {
+      $search['zones'] = explode(",", $_GET['zona']);
+    }
+    if(isset($_GET['c']) && !empty($_GET['c'])) {
+      $search['min_star'] = (int)$_GET['c'];
+    }
+
     $search['max_hotels'] = 999;
     $search['order'] = 'price|asc';
 

@@ -16,6 +16,7 @@ class ViasaleTranszferek extends ViasaleAPIFactory
 
   public function getData()
   {
+    $is_sziget_city_list = false;
     $data = array();
     $search = array();
 
@@ -23,15 +24,38 @@ class ViasaleTranszferek extends ViasaleAPIFactory
       $this->zone_ids = $this->arg['zones'];
     }
 
+    if($sziget_zone_id = $this->thisZoneIDSzigetSlug($this->zone_ids[0])) {
+        $is_sziget_zone_id = $this->zone_ids[0];
+    }
+
     if(isset($this->arg['sziget']) && !empty($this->arg['sziget'])) {
-      $zona_lista = $this->getZones();
-      $sziget_varosok = $this->getZoneChild($zona_lista, $this->sziget_ids[$this->arg['sziget']]['id']);
-      $sziget_varosok_ids = $this->getZonesToIDSet($sziget_varosok);
+      $is_sziget_city_list = true;
+    }
 
-      unset($sziget_varosok);
-      unset($zona_lista);
+    if($is_sziget_zone_id) {
+      $is_sziget_city_list = true;
+    }
 
-      $this->zone_ids = $sziget_varosok_ids;
+    if($is_sziget_city_list) {
+      $sziget_id = false;
+
+      if($this->sziget_ids[$this->arg['sziget']]['id']) {
+        $sziget_id = $this->sziget_ids[$this->arg['sziget']]['id'];
+      }
+      if($is_sziget_zone_id) {
+        $sziget_id = $is_sziget_zone_id;
+      }
+
+      if ($sziget_id) {
+        $zona_lista = $this->getZones();
+        $sziget_varosok = $this->getZoneChild($zona_lista, $sziget_id);
+        $sziget_varosok_ids = $this->getZonesToIDSet($sziget_varosok);
+
+        unset($sziget_varosok);
+        unset($zona_lista);
+
+        $this->zone_ids = $sziget_varosok_ids;
+      }
     }
 
     $this->airports   = $this->getTransferAirports();

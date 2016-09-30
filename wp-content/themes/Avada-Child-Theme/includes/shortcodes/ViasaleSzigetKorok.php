@@ -31,7 +31,9 @@ class ViasaleSzigetKorok
 
         $szigetek = get_posts(array(
           'post_type'   => 'page',
-          'post_parent' => $sziget_holder_id
+          'post_parent' => $sziget_holder_id,
+          'orderby'   => 'menu_order',
+          'order'     => 'ASC'
         ));
 
         if($sziget_holder_id)

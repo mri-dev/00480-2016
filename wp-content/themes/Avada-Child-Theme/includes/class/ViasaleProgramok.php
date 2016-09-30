@@ -22,6 +22,13 @@ class ViasaleProgramok extends ViasaleAPIFactory
       $param['id'] = (int)$this->arg['id'];
     }
 
+    if(isset($this->arg['zones']) && !empty($this->arg['zones'])) {
+      foreach ( $this->arg['zones'] as $zid ) {
+        if($zid == '') continue;
+        $param['zones'][] = $zid;
+      }
+    }
+
     $events = $this->getEvents( $param );
 
     if($events)

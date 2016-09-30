@@ -88,6 +88,13 @@ class ViasaleLista
     {
       $o = '';
 
+      // Kereső eredmény params
+      if (is_null($this->params['tipus'])) {
+        if(isset($_GET[zona]) && !empty($_GET[zona])){
+          $this->params[zones] = explode(",",$_GET[zona]);
+        }
+      }
+
       $c = new ViasaleProgramok( $this->params );
       $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));
 
@@ -125,14 +132,16 @@ class ViasaleLista
       // Sziget listázás
       if(isset($this->params['sziget']) && !empty($this->params['sziget']))
       {
-        $szid = $this->sziget_ids[$this->params['sziget']]['id'];
+        $apic = new ViasaleAPIFactory();
+        $szid = $apic->sziget_ids[$this->params['sziget']]['id'];
         $this->params[zones][] = $szid;
+        unset($apic);
       }
 
       // Kereső eredmény params
       if (is_null($this->params['tipus'])) {
 
-        if(isset($_GET[zona]) && !empty($_GET[zona])){
+        if((isset($_GET[zona]) && !empty($_GET[zona])) && empty($this->params['sziget'])){
           $this->params[zones] = explode(",",$_GET[zona]);
         }
 
@@ -234,7 +243,6 @@ class ViasaleLista
         $o .= '<div class="no-search-result">
         <h3>Nem találtunk elérhető transzfert.</h3>
         A keresési feltételek alapján nem találtunk transzfert az Ön részére. <br>
-        Figyeljen arra, hogy a célállomás csak város lehet, így szigetre nem kereshet. <br>
         <small>Próbáljon más szűrőfeltételek alapján is keresni.</small><br>
         </div>';
       }
@@ -267,6 +275,12 @@ class ViasaleLista
         }
 
         $o .= '</div>';
+      } else {
+        $o .= '<div class="no-search-result">
+        <h3>Nem találtunk elérhető szállodát.</h3>
+        A keresési feltételek alapján nem találtunk szállodákat az Ön részére. <br>
+        <small>Próbáljon más szűrőfeltételek alapján is keresni.</small><br>
+        </div>';
       }
 
       return $o;

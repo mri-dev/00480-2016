@@ -870,7 +870,7 @@ html, body {
   position: absolute;
   left: 50%;
   top: 0;
-  height: 100%;
+  height: 115%;
   -moz-transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -879,7 +879,7 @@ html, body {
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .image img {
   width: auto;
   max-width: initial;
-  height: 100%;
+  height: 115%;
 }
 /* line 839, sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item .item-wrapper .overlay {
@@ -1107,7 +1107,7 @@ html, body {
   position: absolute;
   width: auto;
   max-width: initial;
-  height: 102%;
+  height: 115%;
   -moz-transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
