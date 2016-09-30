@@ -54,6 +54,7 @@ class ViasaleHotelok extends ViasaleAPIFactory
           'price_huf' => round($price * $exchange_rate),
           'price_v' => '€',
           'image' => $hotel['picture']['url'],
+          'image_obj' => $hotel['picture'],
           'total_travel_count' => $hotel['all_term_count'],
           'date_from' => $this->format_date($hotel['date_from']),
           'date_to' => $this->format_date($hotel['date_to']),

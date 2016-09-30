@@ -4,14 +4,16 @@
   <?php endif;?>
   <div class="item-wrapper trans-on">
     <div class="item-contents trans-on">
-      <div class="image">
+      <div class="image orientation-<?=strtolower($image_obj['orientation'])?>">
         <img src="<?php echo $image; ?>" alt="<?php echo $title; ?> &mdash; <?php echo $island_text; ?>" class="trans-on" />
+        <? if(false): ?>
         <div class="offer trans-on">
           <div class="count">
             <?php echo $total_travel_count; ?>
           </div>
           elérhető ajnálat
         </div>
+      <? endif; ?>
       </div>
       <div class="titles">
         <div class="title"><?php echo $title; ?></div>

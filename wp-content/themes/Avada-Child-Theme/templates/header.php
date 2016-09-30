@@ -316,9 +316,11 @@ if ( ! function_exists( 'avada_header_content_3' ) ) {
             <div class="secondary-header-line">
                 <div class="fusion-secondary-menu-social">' . (new Avada_Social_Icons())->render_social_icons(array('position' => 'header')) . '</div>
                 <div class="contact-phone"><ul>
-                    <li>(06) 1 - 445 44 55</li>
+                    <li>(1) 445 4455</li>
                     <li class="sep">|</li>
-                    <li>(+34) 600 029 339</li>
+                    <li>(1) 445 1655</li>
+                    <li class="sep">|</li>
+                    <li>(1) 445 1625</li>
                 </ul></div>
             </div><div class="fusion-clearfix"></div>';
         } elseif ( 'Banner' == $header_content_3 ) {
