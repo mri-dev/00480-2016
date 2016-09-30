@@ -7,6 +7,10 @@ class ViasaleProgram extends ViasaleAPIFactory
   public $arg = array();
   public $program_id = false;
   public $program_data = null;
+  public $default_image_tags = array(
+    'mid' => 'viasale-travel-no-image-500.jpg',
+    'hd' => 'viasale-travel-no-image-1024.jpg'
+  );
 
   public function __construct( $id = false, $arg = array() )
   {
@@ -40,14 +44,27 @@ class ViasaleProgram extends ViasaleAPIFactory
     }
     return $zones;
   }
+  public function getPrice()
+  {
+    $price = (int)$this->program_data['price_from'];
+
+    if($price == 0 || !$price || empty($price)) return false;
+
+    return $price;
+  }
   public function getDescriptions()
   {
     $infos = false;
 
-    if($this->program_data['descriptions'])
-    foreach ($this->program_data['descriptions'] as $key => $value) {
-      if($value['name'] == 'Leírás') continue;
-      $infos[] = $value;
+    if($this->program_data['descriptions']){
+      if(is_array($this->program_data['descriptions'])){
+        foreach ($this->program_data['descriptions'] as $key => $value) {
+          if($value['name'] == 'Leírás') continue;
+          $infos[] = $value;
+        }
+      } else {
+        $infos[] = $this->program_data['descriptions'];
+      }
     }
 
     return $infos;
@@ -66,7 +83,18 @@ class ViasaleProgram extends ViasaleAPIFactory
   }
   public function getProfilImage()
   {
-    return $this->program_data['pictures'][0];
+    $image = $this->program_data['pictures'][0];
+
+    if(empty($image))
+    {
+      $image = array(
+          'url' => IFROOT.'/images/'.$this->default_image_tags['hd'],
+          "size_x" => 1024,
+          "size_y" => 768,
+          "orientation" => "L"
+      );
+    }
+    return $image;
   }
   public function getMoreImages()
   {

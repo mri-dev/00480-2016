@@ -213,9 +213,17 @@ html, body {
       display: none;
     }
   }
+  h2.entry-title{
+    height: 50px;
+    max-height: 50px;
+    overflow: hidden;
+  }
   .fusion-post-content-container{
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.81);
+    color: rgba(255, 255, 255, 0.82);
+    height: 110px;
+    max-height: 110px;
+    overflow: hidden;
   }
 }
 
@@ -2019,6 +2027,7 @@ body.page-template.page-template-100-sziget{
 body.viasale-program-page {
   .program-content {
     padding: 25px 0;
+
     .program-info{
       display: flex;
       margin-top: 25px;
@@ -2031,6 +2040,20 @@ body.viasale-program-page {
           color: black;
           margin: 0 0 8px 0;
           font-size: 24px;
+        }
+
+        .price {
+          h2 {
+            color: black;
+            margin: 20px 0 0 0;
+            font-size: 22px;
+            strong{ color: $color-orange; }
+          }
+
+          em {
+            font-size: 13px;
+            color: #a5a5a5;
+          }
         }
       }
       & > div.profil-img{

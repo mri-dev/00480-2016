@@ -14,8 +14,26 @@
     <div class="description">
       <h2 class="desc-title">Program leírása</h2>
       <div class="desc-content">
-
+        <?
+          $desc = $program->getDescriptions();
+          if($desc):
+            if(!is_array($desc)) { echo nl2br($desc); } else {
+              foreach( $desc as $de ):
+        ?>
+        <h2><?php echo $de['name']; ?></h2>
+        <p>
+          <?php echo nl2br($de['description']); ?>
+        </p>
+        <? endforeach; } else:  ?>
+        Nincs leírás a programról.
+        <? endif; ?>
       </div>
+      <? $price = $program->getPrice(); if($price): ?>
+      <div class="price">
+        <h2>Program ára: <strong><?=$price?>€</strong>*</h2>
+        <em>* Az ár tájékoztató jellegű. Az árváltozás jogát fenntartjuk.</em>
+      </div>
+      <? endif; ?>
     </div>
   </div>
   <?
