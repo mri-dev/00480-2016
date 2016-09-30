@@ -4,7 +4,7 @@
   <?php endif;?>
   <div class="item-wrapper trans-on">
     <div class="item-contents trans-on">
-      <div class="image">
+      <div class="image orientation-<?=strtolower($image_obj['orientation'])?>">
         <img src="<?php echo $image; ?>" alt="<?php echo $title; ?> &mdash; <?php echo $island_text; ?>" class="trans-on" />
         <?php if($features && !empty($features)): ?>
         <div class="features trans-on">

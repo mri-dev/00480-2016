@@ -86,6 +86,7 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
           'price_huf' => round($price * $exchange_rate),
           'price_v' => '€',
           'image' => $hotel['picture']['url'],
+          'image_obj' => $hotel['picture'],
           'features' => array(
             'time' => array('text' => 'Időpont', 'value' => $this->format_date($hotel['date_from'])),
             'days' => array('text' => 'Napok száma', 'value' => $hotel['term_duration']),

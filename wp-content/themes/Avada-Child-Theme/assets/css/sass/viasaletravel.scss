@@ -204,26 +204,28 @@ html, body {
  }
 }
 
-.fusion-blog-layout-grid{
-  .fusion-post-content-wrapper{
-    padding: 20px 0 0 0;
-  }
-  .post {
-    .fusion-content-sep{
-      display: none;
+.frontpage-post-list{
+  .fusion-blog-layout-grid {
+    .fusion-post-content-wrapper{
+      padding: 20px 0 0 0;
     }
-  }
-  h2.entry-title{
-    height: 50px;
-    max-height: 50px;
-    overflow: hidden;
-  }
-  .fusion-post-content-container{
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.82);
-    height: 110px;
-    max-height: 110px;
-    overflow: hidden;
+    .post {
+      .fusion-content-sep{
+        display: none;
+      }
+    }
+    h2.entry-title{
+      height: 50px;
+      max-height: 50px;
+      overflow: hidden;
+    }
+    .fusion-post-content-container{
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.82);
+      height: 110px;
+      max-height: 110px;
+      overflow: hidden;
+    }
   }
 }
 
@@ -812,7 +814,7 @@ html, body {
 
         .item-wrapper {
           height: 100%;
-          padding: 15px;
+          padding: 0;
           background: #dadada;
           overflow: hidden;
           position: relative;
@@ -821,18 +823,30 @@ html, body {
           .image {
             z-index: 100;
             overflow: hidden;
-            position: absolute;
-            left: 50%;
-            top: 0;
-            height: 115%;
-            -moz-transform: translateX(-50%);
-            -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+            height: 100%;
+            max-height: 100%;
+            width: 100%;
+            max-height: 100%;
 
             img{
+              position: absolute;
+              left: 50%;
+              top: 50%;
               width: auto;
               max-width: initial;
               height: 115%;
+              -moz-transform: translate(-50%, -50%);
+              -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+            }
+
+            &.orientation-p {
+              img {
+                height: auto;
+                width: 115%;
+                max-width: 115%;
+                max-height: initial;
+              }
             }
           }
 
@@ -932,9 +946,9 @@ html, body {
         }
         .image {
           img {
-            -webkit-transform: scale(1.2);
-            -moz-transform: scale(1.2);
-            transform: scale(1.2);
+            -webkit-transform: scale(1.2) translate(-44%, -44%);
+            -moz-transform: scale(1.2) translate(-44%, -44%);
+            transform: scale(1.2) translate(-44%, -44%);
             -webkit-filter: blur(2px);
             -moz-filter: blur(2px);
             -o-filter: blur(2px);
@@ -987,16 +1001,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
         flex-basis: 50%;
 
         .image {
-          width: 100%;
-          height: auto;
+          position: absolute;
+          width: 115%;
+          max-width: 115%;
+          height: 115%;
+          max-height: 115%;
           -moz-transform: translate(-50%, -50%);
           -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
           top: 50%;
+          left: 50%;
 
           img {
             height: auto;
-            width: 102%;
+            max-height: initial;
+            width: 115%;
+            max-width: 115%;
           }
         }
       }
@@ -1056,14 +1076,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             img{
               z-index: 100;
               left: 50%;
-              top:0;
+              top: 50%;
               position: absolute;
               width: auto;
               max-width: initial;
               height: 115%;
-              -moz-transform: translateX(-50%);
-              -webkit-transform: translateX(-50%);
-              transform: translateX(-50%);
+              -moz-transform: translate(-50%, -50%);
+              -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
             }
 
             .features{
@@ -1095,6 +1115,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
                   background: #e2e2e2;
                   height: 1px;
                 }
+              }
+            }
+
+            &.orientation-p {
+              img {
+                height: auto;
+                width: 115%;
+                max-width: 115%;
+                max-height: initial;
               }
             }
           }
@@ -1230,14 +1259,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
         }
         .image{
           img{
-            -webkit-transform: scale(1.2) translateX(-50%);
-            -moz-transform: scale(1.2) translateX(-50%);
-            transform: scale(1.2) translateX(-50%);
+            -webkit-transform: scale(1.2) translate(-44%, -44%);
+            -moz-transform: scale(1.2) translate(-44%, -44%);
+            transform: scale(1.2) translate(-44%, -44%);
             -webkit-filter: blur(2px);
             -moz-filter: blur(2px);
             -o-filter: blur(2px);
             -ms-filter: blur(2px);
             filter: blur(2px);
+            -webkit-transform-origin: center;
+            -moz-transform-origin: center;
+            transform-origin: center;
           }
         }
       }
@@ -1543,7 +1575,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
         font-size: 22px;
         text-transform: uppercase;
         pointer-events: none;
-        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.41);
       }
     }
 
