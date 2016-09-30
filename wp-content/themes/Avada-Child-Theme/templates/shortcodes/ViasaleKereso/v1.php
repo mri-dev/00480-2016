@@ -57,8 +57,8 @@
             <div class="ico">
               <i class="fa fa-building"></i>
             </div>
-            <label for="search_form_hotel">Hotel</label>
-            <input type="text" id="search_form_hotel" name="hotel" value="<?php echo $_GET["hotel"]; ?>" placeholder="Összes Hotel">
+            <label for="search_form_hotel" class="trans-on">Hotel</label>
+            <input type="text" id="search_form_hotel" name="hotel" value="<?php echo $_GET["hotel"]; ?>" placeholder="Összes Hotel" class="trans-on">
             <input type="hidden" id="hotel_id" name="hid" value="<?php echo $_GET["hid"]; ?>">
             <div class="autocomplete-result-conteiner" id="hotel_autocomplete"></div>
           </div>
@@ -67,8 +67,8 @@
             <div class="ico">
               <i class="fa fa-star"></i>
             </div>
-            <label for="search_form_kategoria">Kategória</label>
-            <select class="" id="search_form_kategoria" name="c">
+            <label for="search_form_kategoria" class="trans-on">Kategória</label>
+            <select class="trans-o" id="search_form_kategoria" name="c">
               <option value="" selected="selected">Bármely</option>
               <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
               <? if($hotelStars) foreach ($hotelStars as $star) { ?>
@@ -80,8 +80,8 @@
             <div class="ico">
               <i class="fa fa-coffee"></i>
             </div>
-            <label for="search_form_ellatas">Ellátás</label>
-            <select class="" id="search_form_ellatas" name="e">
+            <label for="search_form_ellatas" class="trans-on">Ellátás</label>
+            <select class="trans-o" id="search_form_ellatas" name="e">
               <option value="" selected="selected">Bármely</option>
               <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
               <? if($boardTypes) foreach ($boardTypes as $board_id => $board) { ?>
@@ -93,15 +93,15 @@
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
-            <label for="search_form_indulas">Indulás</label>
-            <input type="text" class="search-datepicker" dtp="from" id="search_form_indulas" name="tf" value="<?php if(isset($_GET['tf'])) { echo str_replace('-'," / ", $_GET['tf']); } else { echo date('Y / m / d', strtotime('+1 days')); }  ?>" readonly="readonly">
+            <label for="search_form_indulas" class="trans-on">Indulás</label>
+            <input type="text" class="search-datepickertrans-o" dtp="from" id="search_form_indulas" name="tf" value="<?php if(isset($_GET['tf'])) { echo str_replace('-'," / ", $_GET['tf']); } else { echo date('Y / m / d', strtotime('+1 days')); }  ?>" readonly="readonly">
           </div>
           <div class="input w20 row-bottom last-item">
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
-            <label for="search_form_erkezes">Érkezés</label>
-            <input type="text" class="search-datepicker" dtp="to" id="search_form_erkezes" name="tt" value="<?php if(isset($_GET['tt'])) { echo str_replace('-'," / ", $_GET['tt']); } else { echo date('Y / m / d', strtotime('+30 days')); }  ?>">
+            <label for="search_form_erkezes" class="trans-on">Érkezés</label>
+            <input type="text" class="search-datepickertrans-o" dtp="to" id="search_form_erkezes" name="tt" value="<?php if(isset($_GET['tt'])) { echo str_replace('-'," / ", $_GET['tt']); } else { echo date('Y / m / d', strtotime('+30 days')); }  ?>">
           </div>
           <div class="input search-button w20">
             <div class="button-wrapper">
@@ -266,7 +266,71 @@ var search_form_uri = {
 function bindSearchFormURI() {
   var sel_cat_key = jQuery('form#modul-page-searcher-form-v1 input[type=radio][name=cat]:checked').val();
   if(typeof sel_cat_key === 'undefined') return;
+
+  resetSearchInputs();
+
+  switch(sel_cat_key){
+    case 'trans':
+      transferSearchPrepare();
+    break;
+    case 'prog':
+      programsSearchPrepare();
+    break;
+  }
   jQuery('form#modul-page-searcher-form-v1').attr('action', search_form_uri[sel_cat_key]);
+}
+
+function transferSearchPrepare() {
+  jQuery('label[for=search_form_place]').text('Melyik régióba / városba keres transzfert?');
+
+  jQuery('label[for=search_form_hotel]').addClass('inactive');
+  jQuery('#search_form_hotel').prop('disabled', true);
+  jQuery('label[for=search_form_hotel]').addClass('inactive');
+  jQuery('#search_form_kategoria').prop('disabled', true);
+  jQuery('label[for=search_form_kategoria]').addClass('inactive');
+  jQuery('#search_form_ellatas').prop('disabled', true);
+  jQuery('label[for=search_form_ellatas]').addClass('inactive');
+  jQuery('#search_form_indulas').prop('disabled', true);
+  jQuery('label[for=search_form_indulas]').addClass('inactive');
+  jQuery('#search_form_erkezes').prop('disabled', true);
+  jQuery('label[for=search_form_erkezes]').addClass('inactive');
+
+  jQuery('#zone_multiselect .lvl-0').addClass('disabled');
+}
+
+function programsSearchPrepare() {
+  jQuery('label[for=search_form_place]').text('Melyik régióba / városba keres programokat?');
+
+  jQuery('label[for=search_form_hotel]').addClass('inactive');
+  jQuery('#search_form_hotel').prop('disabled', true);
+  jQuery('label[for=search_form_hotel]').addClass('inactive');
+  jQuery('#search_form_kategoria').prop('disabled', true);
+  jQuery('label[for=search_form_kategoria]').addClass('inactive');
+  jQuery('#search_form_ellatas').prop('disabled', true);
+  jQuery('label[for=search_form_ellatas]').addClass('inactive');
+  jQuery('#search_form_indulas').prop('disabled', true);
+  jQuery('label[for=search_form_indulas]').addClass('inactive');
+  jQuery('#search_form_erkezes').prop('disabled', true);
+  jQuery('label[for=search_form_erkezes]').addClass('inactive');
+
+  jQuery('#zone_multiselect .lvl-0').addClass('disabled');
+}
+
+function resetSearchInputs() {
+  jQuery('label[for=search_form_place]').text('Melyik régióba utazna?');
+
+  jQuery('#search_form_hotel').prop('disabled', false);
+  jQuery('label[for=search_form_hotel]').removeClass('inactive');
+  jQuery('#search_form_kategoria').prop('disabled', false);
+  jQuery('label[for=search_form_kategoria]').removeClass('inactive');
+  jQuery('#search_form_ellatas').prop('disabled', false);
+  jQuery('label[for=search_form_ellatas]').removeClass('inactive');
+  jQuery('#search_form_indulas').prop('disabled', false);
+  jQuery('label[for=search_form_indulas]').removeClass('inactive');
+  jQuery('#search_form_erkezes').prop('disabled', false);
+  jQuery('label[for=search_form_erkezes]').removeClass('inactive');
+
+  jQuery('#zone_multiselect .lvl-0').removeClass('disabled');
 }
 
 function collect_zone_checkbox()
