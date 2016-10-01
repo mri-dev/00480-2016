@@ -95,7 +95,7 @@
 							<ul class="nav-tabs">
 								<li class="active"><a class="tab-link" data-toggle="tab" href="#info"><h4 class="fusion-tab-heading">Információk</h4></a></li>
 								<li><a class="tab-link" data-toggle="tab" href="#more-travel"><h4 class="fusion-tab-heading">További időpontok</h4></a></li>
-								<li><a class="tab-link" data-toggle="tab" href="#map"><h4 class="fusion-tab-heading">Térkép</h4></a></li>
+								<li style="display: none;"><a class="tab-link" data-toggle="tab" href="#map"><h4 class="fusion-tab-heading">Térkép</h4></a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
@@ -195,6 +195,21 @@
 
 		console.log(map);
 	}
+
+
+	(function($)
+	{
+		/*
+	  $('.image-set-galery .image-set').slick({
+			infinite: true,
+			slidesToShow: 4,
+			slidesToScroll: 4,
+			slider: 'div'
+		});
+		*/
+
+
+	})(jQuery);
   </script>
 
 </div>

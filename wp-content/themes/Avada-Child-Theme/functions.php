@@ -24,7 +24,7 @@ function theme_enqueue_styles() {
     wp_enqueue_script('jquery-ui', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.min.js', array('jquery'));
     wp_enqueue_script('mocjax', IFROOT . '/assets/js/autocomplete/scripts/jquery.mockjax.js');
     wp_enqueue_script('autocomplete', IFROOT . '/assets/js/autocomplete/dist/jquery.autocomplete.min.js');
-    wp_enqueue_script('slick', IFROOT . '/assets/vendor/slick/slick.min.js', array('jquery'), '', true);
+    wp_enqueue_script('slick', IFROOT . '/assets/vendor/slick/slick.min.js', array('jquery'), '');
 
     if (
       (isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id'])) ||

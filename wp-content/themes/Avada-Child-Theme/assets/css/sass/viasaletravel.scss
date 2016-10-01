@@ -2155,11 +2155,15 @@ body.hotel-travel-page
     padding-top: 30px;
   }
   .image-set-galery{
+    width: 100%;
+    position: relative;
     .profil {
       img {
         width: 100%;
       }
     }
+
+
     .image-set{
       display: flex;
       flex-wrap: wrap;
