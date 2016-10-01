@@ -18,10 +18,13 @@ function theme_enqueue_styles() {
     wp_enqueue_style( 'avada-child-stylesheet', IFROOT . '/style.css?' . ( (DEVMODE === true) ? time() : '' ) );
     wp_enqueue_style( 'jquery-ui-str', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.structure.min.css');
     wp_enqueue_style( 'jquery-ui', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.theme.min.css');
+    wp_enqueue_style( 'slick', IFROOT . '/assets/vendor/slick/slick.css');
+    wp_enqueue_style( 'slick-theme', IFROOT . '/assets/vendor/slick/slick-theme.css');
 
     wp_enqueue_script('jquery-ui', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.min.js', array('jquery'));
     wp_enqueue_script('mocjax', IFROOT . '/assets/js/autocomplete/scripts/jquery.mockjax.js');
     wp_enqueue_script('autocomplete', IFROOT . '/assets/js/autocomplete/dist/jquery.autocomplete.min.js');
+    wp_enqueue_script('slick', IFROOT . '/assets/vendor/slick/slick.min.js', array('jquery'), '', true);
 
     if (
       (isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id'])) ||
@@ -65,6 +68,13 @@ add_filter('query_vars', 'vs_query_vars');
 
 function vs_custom_template($template) {
   global $post, $wp_query;
+
+  /*
+  echo '<pre>';
+  print_r($wp_query->query_vars);
+  echo '</pre>';
+  */
+
   if ( isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id']) ) {
       add_filter( 'body_class','vs_utazas_page_class_body' );
     return get_stylesheet_directory() . '/utazas.php';
@@ -92,9 +102,15 @@ function vs_hotel_page_class_body( $classes ) {
   return $classes;
 }
 
+
 function vs_title($title) {
   global $wp_query;
   $new = array();
+
+
+
+  //$titles = apply_filters( 'pre_get_document_title', '' );
+  //echo $titles;
 
   // Utazás title
   if ( isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id']) ) {

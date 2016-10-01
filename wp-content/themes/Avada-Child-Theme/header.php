@@ -171,7 +171,15 @@ if ( 'modern' == Avada()->settings->get( 'mobile_menu_design' ) ) {
 		<?php if ( has_action( 'avada_override_current_page_title_bar' ) ) : ?>
 			<?php do_action( 'avada_override_current_page_title_bar', $c_pageID ); ?>
 		<?php else : ?>
-			<?php avada_current_page_title_bar( $c_pageID ); ?>
+			<?php
+				if(
+					(empty($wp_query->query_vars['program_id'])) &&
+					(empty($wp_query->query_vars['hotel_id'])) &&
+					(empty($wp_query->query_vars['utazas_id']))
+				){
+					avada_current_page_title_bar( $c_pageID );
+				}
+			?>
 		<?php endif; ?>
 
 		<?php if ( is_page_template( 'contact.php' ) && Avada()->settings->get( 'recaptcha_public' ) && Avada()->settings->get( 'recaptcha_private' ) ) : ?>

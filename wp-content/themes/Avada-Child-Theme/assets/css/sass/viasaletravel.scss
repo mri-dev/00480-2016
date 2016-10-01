@@ -3133,16 +3133,17 @@ body.hotel-travel-page
   }
 }
 
-body.archive.category{
+body.archive.category,
+body.single-post,
+body.search {
   #content {
     padding-top: 25px;
   }
-}
-body.single-post {
   #main {
     padding-top: 25px;
   }
 }
+
 .fusion-social-networks .fusion-social-networks-wrapper a{
   color:white !important;
 }
