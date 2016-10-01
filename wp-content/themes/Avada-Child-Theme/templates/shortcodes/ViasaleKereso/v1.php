@@ -94,14 +94,14 @@
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_indulas" class="trans-on">Indulás</label>
-            <input type="text" class="search-datepickertrans-o" dtp="from" id="search_form_indulas" name="tf" value="<?php if(isset($_GET['tf'])) { echo str_replace('-'," / ", $_GET['tf']); } else { echo date('Y / m / d', strtotime('+1 days')); }  ?>" readonly="readonly">
+            <input type="text" class="search-datepicker trans-o" dtp="from" id="search_form_indulas" name="tf" value="<?php if(isset($_GET['tf'])) { echo str_replace('-'," / ", $_GET['tf']); } else { echo date('Y / m / d', strtotime('+1 days')); }  ?>" readonly="readonly">
           </div>
           <div class="input w20 row-bottom last-item">
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_erkezes" class="trans-on">Érkezés</label>
-            <input type="text" class="search-datepickertrans-o" dtp="to" id="search_form_erkezes" name="tt" value="<?php if(isset($_GET['tt'])) { echo str_replace('-'," / ", $_GET['tt']); } else { echo date('Y / m / d', strtotime('+30 days')); }  ?>">
+            <input type="text" class="search-datepicker trans-o" dtp="to" id="search_form_erkezes" name="tt" value="<?php if(isset($_GET['tt'])) { echo str_replace('-'," / ", $_GET['tt']); } else { echo date('Y / m / d', strtotime('+30 days')); }  ?>">
           </div>
           <div class="input search-button w20">
             <div class="button-wrapper">

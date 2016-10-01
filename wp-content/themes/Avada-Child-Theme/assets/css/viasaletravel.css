@@ -567,7 +567,7 @@ html, body {
 
 /* line 446, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
 .viasale-lista-holder .viasale-lista-set-transzfer .style-szigetlanding .transfer .transfer-list > div .transfer-header {
-  font-size: 12px;
+  font-size: 10px;
   height: 45px;
 }
 
@@ -575,6 +575,7 @@ html, body {
 .viasale-lista-holder .viasale-lista-set-transzfer .style-szigetlanding .transfer .transfer-list > div .transfer-header > div {
   text-align: center;
   line-height: 1;
+  color: #888888;
 }
 
 /* line 457, /Users/MolnarIstvan/Documents/Munka/Idea Fontana Kft/Git/ViaSaleTravel/00480-2016/wp-content/themes/Avada-Child-Theme/assets/css/sass/viasaletravel.scss */
