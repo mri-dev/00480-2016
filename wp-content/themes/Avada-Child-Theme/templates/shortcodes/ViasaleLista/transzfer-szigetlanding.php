@@ -12,8 +12,8 @@
           <div class="transfer-header">
             <div class="airport">Indulás</div>
             <div class="dropoff">Végállomás</div>
-            <div class="price-one-way">Jegyár</div>
-            <div class="price-return">Return jegyár</div>
+            <div class="price-one-way">€ / fő*</div>
+            <div class="price-return">Oda - Vissza</div>
           </div>
         <div class="transfer-group-list">
           <? $group_pub = 0; foreach ($transfers as $transfer) { if($transfer['service_type'] != 'group') continue; $group_pub++;?>
@@ -25,6 +25,7 @@
             </div>
           <? } ?>
         </div>
+        <em>* a negyedik fő ingyenesen utazik!</em>
         <? if($group_pub == 0): ?>
         <div class="no-transfer-group">
           Jelenleg nincs elérhető csoportos transzfer.
@@ -40,8 +41,8 @@
               <div class="airport">Indulás</div>
               <div class="dropoff">Végállomás</div>
               <div class="pax">Személyek száma</div>
-              <div class="price-one-way">Jegyár</div>
-              <div class="price-return">Return jegyár</div>
+              <div class="price-one-way">€ / gépkocsi <br> (1 irány)</div>
+              <div class="price-return">Oda - Vissza</div>
             </div>
             <div class="transfer-group-list">
               <? $group_pri = 0; foreach ($transfers as $transfer) { if($transfer['service_type'] != 'private') continue; $group_pri++;?>

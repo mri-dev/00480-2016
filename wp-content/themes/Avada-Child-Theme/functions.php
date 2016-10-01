@@ -175,5 +175,5 @@ function get_ajax_url( $function )
 // Katalógus hivatkozása
 function catalog_url()
 {
-    return '/';
+    return 'http://issuu.com/viasaletravel/docs/viasale_travel_online_katalogus_201?e=15904679/34190920';
 }

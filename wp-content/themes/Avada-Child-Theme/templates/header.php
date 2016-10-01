@@ -310,7 +310,7 @@ if ( ! function_exists( 'avada_header_content_3' ) ) {
             $html .= '
             <div class="primary-header-line">
                 <div class="head-search">' . get_search_form( false ) . '</div>
-                <div class="katalogus-header-link"><a href="'.catalog_url().'">Katalógus</a></div>
+                <div class="katalogus-header-link"><a target="_blank" href="'.catalog_url().'">Katalógus</a></div>
             </div><div class="fusion-clearfix"></div>';
             $html .= '
             <div class="secondary-header-line">
