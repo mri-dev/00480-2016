@@ -116,4 +116,5 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
   }
 
 }
+
 ?>

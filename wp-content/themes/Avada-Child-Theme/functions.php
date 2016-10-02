@@ -194,3 +194,5 @@ function catalog_url()
     return 'https://goo.gl/forms/QHvCOddly8JJ2eku1';
     //return 'http://issuu.com/viasaletravel/docs/viasale_travel_online_katalogus_201?e=15904679/34190920';
 }
+
+?>

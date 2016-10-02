@@ -1,5 +1,5 @@
-<?php 
-class AvadaTemplate 
+<?php
+class AvadaTemplate
 {
 	protected function row_start()
 	{
@@ -11,7 +11,7 @@ class AvadaTemplate
 		return '</div>';
 	}
 
-	protected function fullrow( $content = '' ) 
+	protected function fullrow( $content = '' )
 	{
 		$out = '<div class="fusion-row">
 					<div class="fusion-one-full fusion-layout-column fusion-column-last">
@@ -24,7 +24,7 @@ class AvadaTemplate
 
 	protected function column( $index = 1, $column = 1, $content='', $spacer = 'yes', $last = false )
 	{
-		
+
 		$indexkeys = array(
 			1 => 'one',
 			2 => 'two',
@@ -50,3 +50,4 @@ class AvadaTemplate
 		return $out;
 	}
 }
+?>
