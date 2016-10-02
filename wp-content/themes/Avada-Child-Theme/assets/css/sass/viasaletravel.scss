@@ -532,9 +532,10 @@ html, body {
         }
 
         .item-wrapper {
+          cursor: pointer;
           height: 100%;
           background: #ffffff;
-          border: 10px solid #f2f2f2;
+          border: 10px solid #e4e4e4;
           overflow: hidden;
           position: relative;
           color: #5c5c5c;
@@ -604,38 +605,39 @@ html, body {
             }
           }
 
-          .titles {
+          .content-text {
+            height: 110px;
             display: block;
             position: relative;
-            padding: 5px 10px 0 10px;
 
-            .title {
+            .titles {
               display: block;
-              color: $color-purple;
-              font-size: 15px;
-              height: 45px;
-              text-align: center;
-              line-height: 1.3;
-              font-family: 'Arial Black', arial;
-            }
-            .star {
-              position: absolute;
-              right: 0;
-              left: 0;
-              top: 43px;
-              z-index: 999;
-              text-align: center;
-            }
-          }
+              position: relative;
+              padding: 5px 10px 0 10px;
 
-          .place {
-            text-align: center;
-            padding: 10px;
-            margin-top: 10px;
-            color: $color-orange;
+              .title {
+                display: block;
+                color: $color-purple;
+                font-size: 15px;
+                text-align: center;
+                line-height: 1.3;
+                font-family: 'Arial Black', arial;
+              }
+              .star {
+                z-index: 999;
+                text-align: center;
+              }
+            }
 
-            .city{
-              color: lighten($color-orange, 5%);
+            .place {
+              font-size: 14px;
+              text-align: center;
+              padding: 8px 10px;
+              color: $color-orange;
+
+              .city{
+                color: lighten($color-orange, 5%);
+              }
             }
           }
 
@@ -669,14 +671,12 @@ html, body {
               }
             }
             .near-offer {
+              display: none;
               text-align:center;
               background: #f2f2f2;
               font-size: 12px;
               color: black;
               padding-top: 8px;
-
-
-
               .near-date {
                 .label {
                   font-size: 11px;
@@ -726,7 +726,7 @@ html, body {
 
       .item:hover {
         .item-wrapper{
-          border: 10px solid $color-purple;
+          border: 10px solid #d6d6d6;
         }
         .image{
           img{
@@ -773,6 +773,7 @@ html, body {
         padding: 10px;
 
         .item-wrapper {
+          cursor: pointer;
           height: 100%;
           padding: 0;
           background: #dadada;
@@ -822,7 +823,7 @@ html, body {
           }
 
           .titles, .price, .star {
-            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.81);
           }
 
           .prices, .titles {
@@ -1012,6 +1013,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
         }
 
         .item-wrapper {
+          cursor: pointer;
           height: 100%;
           background: #ffffff;
           border: 10px solid white;
@@ -1049,10 +1051,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             .features{
               position: absolute;
               bottom: -100%;
-              font-size: 12px;
-              color: #8c8c8c;
+              font-size: 14px;
+              color: #5c5c5c;
               left: 0;
-              width: 66.6666%;
+              right: 0;
+              margin: 0 auto;
+              width: 90%;
               z-index: 200;
               background: rgba(255, 255, 255, 0.9);
 
@@ -1066,7 +1070,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
                 }
 
                 .feat-value {
-                  color: black;
+                  color: saturate(darken($color-orange, 8%), 5);
                   font-weight: bold;
                 }
 
@@ -1090,7 +1094,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 
           .star {
             i{
-              font-size: 14px;
+              font-size: 10px;
               color: #dadada;
             }
 
@@ -1099,34 +1103,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             }
           }
 
-          .titles {
-            display: block;
-            position: relative;
-            padding: 10px 10px 0 10px;
+          .content-text {
+            height: 90px;
+            max-height: 90px;
+            overflow: hidden;
 
-            .title {
+            .titles {
               display: block;
-              color: $color-purple;
-              font-size: 15px;
-              height: 45px;
-              text-align: left;
-              font-family: 'Arial Black', arial;
-            }
-            .star {
-              position: absolute;
-              right: 10px;
-              top: 43px;
-              z-index: 999;
-              text-align: right;
-            }
-          }
+              position: relative;
+              padding: 10px 10px 0 10px;
 
-          .place {
-            padding: 10px;
-            color: $color-orange;
+              .title {
+                display: block;
+                color: $color-purple;
+                font-size: 15px;
+                text-align: left;
+                font-family: 'Arial Black', arial;
+              }
+              .star {
+                line-height: 15px;
+                margin-left: 5px;
+              }
+            }
 
-            .city{
-              color: lighten($color-orange, 5%);
+            .place {
+              font-size: 14px;
+              padding: 8px 10px 0 10px;
+              color: $color-orange;
+
+              .city{
+                color: lighten($color-orange, 5%);
+              }
             }
           }
 
@@ -1177,9 +1184,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               }
               .current-price{
                 line-height: 50px;
-                color: $color-orange;
+                color: saturate(darken($color-orange, 10%), 5);
                 font-family: 'Arial Black', arial;
-                font-size: 22px;
+                font-size: 25px;
               }
             }
             .price-huf{
@@ -1193,7 +1200,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 
               a.link-btn{
                 color:white;
-                background: $color-orange;
+                background: desaturate($color-orange, 5);
                 text-transform: uppercase;
                 padding:4px 10px;
 
@@ -1209,10 +1216,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 
       .item:hover {
         .item-wrapper {
-          border: 10px solid $color-purple;
+          border: 10px solid #d6d6d6;
+          -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+          -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+          box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
         }
         .item-contents {
-          border: 1px solid $color-purple;
+          border: 1px solid #fff;
         }
         .features{
           bottom: 0 !important;
@@ -1770,8 +1780,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 
           &.search-button{
             text-align: center;
-            background: lighten($color-orange, 10%);
-            border-color: lighten($color-orange, 15%);
             border-style: solid;
             border-width: 1px;
             border-bottom-width: 0px;
@@ -1811,8 +1819,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             padding-bottom: 20px;
           }
           &.last-item{
-            padding-right: 20px;
+            padding-right: 8px;
           }
+
+          &.row-bottom.last-item{
+            padding-right: 5px;
+          }
+
         }
         .row-divider {
           margin: 10px 0;

@@ -2,7 +2,7 @@
   <?php if($discount): ?>
   <div class="discount-info"><span class="d">-<?php echo $discount; ?>%</span></div>
   <?php endif;?>
-  <div class="item-wrapper trans-on">
+  <div class="item-wrapper trans-on" onclick="document.location.href='<?php echo $link; ?>';">
     <div class="item-contents trans-on">
       <div class="image orientation-<?=strtolower($image_obj['orientation'])?>">
         <img src="<?php echo $image; ?>" alt="<?php echo $title; ?> &mdash; <?php echo $island_text; ?>" class="trans-on" />
@@ -15,12 +15,14 @@
         </div>
       <? endif; ?>
       </div>
-      <div class="titles">
-        <div class="title"><?php echo $title; ?></div>
-        <div class="star"><?php echo str_repeat('<i class="fa fa-star star-active"></i>',$star); ?><?php echo str_repeat('<i class="fa fa-star"></i>',5-$star); ?></div>
-      </div>
-      <div class="place">
-        <i class="fa fa-map-marker"></i> <span class="island"><?php echo $island_text; ?></span> / <span class="city"><?php echo $place; ?></span>
+      <div class="content-text">
+        <div class="titles">
+          <div class="title"><?php echo $title; ?></div>
+          <div class="star"><?php echo str_repeat('<i class="fa fa-star star-active"></i>',$star); ?><?php echo str_repeat('<i class="fa fa-star"></i>',5-$star); ?></div>
+        </div>
+        <div class="place">
+          <i class="fa fa-map-marker"></i> <span class="island"><?php echo $island_text; ?></span> / <span class="city"><?php echo $place; ?></span>
+        </div>
       </div>
       <div class="actions">
         <div class="list-button">

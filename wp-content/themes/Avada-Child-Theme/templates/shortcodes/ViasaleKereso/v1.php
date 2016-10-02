@@ -85,7 +85,7 @@
               <option value="" selected="selected">Bármely</option>
               <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
               <? if($boardTypes) foreach ($boardTypes as $board_id => $board) { ?>
-                <option value="<?=$board_id?>" <?=($_GET['e'] == $board_id)? 'selected="selected"':''?>><?=$board['fullName']?></option>
+                <option value="<?=$board_id?>" <?=($_GET['e'] == $board_id)? 'selected="selected"':''?>>Legalább <?=strtolower($board['fullName'])?></option>
               <?  } ?>
             </select>
           </div>
@@ -197,10 +197,12 @@ var search_form_uri = {
         var selected_date = new Date(i.currentYear, i.currentMonth, i.currentDay);
 
         if(!isNaN(selected_date.getTime())){
-            selected_date.setDate(selected_date.getDate() + 30);
-            $("#search_form_erkezes").val(selected_date.toInputFormat());
+            var enddate = selected_date;
+            enddate.setDate(selected_date.getDate() + 30);
+            $("#search_form_erkezes")
+              .val(enddate.toInputFormat())
+              .datepicker( "option", "minDate", new Date(i.currentYear, i.currentMonth, i.currentDay) );
         }
-
       }
     }
   };

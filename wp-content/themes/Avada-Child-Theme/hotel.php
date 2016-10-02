@@ -65,7 +65,7 @@
                     endforeach;
                   }
                 ?>
-								<li><a class="tab-link" data-toggle="tab" href="#map"><h4 class="fusion-tab-heading">Térkép</h4></a></li>
+								<li style="display: none;"><a class="tab-link" data-toggle="tab" href="#map"><h4 class="fusion-tab-heading">Térkép</h4></a></li>
 							</ul>
 						</div>
 						<div class="tab-content">

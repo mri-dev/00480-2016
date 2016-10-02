@@ -25,6 +25,7 @@ function theme_enqueue_styles() {
     wp_enqueue_script('mocjax', IFROOT . '/assets/js/autocomplete/scripts/jquery.mockjax.js');
     wp_enqueue_script('autocomplete', IFROOT . '/assets/js/autocomplete/dist/jquery.autocomplete.min.js');
     wp_enqueue_script('slick', IFROOT . '/assets/vendor/slick/slick.min.js', array('jquery'), '');
+    wp_enqueue_script('basevs', IFROOT . '/assets/js/base-v1.js?t=' . ( (DEVMODE === true) ? time() : '' ) );
 
     if (
       (isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id'])) ||
@@ -38,7 +39,6 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function custom_theme_enqueue_scripts() {
     //wp_enqueue_style('autocomplete', IFROOT . '/assets/js/autocomplete/content/styles.css');
     wp_enqueue_style( 'viasaletravel-css', IFROOT . '/assets/css/viasaletravel.css?' . ( (DEVMODE === true) ? time() : '' ) );
-    wp_enqueue_script('viasaletravel-search-js', IFROOT . '/assets/js/viasale-searcher.js?' . ( (DEVMODE === true) ? time() : '' ) );
 }
 add_action( 'wp_enqueue_scripts', 'custom_theme_enqueue_scripts', 100 );
 
@@ -191,5 +191,6 @@ function get_ajax_url( $function )
 // Katalógus hivatkozása
 function catalog_url()
 {
-    return 'http://issuu.com/viasaletravel/docs/viasale_travel_online_katalogus_201?e=15904679/34190920';
+    return 'https://goo.gl/forms/QHvCOddly8JJ2eku1';
+    //return 'http://issuu.com/viasaletravel/docs/viasale_travel_online_katalogus_201?e=15904679/34190920';
 }
