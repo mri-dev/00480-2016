@@ -8,7 +8,8 @@ define('HOTEL_SLUG', 'hotel');
 define('UTAZAS_SLUG', 'utazas');
 define('PROGRAM_SLUG', 'program');
 define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
-define('RESOURCES', IFROOT.'/assets' );
+//define('RESOURCES', IFROOT.'/assets' );
+define('RESOURCES', '//cdn.viasaletravel.hu/res' );
 
 // Includes
 require_once "includes/include.php";
@@ -16,7 +17,7 @@ require_once "includes/include.php";
 function theme_enqueue_styles() {
   global $wp_query;
     wp_enqueue_style( 'avada-parent-stylesheet', get_template_directory_uri() . '/style.css?' . ( (DEVMODE === true) ? time() : '' )  );
-    wp_enqueue_style( 'avada-child-stylesheet', RESOURCES . '/style.css?' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_style( 'avada-child-stylesheet', IMGROOT . '/style.css?' . ( (DEVMODE === true) ? time() : '' ) );
     wp_enqueue_style( 'jquery-ui-str', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.structure.min.css');
     wp_enqueue_style( 'jquery-ui', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.theme.min.css');
     wp_enqueue_style( 'slick', RESOURCES . '/vendor/slick/slick.css');
@@ -39,7 +40,7 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 function custom_theme_enqueue_scripts() {
     //wp_enqueue_style('autocomplete', IFROOT . '/assets/js/autocomplete/content/styles.css');
-    wp_enqueue_style( 'viasaletravel-css', IFROOT . '/assets/css/viasaletravel.css?' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_style( 'viasaletravel-css', RESOURCES . '/css/viasaletravel.css?' . ( (DEVMODE === true) ? time() : '' ) );
 }
 add_action( 'wp_enqueue_scripts', 'custom_theme_enqueue_scripts', 100 );
 
