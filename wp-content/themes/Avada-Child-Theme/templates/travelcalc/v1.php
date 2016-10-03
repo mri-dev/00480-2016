@@ -3,14 +3,6 @@
   $min_adults   = $default_room['min_adults'];
 ?>
 <div class="travel-calculator-container">
-  <div class="calc-head">
-    <div class="calc-wrapper">
-      <h2>Ajánlat kalkulátor</h2>
-      <p>
-        Számolja ki álomutazását!
-      </p>
-    </div>
-  </div>
   <div class="calc-content">
     <div class="calc-wrapper">
       <div class="calc-row">
@@ -54,11 +46,12 @@
       <div id="travel-contact">
         <form id="mailsend" onsubmit="return false;" method="post">
         <div class="calc-head">
-          <h3>Ajánlatkérés</h3>
+          <h3>Megrendelés</h3>
           <label>Személyes adatok megadása</label>
         </div>
         <div class="calc-row">
           <div>
+              <h4>Megrendelő adatai</h4>
               <div class="contact-form">
                 <div class="megszolitas">
                   <label for="megszolitas">Megszólítás</label>
@@ -92,6 +85,7 @@
                   <input type="email" id="email" name="email" placeholder="" value="">
                 </div>
               </div>
+              <div id="utasok_adatai"></div>
           </div>
         </div>
         <div class="selected-travel-room">
@@ -99,7 +93,7 @@
           <div id="selected-travel-room"></div>
         </div>
         <div class="send-mail">
-          <button type="button" id="mail-sending-btn" class="fusion-button" onclick="ajanlatkeresKuldes();" name="button">Ajánlatkérés küldése <i class="fa fa-envelope-o"></i></button>
+          <button type="button" id="mail-sending-btn" class="fusion-button" onclick="ajanlatkeresKuldes();" name="button">Megrendelés küldése <i class="fa fa-envelope-o"></i></button>
         </div>
         </form>
       </div>
@@ -110,7 +104,7 @@
 <script type="text/javascript">
   var fxrate=<?=$ajanlat->term_data['exchange_rate']?>;
   var termdata = {};
-  var adults = <?=$min_adults?>;
+  var adults = 2;
   var children = 0;
   var childages = [];
 
@@ -214,7 +208,7 @@ function ajanlatkeresKuldes()
         var resp = jQuery.parseJSON(data);
         if(resp.error == 0) {
           mail_sended = 1;
-          jQuery('#mail-sending-btn').html('Ajánlatkérése elküldve <i class="fa fa-check-circle"></i>').removeClass('in-progress').addClass('sended');
+          jQuery('#mail-sending-btn').html('Megrendelés elküldve <i class="fa fa-check-circle"></i>').removeClass('in-progress').addClass('sended');
         } else {
           jQuery('#mail-sending-btn').html('Ajánlatkérése küldése <i class="fa fa-envelope-o"></i>').removeClass('in-progress')
           mail_sending_progress = 0;
@@ -225,8 +219,6 @@ function ajanlatkeresKuldes()
           }
           alert(resp.msg);
         }
-
-        console.log(resp);
       }
     );
   }
@@ -341,6 +333,8 @@ function trimChar(string, charToRemove) {
     var calc_price = $('table.room[data-roomid='+rid+'] .fullPrice').text();
     var room_data = termdata['rooms'][rid];
     var peoples = adults+' felnőtt';
+    var maxmember = parseInt(adults) + parseInt(children);
+    var utasok_form = '';
 
     if (children != 0) {
       var c_ages = '';
@@ -349,12 +343,38 @@ function trimChar(string, charToRemove) {
       });
       c_ages = c_ages.replace(/, $/g,"");
       peoples += ', '+children+' gyermek ('+c_ages+')';
+    }
 
-      console.log(childages);
+    for (var i = 1; i <= maxmember; i++) {
+      utasok_form += '<div class="utas-row">'+
+        '<h4>Utas #'+i+' adatai:</h4>'+
+        '<div class="contact-form">'+
+        '<div class="vezeteknev">'+
+          '<label for="vezeteknev_utas_'+i+'">Vezetéknév</label>'+
+          '<input type="text" name="utasok[vezeteknev][]" id="vezeteknev_utas_'+i+'" placeholder="" value="">'+
+        '</div>'+
+        '<div class="keresztnev">'+
+          '<label for="vezeteknev_utas_'+i+'">Keresztnév</label>'+
+          '<input type="text" name="utasok[keresztnev][]" id="keresztnev_utas_'+i+'" placeholder="" value="">'+
+        '</div>'+
+          '<div class="megszolitas">'+
+            '<label for="megszolitas_utas_'+i+'">Megszólítás</label>'+
+            '<select name="utasok[megszolitas][]" id="megszolitas_utas_'+i+'">'+
+              '<option value="Úr">Úr</option>'+
+              '<option value="Hölgy">Hölgy</option>'+
+            '</select>'+
+          '</div>'+
+          '<div class="szuletesi_datum">'+
+            '<label for="szuletesi_datum_utas_'+i+'">Születési dátum</label>'+
+            '<input type="text" class="datepicker" id="szuletesi_datum_utas_'+i+'" name="utasok[szuletesi_datum][]" placeholder="" value="">'+
+          '</div>'+
+        '</div>'+
+      '</div>';
     }
 
     $('#travel-contact').addClass('show');
     $('#selected-travel-room').html('<div class="room"><input type="hidden" name="term[id]" value="'+termdata.term_id+'"><input type="hidden" name="term[url]" value="<?=get_option('siteurl').$_SERVER['REQUEST_URI']?>"><input type="hidden" name="term[date_from]" value="'+termdata.date_from+'"><input type="hidden" name="term[date_to]" value="'+termdata.date_to+'"><input type="hidden" name="term[board]" value="'+termdata.board_name+'"><input type="hidden" name="hotel[name]" value="'+termdata.hotel.name+'"><input type="hidden" name="room[name]" value="'+room_data.name+'"><input type="hidden" name="room[price]" value="'+calc_price+'"><input type="hidden" name="room[people]" value="'+peoples+'"><div class="name">'+room_data.name+'<div class="ppl">'+peoples+'</div></div><div class="price">'+calc_price+'</div></div>');
+    $('#utasok_adatai').html(utasok_form);
   });
 
 })(jQuery);

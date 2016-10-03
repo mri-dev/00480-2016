@@ -8,6 +8,7 @@ define('HOTEL_SLUG', 'hotel');
 define('UTAZAS_SLUG', 'utazas');
 define('PROGRAM_SLUG', 'program');
 define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
+define('RESOURCES', IFROOT.'/assets' );
 
 // Includes
 require_once "includes/include.php";
@@ -15,17 +16,17 @@ require_once "includes/include.php";
 function theme_enqueue_styles() {
   global $wp_query;
     wp_enqueue_style( 'avada-parent-stylesheet', get_template_directory_uri() . '/style.css?' . ( (DEVMODE === true) ? time() : '' )  );
-    wp_enqueue_style( 'avada-child-stylesheet', IFROOT . '/style.css?' . ( (DEVMODE === true) ? time() : '' ) );
-    wp_enqueue_style( 'jquery-ui-str', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.structure.min.css');
-    wp_enqueue_style( 'jquery-ui', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.theme.min.css');
-    wp_enqueue_style( 'slick', IFROOT . '/assets/vendor/slick/slick.css');
-    wp_enqueue_style( 'slick-theme', IFROOT . '/assets/vendor/slick/slick-theme.css');
+    wp_enqueue_style( 'avada-child-stylesheet', RESOURCES . '/style.css?' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_style( 'jquery-ui-str', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.structure.min.css');
+    wp_enqueue_style( 'jquery-ui', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.theme.min.css');
+    wp_enqueue_style( 'slick', RESOURCES . '/vendor/slick/slick.css');
+    wp_enqueue_style( 'slick-theme', RESOURCES . '/vendor/slick/slick-theme.css');
 
-    wp_enqueue_script('jquery-ui', IFROOT . '/assets/js/jquery-ui-1.12.1/jquery-ui.min.js', array('jquery'));
-    wp_enqueue_script('mocjax', IFROOT . '/assets/js/autocomplete/scripts/jquery.mockjax.js');
-    wp_enqueue_script('autocomplete', IFROOT . '/assets/js/autocomplete/dist/jquery.autocomplete.min.js');
-    wp_enqueue_script('slick', IFROOT . '/assets/vendor/slick/slick.min.js', array('jquery'), '');
-    wp_enqueue_script('basevs', IFROOT . '/assets/js/base-v1.js?t=' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_script('jquery-ui', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.min.js', array('jquery'));
+    wp_enqueue_script('mocjax', RESOURCES . '/vendor/autocomplete/scripts/jquery.mockjax.js');
+    wp_enqueue_script('autocomplete', RESOURCES . '/vendor/autocomplete/dist/jquery.autocomplete.min.js');
+    wp_enqueue_script('slick', RESOURCES . '/vendor/slick/slick.min.js', array('jquery'), '');
+    wp_enqueue_script('basevs', RESOURCES . '/js/base-v1.js?t=' . ( (DEVMODE === true) ? time() : '' ) );
 
     if (
       (isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id'])) ||

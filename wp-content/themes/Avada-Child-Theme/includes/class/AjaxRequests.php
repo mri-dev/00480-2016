@@ -26,6 +26,9 @@ class AjaxRequests
 
     $return['passed_params'] = $_POST;
 
+    $utasok_szama = count($_POST['utasok']['keresztnev']);
+    $utasok = $_POST['utasok'];
+
     if(empty($_POST['keresztnev'])) $return['missing_elements'][] = 'keresztnev';
     if(empty($_POST['vezeteknev'])) $return['missing_elements'][] = 'vezeteknev';
     if(empty($_POST['cim'])) $return['missing_elements'][] = 'cim';
@@ -33,15 +36,23 @@ class AjaxRequests
     if(empty($_POST['szuletesi_datum'])) $return['missing_elements'][] = 'szuletesi_datum';
     if(empty($_POST['email'])) $return['missing_elements'][] = 'email';
 
+    for ($i=0; $i < $utasok_szama ; $i++)
+    {
+      $ui = $i + 1;
+      if(empty($utasok['keresztnev'][$i])) $return['missing_elements'][] = 'keresztnev_utas_'.$ui;
+      if(empty($utasok['vezeteknev'][$i])) $return['missing_elements'][] = 'vezeteknev_utas_'.$ui;
+      if(empty($utasok['szuletesi_datum'][$i])) $return['missing_elements'][] = 'szuletesi_datum_utas_'.$ui;
+    }
+
     if(!empty($return['missing_elements'])) {
       $return['error']  = 1;
-      $return['msg']    = 'Kérjük, hogy töltse ki az összes mezőt az ajánlatkérés elküldéséhez.';
+      $return['msg']    = 'Kérjük, hogy töltse ki az összes mezőt a megrendelés küldéséhez.';
       $return['missing']= count($return['missing_elements']);
       $this->returnJSON($return);
     }
 
     $to       = get_option('admin_email');
-    $subject  = 'Utazási ajánlatkérés: '.$_POST['vezeteknev'] . ' '.$_POST['keresztnev'];
+    $subject  = 'Megrendelés érkezett: '.$_POST['vezeteknev'] . ' '.$_POST['keresztnev'].' - '.$utasok_szama.' főre';
 
     ob_start();
   	  include(locate_template('templates/mails/utazasi-ajanlatkero-ertesites.php'));
@@ -60,7 +71,7 @@ class AjaxRequests
 
     if(!$alert) {
       $return['error']  = 1;
-      $return['msg']    = 'Az ajánlatkérését jelenleg nem tudtuk elküldeni. Próbálja meg később.';
+      $return['msg']    = 'A megrendelést jelenleg nem tudtuk elküldeni. Próbálja meg később.';
       $this->returnJSON($return);
     }
     /* */

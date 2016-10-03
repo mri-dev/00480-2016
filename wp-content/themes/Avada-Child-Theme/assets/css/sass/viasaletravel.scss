@@ -819,11 +819,11 @@ html, body {
             position: absolute;
             left: 10%;
             top: 10%;
-            margin: -20%; 
+            margin: -20%;
           }
 
           .titles, .price, .star {
-            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.81);
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.8);
           }
 
           .prices, .titles {
@@ -2520,34 +2520,22 @@ body.hotel-travel-page
         display: none;
       }
 
-      .calc-head{
-        background: #f8f8f8;
-        text-align: center;
-        border-bottom: 1px solid #f1f1f1;
-        text-shadow: 0 1px #fff;
-
-        h2{
-          color: black;
-          font-size: 18px;
-          margin: 4px 0;
-          font-family: 'Arial' !important;
-          text-transform: uppercase;
-          letter-spacing: -1px !important;
-          font-weight: bold !important;
-        }
-
-        p{
-          line-height: 1.3;
-          margin: 4px 0;
-        }
-      }
-
       .calc-wrapper{
         padding: 10px;
       }
 
       .calc-content {
+        .calc-head {
+          background: #f2f2f2;
 
+          label {
+            display: block;
+            text-align: center;
+          }
+        }
+        .utas-row{
+          margin-top: 15px;
+        }
         #childAgeRow {
           position: relative;
           background: #f3f3f3;
@@ -2606,9 +2594,10 @@ body.hotel-travel-page
         .calc-row {
           margin-bottom: 11px;
           h3{
-            color: #5a5a5a;
-            font-size: 14px;
+            font-size: 16px;
             margin: 0 0 10px 0;
+            color:black;
+            text-align: center;
           }
 
           .select-form {
@@ -2804,6 +2793,21 @@ body.hotel-travel-page
             & > div.telefon,
             & > div.email{
               flex-basis: 50%;
+            }
+          }
+
+          .utas-row {
+            .contact-form {
+              & > div.keresztnev,
+              & > div.vezeteknev {
+                flex-basis: 50%;
+              }
+              & > div.megszolitas{
+                flex-basis: 50%;
+              }
+              & > div.szuletesi_datum{
+                flex-basis: 50%;
+              }
             }
           }
         }
@@ -3210,3 +3214,6 @@ body.search {
 #ui-datepicker-div{
   z-index: 9999 !important;
 }
+
+@import "responsive_tablet";
+@import "responsive_mobile";

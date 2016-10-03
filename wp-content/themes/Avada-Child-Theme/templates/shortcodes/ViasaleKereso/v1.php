@@ -94,14 +94,14 @@
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_indulas" class="trans-on">Indulás</label>
-            <input type="text" class="search-datepicker trans-o" dtp="from" id="search_form_indulas" name="tf" value="<?php if(isset($_GET['tf'])) { echo str_replace('-'," / ", $_GET['tf']); } else { echo date('Y / m / d', strtotime('+1 days')); }  ?>" readonly="readonly">
+            <input type="text" class="search-datepicker trans-o" dtp="from" id="search_form_indulas" name="tf" value="<?php if(isset($_GET['tf'])) { echo str_replace('-'," / ", $_GET['tf']); } else { echo date('Y / m / d', strtotime('2016-11-01 +0 days')); }  ?>" readonly="readonly">
           </div>
           <div class="input w20 row-bottom last-item">
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_erkezes" class="trans-on">Érkezés</label>
-            <input type="text" class="search-datepicker trans-o" dtp="to" id="search_form_erkezes" name="tt" value="<?php if(isset($_GET['tt'])) { echo str_replace('-'," / ", $_GET['tt']); } else { echo date('Y / m / d', strtotime('+30 days')); }  ?>">
+            <input type="text" class="search-datepicker trans-o" dtp="to" id="search_form_erkezes" name="tt" value="<?php if(isset($_GET['tt'])) { echo str_replace('-'," / ", $_GET['tt']); } else { echo date('Y / m / d', strtotime('2016-11-01 +60 days')); }  ?>">
           </div>
           <div class="input search-button w20">
             <div class="button-wrapper">
@@ -188,7 +188,8 @@ var search_form_uri = {
   	dateFormat: "yy / mm / dd",
   	firstDay: 1,
   	isRTL: false,
-  	minDate: +1,
+  	//minDate: +1,
+    minDate: new Date(2016, 10, 1),
   	showMonthAfterYear: true,
   	yearSuffix: "",
     onSelect: function(dt, i){
@@ -198,7 +199,7 @@ var search_form_uri = {
 
         if(!isNaN(selected_date.getTime())){
             var enddate = selected_date;
-            enddate.setDate(selected_date.getDate() + 30);
+            enddate.setDate(selected_date.getDate() + 60);
             $("#search_form_erkezes")
               .val(enddate.toInputFormat())
               .datepicker( "option", "minDate", new Date(i.currentYear, i.currentMonth, i.currentDay) );
