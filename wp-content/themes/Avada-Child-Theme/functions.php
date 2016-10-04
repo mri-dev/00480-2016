@@ -8,8 +8,8 @@ define('HOTEL_SLUG', 'hotel');
 define('UTAZAS_SLUG', 'utazas');
 define('PROGRAM_SLUG', 'program');
 define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
-//define('RESOURCES', IFROOT.'/assets' );
-define('RESOURCES', '//cdn.viasaletravel.hu/res' );
+define('RESOURCES', IFROOT.'/assets' );
+//define('RESOURCES', '//cdn.viasaletravel.hu/res' );
 
 // Includes
 require_once "includes/include.php";
