@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Rage Italic';
-  src: url('../../assets/fonts/rageitalic/RageItalic.eot');
-  src: url('../../assets/fonts/rageitalic/RageItalic.eot?#iefix') format('embedded-opentype'),
-       url('../../assets/fonts/rageitalic/RageItalic.woff') format('woff'),
-       url('../../assets/fonts/rageitalic/RageItalic.ttf') format('truetype'),
-       url('../../assets/fonts/rageitalic/RageItalic.svg#rageitalic') format('svg');
+  src: url('#{$cdn}/fonts/rageitalic/RageItalic.eot');
+  src: url('#{$cdn}/fonts/rageitalic/RageItalic.eot?#iefix') format('embedded-opentype'),
+       url('#{$cdn}/fonts/rageitalic/RageItalic.woff') format('woff'),
+       url('#{$cdn}/fonts/rageitalic/RageItalic.ttf') format('truetype'),
+       url('#{$cdn}/fonts/rageitalic/RageItalic.svg#rageitalic') format('svg');
   font-weight: normal;
   font-style: normal;
 }
