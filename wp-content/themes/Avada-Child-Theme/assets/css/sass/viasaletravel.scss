@@ -1649,9 +1649,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             *display: inline;
             zoom: 1;
             color: white;
-            font-size: 16px;
-            font-weight: bold;
-            line-height: 45px;
+            font-size: 15px;
+            line-height: 35px;
             padding: 0;
             margin-right: 5px;
 
@@ -1661,26 +1660,57 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 
             input[type=radio] + label {
               display: block;
-              padding: 0 25px 0 10px;
+              padding: 0 10px 0 28px;
               background: darken($color-orange, 10%);
               cursor:pointer;
+              position: relative;
+              -webkit-border-radius: 5px;
+              -moz-border-radius: 5px;
+              border-radius: 5px;
 
               i{
-                margin: 0 5px;
+                margin: 0 0 0 5px;
+                color: rgba(255, 255, 255, 0.75);
               }
 
               &:hover{
                 background: $color-green;
               }
+
+              &:before {
+                font-family: 'FontAwesome';
+                content:"\f1db";
+                font-size: 12px;
+                position: absolute;
+                width:12px;
+                height: 12px;
+                left: 10px;
+                top: 2px;
+              }
             }
 
             input[type=radio]:checked + label {
               background: $color-green;
+              -webkit-box-shadow: inset 0px 3px 1px #436b3b;
+              -moz-box-shadow: inset 0px 3px 1px #436b3b;
+              box-shadow: inset 0px 3px 1px #436b3b;
+              &:before {
+                content:"\f192";
+              }
             }
 
             &.title-label {
               background: $color-purple;
               padding: 0 20px 0 10px;
+              margin-top: 0;
+              font-weight: bold;
+              font-size: 14px;
+              text-transform: uppercase;
+              line-height: 45px;
+
+              i{
+                margin-right: 8px;
+              }
             }
           }
         }
@@ -1778,6 +1808,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             cursor: not-allowed;
           }
 
+          input[type=text].search-datepicker {
+            font-size: 18px;
+          }
+
           &.search-button{
             text-align: center;
             border-style: solid;
@@ -1871,15 +1905,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
       }
     }
     .lvl-2 {
+      display: none;
       border-left: 20px solid #d7d7d7;
       label{
         font-size: 12px !important;
       }
+      &.show{
+        display: block;
+      }
     }
     .lvl-3 {
+      display: none;
       border-left: 30px solid #d7d7d7;
       label{
         font-size: 11px !important;
+      }
+      &.show{
+        display: block;
       }
     }
 
@@ -3131,7 +3173,7 @@ body.hotel-travel-page
     }
     .fusion-post-content-container{
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.81);
+      color: rgba(255, 255, 255, 0.80);
       height: 110px;
       max-height: 110px;
       overflow: hidden;

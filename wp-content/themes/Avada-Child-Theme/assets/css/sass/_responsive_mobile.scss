@@ -65,6 +65,9 @@
     margin: 0 !important;
     width: 50%;
   }
+  .viasale-kereso-holder .search-panel.v1 .head-labels ul li:nth-child(2){
+    width: 100%;
+  }
   .viasale-kereso-holder .search-panel.v1 .inputs{
     display: block;
     padding-left: 0;
@@ -83,11 +86,14 @@
     width: 100%;
   }
   .viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] + label {
-      padding: 5px;
-      text-align: center;
-      border: 1px solid $color-orange;
-      border-collapse: collapse;
-      margin: -1px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid $color-orange;
+    border-collapse: collapse;
+    margin: -1px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
   }
   .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button button{
     width: 100%;

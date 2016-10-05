@@ -4,10 +4,11 @@
       <div class="head-labels">
         <ul>
           <li class="title-label"><i class="fa fa-search"></i> Utazáskereső</li><!--
-       --><li><input type="radio" <?=($_GET['cat'] == 'lastminute')?'checked="checked"':''?> name="cat" id="cat_lm" value="lastminute"><label class="trans-on" for="cat_lm"><i class="fa fa-percent"></i> Lastminute</label></li><!--
-      --><li><input type="radio" <?=($_GET['cat'] == 'firstminute')?'checked="checked"':''?> name="cat" id="cat_fm" value="firstminute"><label class="trans-on" for="cat_fm"><i class="fa fa-percent"></i> Firstminute</label></li><!-- 
-       --><li><input type="radio" <?=($_GET['cat'] == 'prog')?'checked="checked"':''?> name="cat" id="cat_prog" value="prog"><label class="trans-on" for="cat_prog"><i class="fa fa-bicycle"></i> Programok</label></li><!--
-       --><li><input type="radio" <?=($_GET['cat'] == 'trans')?'checked="checked"':''?> name="cat" id="cat_trans" value="trans"><label class="trans-on" for="cat_trans"><i class="fa fa-bus"></i> Transzfer</label></li>
+       --><li><input type="radio" <?=($_GET['cat'] == '')?'checked="checked"':''?> name="cat" id="cat_all" value=""><label class="trans-on" for="cat_all">Összes <i class="fa fa-bars"></i></label></li><!--
+       --><li><input type="radio" <?=($_GET['cat'] == 'lastminute')?'checked="checked"':''?> name="cat" id="cat_lm" value="lastminute"><label class="trans-on" for="cat_lm">Lastminute <i class="fa fa-percent"></i></label></li><!--
+       --><li><input type="radio" <?=($_GET['cat'] == 'firstminute')?'checked="checked"':''?> name="cat" id="cat_fm" value="firstminute"><label class="trans-on" for="cat_fm">Firstminute <i class="fa fa-percent"></i></label></li><!--
+       --><li><input type="radio" <?=($_GET['cat'] == 'prog')?'checked="checked"':''?> name="cat" id="cat_prog" value="prog"><label class="trans-on" for="cat_prog">Programok <i class="fa fa-bicycle"></i> </label></li><!--
+       --><li><input type="radio" <?=($_GET['cat'] == 'trans')?'checked="checked"':''?> name="cat" id="cat_trans" value="trans"><label class="trans-on" for="cat_trans">Transzfer <i class="fa fa-bus"></i></label></li>
         </ul>
       </div>
       <div class="input-holder">
@@ -37,13 +38,13 @@
                     <div class="">
                   <?php
                     foreach($zone['children'] as $zone_d2): ?>
-                      <div class="lvl-1 childof<?=$zone['id']?> zone<?=$zone_d2['id']?><? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>"><input <?=(in_array($zone_d2['id'], $zonak))?'checked="checked"':''?> class="<? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>" value="<?=$zone_d2['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>"><?=$zone_d2['name']?></label></div>
+                      <div class="lvl-1 childof<?=$zone['id']?> zone<?=$zone_d2['id']?><? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>"><input <?=(in_array($zone_d2['id'], $zonak))?'checked="checked"':''?> class="<? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>" data-parentid="<?=$zone['id']?>" data-lvl="1" type="checkbox" id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>" value="<?=$zone_d2['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>"><?=$zone_d2['name']?></label></div>
 
                       <? if($zone_d2['children']){ ?>
                         <div class="sub-lvl sub-lvl-of<?=$zone_d2[id]?>">
                       <?php
                         foreach($zone_d2['children'] as $zone_d3): ?>
-                        <div class="lvl-2 childof<?=$zone_d2['id']?> zone<?=$zone_d3['id']?><? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>"><input <?=(in_array($zone_d3['id'], $zonak))?'checked="checked"':''?> class="<? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox"id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>" value="<?=$zone_d3['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>"><?=$zone_d3['name']?></label></div>
+                        <div class="lvl-2 childof<?=$zone_d2['id']?> zone<?=$zone_d3['id']?><? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>"><input <?=(in_array($zone_d3['id'], $zonak))?'checked="checked"':''?> class="<? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>" data-parentid="<?=$zone_d2['id']?>" data-lvl="2" type="checkbox"id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>" value="<?=$zone_d3['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>"><?=$zone_d3['name']?></label></div>
 
                       <? endforeach; } ?>
                       </div>
@@ -168,7 +169,7 @@ var search_form_uri = {
 // END: Autocomplete
 
 (function($) {
-  var szones = collect_zone_checkbox();
+  var szones = collect_zone_checkbox(true);
   $('#zones').val(szones);
   bindSearchFormURI();
 
@@ -248,17 +249,34 @@ var search_form_uri = {
     var e = $(this);
     var has_child = $(this).hasClass('has-childs');
     var checkin = $(this).is(':checked');
+    var lvl = e.data('lvl');
+    var parent = e.data('parentid');
 
     if(has_child) {
       if(checkin) {
         $('#zone_multiselect .childof'+e.val()+' input[type=checkbox]').prop('checked', false);
-        $('#zone_multiselect .sub-lvl.sub-lvl-of'+e.val()).hide();
+        $('#zone_multiselect .childof'+e.val()).addClass('show');
+        //$('#zone_multiselect .sub-lvl.sub-lvl-of'+e.val()).hide();
       } else {
-        $('#zone_multiselect .sub-lvl.sub-lvl-of'+e.val()).show();
+        $('#zone_multiselect .childof'+e.val()).removeClass('show');
+        //$('#zone_multiselect .sub-lvl.sub-lvl-of'+e.val()).show();
       }
     }
 
-    var selected_zones = collect_zone_checkbox();
+    if(checkin) {
+      $('#zone_multiselect .zone'+parent+' input[type=checkbox]')
+        .prop('disabled', true);
+    } else {
+
+    }
+
+    var cnt_child = $('#zone_multiselect .childof'+parent+' input[type=checkbox]:checked').length;
+
+    if(cnt_child == 0) {
+      $('#zone_multiselect .zone'+parent+' input[type=checkbox]').prop('disabled', false);
+    }
+
+    var selected_zones = collect_zone_checkbox(false);
 
     $('#zones').val(selected_zones);
 
@@ -336,7 +354,7 @@ function resetSearchInputs() {
   jQuery('#zone_multiselect .lvl-0').removeClass('disabled');
 }
 
-function collect_zone_checkbox()
+function collect_zone_checkbox(loader)
 {
   var arr = [];
   var str = [];
@@ -344,10 +362,27 @@ function collect_zone_checkbox()
 
   jQuery('#zone_multiselect input[type=checkbox]').each(function(e,i)
   {
-    if(jQuery(this).is(':checked')){
+    if(jQuery(this).is(':checked') && !jQuery(this).is(':disabled')){
       seln++;
       arr.push(jQuery(this).val());
       str.push(jQuery(this).next('label').text());
+    }
+
+    if(loader) {
+      var e = jQuery(this);
+      var has_child = jQuery(this).hasClass('has-childs');
+      var checkin = jQuery(this).is(':checked');
+      var lvl = e.data('lvl');
+      var parent = e.data('parentid');
+
+      var cnt_child = jQuery('#zone_multiselect .childof'+parent+' input[type=checkbox]:checked').length;
+
+      if(cnt_child == 0) {
+        jQuery('#zone_multiselect .zone'+parent+' input[type=checkbox]').prop('disabled', false);
+      } else {
+        jQuery('#zone_multiselect .childof'+parent).addClass('show');
+        jQuery('#zone_multiselect .zone'+parent+' input[type=checkbox]').prop('checked', true).prop('disabled', true);
+      }
     }
   });
 
