@@ -51,7 +51,7 @@
 				<div class="trans-date">
 					<label>Utazás ideje</label>
 					<div class="date"><?=$ajanlat->getDate('from')?> &mdash; <?=$ajanlat->getDate('to')?></div>
-					<a href="#more-travel" class="more-trans">További időpontok (<?=$ajanlat->getMoreTravelCount()?>) »</a>
+					<a href="#more-travel" onclick="showMoreTravelList();" class="more-trans">További időpontok (<?=$ajanlat->getMoreTravelCount()?>) »</a>
 				</div>
 
 				<div class="travel-info-box">
@@ -79,13 +79,12 @@
 								</div>
 							</div>
 					</div>
+					<? include(locate_template('templates/travelcalc/v1.php')); ?>
 				</div>
-
 			</div>
 		</div>
 		</div>
 	</div>
-
 	<div class="travel-content-box">
 		<div class="hotel-row">
 			<div class="hotel-column hotel-column-left">
@@ -94,7 +93,7 @@
 						<div class="nav">
 							<ul class="nav-tabs">
 								<li class="active"><a class="tab-link" data-toggle="tab" href="#info"><h4 class="fusion-tab-heading">Információk</h4></a></li>
-								<li><a class="tab-link" data-toggle="tab" href="#more-travel"><h4 class="fusion-tab-heading">További időpontok</h4></a></li>
+								<li id="travels"><a class="tab-link" data-toggle="tab" href="#more-travel"><h4 class="fusion-tab-heading">További időpontok</h4></a></li>
 								<li style="display: none;"><a class="tab-link" data-toggle="tab" href="#map"><h4 class="fusion-tab-heading">Térkép</h4></a></li>
 							</ul>
 						</div>
@@ -178,13 +177,11 @@
 				</div>
 			</div>
 			<div class="hotel-column hotel-column-right">
-				<? include(locate_template('templates/travelcalc/v1.php')); ?>
+
 			</div>
 		</div>
 	</div>
-	<?php
-		$hotel_gps = $ajanlat->getGPS();
-	?>
+	<?php $hotel_gps = $ajanlat->getGPS(); ?>
   <script type="text/javascript">
 	var map;
 	function initMap() {
@@ -192,25 +189,29 @@
 			center:  new google.maps.LatLng( <?=$hotel_gps['lat']?>, <?=$hotel_gps['lng']?> ),
 			zoom:	12,
 		});
-
-		console.log(map);
 	}
+	function showMoreTravelList() {
+		jQuery('.nav-tabs li.active').removeClass('active');
+		jQuery('.tab-content > div.active').removeClass('active fade in');
 
+		jQuery('.nav-tabs li#travels').addClass('active');
+		jQuery('.tab-content > div#more-travel').addClass('active fade in');
 
-	(function($)
-	{
-		/*
+		jQuery('html, body').animate({
+        scrollTop: jQuery(".nav").offset().top
+    }, 800);
+	}
+	(function($){
 	  $('.image-set-galery .image-set').slick({
-			infinite: true,
-			slidesToShow: 4,
-			slidesToScroll: 4,
-			slider: 'div'
+		    infinite: true,
+				autoplay: true,
+		    dots: true,
+				arrow: true,
+		    speed: 400,
+		    slidesToShow: 5,
+		    slidesToScroll: 5
 		});
-		*/
-
-
 	})(jQuery);
   </script>
-
 </div>
 <?php get_footer();

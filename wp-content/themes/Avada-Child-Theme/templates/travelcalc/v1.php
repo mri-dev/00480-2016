@@ -4,9 +4,12 @@
 ?>
 <div class="travel-calculator-container">
   <div class="calc-content">
+    <div class="calc-head main-head">
+        <img src="<?=IFROOT?>/images/palmas_h40_white.png" alt="" />
+        <h3>Hányan szeretnének utazni?</h3>
+    </div>
     <div class="calc-wrapper">
       <div class="calc-row">
-        <h3>Hányan szeretnének utazni?</h3>
         <div class="fusion-row">
           <div class="fusion-column fusion-spacing-yes fusion-layout-column fusion-one-half select-form">
             <label for="adults">Felnőttek</label>
