@@ -2171,7 +2171,7 @@ body.viasale-program-page {
         }
       }
     }
-  } 
+  }
 }
 body.utazas-travel-page {
   .travel-calculator-container{
@@ -3234,6 +3234,85 @@ body.hotel-travel-page
   }
   small {
     color: #8c8c8c;
+  }
+}
+
+.viasale-weather-holder{
+  .weather {
+    &.weather-forecast4-view {
+      margin-top: 15px;
+
+      .weather-holder {
+        display: flex;
+        flex-wrap: wrap;
+        border: 1px solid #d7d7d7;
+
+        .weather-day{
+          flex-basis: calc(100%/3);
+          text-align: center;
+          font-size: 10px;
+          line-height: 1.2;
+          color: darken($color-orange, 10%);
+          padding: 5px;
+          border-right: 1px solid #d7d7d7;
+
+          .day {
+            font-family: 'Arial';
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+
+          .temp {
+            font-size: 20px;
+          }
+
+          .wico { 
+            width: 70%;
+            margin: 0 auto 10px auto;
+
+            img {
+              width: 100%;
+              max-width: 100%;
+            }
+          }
+        }
+        .weather-day:first-child{
+          flex-basis: 100%;
+          text-align: left;
+          border-bottom: 1px solid #d7d7d7;
+          border-right: none;
+          padding: 10px;
+          font-size: 18px;
+          line-height: 1;
+
+          .day {
+            margin-top: 8px;
+          }
+
+          .temp {
+            font-size: 30px;
+          }
+
+          .wico {
+            float: left;
+            width: auto;
+            margin: 0 10px 0 0;
+            height: 60px;
+            max-height: 60px;
+
+            img {
+              width: auto;
+              max-width: initial;
+              height: 100%;
+              max-height: 100%;
+            }
+          }
+        }
+        .weather-day:last-child{
+            border-right: none;
+        }
+      }
+    }
   }
 }
 

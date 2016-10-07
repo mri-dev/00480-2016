@@ -10,7 +10,5 @@ RewriteRule . /index.php [L]
 # END WordPress
 
 <IfModule mod_headers.c>
-  <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$">
-    Header set Access-Control-Allow-Origin "cdn.viasaletravel.hu"
-  </FilesMatch>
+  Header set Access-Control-Allow-Origin "*"
 </IfModule>

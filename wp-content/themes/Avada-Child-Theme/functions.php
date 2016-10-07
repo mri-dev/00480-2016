@@ -10,6 +10,8 @@ define('PROGRAM_SLUG', 'program');
 define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
 define('RESOURCES', IFROOT.'/assets' );
 //define('RESOURCES', '//cdn.viasaletravel.hu/res' );
+define('IMAGES', IFROOT.'/images' );
+//define('IMAGES', '//cdn.viasaletravel.hu/images' );
 
 // Includes
 require_once "includes/include.php";
@@ -193,8 +195,7 @@ function get_ajax_url( $function )
 // Katalógus hivatkozása
 function catalog_url()
 {
-    return 'https://goo.gl/forms/QHvCOddly8JJ2eku1';
-    //return 'http://issuu.com/viasaletravel/docs/viasale_travel_online_katalogus_201?e=15904679/34190920';
+  return 'http://issuu.com/viasaletravel/docs/viasale_travel_online_katalogus_201?e=15904679/34190920';
 }
 
 ?>
