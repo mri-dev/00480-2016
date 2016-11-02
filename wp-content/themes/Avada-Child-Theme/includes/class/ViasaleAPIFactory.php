@@ -171,6 +171,8 @@ class ViasaleAPIFactory
       $query['min_category'] = $params['min_star'];
     }
 
+    //print_r($query);
+
     $query = $this->build_search($query);
 
     $uri = $this->api_uri . self::TERMS_TAG.'/'.$query;
