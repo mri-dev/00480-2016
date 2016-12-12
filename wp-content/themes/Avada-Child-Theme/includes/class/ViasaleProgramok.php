@@ -60,6 +60,20 @@ class ViasaleProgramok extends ViasaleAPIFactory
 
         if(is_array($desc) && empty($desc)) {
           $desc = false;
+        } else {
+          if(is_array($desc) && !empty($desc))
+          foreach ($desc as $dkey => $dvalue) {
+            if ($dvalue['name'] == 'Leírás') {
+              $desc = $dvalue['description'];
+              break;
+            }
+          }
+        }
+
+        if (is_array($desc) || $desc === false) {
+          if ($desc[0]['description'] != '') {
+            $desc = $desc[0]['description'];
+          }
         }
 
         $data[] = array(
