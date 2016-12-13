@@ -4,9 +4,7 @@
       <div class="head-labels">
         <ul>
           <li class="title-label"><i class="fa fa-search"></i> Utazáskereső</li><!--
-       --><li><input type="radio" <?=($_GET['cat'] == '')?'checked="checked"':''?> name="cat" id="cat_all" value=""><label class="trans-on" for="cat_all">Összes <i class="fa fa-bars"></i></label></li><!--
-       --><li><input type="radio" <?=($_GET['cat'] == 'lastminute')?'checked="checked"':''?> name="cat" id="cat_lm" value="lastminute"><label class="trans-on" for="cat_lm">Lastminute <i class="fa fa-percent"></i></label></li><!--
-       --><li><input type="radio" <?=($_GET['cat'] == 'firstminute')?'checked="checked"':''?> name="cat" id="cat_fm" value="firstminute"><label class="trans-on" for="cat_fm">Firstminute <i class="fa fa-percent"></i></label></li><!--
+       --><li><input type="radio" <?=($_GET['cat'] == '')?'checked="checked"':''?> name="cat" id="cat_all" value=""><label class="trans-on" for="cat_all">Utazási ajánlatok <i class="fa fa-bars"></i></label></li><!--
        --><li><input type="radio" <?=($_GET['cat'] == 'prog')?'checked="checked"':''?> name="cat" id="cat_prog" value="prog"><label class="trans-on" for="cat_prog">Programok <i class="fa fa-bicycle"></i> </label></li><!--
        --><li><input type="radio" <?=($_GET['cat'] == 'trans')?'checked="checked"':''?> name="cat" id="cat_trans" value="trans"><label class="trans-on" for="cat_trans">Transzfer <i class="fa fa-bus"></i></label></li>
         </ul>
@@ -54,7 +52,7 @@
               </div>
             </div>
           </div>
-          <div class="input w60 last-item">
+          <div class="input w40">
             <div class="ico">
               <i class="fa fa-building"></i>
             </div>
@@ -62,6 +60,16 @@
             <input type="text" id="search_form_hotel" name="hotel" value="<?php echo $_GET["hotel"]; ?>" placeholder="Összes Hotel" class="trans-on">
             <input type="hidden" id="hotel_id" name="hid" value="<?php echo $_GET["hid"]; ?>">
             <div class="autocomplete-result-conteiner" id="hotel_autocomplete"></div>
+          </div>
+          <div class="input w20 last-item">
+            <?php
+              $offers = explode(",", $_GET['offers']);
+            ?>
+            <div class="cb-labels">
+              <input type="checkbox" id="searcher_lm" <?=(in_array('lastminute', $offers))?'checked="checked"':''?> datacollector data-group="offers" value="lastminute"> <label for="searcher_lm">Lastminute</label>
+              <input type="checkbox" id="searcher_fm" <?=(in_array('firstminute', $offers))?'checked="checked"':''?>  datacollector data-group="offers" value="firstminute"> <label for="searcher_fm">Firstminute</label>
+              <input type="hidden" id="offers_dc_ids" name="offers" value="<?php echo $_GET["offers"]; ?>">
+            </div>
           </div>
           <div class="row-divider"></div>
           <div class="input w20 row-bottom">
@@ -243,6 +251,17 @@ var search_form_uri = {
       e.addClass('toggled');
       $('#'+target_id).addClass('opened toggler-opener');
     }
+  });
+
+  $('*[datacollector]').change(function(){
+    var group = $(this).data('group');
+    var values = [];
+
+    $('input[type=checkbox][datacollector]:checked').each(function(i,e){
+      values.push($(e).val());
+    });
+
+    $('#'+group+'_dc_ids').val(values.join(","));
   });
 
   $('#zone_multiselect input[type=checkbox]').change(function(){

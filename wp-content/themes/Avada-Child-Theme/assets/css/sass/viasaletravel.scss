@@ -1707,6 +1707,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               font-size: 14px;
               text-transform: uppercase;
               line-height: 45px;
+              -webkit-border-radius: 0 0 8px 8px;
+              -moz-border-radius: 0 0 8px 8px;
+              border-radius: 0 0 8px 8px;
 
               i{
                 margin-right: 8px;
@@ -1765,6 +1768,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           }
           &.w20{
             flex-basis: 20%;
+          }
+
+          .cb-labels {
+            padding-top: 23px;
+            padding-left: 10px;
+            label {
+              font-size: 12px;
+              cursor: pointer;
+            }
+            input[type=checkbox] {
+              float: left;
+              margin: 3px 10px 0 0;
+            }
           }
 
           select, input[type=text] {
@@ -1857,7 +1873,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           }
 
           &.row-bottom.last-item{
-            padding-right: 5px;
+            padding-right: 0;
           }
 
         }
@@ -2094,9 +2110,10 @@ body.viasale-program-page {
     .program-info{
       display: flex;
       margin-top: 25px;
+      position: relative;
 
       & > div.description{
-        flex-basis: 40%;
+        flex-basis: 50%;
         padding: 0 0 0 25px;
 
         h2.desc-title{
@@ -2105,7 +2122,15 @@ body.viasale-program-page {
           font-size: 24px;
         }
 
+        .desc-content {
+          font-size: 0.8em;
+        }
+
         .price {
+          position: absolute;
+          top: -87px;
+          right: 0;
+          text-align: right;
           h2 {
             color: black;
             margin: 20px 0 0 0;
@@ -2120,14 +2145,15 @@ body.viasale-program-page {
         }
       }
       & > div.profil-img{
-        flex-basis: 60%;
+        flex-basis: 50%;
       }
     }
   }
   h2.galery-title{
     color: black;
-    margin: 8px 0;
-    font-size: 24px;
+    margin: 4px 0 10px 0;
+    line-height: 1;
+    font-size: 20px;
   }
   h1.program-title {
     color: $color-orange;
@@ -3214,7 +3240,7 @@ body.hotel-travel-page
     }
     .fusion-post-content-container{
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.80);
+      color: rgba(255, 255, 255, 0.81);
       height: 110px;
       max-height: 110px;
       overflow: hidden;

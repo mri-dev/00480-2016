@@ -145,9 +145,19 @@ class ViasaleLista
           $this->params[zones] = explode(",",$_GET[zona]);
         }
 
-        if(isset($_GET[cat]) && !empty($_GET[cat])){
-          if(in_array($_GET[cat], array('firstminute', 'lastminute'))){
-            $this->params[tipus] = $_GET[cat];
+        if(isset($_GET[offers]) && !empty($_GET[offers])){
+          $excat = explode(",", $_GET['offers']);
+          if (count($excat) == 1) {
+            if(in_array($excat[0], array('firstminute', 'lastminute'))){
+              $this->params[tipus] = $excat[0];
+            }
+          } else if(count($excat) > 1) {
+            foreach ($excat as $ec) {
+              if(in_array($ec, array('firstminute', 'lastminute'))){
+                $this->params[tipus] .= $ec.',';
+              }
+            }
+            $this->params[tipus] = rtrim($this->params[tipus],",");
           }
         }
 
@@ -172,6 +182,8 @@ class ViasaleLista
         }
 
       }
+
+      //print_r($this->params);
 
       $c = new ViasaleAjanlatok( $this->params );
       $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));
