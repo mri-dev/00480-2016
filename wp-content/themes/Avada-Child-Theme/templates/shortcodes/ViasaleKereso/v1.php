@@ -198,20 +198,27 @@ var search_form_uri = {
   	firstDay: 1,
   	isRTL: false,
   	//minDate: +1,
-    minDate: new Date(2016, 10, 1),
+    minDate: new Date(),
   	showMonthAfterYear: true,
   	yearSuffix: "",
     onSelect: function(dt, i){
       if($(this).attr('dtp') == 'from')
       {
         var selected_date = new Date(i.currentYear, i.currentMonth, i.currentDay);
+        var end_date = $('#search_form_erkezes').val();
+        var end_date_ts = Date.parse(end_date);
+
+
 
         if(!isNaN(selected_date.getTime())){
+            if( selected_date.getTime() < end_date_ts ){
+              return;
+            }
             var enddate = selected_date;
             enddate.setDate(selected_date.getDate() + 60);
             $("#search_form_erkezes")
               .val(enddate.toInputFormat())
-              .datepicker( "option", "minDate", new Date(i.currentYear, i.currentMonth, i.currentDay) );
+              /*.datepicker( "option", "minDate", new Date(i.currentYear, i.currentMonth, i.currentDay) )*/;
         }
       }
     }
