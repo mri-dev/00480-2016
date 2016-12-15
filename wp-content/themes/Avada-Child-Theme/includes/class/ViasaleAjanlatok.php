@@ -73,6 +73,12 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
       { $i++;
 
         $price = (int)$hotel['price_from'];
+        $discount = ((int)$hotel['price_from'] < (int)$hotel['price_original']) ? true : false;
+
+        if ($discount) {
+          $origin_price = (int)$hotel['price_original'];
+          $discount = $this->calc_discount_percent( $origin_price, $price );
+        }
 
         $data[] = array(
           'link'  => get_option('siteurl', '/').'/'.UTAZAS_SLUG.'/'.SZIGET_SLUG.'/'.sanitize_title($hotel['zone_list'][2]['name']).'/'.sanitize_title($hotel['zone_list'][3]['name']).'/'.sanitize_title($hotel['hotel_name']).'/'.$hotel['term_id'],

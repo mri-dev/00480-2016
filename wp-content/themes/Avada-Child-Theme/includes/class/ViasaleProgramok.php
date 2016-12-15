@@ -22,6 +22,10 @@ class ViasaleProgramok extends ViasaleAPIFactory
       $param['id'] = (int)$this->arg['id'];
     }
 
+    if(isset($this->arg['hotels']) && !empty($this->arg['hotels'])){
+      $param['hotels'] = array($this->arg['hotels']);
+    }
+
     if(isset($this->arg['zones']) && !empty($this->arg['zones'])) {
       foreach ( $this->arg['zones'] as $zid ) {
         if($zid == '') continue;
@@ -37,7 +41,7 @@ class ViasaleProgramok extends ViasaleAPIFactory
       foreach ( $events as $event )
       {
         $i++;
-        if(isset($param) && $param['limit'] < $i) break;
+        if(isset($param) && !empty($param['limit']) && (int)$param['limit'] < $i) break;
         //if(empty($event['pictures'][0]['url'])) continue;
 
         $image_obj = array(
@@ -75,6 +79,7 @@ class ViasaleProgramok extends ViasaleAPIFactory
             $desc = $desc[0]['description'];
           }
         }
+
 
         $data[] = array(
           'link'  => get_option('siteurl').'/'.PROGRAM_SLUG.'/'.sanitize_title($event['name']).'/'.$event['id'],

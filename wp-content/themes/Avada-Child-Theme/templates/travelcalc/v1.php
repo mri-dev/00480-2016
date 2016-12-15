@@ -268,7 +268,7 @@ function trimChar(string, charToRemove) {
               result += "<td>" + pricetype['name'] + "</td>";
               result += "<td><span data-pricetypeid='"+pricetypeid+"' class='szorzo'></span></td>";
               result += "<td class='price'>" + parseFloat(pricetype['price']).toFixed(2) + "€</td>";
-              result += "<td class='price phuf'>"+(parseFloat(pricetype['price'])*fxrate).toLocaleString('hu-HU', { maximumFractionDigits: 0, style: 'currency', currency: 'HUF'})+"</td>";
+              result += "<td class='price phuf'>"+(parseFloat(pricetype['price'])*fxrate).toLocaleString('hu-HU', { maximumFractionDigits: 0, maximumFractionDigits: 2, style: 'currency', currency: 'HUF'})+"</td>";
               result += "</tr>";
           });
 

@@ -207,6 +207,31 @@ class ViasaleAjanlat extends ViasaleAPIFactory
 
     return  $ajanlatok;
   }
+
+  public function getDifferentModes()
+  {
+    $modes = array();
+    $ajanlatok = $this->getMoreTravel();
+
+    $date_from = $this->term_data['date_from'];
+
+    if ($ajanlatok) {
+      foreach ($ajanlatok as $aj)
+      {
+        if( $aj[date_from] != $date_from ) continue;
+
+        if( $aj['term_id'] == $this->getTravelID() ){
+          continue;
+        }
+
+        $aj['price_diff'] = $aj['price_from'] - $this->getPriceOriginalEUR();
+
+        $modes[] = $aj;
+      }
+    }
+
+    return $modes;
+  }
   public function getPriceOriginalEUR()
   {
     return (float)$this->term_data['price_from'];
@@ -218,6 +243,10 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   public function getDescriptions()
   {
     return $this->term_data['hotel']['descriptions'];
+  }
+  public function getBoardType()
+  {
+    return $this->term_data['board_name'];
   }
   public function getProfilImage()
   {

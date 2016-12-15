@@ -233,7 +233,7 @@ var search_form_uri = {
 
   $( ".search-datepicker" ).datepicker( dp_options );
 
-  $(window).click(function() {
+  $(window).click(function(event) {
     if (!$(event.target).closest('.toggler-opener').length) {
       $('.toggler-opener').removeClass('opened toggler-opener');
       $('.tglwatcher.toggled').removeClass('toggled');
