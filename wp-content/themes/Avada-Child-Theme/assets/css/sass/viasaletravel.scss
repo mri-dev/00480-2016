@@ -3266,7 +3266,7 @@ body.hotel-travel-page
             font-size: 20px;
           }
 
-          .wico { 
+          .wico {
             width: 70%;
             margin: 0 auto 10px auto;
 
@@ -3312,6 +3312,34 @@ body.hotel-travel-page
             border-right: none;
         }
       }
+    }
+  }
+}
+
+.ajanlatkero-form{
+  .hided {
+    display: none;
+  }
+  span.wpcf7-list-item{
+    margin: 0 6px 0 0;
+  }
+  label{
+    font-size: 0.9em;
+    margin: 0 0 6px 0;
+  }
+  input[type=text],
+  input[type=tel],
+  input[type=email],
+  select {
+    height: 40px !important;
+    line-height: 40px !important;
+    color: $color-orange;
+  }
+  input[type=submit] {
+    background: $color-orange;
+
+    &:hover{
+      background: $color-purple;
     }
   }
 }
