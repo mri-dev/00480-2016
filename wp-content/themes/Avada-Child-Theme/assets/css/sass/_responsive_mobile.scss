@@ -214,6 +214,20 @@
     width: 100%;
     margin: 0 auto;
   }
+  body.viasale-program-page .program-content .program-info{
+    display: block;
+    width: 100%;
+  }
+  body.viasale-program-page .program-content .program-info > div.description .price {
+    position: relative;
+    text-align: left;
+    top: 0;
+    left: 0;
+    margin: 0 0 25px 0;
+  }
+  body.viasale-program-page .program-content .program-info > div.description{
+    padding: 0;
+  }
 }
 
 @media all and (max-width: 768px) {
@@ -221,5 +235,7 @@
 }
 
 @media all and (max-width: 480px) {
-
+  body.viasale-program-page .galery-container .image-set .image-set-holder{
+    flex-basis: 50%;
+  }
 }

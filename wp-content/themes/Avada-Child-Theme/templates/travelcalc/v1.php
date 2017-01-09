@@ -96,6 +96,7 @@
           <div id="selected-travel-room"></div>
         </div>
         <div class="send-mail">
+          <button type="button" class="print-offer fusion-button" onclick="PrintElem('travel-contact');">Ajánlat nyomtatása <i class="fa fa-print" aria-hidden="true"></i></button>
           <button type="button" id="mail-sending-btn" class="fusion-button" onclick="ajanlatkeresKuldes();" name="button">Megrendelés küldése <i class="fa fa-envelope-o"></i></button>
         </div>
         </form>
@@ -103,6 +104,48 @@
     </div>
   </div>
 </div>
+<script>
+function PrintElem(elem) {
+  var mywindow = window.open('', 'PRINT', 'height=700,width=1200');
+
+
+  mywindow.document.write('<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">');
+  mywindow.document.write('<html><head><title>' + document.getElementsByClassName('title')[0].innerHTML + '</title><style type="text/css" media="all">    body {font-family:"Didact Gothic"; margin: 50px;} h1, h2, h3, h4 {font-weight: 100; color: #662e91;} h1 {font-size: 17px;} h2 {color: #f7941d; margin: -5px 0px; font-size: 16px;} input, select {background: #fff; color: #000; border: none; margin-left: 50px; display: none;} #selected-travel-room .room { background: #4b226a; padding: 8px;    color: white;    font-size: 13px;} .price { text-align: center; font-weight: bold; color: #f7941d; } .price.phuf { font-weight: normal; text-align: right; color: #5c5c5c; } header { height: 100px; overflow: hidden; position: relative; } p, td, tr, th, strong {font-size: 12px;  text-align: justified;} .profil img, .img-responsive {width: 100%; margin-top: 10px;} .reszlet {padding-left: calc(2% - 1px); border-left: solid 1px #000;} .phuf {display: none;} td.price {margin-left: 30px;} th,td,tr {text-align: left !important;} .room {width: 100%;} </style>');
+  mywindow.document.write('</head><body >');
+  mywindow.document.write('<header><img src="//viasaletravel.hu/wp-content/uploads/2016/09/viasale-travel-logo-h120.png" width="75" alt="ViaSale Travel" class="fusion-logo-1x fusion-standard-logo" style="display:block; float: left; margin: 0px 39px 0px 0px;"><h1>' + document.getElementsByClassName('title')[0].innerHTML + ' ' + document.getElementsByClassName('time')[0].innerHTML + '</h1></header>');
+  var data;
+  jQuery('#term-ajanlat-result .room').each(function() {
+      if (!jQuery(this).hasClass('rejtve')) {
+          data = this.outerHTML;
+      }
+  });
+  var kepek = document.getElementsByClassName('img-responsive');
+  mywindow.document.write('<div class="reszlet" style="float: right; width: 33%; text-align: justified;"><h3>' + document.getElementsByClassName('board-type')[0].innerHTML + '</h3><p>' + data + '</p> <p>' + document.getElementById('selected-travel-room').outerHTML + '</p>' + kepek[0].outerHTML + kepek[1].outerHTML + kepek[2].outerHTML + '</div>')
+  // mywindow.document.write('<h2>' +   + '</h2>');
+  mywindow.document.write('<div class="tartalom" style="float: right; width: 62%; margin-left: 3%; text-align: justified;">' + document.getElementById('info').innerHTML + '</div>');
+  mywindow.document.write('</body></html>');
+  phufs = mywindow.document.getElementsByClassName('phuf');
+  l = phufs.length
+  pr = mywindow.document.getElementsByClassName('fullPrice');
+  jQuery(pr).before('<th></th>');
+  jQuery(mywindow.document.getElementsByClassName('success')[0]).children('th').attr('colspan', 0);
+  console.log(phufs)
+  for (var i = 0; i < l; i++) {
+      console.log(i)
+      phufs[0].remove();
+  }
+  // mywindow.document.close();
+  mywindow.focus();
+
+  setTimeout(function() {
+      mywindow.print();
+      mywindow.close();
+  }, 300)
+
+  return true;
+}
+
+</script>
 
 <script type="text/javascript">
   var fxrate=<?=$ajanlat->term_data['exchange_rate']?>;
@@ -268,7 +311,7 @@ function trimChar(string, charToRemove) {
               result += "<td>" + pricetype['name'] + "</td>";
               result += "<td><span data-pricetypeid='"+pricetypeid+"' class='szorzo'></span></td>";
               result += "<td class='price'>" + parseFloat(pricetype['price']).toFixed(2) + "€</td>";
-              result += "<td class='price phuf'>"+(parseFloat(pricetype['price'])*fxrate).toLocaleString('hu-HU', { maximumFractionDigits: 0, style: 'currency', currency: 'HUF'})+"</td>";
+              result += "<td class='price phuf'>"+(parseFloat(pricetype['price'])*fxrate).toLocaleString('hu-HU', { maximumFractionDigits: 0, maximumFractionDigits: 2, style: 'currency', currency: 'HUF'})+"</td>";
               result += "</tr>";
           });
 

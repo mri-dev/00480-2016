@@ -823,7 +823,7 @@ html, body {
           }
 
           .titles, .price, .star {
-            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.81);
           }
 
           .prices, .titles {
@@ -1058,7 +1058,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               margin: 0 auto;
               width: 90%;
               z-index: 200;
-              background: rgba(255, 255, 255, 0.9);
+              background: rgba(255, 255, 255, 0.91);
 
               .feature-wrapper {
                 display: flex;
@@ -1707,6 +1707,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               font-size: 14px;
               text-transform: uppercase;
               line-height: 45px;
+              -webkit-border-radius: 0 0 8px 8px;
+              -moz-border-radius: 0 0 8px 8px;
+              border-radius: 0 0 8px 8px;
 
               i{
                 margin-right: 8px;
@@ -1765,6 +1768,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           }
           &.w20{
             flex-basis: 20%;
+          }
+
+          .cb-labels {
+            padding-top: 23px;
+            padding-left: 10px;
+            label {
+              font-size: 12px;
+              cursor: pointer;
+            }
+            input[type=checkbox] {
+              float: left;
+              margin: 3px 10px 0 0;
+            }
           }
 
           select, input[type=text] {
@@ -1857,7 +1873,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           }
 
           &.row-bottom.last-item{
-            padding-right: 5px;
+            padding-right: 0;
           }
 
         }
@@ -2094,9 +2110,10 @@ body.viasale-program-page {
     .program-info{
       display: flex;
       margin-top: 25px;
+      position: relative;
 
       & > div.description{
-        flex-basis: 40%;
+        flex-basis: 50%;
         padding: 0 0 0 25px;
 
         h2.desc-title{
@@ -2105,7 +2122,15 @@ body.viasale-program-page {
           font-size: 24px;
         }
 
+        .desc-content {
+          font-size: 0.8em;
+        }
+
         .price {
+          position: absolute;
+          top: -87px;
+          right: 0;
+          text-align: right;
           h2 {
             color: black;
             margin: 20px 0 0 0;
@@ -2120,14 +2145,15 @@ body.viasale-program-page {
         }
       }
       & > div.profil-img{
-        flex-basis: 60%;
+        flex-basis: 50%;
       }
     }
   }
   h2.galery-title{
     color: black;
-    margin: 8px 0;
-    font-size: 24px;
+    margin: 4px 0 10px 0;
+    line-height: 1;
+    font-size: 20px;
   }
   h1.program-title {
     color: $color-orange;
@@ -2172,13 +2198,13 @@ body.viasale-program-page {
       }
     }
   }
+
 }
 body.utazas-travel-page {
   .travel-calculator-container{
     z-index: 999;
-    position: absolute;
+    position: relative;
     width: 100%;
-    top: 237px;
     background: #fff;
     border: 5px solid $color-purple;
     -webkit-border-radius: 0 0 5px 5px;
@@ -2749,7 +2775,8 @@ body.hotel-travel-page
         }
       }
     }
-    .trans-date {
+    .trans-date,
+    .board-type {
       margin: 20px 0;
 
       label {
@@ -2757,12 +2784,20 @@ body.hotel-travel-page
         color: black;
         font-size: 16px;
       }
-      .date{
+      .date,
+      .text{
         font-family: 'Arial';
         font-weight: bold;
         color: $color-blue;
-        font-size: 28px;
+        font-size: 30px;
         letter-spacing: -1px;
+
+        .time {
+          font-size: 13px;
+          color: #6d6d6d;
+          display: block;
+          font-weight: normal;
+        }
       }
       .more-trans {
         text-decoration: underline;
@@ -2771,60 +2806,56 @@ body.hotel-travel-page
       }
     }
 
-    .travel-info-box{
-      width: 100%;
-      margin-top: 25px;
-      position: relative;
+    .board-type{
+      .text{
+        font-size: 24px;
+      }
     }
 
-    .travel-offer{
-      background: #f2f2f2;
-      padding: 10px;
-      border-bottom: 5px solid #7d7d7d;
-
-      label {
-        font-weight: bold;
-        color: #5c5c5c;
-        font-size: 13px;
-        display: block;
-        margin-bottom: 2px;
-      }
-
-      .prices {
-        .origin.p-eur{
-          font-family: 'Arial';
-          color: darken($color-orange, 10%);
-          font-weight: bold;
-          font-size: 48px;
-          line-height: 1;
-        }
-        .origin.p-huf{
-          font-family: 'Arial';
-          color: #767676;
-          font-size: 18px;
-          line-height: 1.5;
-        }
-      }
-
-      .travel-info{
-        text-align: right;
-
-        .travel-number{
-          font-size: 16px;
-          color: black;
-          font-family: 'Arial';
-          margin-bottom: 15px;
-        }
-
-        .info-link {
+    .mode-list{
+      .aj {
+        margin: 4px 0;
+        background: #4a4a4a;
+        padding: 5px 8px;
+        a{
+          color: white;
           display: block;
-          font-size: 11px;
-          font-style: italic;
-          text-decoration: underline;
-          color: #969696;
+        }
+        .el {
+          float: left;
+        }
+        .pdif{
+          float: right;
+
+          i {
+            margin: 0 4px 0 8px;
+          }
+
+          .price-diff{
+            font-weight: bold;
+            font-family: 'Arial';
+            font-size: 1.1em;
+
+            &.neg {
+              color: #88e64f;
+            }
+
+            &.pos{
+              color: orange;
+            }
+          }
+          .price {
+            font-size: 0.8em;
+            color: #f7f7f7;
+          }
+        }
+
+        &:hover {
+          background: $color-purple;
         }
       }
     }
+
   }
 
   .nav{
@@ -2974,6 +3005,103 @@ body.hotel-travel-page
             margin-bottom: 20px;
           }
         }
+      }
+    }
+  }
+
+
+  .travel-info-box{
+    width: 100%;
+    margin-top: -146px;
+    position: relative;
+  }
+
+  .travel-offer{
+    background: #f2f2f2;
+    padding: 10px;
+    border-bottom: 5px solid #7d7d7d;
+
+    label {
+      font-weight: bold;
+      color: #5c5c5c;
+      font-size: 13px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .prices {
+      .origin.p-eur{
+        font-family: 'Arial';
+        color: darken($color-orange, 10%);
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 1;
+      }
+      .origin.p-huf{
+        font-family: 'Arial';
+        color: #767676;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    }
+
+    .travel-info{
+      text-align: right;
+
+      .travel-number{
+        font-size: 16px;
+        color: black;
+        font-family: 'Arial';
+        margin-bottom: 15px;
+      }
+
+      .info-link {
+        display: block;
+        font-size: 11px;
+        font-style: italic;
+        text-decoration: underline;
+        color: #969696;
+      }
+    }
+  }
+}
+
+.program-list{
+  .program {
+    margin-bottom: 10px;
+
+    .image {
+      float: left;
+      width: 20%;
+      padding: 0 10px 10px 0;
+      img{
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+    h2{
+      text-transform: uppercase;
+      font-family: 'Arial';
+      line-height: 1;
+      margin: 0 !important;
+      font-weight: bold;
+
+      a {
+        font-weight: bold;
+        color:$color-purple;
+      }
+    }
+    .desc {
+      font-size: 0.75em;
+      line-height: 1.4;
+      color: #676767;
+    }
+    .price {
+      text-align: right;
+      font-size: 1.2em;
+      color: #000;
+      strong {
+        color: $color-orange;
       }
     }
   }
@@ -3214,7 +3342,7 @@ body.hotel-travel-page
     }
     .fusion-post-content-container{
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.80);
+      color: rgba(255, 255, 255, 0.81);
       height: 110px;
       max-height: 110px;
       overflow: hidden;
@@ -3403,6 +3531,28 @@ body.search {
 }
 #ui-datepicker-div{
   z-index: 9999 !important;
+}
+.eub-button{
+  position: relative;
+  &:before {
+     background-color: #ffffff;
+     background-image: url(../../images/eub_logo.png);
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: 84%;
+     width: 80px;
+     height: 80px;
+     border-radius: 100px;
+     position: absolute;
+     top: 50%;
+     left: 25px;
+     -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+     transform: translateY(-50%);
+     -webkit-box-shadow: 2px 2px 4px -2px #653b09;
+     -moz-box-shadow: 2px 2px 4px -2px #653b09;
+     box-shadow: 2px 2px 4px -2px #653b09;
+  }
 }
 
 @import "responsive_tablet";

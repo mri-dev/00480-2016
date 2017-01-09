@@ -12,6 +12,7 @@ define('RESOURCES', IFROOT.'/assets' );
 //define('RESOURCES', '//cdn.viasaletravel.hu/res' );
 define('IMAGES', IFROOT.'/images' );
 //define('IMAGES', '//cdn.viasaletravel.hu/images' );
+define('EUB_URL', 'http://eub.hu/?pcode=29289');
 
 // Includes
 require_once "includes/include.php";
