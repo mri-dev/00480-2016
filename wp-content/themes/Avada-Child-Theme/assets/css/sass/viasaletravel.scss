@@ -3461,7 +3461,8 @@ body.hotel-travel-page
   select {
     height: 40px !important;
     line-height: 40px !important;
-    color: $color-orange;
+    color: $color-orange !important;
+    font-size: 1.1em !important; 
   }
   input[type=submit] {
     background: $color-orange;
