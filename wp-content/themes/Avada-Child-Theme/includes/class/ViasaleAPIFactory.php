@@ -6,16 +6,18 @@ class ViasaleAPIFactory
   const HOTELS_TAG      = 'hotels';
   const TRANSFER_TAG    = 'transfers';
   const EVENTS_TAG      = 'events';
-  public $api_uri   = 'http://viasale.net/api/v2/';
-  public $date_format = 'Y / m / d';
+  public $api_base      = 'http://viasale.net/api/';
+  public $api_version   = 'v2';
+  public $api_uri       = '';
+  public $date_format   = 'Y / m / d';
 
   // Settings
   protected $streamer_timeout = 30;
 
   // Store
-  public $zones_max_level = 0;
-  public $childed_zones_id = array();
-  public $child_groups = array();
+  public $zones_max_level   = 0;
+  public $childed_zones_id  = array();
+  public $child_groups      = array();
 
   public $boardTypeMap = [
      '1' => [ 'shortName' => "SC", 'fullName' => 'Ellátás nélkül' ],
@@ -34,7 +36,24 @@ class ViasaleAPIFactory
 
   public $hotel_stars = [2, 3, 4, 5];
 
-  public function __construct() { }
+  public function __construct( )
+  {
+    $this->build_api_uri();
+    return $this;
+  }
+
+  public function setApiVersion($version = false)
+  {
+    $this->api_version = $version;
+    return $this;
+  }
+
+  private function build_api_uri()
+  {
+    $this->api_uri = $this->api_base . $this->api_version.'/';
+
+    return $this;
+  }
 
   /**
   * Visszaadja egy sziget zóna ID sziget slug-ját.
@@ -140,42 +159,44 @@ class ViasaleAPIFactory
     // Get search params
     $query = array();
 
-    if(isset($params['zones']) && !empty($params['zones'])){
-      $query['zones'] = implode(",", $params['zones']);
+    $query = array_replace($query, $params);
+
+    $query = $this->build_search($query);
+
+    $uri = $this->api_uri . self::TERMS_TAG.'/'.$query;
+
+    //echo $uri . '<br>';
+
+    $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
+
+    if(!$result || empty($result)) return false;
+
+    foreach ($result as $k => $r )
+    {
+      $data[$k] = $r;
     }
-    if(isset($params['hotels']) && !empty($params['hotels'])){
-      $query['hotels'] = implode(",", $params['hotels']);
-    }
-    if(isset($params['limit'])) {
-      $query['limit'] = $params['limit'];
-    }
-    if(isset($params['offers'])) {
-      $query['offers'] = $params['offers'];
-    }
-    if(isset($params['max_hotels'])) {
-      $query['max_hotels'] = $params['max_hotels'];
-    }
-    if(isset($params['order'])) {
-      $query['sort_by'] = $params['order'];
-    }
-    if(isset($params['date_from']) && !empty($params['date_from'])) {
-      $query['date_from'] = $params['date_from'];
-    }
-    if(isset($params['date_to']) && !empty($params['date_to'])) {
-      $query['date_to'] = $params['date_to'];
-    }
-    if(isset($params['board_type']) && !empty($params['board_type'])) {
-      $query['min_board'] = $params['board_type'];
-    }
-    if(isset($params['min_star']) && !empty($params['min_star'])) {
-      $query['min_category'] = $params['min_star'];
-    }
+    unset($result);
+
+    return $data;
+  }
+
+  public function getHotels( $param = array() )
+  {
+    $data = array();
+
+    // Get search params
+    $query = array(
+      'page' => 1,
+      'per_page' => 30
+    );
+
+    $query = array_replace($query, $param);
 
     //print_r($query);
 
     $query = $this->build_search($query);
 
-    $uri = $this->api_uri . self::TERMS_TAG.'/'.$query;
+    $uri = $this->api_uri . self::HOTELS_TAG.'/'.$query;
 
     //echo $uri . '<br>';
 
@@ -197,6 +218,11 @@ class ViasaleAPIFactory
     // Get search params
     $query = array();
     $query = $this->build_search($query);
+
+    if (isset($params['api_version'])) {
+      $this->api_version = 'v2';
+      $this->build_api_uri();
+    }
 
     $uri = $this->api_uri . self::ZONES_TAG.'/'.$zone_id;
 

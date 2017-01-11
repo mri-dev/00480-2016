@@ -5,6 +5,7 @@ define('DEVMODE', true);
 define('SZIGET_SLUG', 'kanari-szigetek');
 define('KERESO_SLUG', 'utazas-kereso');
 define('HOTEL_SLUG', 'hotel');
+define('HOTEL_LIST_SLUG', 'szallodak');
 define('UTAZAS_SLUG', 'utazas');
 define('PROGRAM_SLUG', 'program');
 define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
@@ -13,6 +14,8 @@ define('RESOURCES', IFROOT.'/assets' );
 define('IMAGES', IFROOT.'/images' );
 //define('IMAGES', '//cdn.viasaletravel.hu/images' );
 define('EUB_URL', 'http://eub.hu/?pcode=29289');
+define('NOIMAGE_MID', IMAGES.'/viasale-travel-no-image-500.jpg');
+define('NOIMAGE_HD', IMAGES.'/viasale-travel-no-image-1024.jpg');
 
 // Includes
 require_once "includes/include.php";

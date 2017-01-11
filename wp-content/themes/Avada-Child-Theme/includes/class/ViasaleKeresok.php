@@ -6,7 +6,7 @@ class ViasaleKeresok extends ViasaleAPIFactory
 
   public function __construct( $arg = array() )
   {
-
+    parent::__construct();
   }
 
   /**

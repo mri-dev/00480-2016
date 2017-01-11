@@ -10,6 +10,7 @@ class ViasaleHotel extends ViasaleAPIFactory
 
   public function __construct( $id = false, $arg = array() )
   {
+    parent::__construct();
     if( !$id || empty($id) ) return $this;
 
     $this->hotel_id = $id;

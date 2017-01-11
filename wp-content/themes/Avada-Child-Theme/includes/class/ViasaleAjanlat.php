@@ -13,6 +13,7 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   public function __construct( $id = false, $arg = array() )
   {
     if( !$id || empty($id) ) return $this;
+    parent::__construct();
 
     $this->term_id = $id;
     $this->arg = $arg;

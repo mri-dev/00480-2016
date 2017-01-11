@@ -29,10 +29,13 @@ class ViasaleLista
               'set'     => null,
               'tipus'   => null,
               'stilus'  => 'standard',
-              'limit'   => 1,
-              'order'   => 'price|asc',
+              'limit'   => 30,
+              'sort'   => 'price|asc',
               'max_hotels' => 999,
-              'sziget'  => false
+              'sziget'  => false,
+              'showtitle' => false,
+              'control' => 0,
+              'zones' => ''
             )
         );
 
@@ -128,7 +131,6 @@ class ViasaleLista
     {
       global $wp_query;
       $o = '';
-
       // Sziget listázás
       if(isset($this->params['sziget']) && !empty($this->params['sziget']))
       {
@@ -142,7 +144,7 @@ class ViasaleLista
       if (is_null($this->params['tipus'])) {
 
         if((isset($_GET[zona]) && !empty($_GET[zona])) && empty($this->params['sziget'])){
-          $this->params[zones] = explode(",",$_GET[zona]);
+          $this->params[zones] = $_GET[zona];
         }
 
         if(isset($_GET[offers]) && !empty($_GET[offers])){
@@ -181,9 +183,13 @@ class ViasaleLista
           $this->params[min_star] = $_GET[c];
         }
 
+        if(isset($_GET[sort])){
+          $this->params[sort] = $_GET[sort];
+        }
+
       }
 
-      //print_r($this->params);
+      // /print_r($this->params);
 
       $c = new ViasaleAjanlatok( $this->params );
       $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));
@@ -192,6 +198,48 @@ class ViasaleLista
 
       if($data)
       {
+        if($this->params['control'] == '1') {
+          $o .= '<div class="list-header">
+            <form method="get" id="list-filter-form" action="'.KERESO_SLUG.'">
+            <div class="fusion-row">
+              <div class="fusion-one-half fusion-layout-column fusion-spacing-yes">
+                <div class="fusion-column-wrapper">
+                  <div class="list-info">
+                    <h1><span class="total_result">'.$c->total.' db</span> utazási ajánlatot találtunk</h1>
+                    <div class="pages">
+                      '.$c->total_page.' oldal / <strong>'.$c->current_page.'. oldal</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="fusion-one-half fusion-layout-column fusion-spacing-yes fusion-column-last">
+                <div class="fusion-column-wrapper">
+                  <div class="list-order">
+                    <div class="text">Rendezés:</div>
+                    <select id="filterlist" name="sort">
+                      <option value="price|asc" '.( ($_GET['sort'] == '' || $_GET['sort'] == 'price|asc') ? 'selected="selected"' : '' ).'>Ár szerint - Növekvő</option>
+                      <option value="price|desc" '.(($_GET['sort'] == 'price|desc') ? 'selected="selected"' : '' ).'>Ár szerint - Csökkenő</option>
+                      <option value="date|asc" '.(($_GET['sort'] == 'date|asc') ? 'selected="selected"' : '' ).'>Dátum szerint - Növekvő</option>
+                      <option value="date|desc" '.(($_GET['sort'] == 'date|desc') ? 'selected="selected"' : '' ).'>Dátum szerint - Csökkenő</option>
+                      <option value="name|asc" '.(($_GET['sort'] == 'name|asc') ? 'selected="selected"' : '' ).'>Név szerint - Növekvő</option>
+                      <option value="name|desc" '.(($_GET['sort'] == 'name|desc') ? 'selected="selected"' : '' ).'>Név szerint - Csökkenő</option>
+                      <option value="category|asc" '.(($_GET['sort'] == 'category|asc') ? 'selected="selected"' : '' ).'>Csillag szerint - Növekvő</option>
+                      <option value="category|desc" '.(($_GET['sort'] == 'category|desc') ? 'selected="selected"' : '' ).'>Csillag szerint - Csökkenő</option>
+                      <option value="board|asc" '.(($_GET['sort'] == 'board|asc') ? 'selected="selected"' : '' ).'>Ellátás szerint - Növekvő</option>
+                      <option value="board|desc" '.(($_GET['sort'] == 'board|desc') ? 'selected="selected"' : '' ).'>Ellátás szerint - Csökkenő</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            ';
+            foreach ($_GET as $key => $value) { if($key == 'sort') continue;
+              $o .= '<input type="hidden" name="'.$key.'" value="'.$value.'" />';
+            }
+            $o .= '
+            </form>
+          </div>';
+        }
         $o .= '<div class="style-'.$this->template.'">';
 
         $i = 0;
@@ -208,6 +256,22 @@ class ViasaleLista
         }
 
         $o .= '</div>';
+
+
+
+        if($this->params['control'] == '1') {
+          $o .=  '<div class="pagination">'. $c->pagination(get_option('siteurl').'/'.KERESO_SLUG) . '</div>';
+          $o .= '
+          <script>
+            (function($){
+              $("#filterlist").change(function(){
+                $("#list-filter-form").submit();
+              });
+            })(jQuery);
+          </script>
+          ';
+        }
+
       } else {
         $o .= '<div class="no-search-result">
         <h3>Nem találtunk elérhető ajánlatokat.</h3>
@@ -276,6 +340,31 @@ class ViasaleLista
 
       if($data)
       {
+        if ($this->params['showtitle'])
+        {
+          $title = 'Összes szálloda';
+          if (!empty($_GET['c']))
+          {
+            $title = 'Összes <span class="stars">' . str_repeat('<i class="fa fa-star"></i>', (int)$_GET['c']).'</span> szálloda';
+          }
+          if (!empty($_GET['zona']))
+          {
+            $zona = $c->getZone((int)$_GET['zona'], array('api_version' => 'v2'));
+            if ($zona) {
+              $title .= ' <span class="sziget">'.$zona['name'].'</span> szigetén';
+            }
+          } else {
+            $title .= ' <span class="sziget">Kanári-szigeteken</span>';
+          }
+
+          $o .= '<div class="hotel-list-title">
+            <h1>'.$title.'<h1>
+            <div class="subline">
+              <span class="total">'.$c->total.' db szálloda</span>
+            </div>
+          </div>';
+        }
+
         $o .= '<div class="style-'.$this->template.'">';
 
         $i = 0;
@@ -287,6 +376,8 @@ class ViasaleLista
         }
 
         $o .= '</div>';
+        $o .=  '<div class="pagination">'. $c->pagination(get_option('siteurl').'/'.HOTEL_LIST_SLUG) . '</div>';
+
       } else {
         $o .= '<div class="no-search-result">
         <h3>Nem találtunk elérhető szállodát.</h3>

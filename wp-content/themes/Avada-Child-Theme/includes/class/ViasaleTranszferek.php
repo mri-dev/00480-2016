@@ -11,6 +11,7 @@ class ViasaleTranszferek extends ViasaleAPIFactory
 
   public function __construct( $arg = array() )
   {
+    parent::__construct();
     $this->arg = $arg;
   }
 

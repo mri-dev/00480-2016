@@ -15,6 +15,7 @@ class ViasaleProgram extends ViasaleAPIFactory
   public function __construct( $id = false, $arg = array() )
   {
     if( !$id || empty($id) ) return $this;
+    parent::__construct();
 
     $this->program_id = $id;
     $this->arg = $arg;
