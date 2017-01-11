@@ -100,7 +100,7 @@
           <h2 class="box-title">Utazási ajánlatok</h2>
         </div>
         <div class="ajanlat-lista">
-          <?php if($ajanlatok['terms']): ?>
+          <?php if($ajanlatok['terms'] && $ajanlatok['total_terms_count'] != 0): ?>
           <div class="travels more-travel-list">
             <div class="more-travel-row more-travel-header">
               <div class="more-travel-header-date">
@@ -151,7 +151,7 @@
                   <?php echo $term['board_type']; ?>
                 </div>
                 <div class="more-travel-duration">
-                  <?php echo $term['term_duration']; ?> nap
+                  <?php echo $term['term_duration']+1; ?> nap
                 </div>
                 <div class="more-travel-priceplan">
                   <span class="price-eur"><?php echo number_format($term['price_from'], 0, ".", " "); ?>€</span>

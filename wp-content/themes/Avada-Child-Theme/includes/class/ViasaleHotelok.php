@@ -60,6 +60,10 @@ class ViasaleHotelok extends ViasaleAPIFactory
 
         $price = (int)$hotel['price_from'];
 
+        if ( !$hotel['main_picture'] ) {
+          $hotel['main_picture']['url'] = NOIMAGE_MID;
+        }
+
         $data[] = array(
           'link'  => get_option('siteurl', '/').'/'.HOTEL_SLUG.'/kanari-szigetek/'.sanitize_title($hotel['island']['name']).'/'.sanitize_title($hotel['zone']['name']).'/'.sanitize_title($hotel['name']).'/'.$hotel['id'],
           //'offer_link'  => get_option('siteurl', '/').'/'.UTAZAS_SLUG.'/kanari-szigetek/'.sanitize_title($hotel['zone_list'][2]['name']).'/'.sanitize_title($hotel['zone_list'][3]['name']).'/'.sanitize_title($hotel['hotel_name']).'/'.$hotel['term_id'],

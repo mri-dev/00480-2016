@@ -44,7 +44,7 @@ class ViasaleAjanlat extends ViasaleAPIFactory
 
     $div = strtotime($this->term_data['date_to']) - strtotime($this->term_data['date_from']);
 
-    return $div / $day;
+    return ($div / $day) + 1;
   }
   public function getURISlug( $after_id = '' )
   {

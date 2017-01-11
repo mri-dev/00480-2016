@@ -116,7 +116,7 @@ class ViasaleHotel extends ViasaleAPIFactory
     $travels = array();
 
     $ajanlatok = $this->getTerms(array(
-      'hotels'  => array($this->hotel_id),
+      'hotels'  => $this->hotel_id,
       'limit'   => 999,
       'order'   => 'date|asc'
     ));
