@@ -111,19 +111,6 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
     return $data;
   }
 
-  private function calc_discount_percent( $origin = 0, $new = 0 )
-  {
-    $d = false;
-
-    if($origin == 0 || $new == 0) return $d;
-
-    $d = 100 - ($new / ($origin / 100));
-
-    $d = floor($d);
-
-    return $d;
-  }
-
   public function pagination( $base = '' )
   {
     return paginate_links( array(

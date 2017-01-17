@@ -235,9 +235,17 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   }
   public function getPriceOriginalEUR()
   {
-    return (float)$this->term_data['price_from'];
+    return (float)$this->term_data['price_original'];
   }
   public function getPriceOriginalHUF()
+  {
+    return round((float)$this->term_data['price_original'] * (float)$this->term_data['exchange_rate']);
+  }
+  public function getPriceEUR()
+  {
+    return (float)$this->term_data['price_from'];
+  }
+  public function getPriceHUF()
   {
     return round((float)$this->term_data['price_from'] * (float)$this->term_data['exchange_rate']);
   }
@@ -265,11 +273,17 @@ class ViasaleAjanlat extends ViasaleAPIFactory
     return $set;
   }
 
+  public function getRAWValue($key)
+  {
+    return $this->term_data[$key];
+  }
+
   private function load()
   {
     $this->term_data = $this->getTerm($this->term_id);
     $this->getHotelInfo($this->getHotelID());
   }
+
 
   /**
   * Hotel adatlap adatok

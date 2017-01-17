@@ -6,6 +6,17 @@
 		'hotels' => $ajanlat->getHotelID()
 	));
 	$children_by_adults = $ajanlat->getChildrenByAdults();
+
+	$price = (int)$ajanlat->getPriceEUR();
+	$or_price = (int)$ajanlat->getPriceOriginalEUR();
+
+	$discount = ($price < $or_price) ? true : false;
+
+	if ($discount) {
+		$origin_price = $or_price;
+		$discount = $ajanlat->calc_discount_percent( $origin_price, $price );
+	}
+
 ?>
 <div id="content" class="full-width travel-content" stlye="max-width:100%;">
 	<div class="hotel-row" stlye="max-width:100%;">
@@ -244,16 +255,16 @@
 								<div class="fusion-one-half fusion-layout-column fusion-spacing-no fusion-column-last">
 									<div class="prices">
 										<label>Alapár:</label>
-										<div class="origin p-eur"><span class="eur-price"><?php echo number_format($ajanlat->getPriceOriginalEUR(), 0, '.', ' '); ?>€</span></div>
-										<div class="origin p-huf"><span class="huf-price"><?php echo number_format($ajanlat->getPriceOriginalHUF(), 0, '.', ' '); ?> Ft</span></div>
+										<div class="origin p-eur"><span class="eur-price"><?php if($discount):?><span class="ori"><?php echo number_format($ajanlat->getPriceOriginalEUR(), 0, '.', ' '); ?>€</span> <?php endif; ?><?php echo number_format($ajanlat->getPriceEUR(), 0, '.', ' '); ?>€</span></div>
+										<div class="origin p-huf"><span class="huf-price"><?php echo number_format($ajanlat->getPriceHUF(), 0, '.', ' '); ?> Ft</span></div>
 									</div>
 								</div>
 								<div class="fusion-one-half fusion-layout-column fusion-spacing-no fusion-column-last">
 									<div class="travel-info">
 										<label>Utazás száma</label>
 										<div class="travel-number"><?=$ajanlat->getTravelID()?></div>
-										<a href="<?=EUB_URL?>" target="_blank" class="info-link">EUB utazásbiztosítás</a>
-										<a href="/utazasi-szerzodes/" target="_blank"  class="info-link">Utazási szerződés</a>
+										<a href="<?=EUB_URL?>" target="_blank" class="info-link">EUB utazásbiztosítás <i class="fa fa-external-link"></i></a>
+										<a href="/utazasi-szerzodes/" target="_blank"  class="info-link">Utazási szerződés <i class="fa fa-external-link"></i></a>
 									</div>
 								</div>
 							</div>
@@ -263,6 +274,8 @@
 			</div>
 		</div>
 	</div>
+
+
 	<?php $hotel_gps = $ajanlat->getGPS(); ?>
   <script type="text/javascript">
 	var map;

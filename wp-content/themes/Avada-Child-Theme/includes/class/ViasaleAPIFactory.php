@@ -89,6 +89,8 @@ class ViasaleAPIFactory
   {
     $uri = $this->api_uri . self::TERMS_TAG.'/'.$id;
 
+    //echo $uri;
+
     $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
 
     if(!$result || empty($result)) return false;
@@ -398,6 +400,19 @@ class ViasaleAPIFactory
     if(empty($array)) return '';
 
     return '?'.http_build_query($array);
+  }
+
+  public function calc_discount_percent( $origin = 0, $new = 0 )
+  {
+    $d = false;
+
+    if($origin == 0 || $new == 0) return $d;
+
+    $d = 100 - ($new / ($origin / 100));
+
+    $d = floor($d);
+
+    return $d;
   }
 }
 ?>

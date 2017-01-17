@@ -3101,6 +3101,28 @@ body.hotel-travel-page
         font-weight: bold;
         font-size: 48px;
         line-height: 1;
+
+        .ori {
+          font-size: 0.47em;
+          font-weight: normal;
+          color: #5c5c5c;
+          font-style: italic;
+          position: relative;
+
+          &:after{
+            content: "";
+            background: #111;
+            height: 1px;
+            width: 108%;
+            position: absolute;
+            bottom: 0;
+            bottom: 11px;
+            left: 0;
+            -webkit-transform: rotate(-15deg);
+            -moz-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+          }
+        }
       }
       .origin.p-huf{
         font-family: 'Arial';
@@ -3125,7 +3147,11 @@ body.hotel-travel-page
         font-size: 11px;
         font-style: italic;
         text-decoration: underline;
-        color: #969696;
+        color: lighten($color-purple, 10%);
+
+        &:hover {
+          color: $color-orange;
+        }
       }
     }
   }
@@ -3556,6 +3582,103 @@ body.hotel-travel-page
 
     &:hover{
       background: $color-purple;
+    }
+  }
+}
+
+.autoberles-form{
+  .label-options{
+    .lab-opt{
+      label {
+        background: #f1f1f1;
+        display: block;
+        margin: 0 0 10px 0;
+        cursor: pointer;
+        padding: 8px;
+        font-size: 0.85em;
+
+        .cname {
+          float: left;
+
+          .cat {
+            font-family: 'Arial';
+            color: black;
+            font-weight: bold;
+            font-size: 1.2em;
+          }
+        }
+
+        .price {
+          float: right;
+          font-size: 0.9em;
+        }
+
+        &:after {
+          display: block;
+          width: 100%;
+          height: 1px;
+          content: "";
+          position: relative;
+          clear: both;
+        }
+
+        &:hover {
+          background: #efefef;
+          -webkit-transform: scale(1.1);
+          -moz-transform: scale(1.1);
+          transform: scale(1.1);
+        }
+      }
+
+      input[type=radio] {
+        display: none;
+      }
+
+      input[type=radio]:checked + label {
+        background: $color-purple;
+        color: white;
+
+        .cname {
+          .cat {
+            color: $color-orange;
+          }
+        }
+      }
+    }
+  }
+
+  input[type=text],
+  input[type=tel],
+  input[type=email],
+  select {
+    height: 40px !important;
+    line-height: 40px !important;
+    color: $color-orange !important;
+    font-size: 1.1em !important;
+  }
+  input[type=submit] {
+    background: $color-orange;
+
+    &:hover{
+      background: $color-purple;
+    }
+  }
+
+  fieldset {
+    border: 1px solid #e2e2e2;
+    padding: 20px;
+    background: #fafafa;
+    margin-bottom: 24px;
+
+    legend {
+      font-size: 1.2em;
+      color: black;
+      font-family: 'Arial';
+    }
+
+    label {
+      display: block;
+      margin-top:10px;
     }
   }
 }
