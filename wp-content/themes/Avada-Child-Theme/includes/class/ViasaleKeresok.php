@@ -19,6 +19,7 @@ class ViasaleKeresok extends ViasaleAPIFactory
 
     $raw_result_array   = $this->getZones();
 
+
     if(!$raw_result_array) return $zones;
 
     foreach ($raw_result_array as $zone)
@@ -32,7 +33,6 @@ class ViasaleKeresok extends ViasaleAPIFactory
 
       $zones[] = $zone;
     }
-
     return $zones;
   }
 

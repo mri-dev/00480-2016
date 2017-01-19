@@ -5,7 +5,7 @@
     <? if( $sziget['children'] ):  ?>
     <ul class="sub sub-of-c<?=$sziget['id']?> <?=($active) ? 'opened' : ''?>">
       <? foreach ( $sziget['children'] as $varos ): ?>
-      <li><a href="<?=get_option('siteurl','/')?>/<?=KERESO_SLUG?>/?zona=<?=$varos['id']?>"><?=$varos['name']?></a></li>
+      <li><a href="<?=get_option('siteurl','/')?>/<?=KERESO_SLUG?>/?zona=<?=$varos['id']?>"> <strong><?=$varos['name']?></strong> ajánlatok</a></li>
       <? endforeach; ?>
     </ul>
     <? endif; ?>

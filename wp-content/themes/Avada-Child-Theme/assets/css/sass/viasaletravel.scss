@@ -2124,7 +2124,7 @@ body.page-template.page-template-100-sziget{
             &:after {
               content:"";
               position: absolute;
-              right: -46px;
+              right: -45px;
               z-index: 999;
               top: 0;
               background: transparent;
@@ -2150,8 +2150,8 @@ body.page-template.page-template-100-sziget{
             font-size: 13px;
             color: #333;
             text-transform: none;
-            padding: 0 15px;
-            line-height: 25px;
+            padding: 8px 10px;
+            line-height: 1;
             border: none;
             font-weight: normal;
 
@@ -2167,6 +2167,9 @@ body.page-template.page-template-100-sziget{
       }
     }
   }
+}
+#main, .wrapper_blank #main{
+  background-position: center top;
 }
 body.viasale-program-page {
   .program-content {
@@ -3099,7 +3102,7 @@ body.hotel-travel-page
         font-family: 'Arial';
         color: darken($color-orange, 10%);
         font-weight: bold;
-        font-size: 48px;
+        font-size: 40px;
         line-height: 1;
 
         .ori {
@@ -3484,6 +3487,7 @@ body.hotel-travel-page
       margin-top: 15px;
 
       .weather-holder {
+        background: rgba(255, 255, 255, 0.75);
         display: flex;
         flex-wrap: wrap;
         border: 1px solid #d7d7d7;
@@ -3588,17 +3592,24 @@ body.hotel-travel-page
 
 .autoberles-form{
   .label-options{
+    .label-head {
+      text-align: center;
+      color: black;
+      padding: 0 0 8px 0;
+    }
     .lab-opt{
       label {
+        position: relative;
         background: #f1f1f1;
         display: block;
         margin: 0 0 10px 0;
         cursor: pointer;
-        padding: 8px;
+        padding: 8px 8px 8px 45px;
         font-size: 0.85em;
 
         .cname {
           float: left;
+          padding-top: 4px;
 
           .cat {
             font-family: 'Arial';
@@ -3628,11 +3639,25 @@ body.hotel-travel-page
           -moz-transform: scale(1.1);
           transform: scale(1.1);
         }
+
+        &:before {
+          content:"\f1db";
+          font-family: 'FontAwesome';
+          position: absolute;
+          left: 15px;
+          top: 50%;
+          color: #cdcdcd;
+          font-size: 20px;
+          -moz-transform: translate(0, -50%);
+          -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+        }
       }
 
       input[type=radio] {
         display: none;
       }
+
 
       input[type=radio]:checked + label {
         background: $color-purple;
@@ -3643,7 +3668,30 @@ body.hotel-travel-page
             color: $color-orange;
           }
         }
+
+        &:before {
+          content:"\f058";
+          color: #4cce1a;
+        }
       }
+    }
+  }
+
+  .in_date,
+  .out_date{
+    position: relative;
+    &:before {
+      content:"\f073";
+      font-family: 'FontAwesome';
+      position: absolute;
+      left: 12px;
+      margin-top: 2px;
+      top: 0;
+      color: #000000;
+    }
+
+    input.datepicker{
+      padding-left: 35px;
     }
   }
 
@@ -3668,7 +3716,7 @@ body.hotel-travel-page
     border: 1px solid #e2e2e2;
     padding: 20px;
     background: #fafafa;
-    margin-bottom: 24px;
+    margin-bottom: 40px;
 
     legend {
       font-size: 1.2em;

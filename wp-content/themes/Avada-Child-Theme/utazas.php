@@ -274,8 +274,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	<?php $hotel_gps = $ajanlat->getGPS(); ?>
   <script type="text/javascript">
 	var map;

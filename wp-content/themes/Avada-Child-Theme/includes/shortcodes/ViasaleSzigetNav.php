@@ -5,7 +5,8 @@ class ViasaleSzigetNav extends ViasaleKeresok
 
     public function __construct()
     {
-        add_action( 'init', array( &$this, 'register_shortcode' ) );
+      parent::__construct();
+      add_action( 'init', array( &$this, 'register_shortcode' ) );
     }
 
     public function register_shortcode() {
@@ -30,7 +31,9 @@ class ViasaleSzigetNav extends ViasaleKeresok
 
         $t = new ShortcodeTemplates(__CLASS__.'/default');
 
-        $attr['zones'] = $this->getZonesTree();
+        $zone = $this->getZonesTree();
+
+        $attr['zones'] = $zone;
         $attr['sziget_slug'] = $post->post_name;
 
         $output .= $t->load_template($attr);

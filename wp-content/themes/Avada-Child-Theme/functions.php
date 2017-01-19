@@ -9,13 +9,15 @@ define('HOTEL_LIST_SLUG', 'szallodak');
 define('UTAZAS_SLUG', 'utazas');
 define('PROGRAM_SLUG', 'program');
 define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
+define('EUB_URL', 'http://eub.hu/?pcode=29289');
+define('NOIMAGE_MID', IMAGES.'/viasale-travel-no-image-500.jpg');
+define('NOIMAGE_HD', IMAGES.'/viasale-travel-no-image-1024.jpg');
+
+
 define('RESOURCES', IFROOT.'/assets' );
 //define('RESOURCES', '//cdn.viasaletravel.hu/res' );
 define('IMAGES', IFROOT.'/images' );
 //define('IMAGES', '//cdn.viasaletravel.hu/images' );
-define('EUB_URL', 'http://eub.hu/?pcode=29289');
-define('NOIMAGE_MID', IMAGES.'/viasale-travel-no-image-500.jpg');
-define('NOIMAGE_HD', IMAGES.'/viasale-travel-no-image-1024.jpg');
 
 // Includes
 require_once "includes/include.php";
@@ -43,6 +45,12 @@ function theme_enqueue_styles() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+
+function datetimepicker_enqueue_styles() {
+    wp_enqueue_style( 'datetimepicker', RESOURCES . '/vendor/datetimepicker/datepicker.css?t=' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_script( 'datetimepicker', RESOURCES . '/vendor/datetimepicker/datepicker.js?t=' . ( (DEVMODE === true) ? time() : '' ) );
+}
+add_action( 'wp_enqueue_scripts', 'datetimepicker_enqueue_styles' );
 
 function custom_theme_enqueue_scripts() {
     //wp_enqueue_style('autocomplete', IFROOT . '/assets/js/autocomplete/content/styles.css');
@@ -110,12 +118,28 @@ function vs_hotel_page_class_body( $classes ) {
   return $classes;
 }
 
+// Autóbérlés e-mail validáló
+function custom_autoberles_email_confirmation_validation_filter( $result, $tag )
+{
+  $tag = new WPCF7_FormTag( $tag );
+
+  if ( 'cont_email_confirm' == $tag->name ) {
+      $your_email = isset( $_POST['cont_email'] ) ? trim( $_POST['cont_email'] ) : '';
+      $your_email_confirm = isset( $_POST['cont_email_confirm'] ) ? trim( $_POST['cont_email_confirm'] ) : '';
+
+      if ( $your_email != $your_email_confirm ) {
+          $result->invalidate( $tag, "Az Ön által megadott e-mail címek nem egyeznek. Adja meg újra!" );
+      }
+  }
+
+  return $result;
+}
+add_filter( 'wpcf7_validate_email', 'custom_autoberles_email_confirmation_validation_filter', 20, 2 );
+
 
 function vs_title($title) {
   global $wp_query;
   $new = array();
-
-
 
   //$titles = apply_filters( 'pre_get_document_title', '' );
   //echo $titles;

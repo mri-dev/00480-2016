@@ -250,6 +250,8 @@ class ViasaleAPIFactory
 
     $uri = $this->api_uri . self::ZONES_TAG.'/'.$query;
 
+    //echo $uri . '<br>';
+
     $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
 
     if(!$result || empty($result)) return false;

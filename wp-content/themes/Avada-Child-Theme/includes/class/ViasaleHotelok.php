@@ -23,13 +23,14 @@ class ViasaleHotelok extends ViasaleAPIFactory
 
     //$search = array_merge($search, $this->arg);
 
-    /*
+
     if(isset($this->arg['sziget']) && !empty($this->arg['sziget']))
     {
       $szid = $this->sziget_ids[$this->arg['sziget']]['id'];
-      $search[zones][] = $szid;
+      $search[zones] = $szid;
+      $this->arg['limit'] = 999;
     }
-    */
+
 
     if(isset($_GET['zona']) && !empty($_GET['zona'])) {
       $search['zones'] = $_GET['zona'];

@@ -131,12 +131,14 @@ class ViasaleLista
     {
       global $wp_query;
       $o = '';
+
       // Sziget listázás
       if(isset($this->params['sziget']) && !empty($this->params['sziget']))
       {
         $apic = new ViasaleAPIFactory();
         $szid = $apic->sziget_ids[$this->params['sziget']]['id'];
-        $this->params[zones][] = $szid;
+        $this->params[zones] = $szid;
+        $this->params['limit'] = 999;
         unset($apic);
       }
 
