@@ -6,4 +6,5 @@
 	require_once "ViasaleSzigetNav.php";
 	require_once "ViasaleWeathers.php";
 	require_once "ViasaleAirTicket.php";
+	require_once "WeatherIcon.php";
 ?>
