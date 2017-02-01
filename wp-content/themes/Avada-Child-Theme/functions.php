@@ -4,6 +4,7 @@ define('IFROOT', get_stylesheet_directory_uri());
 define('DEVMODE', true);
 define('SZIGET_SLUG', 'kanari-szigetek');
 define('KERESO_SLUG', 'utazas-kereso');
+define('KERESO_PROGRAM_SLUG', 'program-kereso');
 define('HOTEL_SLUG', 'hotel');
 define('HOTEL_LIST_SLUG', 'szallodak');
 define('UTAZAS_SLUG', 'utazas');
@@ -25,7 +26,7 @@ require_once "includes/include.php";
 function theme_enqueue_styles() {
   global $wp_query;
     wp_enqueue_style( 'avada-parent-stylesheet', get_template_directory_uri() . '/style.css?' . ( (DEVMODE === true) ? time() : '' )  );
-    wp_enqueue_style( 'avada-child-stylesheet', IMGROOT . '/style.css?' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_style( 'avada-child-stylesheet', IFROOT . '/style.css?' . ( (DEVMODE === true) ? time() : '' ) );
     wp_enqueue_style( 'jquery-ui-str', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.structure.min.css');
     wp_enqueue_style( 'jquery-ui', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.theme.min.css');
     wp_enqueue_style( 'slick', RESOURCES . '/vendor/slick/slick.css');
