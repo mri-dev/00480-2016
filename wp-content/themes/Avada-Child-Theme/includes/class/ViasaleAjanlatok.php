@@ -25,7 +25,7 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
     if(isset($this->arg['hotels']) && !empty($this->arg['hotels'])) {
       foreach ( $this->arg['hotels'] as $hid ) {
         if($hid == '') continue;
-        $search['hotels'][] = $hid;
+        $search['hotels'] = $hid;
       }
     }
 
@@ -53,6 +53,7 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
     if(isset($this->arg['min_star']) ) {
       $search['min_category'] = (int)$this->arg['min_star'];
     }
+
 
     if(get_query_var('page')) {
       $search['page'] = (int)get_query_var('page');
@@ -98,6 +99,7 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
           'price_v' => '€',
           'image' => $hotel['main_picture']['url'],
           'image_obj' => $hotel['main_picture'],
+          'offer' => $hotel['best_term']['offer'],
           'features' => array(
             'time' => array('text' => 'Időpont', 'value' => $this->format_date($hotel['best_term']['date_from'])),
             'days' => array('text' => 'Napok száma', 'value' => (int)$hotel['best_term']['term_duration']+1),

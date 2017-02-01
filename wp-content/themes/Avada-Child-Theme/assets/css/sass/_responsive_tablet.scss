@@ -10,17 +10,21 @@
   .fusion-main-menu > ul > li{
     padding-right: 10px;
   }
-  .viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] + label {
+  .viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] + label,
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li input[type=radio] + label {
     padding: 0 15px 0 25px;
   }
-  .viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] + label:before {
+  .viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] + label:before,
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li input[type=radio] + label:before {
    top:0;
   }
-  .viasale-kereso-holder .search-panel.v1 .head-labels ul li {
+  .viasale-kereso-holder .search-panel.v1 .head-labels ul li,
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li {
     font-size: 13px;
     line-height: 38px;
   }
-  .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button button {
+  .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button button,
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input.search-button button {
     font-size: 13px;
   }
 

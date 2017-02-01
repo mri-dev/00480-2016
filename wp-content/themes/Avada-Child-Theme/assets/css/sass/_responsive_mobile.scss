@@ -58,34 +58,54 @@
   .viasale-kereso-holder .search-panel{
     width: 95%;
   }
-  .viasale-kereso-holder .search-panel.v1 .head-labels ul{
+  .viasale-kereso-holder .search-panel.v1 .head-labels ul,
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul{
     margin: 0 !important;
   }
-  .viasale-kereso-holder .search-panel.v1 .head-labels ul li{
+  .viasale-kereso-holder .search-panel.v1 .head-labels ul li,
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li{
     margin: 0 !important;
     width: 50%;
+  }
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li.main{
+    width: 100%;
+
+
+    label {
+      -webkit-border-radius: 0 !important;
+      -moz-border-radius: 0 !important;
+      border-radius: 0 !important;
+    }
+  }
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li input[type=radio] + label:before{
+    top: 4px;
   }
   .viasale-kereso-holder .search-panel.v1 .head-labels ul li:nth-child(2){
     width: 100%;
   }
-  .viasale-kereso-holder .search-panel.v1 .inputs{
+  .viasale-kereso-holder .search-panel.v1 .inputs,
+  .viasale-kereso-holder .search-panel.v2 .inputs{
     display: block;
     padding-left: 0;
   }
-  .viasale-kereso-holder .search-panel.v1 .inputs > .input{
+  .viasale-kereso-holder .search-panel.v1 .inputs > .input,
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input{
     width: 100% !important;
   }
-  .viasale-kereso-holder .search-panel.v1 .inputs > .input.last-item{
+  .viasale-kereso-holder .search-panel.v1 .inputs > .input.last-item,
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input.last-item{
     padding-right: 0;
   }
-  .viasale-kereso-holder .search-panel.v1 .head-labels ul li.title-label {
+  .viasale-kereso-holder .search-panel.v1 .head-labels ul li.title-label,
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li.title-label {
     text-align: center;
     font-size: 20px;
     line-height: 42px;
     display: block;
     width: 100%;
   }
-  .viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] + label {
+  .viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] + label,
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li input[type=radio] + label {
     padding: 5px;
     text-align: center;
     border: 1px solid $color-orange;
@@ -95,20 +115,23 @@
     -moz-border-radius: 0;
     border-radius: 0;
   }
-  .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button button{
+  .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button button,
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input.search-button button{
     width: 100%;
     margin: 0 auto;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
   }
-  .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button i{
+  .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button i,
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input.search-button i{
     float: left;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
   }
-  .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button .button-wrapper{
+  .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button .button-wrapper,
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input.search-button .button-wrapper{
     line-height: inherit;
     margin-left: -1px;
   }
@@ -228,14 +251,35 @@
   body.viasale-program-page .program-content .program-info > div.description{
     padding: 0;
   }
+  .viasale-lista-holder .viasale-lista-set-hotel .style-standard .item{
+    flex-basis: calc(100% / 2);
+  }
 }
 
 @media all and (max-width: 768px) {
-
+  .viasale-lista-holder .viasale-lista-set-hotel .hotel-list-title h1{
+    font-size: 1.8em;
+  }
 }
 
 @media all and (max-width: 480px) {
   body.viasale-program-page .galery-container .image-set .image-set-holder{
     flex-basis: 50%;
+  }
+  .viasale-lista-holder .viasale-lista-set-hotel .style-standard .item{
+    flex-basis: calc(100% / 1);
+  }
+  .viasale-lista-holder .viasale-lista-set-hotel .style-standard .item .item-wrapper .image {
+    height: 280px;
+    max-height: 280px;
+  }
+  .viasale-lista-holder .viasale-lista-set-hotel .style-standard .item .item-wrapper .content-text{
+    height: auto;
+  }
+  .viasale-lista-holder .viasale-lista-set-hotel .style-standard .item .item-wrapper .content-text .titles .title{
+    margin: 8px 0 !important;
+  }
+  .viasale-lista-holder .viasale-lista-set-hotel .hotel-list-title h1 .sziget{
+    display: block;
   }
 }

@@ -252,9 +252,20 @@ function ajanlatkeresKuldes()
       mailparam,
       function(data){
         var resp = jQuery.parseJSON(data);
+
+        var redir_conv_url = '/sikeres-utazas-rendeles?termid='+resp.passed_params.term.id+'&hotel='+resp.passed_params.hotel.name+'&email='+resp.passed_params.email;
+
         if(resp.error == 0) {
           mail_sended = 1;
           jQuery('#mail-sending-btn').html('Megrendelés elküldve <i class="fa fa-check-circle"></i>').removeClass('in-progress').addClass('sended');
+
+          // Redirect
+          /*
+          setTimeout(function(){
+            document.location.href = redir_conv_url;
+          }, 800);
+          */
+
         } else {
           jQuery('#mail-sending-btn').html('Ajánlatkérése küldése <i class="fa fa-envelope-o"></i>').removeClass('in-progress')
           mail_sending_progress = 0;

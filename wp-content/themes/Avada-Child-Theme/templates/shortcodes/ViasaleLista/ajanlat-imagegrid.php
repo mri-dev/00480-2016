@@ -12,6 +12,16 @@
       <div class="star"><?php echo str_repeat('<i class="fa fa-star"></i>',$star); ?></div>
       <div class="price"><?php echo $price; ?><?php echo $price_v; ?></div>
       <div class="action">
+        <?php if(in_array($offer, array('lastminute', 'firstminute'))): ?>
+          <div class="offer">
+            <?php if ($offer == 'lastminute'): ?>
+              <span class="lm" title="Lastminute">LM</span>
+            <?php endif; ?>
+            <?php if ($offer == 'firstminute'): ?>
+              <span class="fm" title="Firstminute">FM</span>
+            <?php endif; ?>
+          </div>
+        <?php endif; ?>
         <a href="<?php echo $link; ?>" class="link-btn trans-on">Megnézem</a>
       </div>
     </div>

@@ -313,7 +313,7 @@ class ViasaleAPIFactory
       $query['hotels'] = implode(",", $params['hotels']);
     }
     if(isset($params['limit'])) {
-      $query['limit'] = $params['limit'];
+      $query['per_page'] = $params['limit'];
     }
     if(isset($params['order'])) {
       $query['sort_by'] = $params['order'];
@@ -323,6 +323,9 @@ class ViasaleAPIFactory
     }
     if(isset($params['date_to']) && !empty($params['date_to'])) {
       $query['date_to'] = $params['date_to'];
+    }
+    if(isset($params['page']) && !empty($params['page'])) {
+      $query['page'] = $params['page'];
     }
 
     $query = $this->build_search($query);
@@ -335,10 +338,14 @@ class ViasaleAPIFactory
 
     if(!$result || empty($result)) return false;
 
-    foreach ($result as $k => $r )
+    $rdata = $result['data'];
+    unset($result['data']);
+    $data = $result;
+
+    foreach ($rdata as $k => $r )
     {
       if(isset($params['id']) && $params['id'] != $r['id']) continue;
-      $data[] = $r;
+      $data['data'][] = $r;
     }
     unset($result);
 

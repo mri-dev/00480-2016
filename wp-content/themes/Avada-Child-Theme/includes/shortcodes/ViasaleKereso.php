@@ -22,7 +22,7 @@ class ViasaleKereso
         $defaults = apply_filters(
             self::SCTAG.'_defaults',
             array(
-
+              'view' => 'v2'
             )
         );
 
@@ -31,7 +31,7 @@ class ViasaleKereso
         $this->params   = $attr;
 
         $searcher = new ViasaleKeresok( $this->params );
-        $t = new ShortcodeTemplates(__CLASS__.'/v1');
+        $t = new ShortcodeTemplates(__CLASS__.'/'.$attr['view']);
 
         //////////////////////////////////////////////
         $this->params[zones] = $searcher->getZonesTree();

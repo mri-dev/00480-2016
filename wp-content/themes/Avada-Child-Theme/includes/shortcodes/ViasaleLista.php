@@ -98,10 +98,49 @@ class ViasaleLista
         }
       }
 
+      if (isset($_GET['sort'])) {
+        $this->params['sort'] = $_GET['sort'];
+      }
+
       $c = new ViasaleProgramok( $this->params );
       $t = new ShortcodeTemplates(__CLASS__.'/'.__FUNCTION__.( ($this->template ) ? '-'.$this->template:'' ));
 
       $data = $c->getData();
+
+      if($this->params['control'] == '1') {
+        $o .= '<div class="list-header">
+          <form method="get" id="list-filter-form" action="'.KERESO_PROGRAM_SLUG.'">
+          <div class="fusion-row">
+            <div class="fusion-one-half fusion-layout-column fusion-spacing-yes">
+              <div class="fusion-column-wrapper">
+                <div class="list-info">
+                  <h1><span class="total_result">'.$c->total.' db</span> programot találtunk</h1>
+                  <div class="pages">
+                    '.$c->total_page.' oldal / <strong>'.$c->current_page.'. oldal</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fusion-one-half fusion-layout-column fusion-spacing-yes fusion-column-last">
+              <div class="fusion-column-wrapper">
+                <div class="list-order">
+                  <div class="text">Rendezés:</div>
+                  <select id="filterlist" name="sort">
+                    <option value="price|asc" '.( ($_GET['sort'] == '' || $_GET['sort'] == 'price|asc') ? 'selected="selected"' : '' ).'>Ár szerint - Növekvő</option>
+                    <option value="price|desc" '.(($_GET['sort'] == 'price|desc') ? 'selected="selected"' : '' ).'>Ár szerint - Csökkenő</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          ';
+          foreach ($_GET as $key => $value) { if($key == 'sort') continue;
+            $o .= '<input type="hidden" name="'.$key.'" value="'.$value.'" />';
+          }
+          $o .= '
+          </form>
+        </div>';
+      }
 
       $o .= '<div class="style-'.$this->template.'">';
 
@@ -110,6 +149,19 @@ class ViasaleLista
         foreach ($data as $d)
         {
           $o .= $t->load_template($d);
+        }
+
+        if($this->params['control'] == '1') {
+          $o .=  '<div class="pagination">'. $c->pagination(get_option('siteurl').'/'.KERESO_PROGRAM_SLUG) . '</div>';
+          $o .= '
+          <script>
+            (function($){
+              $("#filterlist").change(function(){
+                $("#list-filter-form").submit();
+              });
+            })(jQuery);
+          </script>
+          ';
         }
 
       } else {

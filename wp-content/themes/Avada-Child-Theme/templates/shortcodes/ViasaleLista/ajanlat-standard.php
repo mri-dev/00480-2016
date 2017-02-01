@@ -2,6 +2,16 @@
   <?php if($discount): ?>
   <div class="discount-info"><span class="d">-<?php echo $discount; ?>%</span></div>
   <?php endif;?>
+  <?php if(in_array($offer, array('lastminute', 'firstminute'))): ?>
+    <div class="offer">
+      <?php if ($offer == 'lastminute'): ?>
+        <span class="lm" title="Lastminute">LM</span>
+      <?php endif; ?>
+      <?php if ($offer == 'firstminute'): ?>
+        <span class="fm" title="Firstminute">FM</span>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
   <div class="item-wrapper trans-on" onclick="document.location.href='<?php echo $link; ?>';">
     <div class="item-contents trans-on">
       <div class="image orientation-<?=strtolower($image_obj['orientation'])?>">
