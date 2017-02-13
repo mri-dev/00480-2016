@@ -84,13 +84,23 @@
               <i class="fa fa-star"></i>
             </div>
             <label for="search_form_kategoria" class="trans-on">Kategória</label>
-            <select class="trans-o" id="search_form_kategoria" name="c">
-              <option value="" selected="selected">Bármely</option>
-              <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
-              <? if($hotelStars) foreach ($hotelStars as $star) { ?>
-                <option value="<?=$star?>" <?=($_GET['c'] == $star)? 'selected="selected"':''?>><?=$star?> csillagos</option>
-              <?  } ?>
-            </select>
+            <input type="text" class="tglwatcher" id="search_form_star" tglwatcher="cat_multiselect" placeholder="Bármilyen" readonly="readonly">
+            <i class="dropdown-ico fa fa-caret-down"></i>
+            <input type="hidden" id="cats" name="c">
+            <div class="multi-selector-holder" id="cat_multiselect">
+              <div class="selector-wrapper">
+                <?php
+                  $stars = array();
+                  if(!empty($_GET['c'])){
+                    $stars = (array)explode(",", $_GET['c']);
+                  }
+
+                if($hotelStars) foreach ($hotelStars as $star) { ?>
+                  <div class="lvl-0"><input <?=(in_array($star, $stars))?'checked="checked"':''?> class="" type="checkbox" id="cat_star<?=$star?>" value="<?=$star?>"> <label for="cat_star<?=$star?>"><?=$star?>*</label></div>
+                <?  } ?>
+              </div>
+            </div>
+
           </div>
           <div class="input w20 row-bottom">
             <div class="ico">
@@ -186,6 +196,8 @@ var search_form_uri = {
 (function($) {
   var szones = collect_zone_checkbox(true);
   $('#zones').val(szones);
+  var sstars = collect_star_checkbox(true);
+  $('#cats').val(sstars);
   bindSearchFormURI();
 
   var dp_options = {
@@ -323,6 +335,19 @@ var search_form_uri = {
 
   });
 
+  $('#cat_multiselect input[type=checkbox]').change(function(){
+    var e = $(this);
+    var has_child = $(this).hasClass('has-childs');
+    var checkin = $(this).is(':checked');
+    var lvl = e.data('lvl');
+    var parent = e.data('parentid');
+
+    var selected_stars = collect_star_checkbox(false);
+
+    $('#cats').val(selected_stars);
+
+  });
+
 })( jQuery );
 
 function bindSearchFormURI() {
@@ -431,6 +456,47 @@ function collect_zone_checkbox(loader)
     jQuery('#search_form_place').val(str.join(", "));
   } else {
     jQuery('#search_form_place').val(seln + " zóna kiválasztva");
+  }
+
+  return arr.join(",");
+}
+
+function collect_star_checkbox(loader)
+{
+  var arr = [];
+  var str = [];
+  var seln = 0;
+
+  jQuery('#cat_multiselect input[type=checkbox]').each(function(e,i)
+  {
+    if(jQuery(this).is(':checked') && !jQuery(this).is(':disabled')){
+      seln++;
+      arr.push(jQuery(this).val());
+      str.push(jQuery(this).next('label').text());
+    }
+
+    if(loader) {
+      var e = jQuery(this);
+      var has_child = jQuery(this).hasClass('has-childs');
+      var checkin = jQuery(this).is(':checked');
+      var lvl = e.data('lvl');
+      var parent = e.data('parentid');
+
+      var cnt_child = jQuery('#cat_multiselect .childof'+parent+' input[type=checkbox]:checked').length;
+
+      if(cnt_child == 0) {
+        jQuery('#cat_multiselect .zone'+parent+' input[type=checkbox]').prop('disabled', false);
+      } else {
+        jQuery('#cat_multiselect .childof'+parent).addClass('show');
+        jQuery('#cat_multiselect .zone'+parent+' input[type=checkbox]').prop('checked', true).prop('disabled', true);
+      }
+    }
+  });
+
+  if(seln <= 3 ){
+    jQuery('#search_form_star').val(str.join(", "));
+  } else {
+    jQuery('#search_form_star').val(seln + " db kiválasztva");
   }
 
   return arr.join(",");

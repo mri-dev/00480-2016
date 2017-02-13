@@ -50,8 +50,14 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
     if(isset($this->arg['board_type']) ) {
       $search['board_types'] = $this->arg['board_type'];
     }
+
+    // v2
     if(isset($this->arg['min_star']) ) {
       $search['min_category'] = (int)$this->arg['min_star'];
+    }
+    // v3
+    if(isset($this->arg['categories']) ) {
+      $search['categories'] = $this->arg['categories'];
     }
 
 

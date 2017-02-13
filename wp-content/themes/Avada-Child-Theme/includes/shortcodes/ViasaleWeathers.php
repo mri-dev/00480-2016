@@ -4,10 +4,10 @@ class ViasaleWeathers
     const SCTAG = 'viasale-weather';
 
     public $sziget_cities = array(
-      'tenerife' => 'Santa Cruz de Tenerife',
-      'lanzarote' => 'Arrecife',
-      'fuerteventura' => 'Puerto del Rosario',
-      'gran-canaria' => 'Las Palmas de Gran Canaria'
+      'tenerife' => 'Playa de las Americas',
+      'lanzarote' => 'Puerto del Carmen',
+      'fuerteventura' => 'Corralejo',
+      'gran-canaria' => 'Maspalomas'
     );
 
     public function __construct()
@@ -65,9 +65,9 @@ class ViasaleWeathers
                   var wday = new Date(e.dt*1000);
                   var day = wday.getDay();
                   wapp += '<div class=\"weather-day\">'+
-                  '<div class=\"wico\"><img src=\"".IMAGES."/weather/ico/'+e.weather[0].icon+'.png\"/></div>'+
+                  '<div class=\"wico\"><img src=\"".IMAGES."/weather/ico/'+e.weather[0].icon.replace('n', 'd')+'.png\"/></div>'+
                   '<div class=\"day\">'+weekdays[day]+'</div>'+
-                  '<div class=\"temp\">'+e.temp.day.toFixed(0)+'&deg;C</div>'+
+                  '<div class=\"temp\">'+Math.ceil(e.temp.max)+'&deg;C</div>'+ 
                   '</div>';
                 });
                 $('#".$target."').html(wapp);

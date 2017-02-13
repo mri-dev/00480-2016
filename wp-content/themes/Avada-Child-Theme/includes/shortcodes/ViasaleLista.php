@@ -123,13 +123,7 @@ class ViasaleLista
             </div>
             <div class="fusion-one-half fusion-layout-column fusion-spacing-yes fusion-column-last">
               <div class="fusion-column-wrapper">
-                <div class="list-order">
-                  <div class="text">Rendezés:</div>
-                  <select id="filterlist" name="sort">
-                    <option value="price|asc" '.( ($_GET['sort'] == '' || $_GET['sort'] == 'price|asc') ? 'selected="selected"' : '' ).'>Ár szerint - Növekvő</option>
-                    <option value="price|desc" '.(($_GET['sort'] == 'price|desc') ? 'selected="selected"' : '' ).'>Ár szerint - Csökkenő</option>
-                  </select>
-                </div>
+
               </div>
             </div>
           </div>
@@ -234,7 +228,7 @@ class ViasaleLista
         }
 
         if(isset($_GET[c])){
-          $this->params[min_star] = $_GET[c];
+          $this->params[categories] = $_GET[c];
         }
 
         if(isset($_GET[sort])){
@@ -253,20 +247,36 @@ class ViasaleLista
       if($data)
       {
         if($this->params['control'] == '1') {
+          $stars_html_text = '';
+          $sstars = array();
+
+          if(!empty($_GET['c'])) {
+            $sstars = (array)explode(",",$_GET['c']);
+          }
+
+          if($sstars) {
+            $stars_html_text .= '<div class="star-filter">Kategória szűrés: ';
+            foreach ($sstars as $st) {
+              $stars_html_text .= '<span class="s" title="'.$st.' csillagos ajánlatok">'.str_repeat('<i class="fa fa-star"></i>', (int)$st).'</span>';
+            }
+            $stars_html_text .= '</div>';
+          }
+
           $o .= '<div class="list-header">
             <form method="get" id="list-filter-form" action="'.KERESO_SLUG.'">
             <div class="fusion-row">
-              <div class="fusion-one-half fusion-layout-column fusion-spacing-yes">
+              <div class="fusion-two-third fusion-layout-column fusion-spacing-yes">
                 <div class="fusion-column-wrapper">
                   <div class="list-info">
                     <h1><span class="total_result">'.$c->total.' db</span> utazási ajánlatot találtunk</h1>
+                    '.$stars_html_text.'
                     <div class="pages">
                       '.$c->total_page.' oldal / <strong>'.$c->current_page.'. oldal</strong>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="fusion-one-half fusion-layout-column fusion-spacing-yes fusion-column-last">
+              <div class="fusion-one-third fusion-layout-column fusion-spacing-yes fusion-column-last">
                 <div class="fusion-column-wrapper">
                   <div class="list-order">
                     <div class="text">Rendezés:</div>

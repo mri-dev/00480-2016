@@ -777,7 +777,7 @@ html, body {
         .price-eur {
           padding: 20px 10px 10px 10px !important;
         }
-      }
+      } 
     }
     /* END: .style-standard */
   }
@@ -798,6 +798,23 @@ html, body {
             color: $color-orange;
             font-family: 'Arial';
             font-weight: bold;
+          }
+        }
+
+        .star-filter {
+          font-size: 0.8em;
+          padding: 3px 0;
+          .s {
+            font-size: 12px;
+            background: $color-purple;
+            padding: 2px 4px;
+            margin-right:  4px;
+            color: #ffffff;
+            border-radius: 15px;
+
+            i{
+              margin: 0 1px;
+            }
           }
         }
       }
