@@ -1,4 +1,11 @@
 <?
+/**
+* Kalkulátor funkcionitás módosulás a JavasScript kódban:
+* - A kiválasztott szobatípus árai közül csak azok jelenjenek meg ami a fenti résztvevők számával összhangban van pl gyermekár csak gyermek megjelölése esetén
+* - Megrendelés sávban csak akkor nyíljanak le az árak ha kiválasztja a szobatípust
+*
+* @version v1.1
+**/
   $default_room = $ajanlat->getDefaultRoomData();
   $min_adults   = $default_room['min_adults'];
 ?>
@@ -41,7 +48,7 @@
         </div>
       </div>
       <div class="calc-row">
-        <h3>Ajánlatok</h3>
+        <h3>Válasszon ajánlatainkból:</h3>
         <div id="term-ajanlat-result">
 
         </div>
@@ -190,9 +197,12 @@ function PrintElem(elem) {
                    if (valid) { goodconfig = roomconfig; };
                });
                var total = 0;
+               jQuery('.priceLine[data-roompricetypeid]').removeClass('showbucket');
                jQuery.each(goodconfig['buckets'], function( bucketid, bucket) {
+                  console.log(bucket);
                    var ptid = bucket['price_type_id'];
                    jQuery('table[data-roomid="'+roomid+'"] span[data-pricetypeid="'+ptid+'"]').html(bucket['count']+" x").removeClass('rejtve');
+                   jQuery('.priceLine[data-roompricetypeid="'+ptid+'"]').addClass('showbucket');
                    total += parseInt(bucket['count']) * parseFloat(room['price_types'][ptid]['price']);
                });
                result = total.toFixed(2) + " €";
@@ -204,8 +214,8 @@ function PrintElem(elem) {
                    jQuery('table[data-roomid="'+roomid+'"] input[type=radio]').prop('disabled', true);
            } else {
                   jQuery('table[data-roomid="'+roomid+'"]').removeClass('rejtve');
-                   jQuery('table[data-roomid="'+roomid+'"] tr.priceLine').removeClass('rejtve');
-                   jQuery('table[data-roomid="'+roomid+'"] input[type=radio]').prop('disabled', false);
+                  jQuery('table[data-roomid="'+roomid+'"] tr.priceLine').addClass('rejtve');
+                  jQuery('table[data-roomid="'+roomid+'"] input[type=radio]').prop('disabled', false);
            }
            jQuery('table[data-roomid="'+roomid+'"] th.fullPrice').html(result);
        });
@@ -280,7 +290,7 @@ function ajanlatkeresKuldes()
             'color' : 'red',
             'lineHeight': 1
           });
-          alert(resp.msg);          
+          alert(resp.msg);
         }
       }
     );
@@ -323,7 +333,7 @@ function trimChar(string, charToRemove) {
           result += room['name'] + "</label></th><th style='text-align: right;' class='fullPrice'></th>";
 
           $.each(room['price_types'], function ( pricetypeid, pricetype ) {
-              result += "<tr class='priceLine'>";
+              result += "<tr class='priceLine rejtve' data-roomid='"+roomid+"' data-roompricetypeid='"+pricetypeid+"'>";
               result += "<td>" + pricetype['name'] + "</td>";
               result += "<td><span data-pricetypeid='"+pricetypeid+"' class='szorzo'></span></td>";
               result += "<td class='price'>" + parseFloat(pricetype['price']).toFixed(2) + "€</td>";
@@ -411,6 +421,9 @@ function trimChar(string, charToRemove) {
       utasok_form += utasrowtemp(i);
     }
 
+    // Price toggle
+    $('.priceLine:not(.rejtve)').addClass('rejtve');
+    $('.priceLine[data-roomid='+rid+']').removeClass('rejtve');
 
     $('#travel-contact').addClass('show');
     $('#selected-travel-room').html('<div class="room"><input type="hidden" name="term[id]" value="'+termdata.term_id+'"><input type="hidden" name="term[url]" value="<?=get_option('siteurl').$_SERVER['REQUEST_URI']?>"><input type="hidden" name="term[date_from]" value="'+termdata.date_from+'"><input type="hidden" name="term[date_to]" value="'+termdata.date_to+'"><input type="hidden" name="term[board]" value="'+termdata.board_name+'"><input type="hidden" name="hotel[name]" value="'+termdata.hotel.name+'"><input type="hidden" name="room[name]" value="'+room_data.name+'"><input type="hidden" name="room[price]" value="'+calc_price+'"><input type="hidden" name="room[people]" value="'+peoples+'"><div class="name">'+room_data.name+'<div class="ppl">'+peoples+'</div></div><div class="price">'+calc_price+'</div></div>');

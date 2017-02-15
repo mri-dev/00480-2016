@@ -117,11 +117,11 @@ class ViasaleProgramok extends ViasaleAPIFactory
     return $data;
   }
 
-  public function pagination( $base = '' )
+  public function pagination( $base = '', $format = '/%#%/', $base_after = '%_%' )
   {
     return paginate_links( array(
-    	'base'   => $base.'%_%',
-    	'format'  => '/%#%/',
+    	'base'   => $base.$base_after,
+    	'format'  => $format,
     	'current' => max( 1, get_query_var('page') ),
     	'total'   => $this->total_page
     ) );

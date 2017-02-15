@@ -16,6 +16,17 @@
     <div class="item-contents trans-on">
       <div class="image orientation-<?=strtolower($image_obj['orientation'])?>">
         <img src="<?php echo $image; ?>" alt="<?php echo $title; ?> &mdash; <?php echo $island_text; ?>" class="trans-on" />
+        <?php if($features && !empty($features)): ?>
+        <div class="features trans-on">
+          <div class="feature-wrapper">
+          <?php foreach ($features as $feat_key => $feature): ?>
+            <div class="feat-title"><?php echo $feature['text']?></div>
+            <div class="feat-value"><?php echo $feature['value']?></div>
+            <div class="feat-divider"></div>
+          <?php endforeach; ?>
+          </div>
+        </div>
+        <?php endif; ?>
       </div>
       <div class="content-text">
         <div class="titles">
@@ -25,30 +36,6 @@
           <i class="fa fa-map-marker"></i> <span class="island"><?php echo $island_text; ?></span> / <span class="city"><?php echo $place; ?></span>
         </div>
       </div>
-      <?php if($features && !empty($features)): ?>
-      <div class="features feat-style-v2">
-        <div class="feature-wrapper">
-          <div class="feat-i-time" title="<?=$features['time']['text']?>">
-            <i class="fa fa-clock-o"></i>
-            <div class="v">
-              <?=$features['time']['value']?>
-            </div>
-          </div>
-          <div class="feat-i-days" title="<?=$features['days']['text']?>">
-            <i class="fa fa-calendar"></i>
-            <div class="v">
-              <?=$features['days']['value']?> nap
-            </div>
-          </div>
-          <div class="feat-i-supply" title="<?=$features['supply']['text']?>">
-            <i class="fa fa-cutlery"></i>
-            <div class="v">
-              <?=$features['supply']['value']?>
-            </div>
-          </div>
-        </div>
-      </div>
-      <?php endif; ?>
       <div class="actions">
         <div class="price-eur">
           <?php if($discount): ?>

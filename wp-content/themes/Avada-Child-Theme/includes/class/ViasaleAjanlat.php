@@ -13,6 +13,7 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   public function __construct( $id = false, $arg = array() )
   {
     if( !$id || empty($id) ) return $this;
+
     parent::__construct();
 
     $this->term_id = $id;
@@ -51,6 +52,7 @@ class ViasaleAjanlat extends ViasaleAPIFactory
     $seo_title_list = '';
     $zone_list = $this->getHotelZones();
 
+    if($zone_list)
     foreach ($zone_list as $z ) {
       $seo_title_list .= sanitize_title($z).'/';
     }
@@ -301,7 +303,7 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   private function getHotelInfo($hotel_id)
   {
     $this->hotel_data = $this->getTerms(array(
-      'hotels' => array($hotel_id),
+      'hotels' => (int)$hotel_id,
       'limit' => 999,
       'order' => 'date|asc'
     ));

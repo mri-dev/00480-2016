@@ -777,7 +777,7 @@ html, body {
         .price-eur {
           padding: 20px 10px 10px 10px !important;
         }
-      } 
+      }
     }
     /* END: .style-standard */
   }
@@ -1260,6 +1260,43 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             }
           }
 
+          .features{
+            &.feat-style-v2 {
+              background: #e6e6e6;
+
+              .feature-wrapper{
+                position: relative;
+                display: flex;
+                padding: 10px 5px;
+                & > div {
+                  flex-basis: calc(100%/3);
+                  font-size: 0.8em;
+                  text-align: center;
+
+                  .v {
+                    font-weight: bold;
+                  }
+
+                  i {
+                    color: $color-purple;
+                    font-size: 22px;
+                  }
+                }
+
+                &:after {
+                  content: "";
+                  left: 50%;
+                  bottom: -32px;
+                  position: absolute;
+                  border-style: solid;
+                  border-width: 16px;
+                  border-color: #dcdcdc transparent transparent transparent;
+                  transform:translateX(-50%);
+                }
+              }
+            }
+          }
+
           .actions{
             display: flex;
             align-items: stretch;
@@ -1351,6 +1388,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           bottom: 0 !important;
         }
         .image{
+          /*
           img{
             -webkit-transform: scale(1.2) translate(-44%, -44%);
             -moz-transform: scale(1.2) translate(-44%, -44%);
@@ -1363,7 +1401,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             -webkit-transform-origin: center;
             -moz-transform-origin: center;
             transform-origin: center;
-          }
+          }*/
         }
       }
       .item.discounted{
@@ -1670,7 +1708,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
         font-size: 22px;
         text-transform: uppercase;
         pointer-events: none;
-        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.41);
+        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
       }
     }
 
@@ -2810,6 +2848,9 @@ body.utazas-travel-page {
           &.rejtve {
             display: none;
           }
+          &:not(.showbucket) {
+            display: none !important;
+          }
         }
 
         &.rejtve {
@@ -2911,6 +2952,16 @@ body.utazas-travel-page {
           & > div.telefon,
           & > div.email{
             flex-basis: 50%;
+          }
+
+        }
+
+        #copyordererdata a{
+          font-size: 0.8em;
+          padding: 4px 0;
+
+          &:hover {
+            color: $color-purple;
           }
         }
 

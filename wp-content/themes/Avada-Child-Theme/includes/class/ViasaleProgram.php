@@ -15,6 +15,7 @@ class ViasaleProgram extends ViasaleAPIFactory
   public function __construct( $id = false, $arg = array() )
   {
     if( !$id || empty($id) ) return $this;
+    $this->setApiVersion('v3');
     parent::__construct();
 
     $this->program_id = $id;
@@ -113,7 +114,7 @@ class ViasaleProgram extends ViasaleAPIFactory
   {
     $programok = $this->getEvents(array( 'id' => $this->program_id, 'limit' => 999));
 
-    $this->program_data = $programok[0];
+    $this->program_data = $programok['data'][0];
   }
 }
 ?>

@@ -338,10 +338,12 @@ class ViasaleAPIFactory
 
     if(!$result || empty($result)) return false;
 
+
     $rdata = $result['data'];
     unset($result['data']);
     $data = $result;
 
+    if($rdata)
     foreach ($rdata as $k => $r )
     {
       if(isset($params['id']) && $params['id'] != $r['id']) continue;

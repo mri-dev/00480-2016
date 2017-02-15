@@ -3,7 +3,8 @@
 	$hotel_id = $wp_query->query_vars['utazas_id'];
 	$ajanlat 	= new ViasaleAjanlat($hotel_id);
 	$programok= new ViasaleProgramok(array(
-		'hotels' => $ajanlat->getHotelID()
+		'hotels' => $ajanlat->getHotelID(),
+		'limit' => 3
 	));
 	$children_by_adults = $ajanlat->getChildrenByAdults();
 
@@ -16,6 +17,8 @@
 		$origin_price = $or_price;
 		$discount = $ajanlat->calc_discount_percent( $origin_price, $price );
 	}
+
+	$ajanlat_base_url = '/'.$ajanlat->getURISlug($ajanlat->getTravelID());
 
 ?>
 <div id="content" class="full-width travel-content" stlye="max-width:100%;">
@@ -230,6 +233,9 @@
 											<div class="clearfix"></div>
 										</div>
 									<?php endforeach; ?>
+										<div class="pagination">
+											<?php echo $programok->pagination( rtrim($ajanlat_base_url, '/'), '?page=%#%#programok'); ?>
+										</div>
 									</div>
 								<?php else: ?>
 									<div class="no-programs">
@@ -269,7 +275,7 @@
 								</div>
 							</div>
 					</div>
-					<? include(locate_template('templates/travelcalc/v1.php')); ?>
+					<? include(locate_template('templates/travelcalc/v1.1.php')); ?>
 				</div>
 			</div>
 		</div>
