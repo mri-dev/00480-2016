@@ -9,7 +9,7 @@
   $default_room = $ajanlat->getDefaultRoomData();
   $min_adults   = $default_room['min_adults'];
 ?>
-<div class="travel-calculator-container">
+<div class="travel-calculator-container" ng-controller="formValidator">
   <div class="calc-content">
     <div class="calc-head main-head">
         <img src="<?=IFROOT?>/images/palmas_h40_white.png" alt="" />
@@ -81,19 +81,19 @@
                 </div>
                 <div class="szuletesi_datum">
                   <label for="szuletesi_datum">Születési dátum</label>
-                  <input type="text" class="datepicker" id="szuletesi_datum" name="szuletesi_datum" placeholder="2000.01.01" value="">
+                  <input type="text" class="datepicker" ng-model="orderer.dob" ng-required ng-pattern="/^((\d{4})[ .-/](\d{2})[ .-/](\d{2})|(\d{2})\/(\d{2})\/(\d{4}))$/" id="szuletesi_datum" name="szuletesi_datum" placeholder="2000.01.01" value="">
                 </div>
                 <div class="cim">
                   <label for="cim">Cím</label>
                   <input type="text" class="datepicker" id="cim" name="cim" placeholder="" value="">
                 </div>
                 <div class="telefon">
-                  <label for="telefon">Telefonszám</label>
-                  <input type="text" id="telefon" name="telefon" placeholder="+36-XX-XXXXXX" value="">
+                  <label for="telefon">Mobilszám</label>
+                  <input type="text" id="telefon" name="telefon" ng-model="orderer.tel" ng-required ng-pattern="/^(?:0|\(?\+36\)?\s?|06\s?)[1-79](?:[\.\-\s]?\d\d){4}$/" placeholder="+36 XXXXXXXX" value="">
                 </div>
                 <div class="email">
                   <label for="email">E-mail cím</label>
-                  <input type="email" id="email" name="email" placeholder="mail@example.com" value="">
+                  <input type="email" id="email" name="email" ng-model="orderer.mail" ng-pattern="/^[a-z]+[a-z0-9._-]+@[a-z_-]+\.[a-z.]{2,5}$/" ng-required placeholder="mail@example.com" value="">
                 </div>
               </div>
               <div id="copyordererdata"><a href="javascript:void(0);"><i class="fa fa-copy"></i> adatok másolása <strong>Utas #1</strong>-hez</a></div>
@@ -104,9 +104,23 @@
           <h4>Kiválasztott ajánlat:</h4>
           <div id="selected-travel-room"></div>
         </div>
-        <div class="send-mail">
-          <button type="button" class="print-offer fusion-button" onclick="PrintElem('travel-contact');">Ajánlat nyomtatása <i class="fa fa-print" aria-hidden="true"></i></button>
-          <button type="button" id="mail-sending-btn" class="fusion-button" onclick="ajanlatkeresKuldes();" name="button">Megrendelés küldése <i class="fa fa-envelope-o"></i></button>
+        <div class="send-mail"><button type="button" ng-show="orderer.dob && orderer.mail && orderer.tel" id="mail-sending-btn" class="fusion-button" onclick="ajanlatkeresKuldes();" name="button">Megrendelés küldése <i class="fa fa-envelope-o"></i></button><div class="ng-alert-head" ng-show="!orderer.dob || !orderer.mail || !orderer.tel">
+            <i class="fa fa-exclamation-triangle" style="font-size: 14px;"></i><br>
+            A megrendeléshez töltse ki helyesen a megrendelőt!
+          </div>
+          <div class="ng-alert-msg" ng-show="!orderer.dob">
+            <i class="fa fa-birthday-cake"></i> Adja meg helyesen a megrendelő születési dátumát.<br>
+            <em title="2000 01 01, 2000.01.01, 2000-01-01, 2000/01/01">Formátumok (?)</em>
+          </div>
+          <div class="ng-alert-msg" ng-show="!orderer.tel">
+            <i class="fa fa-mobile"></i> Adja meg helyesen a megrendelő mobilszámát.<br>
+            <em title="06xxXXXXXXX, +36xxXXXXXXX">Formátumok (?)</em>
+          </div>
+          <div class="ng-alert-msg" ng-show="!orderer.mail">
+            <i class="fa fa-envelope"></i> Adja meg helyesen a megrendelő e-mail címét.<br>
+            <em title="mail@example.com">Formátumok (?)</em>
+          </div>
+          <button type="button" ng-show="orderer.dob && orderer.mail && orderer.tel"  class="print-offer fusion-button" onclick="PrintElem('travel-contact');">Ajánlat nyomtatása <i class="fa fa-print" aria-hidden="true"></i></button>
         </div>
         </form>
       </div>
@@ -137,9 +151,8 @@ function PrintElem(elem) {
   pr = mywindow.document.getElementsByClassName('fullPrice');
   jQuery(pr).before('<th></th>');
   jQuery(mywindow.document.getElementsByClassName('success')[0]).children('th').attr('colspan', 0);
-  console.log(phufs)
+
   for (var i = 0; i < l; i++) {
-      console.log(i)
       phufs[0].remove();
   }
   // mywindow.document.close();
@@ -199,7 +212,6 @@ function PrintElem(elem) {
                var total = 0;
                jQuery('.priceLine[data-roompricetypeid]').removeClass('showbucket');
                jQuery.each(goodconfig['buckets'], function( bucketid, bucket) {
-                  console.log(bucket);
                    var ptid = bucket['price_type_id'];
                    jQuery('table[data-roomid="'+roomid+'"] span[data-pricetypeid="'+ptid+'"]').html(bucket['count']+" x").removeClass('rejtve');
                    jQuery('.priceLine[data-roompricetypeid="'+ptid+'"]').addClass('showbucket');
@@ -263,7 +275,6 @@ function ajanlatkeresKuldes()
       mailparam,
       function(data){
         var resp = jQuery.parseJSON(data);
-        console.log(resp);
 
         var redir_conv_url = '/sikeres-megrendeles?termid='+resp.passed_params.term.id+'&hotel='+resp.passed_params.hotel.name+'&email='+resp.passed_params.email;
 
@@ -458,7 +469,7 @@ function trimChar(string, charToRemove) {
         '</div>'+
         '<div class="szuletesi_datum">'+
           '<label for="szuletesi_datum_utas_'+i+'">Születési dátum</label>'+
-          '<input type="text" class="datepicker" id="szuletesi_datum_utas_'+i+'" name="utasok[szuletesi_datum][]" placeholder="" value="">'+
+          '<input type="text" class="datepicker" ng-model="traveller.dob" id="szuletesi_datum_utas_'+i+'" name="utasok[szuletesi_datum][]" placeholder="" value="">'+
         '</div>'+
       '</div>'+
     '</div>';

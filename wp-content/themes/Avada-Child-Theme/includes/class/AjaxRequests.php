@@ -51,27 +51,6 @@ class AjaxRequests
       $this->returnJSON($return);
     }
 
-    // Validate Születési dátum
-    $szul_datum = trim($this->test_input($_POST['szuletesi_datum']));
-
-    if( !preg_match("/^[0-9]{4}\.[0-9]{2}\.[0-9]{2}$/", $szul_datum) ) {
-      $return['error']  = 1;
-      $return['msg']    = 'Nem megfelelő születési dátum formátum. Formátum minta.: 2000.01.01';
-      $return['missing']= count($return['missing_elements']);
-      $return['missing_elements'][]= 'szuletesi_datum';
-      $this->returnJSON($return);
-    }
-
-    // Validate Telefonszám
-    $phone = trim($this->test_input($_POST['telefon']));
-    if( !preg_match("/^\+[0-9]{1,4}-[0-9]{1,4}-[0-9]{6,9}$/", $phone) ) {
-      $return['error']  = 1;
-      $return['msg']    = 'Nem megfelelő telefonszám formátum. Formátum minta.: +36-70-1234567';
-      $return['missing']= count($return['missing_elements']);
-      $return['missing_elements'][]= 'telefon';
-      $this->returnJSON($return);
-    }
-
     // Validate Email
     $email = $this->test_input($_POST["email"]);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

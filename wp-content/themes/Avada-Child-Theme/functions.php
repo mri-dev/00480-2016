@@ -29,6 +29,7 @@ function theme_enqueue_styles() {
     wp_enqueue_style( 'avada-child-stylesheet', IFROOT . '/style.css?' . ( (DEVMODE === true) ? time() : '' ) );
     wp_enqueue_style( 'jquery-ui-str', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.structure.min.css');
     wp_enqueue_style( 'jquery-ui', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.theme.min.css');
+    wp_enqueue_script('angular', '//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js', array('jquery'), '');
     wp_enqueue_style( 'slick', RESOURCES . '/vendor/slick/slick.css');
     wp_enqueue_style( 'slick-theme', RESOURCES . '/vendor/slick/slick-theme.css');
 
@@ -36,7 +37,7 @@ function theme_enqueue_styles() {
     wp_enqueue_script('mocjax', RESOURCES . '/vendor/autocomplete/scripts/jquery.mockjax.js');
     wp_enqueue_script('autocomplete', RESOURCES . '/vendor/autocomplete/dist/jquery.autocomplete.min.js');
     wp_enqueue_script('slick', RESOURCES . '/vendor/slick/slick.min.js', array('jquery'), '');
-    wp_enqueue_script('basevs', RESOURCES . '/js/base-v1.js?t=' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_script('viasalebase-ang', RESOURCES . '/js/viasalebase.ang.js?t=' . ( (DEVMODE === true) ? time() : '' ) );
 
     if (
       (isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id'])) ||
@@ -69,6 +70,7 @@ function vs_rewrite_rules() {
     add_rewrite_rule( HOTEL_SLUG.'/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[2]&hotel_id=$matches[5]', 'top' );
     add_rewrite_rule( UTAZAS_SLUG.'/'.SZIGET_SLUG.'/([^/]+)/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[1]&varos=$matches[2]&utazas_id=$matches[4]', 'top' );
     add_rewrite_rule( PROGRAM_SLUG.'/([^/]+)/([^/]+)', 'index.php?program_id=$matches[2]', 'top' );
+    add_rewrite_rule( UTAZAS_SLUG.'/download/([^/]+)', 'index.php?utazas_id=$matches[1]&templatekey=offlinedownload', 'top' );
 }
 add_action( 'init', 'vs_rewrite_rules' );
 
@@ -78,6 +80,7 @@ function vs_query_vars($aVars) {
   $aVars[] = "sziget";
   $aVars[] = "varos";
   $aVars[] = "program_id";
+  $aVars[] = "templatekey";
   return $aVars;
 }
 add_filter('query_vars', 'vs_query_vars');
@@ -86,11 +89,19 @@ add_filter('query_vars', 'vs_query_vars');
 function vs_custom_template($template) {
   global $post, $wp_query;
 
-  /*
+  /* * /
   echo '<pre>';
   print_r($wp_query->query_vars);
   echo '</pre>';
-  */
+  /* */
+
+  if( isset($wp_query->query_vars['templatekey']) && !empty($wp_query->query_vars['templatekey']) )
+  {
+    if (function_exists('vs_templatekey_'.$wp_query->query_vars['templatekey'].'_class_body')) {
+      add_filter( 'body_class','vs_templatekey_'.$wp_query->query_vars['templatekey'].'_class_body' );
+    }
+    return get_stylesheet_directory() . '/'.$wp_query->query_vars['templatekey'].'.php';
+  }
 
   if ( isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id']) ) {
       add_filter( 'body_class','vs_utazas_page_class_body' );
@@ -103,11 +114,17 @@ function vs_custom_template($template) {
   if(isset($wp_query->query_vars['program_id']) && !empty($wp_query->query_vars['program_id'])) {
     add_filter( 'body_class','vs_program_page_class_body' );
     return get_stylesheet_directory() . '/program.php';
-  } else {
+  } else{
     return $template;
   }
 }
 add_filter( 'template_include', 'vs_custom_template' );
+
+function vs_templatekey_offlinedownload_class_body()
+{
+  $classes[] = 'viasale-template template-offlinedownload';
+  return $classes;
+}
 
 function vs_program_page_class_body( $classes ) {
   $classes[] = 'viasale-program-page';

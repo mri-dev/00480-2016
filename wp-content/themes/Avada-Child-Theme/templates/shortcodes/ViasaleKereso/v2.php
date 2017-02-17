@@ -304,8 +304,9 @@ var search_form_uri = {
     var checkin = $(this).is(':checked');
     var lvl = e.data('lvl');
     var parent = e.data('parentid');
+    var sel_cat_key = $('form#modul-page-searcher-form-v1 input[type=radio][name=cat]:checked').val();
 
-    if(has_child) {
+    if(has_child && sel_cat_key == "") {
       if(checkin) {
         $('#zone_multiselect .childof'+e.val()+' input[type=checkbox]').prop('checked', false);
         $('#zone_multiselect .childof'+e.val()).addClass('show');

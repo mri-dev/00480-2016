@@ -2643,7 +2643,21 @@ body.viasale-program-page {
       }
     }
   }
+}
+input.ng-touched{
+  position: relative;
 
+  &:after {
+    font-family: 'FontAwesome';
+    content:"\f001";
+  }
+}
+input.ng-touched.ng-invalid {
+  border: 2px solid #fa9b9b;
+  color: red !important;
+}
+input.ng-touched.ng-valid {
+  border: 2px solid #98dc6e;
 }
 body.utazas-travel-page {
   .travel-calculator-container{
@@ -2890,9 +2904,21 @@ body.utazas-travel-page {
         .calc-head {
           padding: 8px 0;
         }
-        .calc-row,
-        .selected-travel-room {
+        .calc-row{
           padding: 0 10px;
+        }
+        .selected-travel-room {
+          padding: 0;
+
+          h4 {
+            text-align: center;
+            background: #e2e2e2;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            padding: 8px;
+            margin: 10px 0 0 0;
+            font-family: 'Arial';
+          }
         }
         h3 {
           text-align: center;
@@ -3023,7 +3049,7 @@ body.utazas-travel-page {
           color: white;
           padding: 15px;
           background: $color-orange;
-          font-size: 15px;
+          font-size: 18px;
           font-weight: bold;
           font-family: 'Arial';
           letter-spacing: -0.4px;
@@ -3044,6 +3070,44 @@ body.utazas-travel-page {
             font-weight: normal;
             font-size: 17px;
             letter-spacing: 0px;
+          }
+          &.print-offer {
+            background: #e2e2e2;
+            font-size: 0.92em;
+            color: #747474;
+            text-shadow: 0 1px #ffffff;
+            font-weight: normal;
+            text-transform: none;
+
+            &:hover {
+              background: #cfcfcf;
+            }
+          }
+        }
+        .ng-alert-head{
+          background: #e82c2c;
+          color: #f7e2e2;
+          font-size: 0.8em;
+          text-align: center;
+          font-weight: bold;
+          padding: 8px 5px;
+          position: relative;
+        }
+        .ng-alert-msg{
+          background: #c5e0ea;
+          color: #28657c;
+          font-size: 0.74em;
+          line-height: 1.1;
+          padding: 8px;
+          margin: 1px 0;
+
+          i {
+            padding: 0 5px 5px 0;
+            float: left;
+            line-height: 28px;
+            width: 31px;
+            text-align: center;
+            font-size: 16px;
           }
         }
       }
