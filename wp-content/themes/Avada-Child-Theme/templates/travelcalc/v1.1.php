@@ -122,6 +122,10 @@
           </div>
           <button type="button" ng-show="orderer.dob && orderer.mail && orderer.tel"  class="print-offer fusion-button" onclick="PrintElem('travel-contact');">Ajánlat nyomtatása <i class="fa fa-print" aria-hidden="true"></i></button>
         </div>
+        <div class="action-btns">
+          <button type="button" class="print-offer fusion-button" onclick="PrintElem('travel-contact');">Ajánlat nyomtatása <i class="fa fa-print" aria-hidden="true"></i></button>
+          <button type="button" class="print-offer fusion-button" onclick="downloadOffer(<?php echo $ajanlat->getTravelID(); ?>);">Letöltés <i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
+        </div>
         </form>
       </div>
     </div>
@@ -234,6 +238,12 @@ function PrintElem(elem) {
 
    };
 
+function downloadOffer( tid ) {
+  var obj = jQuery("#selected-travel-room input").serialize();
+  var coded = jQuery.base64.btoa(obj, true);
+  document.location.href = '/utazas/download/'+tid+'/?offer='+coded;
+}
+
 function setchildren(){
    var minchildren = 10;
    var maxchildren = 0;
@@ -268,7 +278,7 @@ function ajanlatkeresKuldes()
     jQuery('#mailsend .missing').removeClass('missing');
 
     mail_sending_progress = 1;
-    var mailparam  = jQuery('#mailsend').serializeArray();
+    var mailparam  = jQuery('#mailsend').serialize();
 
     jQuery.post(
       '<?php echo admin_url('admin-ajax.php'); ?>?action=send_travel_request',

@@ -33,6 +33,7 @@ function theme_enqueue_styles() {
     wp_enqueue_style( 'slick', RESOURCES . '/vendor/slick/slick.css');
     wp_enqueue_style( 'slick-theme', RESOURCES . '/vendor/slick/slick-theme.css');
 
+    wp_enqueue_script('jquery-base64', RESOURCES . '/vendor/jquery.base64/jquery.base64.min.js', array('jquery'), '');
     wp_enqueue_script('jquery-ui', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.min.js', array('jquery'));
     wp_enqueue_script('mocjax', RESOURCES . '/vendor/autocomplete/scripts/jquery.mockjax.js');
     wp_enqueue_script('autocomplete', RESOURCES . '/vendor/autocomplete/dist/jquery.autocomplete.min.js');

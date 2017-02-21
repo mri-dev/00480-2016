@@ -298,6 +298,8 @@ html, body {
           }
         }
         .transfer-list{
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
           font-size: 13px;
 
@@ -315,6 +317,8 @@ html, body {
 
             .transfer-header,
             .transfer-group-list .transfer{
+              display: -webkit-box;
+              display: -ms-flexbox;
               display: flex;
               align-items: center;
 
@@ -407,6 +411,8 @@ html, body {
           }
         }
         .transfer-list{
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
           font-size: 13px;
           margin: 0 -5px;
@@ -425,6 +431,8 @@ html, body {
 
             .transfer-header,
             .transfer-group-list .transfer{
+              display: -webkit-box;
+              display: -ms-flexbox;
               display: flex;
               align-items: center;
 
@@ -528,6 +536,8 @@ html, body {
       }
     }
     .style-standard {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       flex-wrap: wrap;
       margin: 0 -10px;
@@ -848,6 +858,8 @@ html, body {
     margin-bottom: 20px;
 
     .style-imagegrid {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       flex-wrap: wrap;
       margin: 0 -10px;
@@ -1089,6 +1101,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
     }
     /* END: .style-imagegrid */
     .style-standard {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       flex-wrap: wrap;
       margin: 0 -10px;
@@ -1184,6 +1198,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               background: rgba(255, 255, 255, 0.91);
 
               .feature-wrapper {
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
                 flex-wrap: wrap;
 
@@ -1266,6 +1282,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 
               .feature-wrapper{
                 position: relative;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
                 padding: 10px 5px;
                 & > div {
@@ -1298,6 +1316,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           }
 
           .actions{
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             align-items: stretch;
             justify-content: center;
@@ -1435,6 +1455,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           padding: 20px 15px;
           .item-wrapper{
             background: #fff;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             -webkit-box-shadow: 8px 8px 38px -10px #984b03;
             -moz-box-shadow: 8px 8px 38px -10px #984b03;
@@ -1514,6 +1536,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             }
 
             .action {
+              display: -webkit-box;
+              display: -ms-flexbox;
               display: flex;
 
               & > div {
@@ -1561,6 +1585,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           padding: 20px 15px;
           .item-wrapper{
             background: #fff;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             -webkit-box-shadow: 8px 8px 38px -10px #984b03;
             -moz-box-shadow: 8px 8px 38px -10px #984b03;
@@ -1640,6 +1666,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             }
 
             .action {
+              display: -webkit-box;
+              display: -ms-flexbox;
               display: flex;
 
               & > div {
@@ -1677,6 +1705,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
 }
 
 .sziget-korok-holder{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   align-items: baseline;
 
@@ -1883,6 +1913,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
       /*END:.head-labels{*/
 
       .inputs {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         flex-wrap: wrap;
         align-items: stretch;
@@ -2162,6 +2194,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
       /*END:.head-labels{*/
 
       .inputs {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         flex-wrap: wrap;
         align-items: stretch;
@@ -2553,6 +2587,8 @@ body.viasale-program-page {
     padding: 25px 0;
 
     .program-info{
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       margin-top: 25px;
       position: relative;
@@ -2611,6 +2647,8 @@ body.viasale-program-page {
     margin-top: 25px;
 
     .image-set{
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       flex-wrap: wrap;
       margin: 2px -2px;
@@ -2952,6 +2990,8 @@ body.utazas-travel-page {
         }
 
         .contact-form{
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
           flex-wrap: wrap;
           margin: 0 -4px;
@@ -3043,6 +3083,26 @@ body.utazas-travel-page {
         }
       }
 
+      .action-btns{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        button {
+          flex-basis: 50%;
+          padding: 10px;
+          background: #dedede;
+          border-right: 1px solid #c7c7c7;
+
+          &:hover {
+            background: #acacac;
+            color: white;
+          }
+        }
+        button:last-child{
+          border-right: none;
+        }
+      }
+
       .send-mail{
         button {
           width: 100%;
@@ -3070,18 +3130,6 @@ body.utazas-travel-page {
             font-weight: normal;
             font-size: 17px;
             letter-spacing: 0px;
-          }
-          &.print-offer {
-            background: #e2e2e2;
-            font-size: 0.92em;
-            color: #747474;
-            text-shadow: 0 1px #ffffff;
-            font-weight: normal;
-            text-transform: none;
-
-            &:hover {
-              background: #cfcfcf;
-            }
           }
         }
         .ng-alert-head{
@@ -3131,6 +3179,8 @@ body.utazas-travel-page,
 body.hotel-travel-page
 {
   .hotel-row{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 1100px;
     margin: 0 auto;
@@ -3272,6 +3322,8 @@ body.hotel-travel-page
       float: left;
     }
     .travel-features{
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       align-items: flex-end;
 
@@ -4050,7 +4102,9 @@ body.hotel-travel-page
 
       .weather-holder {
         background: rgba(255, 255, 255, 0.75);
-        display: flex;
+        display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
         flex-wrap: wrap;
         border: 1px solid #d7d7d7;
 
