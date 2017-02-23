@@ -920,7 +920,7 @@ html, body {
           }
 
           .titles, .price, .star {
-            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.81);
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.82);
           }
 
           .prices, .titles {
@@ -3387,10 +3387,59 @@ body.hotel-travel-page
     }
 
     .mode-list{
+      z-index: 9999999;
+      position: relative;
+      background: #fff;
+      border: 1px solid #c8c8c8;
+      padding: 10px;
+      cursor: pointer;
+      background: #f4f4f4;
+      -webkit-border-radius: 30px;
+      -moz-border-radius: 30px;
+      border-radius: 30px;
+
+      .tgl{
+        padding-left: 10px;
+      }
+
+      &.active {
+        -webkit-border-radius: 30px 30px 0 0;
+        -moz-border-radius: 30px 30px 0 0;
+        border-radius: 30px 30px 0 0;
+        -webkit-box-shadow: 0 15px 20px -5px #4b4b4b;
+        -moz-box-shadow: 0 15px 20px -5px #4b4b4b;
+        box-shadow: 0 15px 20px -5px #4b4b4b;
+      }
+
+      .nl {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+
+        .badge {
+          background: #626262;
+          color: #fff;
+          padding: 0 10px;
+          text-align: center;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          -webkit-border-radius: 30px;
+          -moz-border-radius: 30px;
+          border-radius: 30px;
+          display: block;
+          float: right;
+        }
+      }
+
       .aj {
-        margin: 4px 0;
+        display: none;
+        margin: 10px 0 0 0;
         background: #4a4a4a;
         padding: 5px 8px;
+        &.showed {
+          display: block;
+        }
         a{
           color: white;
           display: block;

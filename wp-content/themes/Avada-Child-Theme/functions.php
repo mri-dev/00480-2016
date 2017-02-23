@@ -165,7 +165,7 @@ function vs_title($title) {
 
   // Utazás title
   if ( isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id']) ) {
-      $ajanlat = new ViasaleAjanlat($wp_query->query_vars['utazas_id']);
+      $ajanlat = new ViasaleAjanlat($wp_query->query_vars['utazas_id'], array('api_version' => 'v3'));
       $star = $ajanlat->getStar();
 
       $utazas_title = $ajanlat->getHotelName();

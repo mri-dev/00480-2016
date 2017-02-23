@@ -1,11 +1,14 @@
 <?php get_header(); ?>
 <?
 	$hotel_id = $wp_query->query_vars['utazas_id'];
-	$ajanlat 	= new ViasaleAjanlat($hotel_id);
+
+	$ajanlat 	= new ViasaleAjanlat($hotel_id, array('api_version' => 'v3'));
+
 	$programok= new ViasaleProgramok(array(
 		'hotels' => $ajanlat->getHotelID(),
 		'limit' => 3
 	));
+
 	$children_by_adults = $ajanlat->getChildrenByAdults();
 
 	$price = (int)$ajanlat->getPriceEUR();
@@ -89,15 +92,18 @@
 				<?php
 					$diff_list = $ajanlat->getDifferentModes();
 					if (count($diff_list) != 0): ?>
-				<div class="mode-list">
-					<div class="">
-						<strong>További opciók:</strong>
+				<div class="mode-list" id="more-trav-mode">
+					<div class="tgl">
+						<div class="nl">
+							<span class="badge"><?php echo count($diff_list); ?></span>
+						</div>
+						<strong>További opciók</strong> <i class="fa fa-caret-right"></i>
 					</div>
 					<?php foreach ($diff_list as $df): ?>
 						<div class="aj <?=($df['current'])?'current':''?>">
-							<a href="/<?php echo $ajanlat->getURISlug($df['term_id']); ?>">
+							<a href="/<?php echo $ajanlat->getURISlug($df['id']); ?>">
 								<div class="el">
-									<i class="fa fa-cutlery"></i> <?=$df['board_type']?>
+									<i class="fa fa-cutlery"></i> <?=$df['board_name']?>
 								</div>
 								<div class="pdif">
 									<?php if ($df['price_diff'] > 0): ?>
@@ -188,7 +194,7 @@
 												<?php echo $u['date_from']; ?> &mdash; <?php echo $u['date_to']; ?>
 											</div>
 											<div class="more-travel-board">
-												<?php echo $u['board_type']; ?>
+												<?php echo $u['board_name']; ?>
 											</div>
 											<div class="more-travel-duration">
 												<?php echo $u['term_duration']; ?> nap
@@ -198,7 +204,7 @@
 												<div class="price-huf"><?php echo number_format($u['price_from_huf'], 0, ".", " "); ?> Ft</div>
 											</div>
 											<div class="more-travel-redirect">
-												<a href="/<?php echo $ajanlat->getURISlug($u['term_id']); ?>" class="trans-on">Tovább <i class="fa fa-arrow-circle-right"></i></a>
+												<a href="/<?php echo $ajanlat->getURISlug($u['id']); ?>" class="trans-on">Tovább <i class="fa fa-arrow-circle-right"></i></a>
 											</div>
 										</div>
 									<?php endforeach; ?>
@@ -309,6 +315,20 @@
 		    speed: 400,
 		    slidesToShow: 5,
 		    slidesToScroll: 5
+		});
+
+		$('#more-trav-mode').click(function(){
+			var opened = $(this).hasClass('active');
+
+			if(!opened) {
+				$(this).addClass('active');
+				$(this).find('.aj').addClass('showed');
+				$(this).find('i').removeClass('fa-caret-right').addClass('fa-caret-down');
+			} else {
+				$(this).removeClass('active');
+				$(this).find('.aj').removeClass('showed');
+				$(this).find('i').removeClass('fa-caret-down').addClass('fa-caret-right');
+			}
 		});
 	})(jQuery);
   </script>

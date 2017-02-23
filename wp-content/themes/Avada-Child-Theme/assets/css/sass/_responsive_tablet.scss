@@ -38,4 +38,36 @@
   .sziget-korok-holder .circle .circle-inside .title{
     font-size: 18px;
   }
+  body.hotel-travel-page .hotel-row{
+    width: auto;
+    max-width: initial;
+    flex-wrap: wrap;
+  }
+  body.hotel-travel-page .hotel-row .hotel-column-right,
+  body.hotel-travel-page .hotel-row .hotel-column-left{
+    flex-basis: 100%;
+    padding: 0;
+  }
+  body.hotel-travel-page .travel-content-box .nav {
+    display: block !important;
+  }
+
+  body.hotel-travel-page .hotel-data {
+    margin-top: 30px;
+  }
+  .viasale-lista-holder .viasale-lista-set-ajanlat .list-header, .viasale-lista-holder .viasale-lista-set-program .list-header{
+    text-align: center;
+    margin: 40px 20px 0 20px;
+  }
+  body.utazas-travel-page .hotel-row, body.hotel-travel-page .hotel-row{
+    flex-wrap: wrap;
+    width: 100% !important;
+  }
+  body.utazas-travel-page .hotel-row .hotel-column-left, body.hotel-travel-page .hotel-row .hotel-column-left,
+  body.utazas-travel-page .hotel-row .hotel-column-right, body.hotel-travel-page .hotel-row .hotel-column-right{
+    flex-basis: 100%;
+  }
+  body.utazas-travel-page .hotel-row .hotel-column-right, body.hotel-travel-page .hotel-row .hotel-column-right{
+    padding: 40px 0 0 0;
+  }
 }

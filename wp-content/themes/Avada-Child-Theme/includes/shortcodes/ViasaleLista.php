@@ -263,7 +263,7 @@ class ViasaleLista
           }
 
           $o .= '<div class="list-header">
-            <form method="get" id="list-filter-form" action="'.KERESO_SLUG.'">
+            <form method="get" id="list-filter-form" action="/'.KERESO_SLUG.'">
             <div class="fusion-row">
               <div class="fusion-two-third fusion-layout-column fusion-spacing-yes">
                 <div class="fusion-column-wrapper">

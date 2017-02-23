@@ -75,6 +75,8 @@ class ViasaleAPIFactory
   {
     $uri = $this->api_uri . self::HOTELS_TAG.'/'.$id;
 
+    //echo $uri;
+
     $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
 
     if(!$result || empty($result)) return false;

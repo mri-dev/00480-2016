@@ -150,7 +150,7 @@
   .viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item,
   .viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item.big,
   .viasale-lista-holder .viasale-lista-set-program .style-homepage{
-    flex-basis: 90%;
+    flex-basis:calc(100%/2);
     margin: 0 auto;
   }
   .viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid{
@@ -254,11 +254,45 @@
   .viasale-lista-holder .viasale-lista-set-hotel .style-standard .item{
     flex-basis: calc(100% / 2);
   }
+  .viasale-lista-holder .viasale-lista-set-transzfer .style-standard .transfer .transfer-list{
+    flex-wrap: wrap;
+  }
+  .viasale-lista-holder .viasale-lista-set-transzfer .style-standard .transfer .transfer-list > div{
+    flex-basis: 100%;
+  }
+  .viasale-lista-holder .viasale-lista-set-transzfer .style-standard .transfer .transfer-list > div .title h3{
+    background: #d8d8d8;
+    padding: 10px;
+    margin: 15px 0 0 0;
+  }
+  .viasale-lista-holder .viasale-lista-set-transzfer .style-standard .transfer .transfer-list > div .transfer-header{
+    height: 35px;
+  }
+  .viasale-lista-holder .viasale-lista-set-transzfer .style-standard .transfer{
+    border-bottom: 5px solid #a7a7a7;
+  }
+  .viasale-lista-holder .viasale-lista-set-ajanlat .list-header .list-order, .viasale-lista-holder .viasale-lista-set-program .list-header .list-order{
+    text-align: center;
+  }
+  .viasale-lista-holder .viasale-lista-set-ajanlat .list-header .list-info h1, .viasale-lista-holder .viasale-lista-set-program .list-header .list-info h1{
+    font-size: 2em;
+    line-height: 1;
+  }
+  .pagination{
+    margin: 20px auto 50px auto;
+    font-size: 1.2em;
+  }
 }
 
 @media all and (max-width: 768px) {
   .viasale-lista-holder .viasale-lista-set-hotel .hotel-list-title h1{
     font-size: 1.8em;
+  }
+  body.hotel-travel-page .image-set-galery .image-set .image-set-holder{
+    float: left;
+    max-height: 130px;
+    height: 130px;
+    width: calc(100%/3);
   }
 }
 
@@ -281,5 +315,123 @@
   }
   .viasale-lista-holder .viasale-lista-set-hotel .hotel-list-title h1 .sziget{
     display: block;
+  }
+  body.hotel-travel-page .image-set-galery .image-set .image-set-holder{
+    float: left;
+    max-height: 60px;
+    height: 60px;
+    width: calc(100%/4);
+  }
+
+  body.hotel-travel-page #main {
+    padding: 0 10px;
+  }
+  body.hotel-travel-page .travel-content{
+    padding-top:10px;
+  }
+  body.hotel-travel-page .travel-content-box{
+    padding: 10px 0 30px 0;
+  }
+  .viasale-lista-holder .viasale-lista-set-transzfer .style-standard .airports ul li{
+    width: 100%;
+    padding: 3px 10px;
+  }
+  .viasale-lista-holder .viasale-lista-set-transzfer .style-standard .transfer .transfer-list > div .title h3{
+    margin-top: 5px;
+  }
+  .viasale-lista-holder .viasale-lista-set-transzfer .style-standard .transfer .transfer-list > div .transfer-header{
+    font-size: 10px;
+    height: 25px;
+  }
+  .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item, .viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item, .viasale-lista-holder .viasale-lista-set-ajanlat .style-imagegrid .item.big, .viasale-lista-holder .viasale-lista-set-program .style-homepage{
+    flex-basis: 100%;
+  }
+  .viasale-lista-holder .viasale-lista-set-ajanlat .list-header .list-info h1, .viasale-lista-holder .viasale-lista-set-program .list-header .list-info h1{
+    font-size: 1.4em;
+  }
+  .viasale-lista-holder .viasale-lista-set-ajanlat .list-header .list-info h1 .total_result, .viasale-lista-holder .viasale-lista-set-program .list-header .list-info h1 .total_result{
+    display: block;
+    font-size: 1.3em;
+  }
+  .viasale-lista-holder .viasale-lista-set-program .style-standard > .item{
+    width: 100%;
+    float: none;
+  }
+  .viasale-lista-holder .viasale-lista-set-program .style-standard > .item .item-holder .item-wrapper{
+    flex-wrap: wrap;
+  }
+  .viasale-lista-holder .viasale-lista-set-program .style-standard > .item .item-holder .item-wrapper > div{
+    flex-basis: 100%;
+  }
+  .viasale-lista-holder .viasale-lista-set-program .style-standard > .item .item-holder .item-wrapper .line-left{
+    height: 250px;
+  }
+  .viasale-lista-holder .viasale-lista-set-program .style-standard > .item .item-holder .item-wrapper .line-right{
+    height: auto;
+    max-height: initial;
+  }
+  .viasale-lista-holder .viasale-lista-set-program .style-standard > .item .item-holder .item-wrapper .title{
+    height: auto;
+    max-height: initial;
+    margin-bottom: 5px !important;
+  }
+  body.utazas-travel-page #main {
+    padding: 0 20px;
+  }
+  body.utazas-travel-page .travel-content, body.hotel-travel-page .travel-content{
+    padding-top: 15px;
+  }
+  body.utazas-travel-page .image-set-galery .image-set .image-set-holder, body.hotel-travel-page .image-set-galery .image-set .image-set-holder{
+    height: 60px;
+    max-height: 60px;
+  }
+  body.utazas-travel-page .image-set-galery .image-set, body.hotel-travel-page .image-set-galery .image-set{
+    height: 60px;
+  }
+  body.utazas-travel-page .nav{
+    display: block;
+  }
+  body.utazas-travel-page .travel-content-box, body.hotel-travel-page .travel-content-box{
+    padding: 10px 0;
+  }
+  body.utazas-travel-page .travel-offer, body.hotel-travel-page .travel-offer{
+    text-align: center;
+    padding: 0;
+    border: 5px solid #7d7d7d;
+    border-left: none;
+    border-right: none;
+  }
+  body.utazas-travel-page .travel-offer .prices, body.hotel-travel-page .travel-offer .prices{
+    background: #ffffff;
+    padding-bottom: 8px;
+  }
+  body.utazas-travel-page .travel-offer .prices  label , body.hotel-travel-page .travel-offer .prices label{
+    background: #eeeeee;
+    padding: 8px;
+    text-transform: uppercase;
+    color: black;
+  }
+  body.utazas-travel-page .travel-offer .prices .origin.p-eur, body.hotel-travel-page .travel-offer .prices .origin.p-eur{
+    font-size: 2.3em;
+    padding: 10px;
+  }
+  body.utazas-travel-page .travel-offer .travel-info, body.hotel-travel-page .travel-offer .travel-info{
+    text-align: center;
+    padding: 8px 0 20px 0;
+    border-top: 1px solid #d1d1d1;
+    background: #eee;
+  }
+  body.utazas-travel-page .travel-offer .travel-info .travel-number, body.hotel-travel-page .travel-offer .travel-info .travel-number{
+    font-size: 1.5em;
+    margin: 4px 0;
+  }
+  body.utazas-travel-page .hotel-row .hotel-column-right, body.hotel-travel-page .hotel-row .hotel-column-right {
+    padding: 30px 0 0 0;
+  }
+  body.utazas-travel-page .travel-info-box, body.hotel-travel-page .travel-info-box{
+    margin-top: -10px;
+  }
+  body.utazas-travel-page .travel-calculator-container .calc-content .action-btns button{
+    font-size: 0.65em;
   }
 }

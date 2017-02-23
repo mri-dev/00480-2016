@@ -1,6 +1,6 @@
 <?php
   $termid = $wp_query->query_vars['utazas_id'];
-  $ajanlat 	= new ViasaleAjanlat($termid);
+  $ajanlat 	= new ViasaleAjanlat($termid, array('api_version' =>'v3'));
 
   if(!$ajanlat->getTravelID()) {
       wp_redirect(get_option('siteurl', '/'), 301);

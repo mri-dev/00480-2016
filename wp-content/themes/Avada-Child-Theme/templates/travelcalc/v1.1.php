@@ -332,8 +332,8 @@ function trimChar(string, charToRemove) {
   $.get("<?=$ajanlat->api_uri.ViasaleAPIFactory::TERMS_TAG?>/<?=$ajanlat->getTravelID()?>}", function (data) {
       termdata = data;
 
-      var headRow = data.hotel.name;
-      headRow += " " + parseInt(data.hotel.category) + "* | ";
+      var headRow = data.tour.hotel.name;
+      headRow += " " + parseInt(data.tour.hotel.category) + "* | ";
       headRow += data.board_name + " | ";
       headRow += data.date_from + " - " + data.date_to;
       $('#termTitle').html(headRow);
@@ -445,8 +445,13 @@ function trimChar(string, charToRemove) {
     $('.priceLine[data-roomid='+rid+']').removeClass('rejtve');
 
     $('#travel-contact').addClass('show');
-    $('#selected-travel-room').html('<div class="room"><input type="hidden" name="term[id]" value="'+termdata.term_id+'"><input type="hidden" name="term[url]" value="<?=get_option('siteurl').$_SERVER['REQUEST_URI']?>"><input type="hidden" name="term[date_from]" value="'+termdata.date_from+'"><input type="hidden" name="term[date_to]" value="'+termdata.date_to+'"><input type="hidden" name="term[board]" value="'+termdata.board_name+'"><input type="hidden" name="hotel[name]" value="'+termdata.hotel.name+'"><input type="hidden" name="room[name]" value="'+room_data.name+'"><input type="hidden" name="room[price]" value="'+calc_price+'"><input type="hidden" name="room[people]" value="'+peoples+'"><div class="name">'+room_data.name+'<div class="ppl">'+peoples+'</div></div><div class="price">'+calc_price+'</div></div>');
+    $('#selected-travel-room').html('<div class="room"><input type="hidden" name="term[id]" value="'+termdata.id+'"><input type="hidden" name="term[url]" value="<?=get_option('siteurl').$_SERVER['REQUEST_URI']?>"><input type="hidden" name="term[date_from]" value="'+termdata.date_from+'"><input type="hidden" name="term[date_to]" value="'+termdata.date_to+'"><input type="hidden" name="term[board]" value="'+termdata.board_name+'"><input type="hidden" name="hotel[name]" value="'+termdata.tour.hotel.name+'"><input type="hidden" name="room[name]" value="'+room_data.name+'"><input type="hidden" name="room[price]" value="'+calc_price+'"><input type="hidden" name="room[people]" value="'+peoples+'"><div class="name">'+room_data.name+'<div class="ppl">'+peoples+'</div></div><div class="price">'+calc_price+'</div></div>');
     $('#utasok_adatai').html(utasok_form);
+
+    $('html, body').animate({
+         scrollTop: $("#travel-contact").offset().top
+     }, 1000);
+
   });
 
 

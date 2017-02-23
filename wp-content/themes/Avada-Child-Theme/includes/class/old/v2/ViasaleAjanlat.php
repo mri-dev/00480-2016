@@ -1,7 +1,6 @@
 <?php
 /**
 * Utazási ajánlat
-* @version v3
 **/
 class ViasaleAjanlat extends ViasaleAPIFactory
 {
@@ -28,15 +27,15 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   }
   public function getTravelID()
   {
-    return $this->term_data['id'];
+    return $this->term_data['term_id'];
   }
   public function getHotelID()
   {
-    return $this->term_data['tour_id'];
+    return $this->term_data['hotel']['id'];
   }
   public function getHotelName()
   {
-    return $this->term_data['tour']['name'];
+    return $this->term_data['hotel']['name'];
   }
   public function getDate($what = 'from')
   {
@@ -66,7 +65,7 @@ class ViasaleAjanlat extends ViasaleAPIFactory
       $seo_title_list .= $after_id.'/';
     }
 
-    return UTAZAS_SLUG.'/kanari-szigetek/'.$seo_title_list;
+    return UTAZAS_SLUG.'/'.$seo_title_list;
   }
   public function getRoomsCount()
   {
@@ -166,61 +165,48 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   }
   public function getStar()
   {
-    return (float)$this->term_data['tour']['hotel']['category'];
+    return (float)$this->term_data['hotel']['category'];
   }
   public function getHotelZones()
   {
+    if(!$this->hotel_data['hotels'][0]){ return false; }
+
     $zones = array();
 
-    $raw_obj = $this->term_data['tour']['hotel']['zone'];
-
-    $has_parent = true;
-
-    $current = $raw_obj;
-
-    while( $has_parent ) {
-      $zones[$current['id']] = $current['name'];
-      if(isset($current['parent'])) {
-        $current = $current['parent'];
-      }
-      else {
-        $current = false;
-        $has_parent = false;
+    foreach ($this->hotel_data['hotels'][0]['zone_list'] as $i => $z) {
+      if ($i > 0) {
+        $zones[$z['id']] = $z['name'];
       }
     }
-
-    $zones = array_reverse($zones, true);
-
-
     return $zones;
   }
-
   public function getOfferKey()
   {
-    return $this->term_data['offer'];
+    return $this->hotel_data['hotels'][0]['offer'];
   }
   public function getMoreTravelCount()
   {
-    return count($this->term_data['other_terms']);
+    return $this->hotel_data['hotels'][0]['more_term_count'];
   }
-
+  /**
+  * További hotel ajánlatok
+  * @param array $param Paraméterek
+  *                     array $except_term_ids kizárt term_id-k
+  * @return array Hotel lista API kimenet /terms/hotels=xxx
+  **/
   public function getMoreTravel( $param = array() )
   {
     $ajanlatok = array();
 
-    $day = 60*60*24;
+    if(!$this->hotel_data['hotels'][0]['more_terms']){ return false; }
 
-    $api_ajanlatok = $this->term_data['other_terms'];
+    $api_ajanlatok = $this->hotel_data['hotels'][0]['more_terms'];
 
     foreach ($api_ajanlatok as $k => $a)
     {
-      if( isset($param['except_term_ids']) && is_array($param['except_term_ids']) && in_array($a['id'], $param['except_term_ids']) ) continue;
+      if( isset($param['except_term_ids']) && is_array($param['except_term_ids']) && in_array($a['term_id'], $param['except_term_ids']) ) continue;
 
       $a['price_from_huf'] = round((float)$a['price_from'] * (float)$this->term_data['exchange_rate']);
-
-      $div_tdm = strtotime($a['date_to']) - strtotime($a['date_from']);
-
-      $a['term_duration'] = ($div_tdm / $day) + 1;
       $ajanlatok[] = $a;
     }
 
@@ -230,12 +216,20 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   public function getDifferentModes()
   {
     $modes = array();
-    $ajanlatok = (array)$this->term_data['other_board_types'];
+    $ajanlatok = $this->getMoreTravel();
+
+    $date_from = $this->term_data['date_from'];
 
     if ($ajanlatok) {
       foreach ($ajanlatok as $aj)
       {
-        $aj['price_diff'] = $aj['price_from'] - $this->getPriceEUR();
+        if( $aj[date_from] != $date_from ) continue;
+
+        if( $aj['term_id'] == $this->getTravelID() ){
+          continue;
+        }
+
+        $aj['price_diff'] = $aj['price_from'] - $this->getPriceOriginalEUR();
 
         $modes[] = $aj;
       }
@@ -261,13 +255,7 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   }
   public function getDescriptions()
   {
-    $all = array();
-    $tour_desc = (array)$this->term_data['tour']['descriptions'];
-
-
-    $all = array_merge($all, $tour_desc);
-
-    return $all;
+    return $this->term_data['hotel']['descriptions'];
   }
   public function getBoardType()
   {
@@ -275,14 +263,14 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   }
   public function getProfilImage()
   {
-    return $this->term_data['tour']['hotel']['main_picture'];
+    return $this->term_data['hotel']['pictures'][0];
   }
   public function getMoreImages()
   {
     $set = array();
 
-    if($this->term_data['tour']['hotel']['pictures'])
-    foreach ($this->term_data['tour']['hotel']['pictures'] as $key => $value) {
+    if($this->term_data['hotel']['pictures'])
+    foreach ($this->term_data['hotel']['pictures'] as $key => $value) {
       if($key == 0) continue;
       $set[] = $value;
     }
@@ -297,6 +285,7 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   private function load()
   {
     $this->term_data = $this->getTerm($this->term_id);
+    $this->getHotelInfo($this->getHotelID());
   }
 
 
@@ -310,5 +299,16 @@ class ViasaleAjanlat extends ViasaleAPIFactory
     return $this->getHotel($hotel_id);
   }
 
+  /**
+  * Ajánlatokkal együtt a hotel adatok
+  **/
+  private function getHotelInfo($hotel_id)
+  {
+    $this->hotel_data = $this->getTerms(array(
+      'hotels' => (int)$hotel_id,
+      'limit' => 999,
+      'order' => 'date|asc'
+    ));
+  }
 }
 ?>
