@@ -178,25 +178,12 @@
   $pdf->AddFont('DejaVuSerif','B','DejaVuSerif-Bold.ttf',true);
 
 
-  $desc = $ajanlat->getDescriptions();
-
-  if($desc)
-  foreach ($desc as $did => $de):
-    $des = esc_html($de['description']);
-    $pdf->SetFont('DejaVuSerif','B', 9);
-    $pdf->Cell( 120, 4, $de['name'], 0, "L");
-    $pdf->Ln(5);
-    $pdf->SetFont('DejaVuSerif','', 8);
-    $pdf->MultiCell( 120, 4, $des);
-    $pdf->Ln(5);
-  endforeach;
-
-  $pdf->SetLineWidth(1);
-  $pdf->SetDrawColor(220);
-  $pdf->Line(132, 32.3, 132, 287);
 
   // Ellátás
   $pdf->paramTable('Utazás paraméterek');
+  $pdf->SetLineWidth(1);
+  $pdf->SetDrawColor(220);
+  $pdf->Line(132, 32.3, 132, 287);
 
   $pdf->SetLineWidth(0.4);
   $pdf->SetDrawColor(190);
@@ -224,6 +211,50 @@
   $pdf->SetFont('DejaVuSerif','B', 14);
   $pdf->SetTextColor(0);
   $pdf->MultiCell( 0, 3, 'www.viasaletravel.hu', 0, "C");
+
+
+  $pdf->setY(32);
+
+  $desc = $ajanlat->getDescription( 'utazas' );
+
+  $pdf->SetFont('DejaVuSerif','B', 12);
+  $pdf->Cell( 120, 4, 'AJÁNLAT LEÍRÁSA', 0, "L");
+  $pdf->Ln(10);
+
+  if($desc)
+  foreach ($desc as $did => $de):
+    $des = $de['description'];
+    $pdf->SetFont('DejaVuSerif','B', 9);
+    $pdf->Cell( 120, 4, $de['name'], 0, "L");
+    $pdf->Ln(5);
+    $pdf->SetFont('DejaVuSerif','', 8);
+    $pdf->MultiCell( 120, 4, $des);
+    $pdf->Ln(5);
+  endforeach;
+
+  $pdf->Ln(5);
+  $pdf->SetFont('DejaVuSerif','', 8);
+  $pdf->Cell( 120, 4, '(i) '.$ajanlat->getHotelName().' szálloda leírása a következő oldalon', 0, "C");
+
+  $pdf->AddPage();
+
+  $desc = $ajanlat->getDescription( 'hotel' );
+
+  $pdf->SetFont('DejaVuSerif','B', 12);
+  $pdf->Cell( 120, 4, $ajanlat->getHotelName(). ' SZÁLLODA LEÍRÁSA', 0, "L");
+  $pdf->Ln(10);
+
+  if($desc)
+  foreach ($desc as $did => $de):
+    $des = $de['description'];
+    $pdf->SetFont('DejaVuSerif','B', 9);
+    $pdf->Cell( 0, 4, $de['name'], 0, "L");
+    $pdf->Ln(5);
+    $pdf->SetFont('DejaVuSerif','', 8);
+    $pdf->MultiCell( 0, 4, $des);
+    $pdf->Ln(5);
+  endforeach;
+
 
 
   $pdf->Output('ViaSale Travel - Utazási ajánlat #'.$ajanlat->getTravelID().'.pdf', 'D');

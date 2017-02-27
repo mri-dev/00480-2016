@@ -259,13 +259,56 @@ class ViasaleAjanlat extends ViasaleAPIFactory
   {
     return round((float)$this->term_data['price_from'] * (float)$this->term_data['exchange_rate']);
   }
-  public function getDescriptions()
+  public function getDescription($what = 'utazas')
+  {
+    switch ($what) {
+      case 'utazas':
+        return (array)$this->term_data['tour']['descriptions'];
+      break;
+      case 'hotel':
+        return (array)$this->term_data['tour']['hotel']['descriptions'];
+      break;
+    }
+  }
+  public function getDescriptions( $html_format = true )
   {
     $all = array();
+
+    if ($html_format) {
+      $sep = array();
+      $sep[] = array(
+        'name' => '<div class="sep-title"><i class="fa fa-plane"></i> Információk az utazásról</div>',
+        'description' =>'<hr>'
+      );
+    } else {
+      $sep = array();
+      $sep[] = array(
+        'name' => 'Információk az utazásról',
+        'description' =>'<hr>'
+      );
+    }
+
+
+
     $tour_desc = (array)$this->term_data['tour']['descriptions'];
+    $hotel_desc = (array)$this->term_data['tour']['hotel']['descriptions'];
+
+    if ($html_format) {
+      $sep2 = array();
+      $sep2[] = array(
+        'name' => '<div class="sep-title"><i class="fa fa-building-o"></i> Röviden a(z) '.$this->getHotelName().' szállodáról</div>',
+        'description' =>'<hr>'
+      );
+    } else {
+      $sep2 = array();
+      $sep2[] = array(
+        'name' => 'Röviden a(z) '.$this->getHotelName().' szállodáról',
+        'description' =>'<hr>'
+      );
+    }
 
 
-    $all = array_merge($all, $tour_desc);
+    $all = array_merge($all, $sep, $tour_desc, $sep2, $hotel_desc);
 
     return $all;
   }

@@ -3501,6 +3501,27 @@ body.hotel-travel-page
     margin: 0 -30px;
     margin-top: 30px;
 
+    .sep-title {
+      text-transform: uppercase;
+      margin-top: 25px;
+      color: #333333;
+      font-weight: bold;
+      font-size: 0.8em;
+    }
+    .sep-title + p {
+      display: none;
+      margin: 0;
+    }
+    hr {
+      margin: 0 0 15px 0;
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #ccc;
+      margin: 1em 0;
+      padding: 0;
+    } 
+
     .more-travel-list{
       font-size: 12px;
       color: #8c8c8c;
@@ -3625,7 +3646,11 @@ body.hotel-travel-page
           p{
             font-size: 14px;
             color: #5c5c5c;
-            margin-bottom: 20px;
+            margin: 0;
+          }
+
+          h2 + p {
+            margin-bottom: 10px;
           }
         }
       }
