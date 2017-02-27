@@ -6,6 +6,10 @@ html, body {
   width: 100%;
 }
 
+.hide {
+  display: none;
+}
+
 .fusion-secondary-main-menu{
     background: $color-purple;
     border: none !important;
@@ -61,8 +65,23 @@ html, body {
     float: right;
     text-align: right;
 
-    .katalogus-header-link, .head-search{
+    .katalogus-header-link, .head-search, .mailchimp-header-subsc{
         float: right;
+
+        label {
+          font-size: 0.8em;
+          display: block;
+          margin-bottom: 5px;
+          color: black;
+        }
+    }
+    .mailchimp-header-subsc{
+      input[type=submit] {
+        font-size: 0.8em;
+        padding: 0 10px;
+        width: auto;
+        max-width: initial;
+      } 
     }
     .primary-header-line{
         .katalogus-header-link{
@@ -3520,7 +3539,7 @@ body.hotel-travel-page
       border-top: 1px solid #ccc;
       margin: 1em 0;
       padding: 0;
-    } 
+    }
 
     .more-travel-list{
       font-size: 12px;
