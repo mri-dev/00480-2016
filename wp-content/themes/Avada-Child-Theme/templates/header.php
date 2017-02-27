@@ -312,14 +312,14 @@ if ( ! function_exists( 'avada_header_content_3' ) ) {
             $html .= '
             <div class="primary-header-line">
                 <div class="mailchimp-header-subsc">
-                  <form action="//viasaletravel.us9.list-manage.com/subscribe/post?u=3e9a92238c6dea060038ac5f3&amp;id=75d52a4054" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate searchform" target="_blank" novalidate>
+                  <form action="//viasaletravel.us9.list-manage.com/subscribe/post?u=3e9a92238c6dea060038ac5f3&amp;id=1ec2d250a7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate searchform" target="_blank" novalidate>
                     <label for="mce-EMAIL">Íratkozz fel hírlevelünkre <i class="fa fa-envelope-o"></i></label>
                     <div class="search-table">
                       <div class="search-field"><input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email cím megadása" required></div>
-                      <div class="search-button"><input type="submit" value="Mehet" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                      <div class="search-button"><input type="submit" value="Küldés" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
                     </div>
                     <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3e9a92238c6dea060038ac5f3_75d52a4054" tabindex="-1" value=""></div>
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3e9a92238c6dea060038ac5f3_1ec2d250a7" tabindex="-1" value=""></div>
                   </form>
                 </div>
                 <div class="head-search hide">' . get_search_form( false ) . '</div>
