@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <?
 	$hotel_id  = $wp_query->query_vars['hotel_id'];
-	$hotel 	   = new ViasaleHotel($hotel_id);
+	$hotel 	   = new ViasaleHotel($hotel_id, array('api_version' => 'v3'));
   $ajanlatok = $hotel->getTravels();
 ?>
 <div id="content" class="full-width travel-content" stlye="max-width:100%;">
@@ -122,8 +122,8 @@
           ?>
           <?php foreach ($ajanlatok['terms'] as $term): ?>
             <?
-                if($term['date_from'] != $date_group ) {
-                  $date_group = $term['date_from'];
+                if($term->getDate('from') != $date_group ) {
+                  $date_group = $term->getDate('from');
                   ?>
                   <div class="more-travel-row group-header">
                     <?php echo $date_group; ?>
@@ -133,32 +133,34 @@
             ?>
             <div class="travel more-travel-row">
                 <div class="more-travel-date">
-                  <?php echo $term['date_from']; ?> &mdash; <?php echo $term['date_to']; ?>
-                  <? if( in_array($term['offer'], array('lastminute', 'firstminute')) ): ?>
+                  <?php echo $term->getDate('from'); ?> &mdash; <?php echo $term->getDate('to'); ?>
+                  <?
+									$offer = $term->getOfferKey();
+									if( in_array($offer, array('lastminute', 'firstminute')) ): ?>
                     <?
-                      switch ($term['offer']) {
+                      switch ($offer) {
                         case 'lastminute':
-                          echo '<span class="label-offer offer-'.$term['offer'].'" title="Lastminte">LM</span>';
+                          echo '<span class="label-offer offer-'.$offer.'" title="Lastminte">LM</span>';
                         break;
                         case 'firstminute':
-                          echo '<span class="label-offer offer-'.$term['offer'].'" title="Firstminte">FM</span>';
+                          echo '<span class="label-offer offer-'.$offer.'" title="Firstminte">FM</span>';
                         break;
                       }
                     ?>
                   <? endif; ?>
                 </div>
                 <div class="more-travel-board">
-                  <?php echo $term['board_type']; ?>
+                  <?php echo $term->getBoardType(); ?>
                 </div>
                 <div class="more-travel-duration">
-                  <?php echo $term['term_duration']+1; ?> nap
+                  <?php echo $term->getDayDuration(); ?> nap
                 </div>
                 <div class="more-travel-priceplan">
-                  <span class="price-eur"><?php echo number_format($term['price_from'], 0, ".", " "); ?>€</span>
-                  <span class="price-huf">(<?php echo number_format($term['price_from_huf'], 0, ".", " "); ?> Ft)</span>
+                  <span class="price-eur"><?php echo number_format($term->getPriceEUR(), 0, ".", " "); ?>€</span>
+                  <span class="price-huf">(<?php echo number_format($term->getPriceHUF(), 0, ".", " "); ?> Ft)</span>
                 </div>
                 <div class="more-travel-redirect">
-                  <a href="<?php echo $term['link']; ?>" class="trans-on">Tovább <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="<?php echo '/'.$term->getURISlug($term->getTravelID()); ?>" class="trans-on">Tovább <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
           <?php endforeach; ?>
