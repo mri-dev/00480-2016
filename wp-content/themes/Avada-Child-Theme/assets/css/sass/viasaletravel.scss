@@ -81,7 +81,7 @@ html, body {
         padding: 0 10px;
         width: auto;
         max-width: initial;
-      } 
+      }
     }
     .primary-header-line{
         .katalogus-header-link{
@@ -100,7 +100,7 @@ html, body {
                 -moz-transition: all .4s;
                 transition: all .4s;
 
-                &:hover {
+                &:hover { 
                     background: $color-purple;
                 }
             }

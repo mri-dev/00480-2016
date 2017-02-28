@@ -13,6 +13,7 @@ define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
 define('EUB_URL', 'http://eub.hu/?pcode=29289');
 define('NOIMAGE_MID', IMAGES.'/viasale-travel-no-image-500.jpg');
 define('NOIMAGE_HD', IMAGES.'/viasale-travel-no-image-1024.jpg');
+define('CSSVERSION','201702281100');
 
 
 define('RESOURCES', IFROOT.'/assets' );
@@ -57,7 +58,7 @@ add_action( 'wp_enqueue_scripts', 'datetimepicker_enqueue_styles' );
 
 function custom_theme_enqueue_scripts() {
     //wp_enqueue_style('autocomplete', IFROOT . '/assets/js/autocomplete/content/styles.css');
-    wp_enqueue_style( 'viasaletravel-css', RESOURCES . '/css/viasaletravel.css?' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_style( 'viasaletravel-css', RESOURCES . '/css/viasaletravel'.( (DEVMODE === false) ? '-v'.CSSVERSION : '' ) .'.css?' . ( (DEVMODE === true) ? 't='.time() : '' ) );
 }
 add_action( 'wp_enqueue_scripts', 'custom_theme_enqueue_scripts', 100 );
 
