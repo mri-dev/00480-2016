@@ -122,7 +122,7 @@
           ?>
           <?php foreach ($ajanlatok['terms'] as $term): ?>
             <?
-                if($term->getDate('from') != $date_group ) {
+                if($term->getDate('from') != $date_group && false) {
                   $date_group = $term->getDate('from');
                   ?>
                   <div class="more-travel-row group-header">
@@ -164,6 +164,16 @@
                 </div>
             </div>
           <?php endforeach; ?>
+					<div class="pagination">
+						<?php
+						echo paginate_links( array(
+				    	'base'   => '/'.$hotel->getURISlug($hotel->getHotelID()).'?page=%_%',
+				    	'format'  => '%#%#travels',
+				    	'current' => max( 1, get_query_var('page') ),
+				    	'total'   => $ajanlatok['total_page'],
+				    ) );
+						?>
+					</div>
           </div>
           <?php else: ?>
           <div class="no-travel">

@@ -50,7 +50,7 @@ class ViasaleHotel extends ViasaleAPIFactory
       $seo_title_list .= $after_id.'/';
     }
 
-    return HOTEL_SLUG.'/'.$seo_title_list;
+    return HOTEL_SLUG.'/kanari-szigetek/'.$seo_title_list;
   }
   public function getGPS()
   {
@@ -66,15 +66,27 @@ class ViasaleHotel extends ViasaleAPIFactory
   }
   public function getHotelZones()
   {
-    if(!$this->hotel_data['zone_list']){ return false; }
-
     $zones = array();
 
-    foreach ($this->hotel_data['zone_list'] as $i => $z) {
-      if ($i > 0) {
-        $zones[$z['id']] = $z['name'];
+    $raw_obj = $this->hotel_data['zone'];
+
+    $has_parent = true;
+
+    $current = $raw_obj;
+
+    while( $has_parent ) {
+      $zones[$current['id']] = $current['name'];
+      if(isset($current['parent'])) {
+        $current = $current['parent'];
+      }
+      else {
+        $current = false;
+        $has_parent = false;
       }
     }
+
+    $zones = array_reverse($zones, true);
+
     return $zones;
   }
   public function getDescriptions()
@@ -121,17 +133,22 @@ class ViasaleHotel extends ViasaleAPIFactory
   {
     $travels = array();
 
-    $ajanlatok = $this->hotel_data['my_terms'];
+    $arg = array(
+      'page' => 1,
+      'sort_by' => 'price|asc',
+    );
 
-    if($ajanlatok)
-    {
-      $exchange_rate = (float)$ajanlatok['exchange_rate'];
+    if(get_query_var('page')) {
+      $arg['page'] = (int)get_query_var('page');
+    }
 
-      $travels['total_terms_count'] = count($ajanlatok);
+    $terms = $this->getHotelTerms($this->getHotelID(), $arg);
+    $travels['total_terms_count'] = $terms['total'];
+    $travels['total_page'] = (int)$terms['last_page'];
 
-      foreach ($ajanlatok as $term ) {
-        $travels['terms'][] = new ViasaleAjanlat($term['id'], array('api_version' => 'v3'));
-      }
+    if($terms['total'] != 0)
+    foreach ($terms['data'] as $t) {
+      $travels['terms'][] = new ViasaleAjanlat( $t['id'], array( 'api_version' => 'v3') );
     }
 
     return $travels;

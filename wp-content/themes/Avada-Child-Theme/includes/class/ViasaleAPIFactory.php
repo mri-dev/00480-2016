@@ -6,6 +6,7 @@ class ViasaleAPIFactory
   const HOTELS_TAG      = 'hotels';
   const TRANSFER_TAG    = 'transfers';
   const EVENTS_TAG      = 'events';
+  const HOTELTERMS_TAG  = 'hotels/%d/terms';
   public $api_base      = 'http://viasale.net/api/';
   public $api_version   = 'v2';
   public $api_uri       = '';
@@ -168,6 +169,37 @@ class ViasaleAPIFactory
     $query = $this->build_search($query);
 
     $uri = $this->api_uri . self::TERMS_TAG.'/'.$query;
+
+    //echo $uri . '<br>';
+
+    $result = json_decode($this->load_api_content($uri), JSON_UNESCAPE_UNICODE);
+
+    if(!$result || empty($result)) return false;
+
+    foreach ($result as $k => $r )
+    {
+      $data[$k] = $r;
+    }
+    unset($result);
+
+    return $data;
+  }
+
+  /**
+  * Hotel Utazási ajánlatok
+  **/
+  public function getHotelTerms( $hotelid = 0, $params = array() )
+  {
+    $data = array();
+
+    // Get search params
+    $query = array();
+
+    $query = array_replace($query, $params);
+
+    $query = $this->build_search($query);
+
+    $uri = $this->api_uri . sprintf(self::HOTELTERMS_TAG, $hotelid).'/'.$query;
 
     //echo $uri . '<br>';
 

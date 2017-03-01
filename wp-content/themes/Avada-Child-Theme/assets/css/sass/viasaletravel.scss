@@ -100,7 +100,7 @@ html, body {
                 -moz-transition: all .4s;
                 transition: all .4s;
 
-                &:hover { 
+                &:hover {
                     background: $color-purple;
                 }
             }
@@ -4015,6 +4015,8 @@ body.hotel-travel-page
 
   .current {
     padding: 2px 8px;
+    margin: 0 5px;
+    font-size: 1.2em;
   }
 }
 

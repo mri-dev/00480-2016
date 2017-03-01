@@ -13,7 +13,7 @@ define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
 define('EUB_URL', 'http://eub.hu/?pcode=29289');
 define('NOIMAGE_MID', IMAGES.'/viasale-travel-no-image-500.jpg');
 define('NOIMAGE_HD', IMAGES.'/viasale-travel-no-image-1024.jpg');
-define('CSSVERSION','201702281100');
+define('CSSVERSION','201703011100');
 
 
 define('RESOURCES', IFROOT.'/assets' );
