@@ -243,7 +243,7 @@ function get_ajax_url( $function )
 // Katalógus hivatkozása
 function catalog_url()
 {
-  return 'http://issuu.com/viasaletravel/docs/viasale_travel_online_katalogus_201?e=15904679/34190920';
+  return 'https://issuu.com/viasaletravel/docs/pdf_nagy_viasale_katalogus_2017';
 }
 
 ?>
