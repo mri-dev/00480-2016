@@ -13,7 +13,7 @@ define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
 define('EUB_URL', 'http://eub.hu/?pcode=29289');
 define('NOIMAGE_MID', IMAGES.'/viasale-travel-no-image-500.jpg');
 define('NOIMAGE_HD', IMAGES.'/viasale-travel-no-image-1024.jpg');
-define('CSSVERSION','201703011100');
+define('CSSVERSION','201703221500');
 
 
 define('RESOURCES', IFROOT.'/assets' );
@@ -217,6 +217,172 @@ function vs_title($title) {
 }
 add_filter('document_title_parts', 'vs_title');
 
+$wpseo_loaded_ajanlat = false;
+$wpseo_loaded_hotel = false;
+$wpseo_loaded_program = false;
+function title_fix_yoast( $o ) {
+  global $wp_query, $wpseo_loaded_ajanlat, $wpseo_loaded_hotel, $wpseo_loaded_program;
+
+  if ( defined('WPSEO_VERSION') )
+  {
+    // Utazás title
+    if ( isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id']) )
+    {
+        $wpseo_loaded_ajanlat = new ViasaleAjanlat($wp_query->query_vars['utazas_id'], array('api_version' => 'v3'));
+
+        $star = $wpseo_loaded_ajanlat->getStar();
+        $utazas_title = $wpseo_loaded_ajanlat->getHotelName();
+        if(empty($utazas_title)) {
+            wp_redirect( get_option('siteurl') );
+            exit;
+        }
+        $utazas_title .= str_repeat('*', $star). ' szálloda utazási ajánlat, Kanári-szigetek.';
+        $o = $utazas_title . ' - '.get_option('blogname', true);
+
+        add_filter('wpseo_canonical', 'wpseo_utazas_canonical_mod');
+        add_filter('wpseo_metadesc', 'wpseo_utazas_desc_mod');
+        add_filter('wpseo_opengraph_image', 'wpseo_utazas_image_meta_mod');
+    }
+
+    // Hotel title
+    if ( isset($wp_query->query_vars['hotel_id']) && !empty($wp_query->query_vars['hotel_id']) ) {
+        $wpseo_loaded_hotel = new ViasaleHotel($wp_query->query_vars['hotel_id']);
+        $star = $wpseo_loaded_hotel->getStar();
+        $utazas_title = $wpseo_loaded_hotel->getHotelName();
+        if(empty($utazas_title)) {
+            wp_redirect( get_option('siteurl') );
+            exit;
+        }
+        $utazas_title .= str_repeat('*', $star). ' szálloda adatlap, utazási ajánlatok, Kanári-szigetek.';
+
+        $o = $utazas_title . ' - '.get_option('blogname', true);
+
+        add_filter('wpseo_canonical', 'wpseo_hotel_canonical_mod');
+        add_filter('wpseo_metadesc', 'wpseo_hotel_desc_mod');
+        add_filter('wpseo_opengraph_image', 'wpseo_hotel_image_meta_mod');
+    }
+
+    // Program title
+    if ( isset($wp_query->query_vars['program_id']) && !empty($wp_query->query_vars['program_id']) ) {
+        $wpseo_loaded_program = new ViasaleProgram($wp_query->query_vars['program_id']);
+        $program_title = $wpseo_loaded_program->getProgramName();
+
+        if(empty($program_title)) {
+            wp_redirect( get_option('siteurl') );
+            exit;
+        }
+
+        $o = $program_title.' / Program / Kanári-szigetek'. ' - '.get_option('blogname', true);
+
+        add_filter('wpseo_canonical', 'wpseo_program_canonical_mod');
+        add_filter('wpseo_metadesc', 'wpseo_program_desc_mod');
+        add_filter('wpseo_opengraph_image', 'wpseo_program_image_meta_mod');
+    }
+
+    //$wpseo_loaded_ajanlat = false;
+  }
+
+  return $o;
+}
+add_filter('wpseo_title', 'title_fix_yoast');
+
+/**
+* WPSEO - Utazási ajánlat
+**/
+function wpseo_utazas_canonical_mod($url)
+{
+  global $wpseo_loaded_ajanlat;
+
+  $url = get_option('siteurl', true).'/'.$wpseo_loaded_ajanlat->getURISlug().$wpseo_loaded_ajanlat->getTravelID();
+
+  return $url;
+}
+
+function wpseo_utazas_desc_mod( $desc )
+{
+  global $wpseo_loaded_ajanlat;
+
+  $data =  $wpseo_loaded_ajanlat->getDescription('hotel');
+
+  $desc = $data[0]['description'];
+
+  return $desc;
+}
+
+function wpseo_utazas_image_meta_mod( $img )
+{
+  global $wpseo_loaded_ajanlat;
+
+  $data =  $wpseo_loaded_ajanlat->getProfilImage();
+
+  $img = $data['url'];
+
+  return $img;
+}
+
+/**
+* WPSEO - Hotel adatlap
+**/
+function wpseo_hotel_canonical_mod($url)
+{
+  global $wpseo_loaded_hotel;
+
+  $url = get_option('siteurl', true).'/'.$wpseo_loaded_hotel->getURISlug().$wpseo_loaded_hotel->getHotelID();
+
+  return $url;
+}
+
+function wpseo_hotel_desc_mod( $desc )
+{
+  global $wpseo_loaded_hotel;
+
+  $desc =  $wpseo_loaded_hotel->getInfo();
+
+  return $desc;
+}
+
+function wpseo_hotel_image_meta_mod( $img )
+{
+  global $wpseo_loaded_hotel;
+
+  $data =  $wpseo_loaded_hotel->getProfilImage();
+
+  $img = $data['url'];
+
+  return $img;
+}
+/**
+* WPSEO - Program adatlap
+**/
+function wpseo_program_canonical_mod($url)
+{
+  global $wpseo_loaded_program;
+
+  $url = get_option('siteurl', true).'/program/'.sanitize_title($wpseo_loaded_program->getProgramName()).'/'.$wpseo_loaded_program->getProgramID();
+
+  return $url;
+}
+
+function wpseo_program_desc_mod( $desc )
+{
+  global $wpseo_loaded_program;
+
+  $desc =  $wpseo_loaded_program->getInfo();
+
+  return $desc;
+}
+
+function wpseo_program_image_meta_mod( $img )
+{
+  global $wpseo_loaded_program;
+
+  $data =  $wpseo_loaded_program->getProfilImage();
+
+  $img = $data['url'];
+
+  return $img;
+}
+
 function vs_utazas_page_class_body( $classes ) {
   $classes[] = 'utazas-travel-page';
   return $classes;
@@ -246,4 +412,9 @@ function catalog_url()
   return 'https://issuu.com/viasaletravel/docs/pdf_nagy_viasale_katalogus_2017';
 }
 
+function after_body_tag()
+{
+  echo '<div class="request-offer fixed-label hide-on-mobile"><a href="/ajanlatkeres/"><img src="'.IMAGES.'/palmas_h40_white.png"/>' . __('Ajánlatkérés', 'viasale') . '</a></div>';
+}
+add_action('avada_before_body_content', 'after_body_tag');
 ?>

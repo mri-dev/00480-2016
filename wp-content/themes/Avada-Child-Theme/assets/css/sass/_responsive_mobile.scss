@@ -59,11 +59,13 @@
     width: 95%;
   }
   .viasale-kereso-holder .search-panel.v1 .head-labels ul,
-  .viasale-kereso-holder .search-panel.v2 .head-labels ul{
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul,
+  .viasale-kereso-holder .search-panel.v3 .head-labels ul{
     margin: 0 !important;
   }
   .viasale-kereso-holder .search-panel.v1 .head-labels ul li,
-  .viasale-kereso-holder .search-panel.v2 .head-labels ul li{
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li,
+  .viasale-kereso-holder .search-panel.v3 .head-labels ul li{
     margin: 0 !important;
     width: 50%;
   }
@@ -84,20 +86,47 @@
     width: 100%;
   }
   .viasale-kereso-holder .search-panel.v1 .inputs,
-  .viasale-kereso-holder .search-panel.v2 .inputs{
+  .viasale-kereso-holder .search-panel.v2 .inputs,
+  .viasale-kereso-holder .search-panel.v3 .inputs{
     display: block;
     padding-left: 0;
   }
   .viasale-kereso-holder .search-panel.v1 .inputs > .input,
-  .viasale-kereso-holder .search-panel.v2 .inputs > .input{
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input,
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input{
     width: 100% !important;
   }
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input{
+    display: none !important;
+  }
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input.show-mob-at,
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input.show,
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input.input-more-on-mobile
+  {
+    display: block !important;
+  }
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input.row-bottom{
+    padding-bottom: 5px;
+  }
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input.input-more-on-mobile{
+    text-align: center;
+    color: white;
+    padding: 2px 0 10px 0;
+    font-size: 0.8em;
+    display: block;
+
+    span {
+      display: block;
+    }
+  }
   .viasale-kereso-holder .search-panel.v1 .inputs > .input.last-item,
-  .viasale-kereso-holder .search-panel.v2 .inputs > .input.last-item{
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input.last-item,
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input.last-item{
     padding-right: 0;
   }
   .viasale-kereso-holder .search-panel.v1 .head-labels ul li.title-label,
-  .viasale-kereso-holder .search-panel.v2 .head-labels ul li.title-label {
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li.title-label,
+  .viasale-kereso-holder .search-panel.v3 .head-labels ul li.title-label {
     text-align: center;
     font-size: 20px;
     line-height: 42px;
@@ -105,7 +134,8 @@
     width: 100%;
   }
   .viasale-kereso-holder .search-panel.v1 .head-labels ul li input[type=radio] + label,
-  .viasale-kereso-holder .search-panel.v2 .head-labels ul li input[type=radio] + label {
+  .viasale-kereso-holder .search-panel.v2 .head-labels ul li input[type=radio] + label,
+  .viasale-kereso-holder .search-panel.v3 .head-labels ul li input[type=radio] + label  {
     padding: 5px;
     text-align: center;
     border: 1px solid $color-orange;
@@ -116,7 +146,8 @@
     border-radius: 0;
   }
   .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button button,
-  .viasale-kereso-holder .search-panel.v2 .inputs > .input.search-button button{
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input.search-button button,
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input.search-button button{
     width: 100%;
     margin: 0 auto;
     -webkit-border-radius: 0;
@@ -124,16 +155,24 @@
     border-radius: 0;
   }
   .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button i,
-  .viasale-kereso-holder .search-panel.v2 .inputs > .input.search-button i{
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input.search-button i,
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input.search-button i{
     float: left;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
   }
   .viasale-kereso-holder .search-panel.v1 .inputs > .input.search-button .button-wrapper,
-  .viasale-kereso-holder .search-panel.v2 .inputs > .input.search-button .button-wrapper{
+  .viasale-kereso-holder .search-panel.v2 .inputs > .input.search-button .button-wrapper,
+  .viasale-kereso-holder .search-panel.v3 .inputs > .input.search-button .button-wrapper{
     line-height: inherit;
     margin-left: -1px;
+  }
+  .viasale-kereso-holder .search-panel.v3 .head-labels ul li.main input[type=radio]:checked + label{
+    font-size: 1em;
+  }
+  .viasale-kereso-intemplate .viasale-kereso-holder{
+    padding: 10px 5px 10px 5px;
   }
   .sziget-korok-holder{
     flex-wrap: wrap;
@@ -282,6 +321,9 @@
     margin: 20px auto 50px auto;
     font-size: 1.2em;
   }
+  .hide-on-mobile {
+    display: none !important;
+  }
 }
 
 @media all and (max-width: 768px) {
@@ -293,6 +335,9 @@
     max-height: 130px;
     height: 130px;
     width: calc(100%/3);
+  }
+  .viasale-kereso-holder .search-panel.v3 .head-labels ul li {
+    width: 80%;
   }
 }
 

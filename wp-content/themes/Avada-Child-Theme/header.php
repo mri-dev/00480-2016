@@ -269,4 +269,9 @@ if ( 'modern' == Avada()->settings->get( 'mobile_menu_design' ) ) {
 		do_action( 'avada_before_main_container' );
 		?>
 		<div id="main" class="clearfix <?php echo $main_class; ?>" style="<?php echo $main_css; ?>">
+			<?php if (is_archive()): ?>
+				<div class="viasale-kereso-intemplate">
+					<?php echo do_shortcode("[viasale-kereso view='v3']"); ?>
+				</div>
+			<?php endif; ?>
 			<div class="fusion-row" style="<?php echo $row_css; ?>">

@@ -45,6 +45,9 @@ html, body {
     &.fusion-facebook{
         background: #3e4da0;
     }
+    &.fusion-mail{
+        background: #888888;
+    }
     &.fusion-twitter{
         background: #589fd5;
     }
@@ -1798,7 +1801,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
     }
   }
 
-  .circle:hover {
+  .circle:hover,
+  .circle.selected {
     .image img {
       -webkit-transform: scale(1.2);
       -moz-transform: scale(1.2);
@@ -1832,6 +1836,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
     transform: scaleX(5);
     z-index: 10;
   }*/
+
+  &.control-transfer,
+  &.control-program {
+    margin-top: -190px;
+  }
 }
 
 .viasale-kereso-holder {
@@ -2099,7 +2108,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
     }
     /*END: .search-panel.v1*/
 
-    &.v2{
+    &.v2 {
       background: $color-orange;
       border: 1px solid darken($color-orange, 10%);
 
@@ -2192,9 +2201,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
                 -webkit-box-shadow: none;
                 -moz-box-shadow: none;
                 box-shadow: none;
-                -webkit-border-radius: 0 0 10px 10px;
-                -moz-border-radius: 0 0 10px 10px;
-                border-radius: 0 0 10px 10px;
+                -webkit-border-radius: 0 0 0 0;
+                -moz-border-radius: 0 0 0 0;
+                border-radius: 0 0 0 0;
                 font-weight: bold;
                 font-size: 14px;
                 text-transform: uppercase;
@@ -2380,6 +2389,292 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
       }
     }
     /*END: .search-panel.v2*/
+    &.v3 {
+      background: $color-orange;
+      border: 1px solid darken($color-orange, 10%);
+
+      .head-labels{
+        margin: -30px 0 5px 0;
+        text-align: center;
+        ul, li {
+          margin: 0;
+          padding: 0;
+        }
+        ul{
+          list-style: none;
+          margin-left: 20px;
+
+          li {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            color: white;
+            font-size: 15px;
+            line-height: 35px;
+            padding: 0;
+            margin-right: 5px;
+
+            input[type=radio]{
+              display:none;
+            }
+
+            input[type=radio] + label {
+              display: block;
+              padding: 0 10px 0 28px;
+              background: darken($color-orange, 10%);
+              cursor:pointer;
+              position: relative;
+              -webkit-border-radius: 5px;
+              -moz-border-radius: 5px;
+              border-radius: 5px;
+
+              i{
+                margin: 0 0 0 5px;
+                color: rgba(255, 255, 255, 0.75);
+              }
+
+              &:hover{
+                background: $color-green;
+              }
+
+              &:before {
+                font-family: 'FontAwesome';
+                content:"\f1db";
+                font-size: 12px;
+                position: absolute;
+                width:12px;
+                height: 12px;
+                left: 10px;
+                top: 0;
+                display: none;
+              }
+            }
+
+            input[type=radio]:checked + label {
+              background: $color-green;
+              -webkit-box-shadow: inset 0px 3px 1px #436b3b;
+              -moz-box-shadow: inset 0px 3px 1px #436b3b;
+              box-shadow: inset 0px 3px 1px #436b3b;
+              &:before {
+                content:"\f192";
+              }
+            }
+
+            &.title-label {
+              background: $color-purple;
+              padding: 0 20px 0 10px;
+              margin-top: 0;
+              font-weight: bold;
+              font-size: 14px;
+              text-transform: uppercase;
+              line-height: 45px;
+              -webkit-border-radius: 0 0 8px 8px;
+              -moz-border-radius: 0 0 8px 8px;
+              border-radius: 0 0 8px 8px;
+
+              i{
+                margin-right: 8px;
+              }
+            }
+
+            &.main {
+              input[type=radio] + label {
+                background: $color-purple;
+                padding: 10px 25px;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                border-radius: 0;
+                font-weight: bold;
+                font-size: 14px;
+                text-transform: uppercase;
+
+                &:before {
+                  top: 7px;
+                }
+              }
+              input[type=radio]:checked + label{
+                background: transparentize(darken($color-purple, 10%), 0.15);
+              }
+            }
+          }
+        }
+      }
+      /*END:.head-labels{*/
+
+      .inputs {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        padding-left: 15px;
+
+        & > .input {
+          border-style: solid;
+          border-color: transparent;
+          border-width: 0px 5px;
+          position: relative;
+
+          &.input-more-on-mobile {
+            display: none;
+          }
+
+          .ico {
+            position: absolute;
+            color: #444;
+            pointer-events: none;
+            top: 26px;
+            left: 8px;
+            font-size: 18px;
+            line-height: 35px;
+          }
+
+          .dropdown-ico{
+            position: absolute;
+            right: 11px;
+            top: 37px;
+            color: #444;
+            pointer-events: none;
+          }
+
+          label{
+            display: block;
+            color: white;
+            padding: 0px 0px 4px 0px;
+            font-size: 15px;
+
+            &.inactive {
+              color: #ffc075;
+            }
+          }
+          &.w60{
+            flex-basis: 60%;
+          }
+          &.w40{
+            flex-basis: 40%;
+          }
+          &.w20{
+            flex-basis: 20%;
+          }
+
+          .cb-labels {
+            padding-top: 23px;
+            padding-left: 10px;
+            label {
+              font-size: 12px;
+              cursor: pointer;
+            }
+            input[type=checkbox] {
+              float: left;
+              margin: 3px 10px 0 0;
+            }
+          }
+
+          select, input[type=text] {
+            border: none;
+            line-height: 35px;
+            padding: 0 10px;
+            padding-left: 30px;
+            display: block;
+            width: 100%;
+            max-height: initial;
+            height: auto;
+            font-size: 13px;
+            color: #5c5c5c;
+          }
+
+          input[type=text].datepicker {
+            font-size: 15px;
+            padding-left: 35px;
+            cursor: pointer;
+          }
+
+          input[type=text][readonly] {
+            cursor: pointer;
+          }
+
+          select{
+            cursor: pointer;
+            height: 35px;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+
+            option {
+              padding: 5px !important;
+            }
+          }
+
+          input[type=text][disabled],
+          select[disabled] {
+            background: #f9d7af;
+            cursor: not-allowed;
+          }
+
+          input[type=text].search-datepicker {
+            font-size: 18px;
+          }
+
+          &.search-button{
+            text-align: center;
+            border-style: solid;
+            border-width: 1px;
+            border-bottom-width: 0px;
+            border-right-width: 0px;
+
+            .button-wrapper{
+              line-height: 83px;
+            }
+
+            button{
+              cursor: pointer;
+              padding: 0 15px 0 0;
+              background: $color-purple;
+              color:white;
+              font-size: 17px;
+              line-height: 40px;
+              border:none;
+              text-transform: uppercase;
+
+              -webkit-border-radius: 10px;
+              -moz-border-radius: 10px;
+              border-radius: 10px;
+            }
+
+            i{
+              padding: 0 10px;
+              margin-right: 10px;
+              background: darken($color-purple, 6%);
+              color: white;
+              line-height: 40px;
+              -webkit-border-radius: 10px 0 0 10px;
+              -moz-border-radius:  10px 0 0 10px;
+              border-radius:  10px 0 0 10px;
+            }
+          }
+          &.row-bottom{
+            padding-bottom: 20px;
+          }
+          &.last-item{
+            padding-right: 8px;
+          }
+
+          &.row-bottom.last-item{
+            padding-right: 0;
+          }
+
+        }
+        .row-divider {
+          margin: 10px 0;
+          display: block;
+          flex-basis: 100%;
+        }
+      }
+    }
+    /*END: .search-panel.v3*/
   }
 }
 
@@ -2459,6 +2754,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
   }
 }
 
+.viasale-kereso-intemplate{
+  background: #f1f1f1;
+
+  .viasale-kereso-holder{
+    margin: 0 !important;
+    padding: 12px 25px 15px 25px;
+  }
+}
+
 .trans-on {
   -webkit-transition: all .4s;
   -moz-transition: all .4s;
@@ -2472,6 +2776,12 @@ body.page-template.page-template-100-sziget{
   #main > div.fusion-row{
     width: 100%;
     max-width: 100%;
+  }
+}
+
+body.archive {
+  #main {
+    padding: 0 !important;
   }
 }
 
@@ -3406,7 +3716,7 @@ body.hotel-travel-page
     }
 
     .mode-list{
-      z-index: 9999999;
+      z-index: 9999;
       position: relative;
       background: #fff;
       border: 1px solid #c8c8c8;
@@ -4041,7 +4351,7 @@ body.hotel-travel-page
     text-transform: uppercase;
     padding: 10px 25px 10px 15px;
     font-size: 12px;
-    margin: 0;
+    margin: 0; 
 
     &:after {
       color: white;
@@ -4059,7 +4369,7 @@ body.hotel-travel-page
     }
     .fusion-post-content-container{
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.81);
       height: 110px;
       max-height: 110px;
       overflow: hidden;
@@ -4523,6 +4833,36 @@ body.search {
      -webkit-box-shadow: 2px 2px 4px -2px #653b09;
      -moz-box-shadow: 2px 2px 4px -2px #653b09;
      box-shadow: 2px 2px 4px -2px #653b09;
+  }
+}
+
+.fixed-label{
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.request-offer{
+  top: 219px;
+  z-index: 10000;
+  background: lighten($color-orange, 5%);
+
+  &:hover {
+    background: darken($color-orange, 10%);
+  }
+
+  a {
+    text-align: center;
+    img {
+      display: block;
+      text-align: center;
+      margin:0 auto 8px auto;
+    }
+    font-size: 0.65em;
+    text-transform: uppercase;
+    color: white;
+    display: block;
+    padding: 8px;
   }
 }
 

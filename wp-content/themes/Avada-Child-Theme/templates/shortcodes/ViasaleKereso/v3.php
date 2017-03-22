@@ -1,0 +1,521 @@
+<?php
+/**
+* 2017/03/21-es javítási kérés verziója
+*
+* @version v3
+* @since 2017-03-21
+**/
+?>
+<div class="search-panel v3">
+  <div class="search-wrapper">
+    <form id="modul-page-searcher-form-v1" action="/<?=KERESO_SLUG?>" method="get">
+      <div class="head-labels">
+        <ul>
+          <li class="main"><input type="radio" <?=($_GET['cat'] == '')?'checked="checked"':''?> name="cat" id="cat_all" value=""><label class="trans-on" for="cat_all">Utazási ajánlatok keresése</label></li>
+        </ul>
+      </div>
+      <div class="input-holder">
+        <div class="inputs">
+          <div class="input w40">
+            <div class="ico">
+              <i class="fa fa-map-marker"></i>
+            </div>
+            <?php
+              $zonak = array();
+              if(!empty($_GET['zona'])){
+                $zonak = explode(",", $_GET['zona']);
+              }
+            ?>
+            <label for="search_form_place">Melyik régióba utazna?</label>
+            <input type="text" id="search_form_place" class="tglwatcher" tglwatcher="zone_multiselect" placeholder="Kanári-szigetek" readonly="readonly">
+            <i class="dropdown-ico fa fa-caret-down"></i>
+            <input type="hidden" id="zones" name="zona">
+            <div class="multi-selector-holder" id="zone_multiselect">
+              <div class="selector-wrapper">
+                <?
+                $lvl = 0;
+                foreach($zones as $zone): ?>
+                  <div class="lvl-0 zone<?=$zone['id']?>"><input <?=(in_array($zone['id'], $zonak))?'checked="checked"':''?> class="<? if($zone['child_count'] != 0): echo ' has-childs'; endif; ?>" type="checkbox" id="zone_<?=$zone['id']?>" value="<?=$zone['id']?>"> <label for="zone_<?=$zone['id']?>"><?=$zone['name']?></label></div>
+
+                  <? if($zone['children']){ ?>
+                    <div class="">
+                  <?php
+                    foreach($zone['children'] as $zone_d2): ?>
+                      <div class="lvl-1 childof<?=$zone['id']?> zone<?=$zone_d2['id']?><? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>"><input <?=(in_array($zone_d2['id'], $zonak))?'checked="checked"':''?> class="<? if($zone_d2['child_count'] != 0): echo ' has-childs'; endif; ?>" data-parentid="<?=$zone['id']?>" data-lvl="1" type="checkbox" id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>" value="<?=$zone_d2['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>"><?=$zone_d2['name']?></label></div>
+
+                      <? if($zone_d2['children']){ ?>
+                        <div class="sub-lvl sub-lvl-of<?=$zone_d2[id]?>">
+                      <?php
+                        foreach($zone_d2['children'] as $zone_d3): ?>
+                        <div class="lvl-2 childof<?=$zone_d2['id']?> zone<?=$zone_d3['id']?><? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>"><input <?=(in_array($zone_d3['id'], $zonak))?'checked="checked"':''?> class="<? if($zone_d3['child_count'] != 0): echo ' has-childs'; endif; ?>" data-parentid="<?=$zone_d2['id']?>" data-lvl="2" type="checkbox"id="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>" value="<?=$zone_d3['id']?>"> <label for="zone_<?=$zone['id']?>_<?=$zone_d2['id']?>_<?=$zone_d3['id']?>"><?=$zone_d3['name']?></label></div>
+
+                      <? endforeach; } ?>
+                      </div>
+                  <? endforeach; } ?>
+                </div>
+                <? endforeach; ?>
+              </div>
+            </div>
+          </div>
+          <div class="input w40">
+            <div class="ico">
+              <i class="fa fa-building"></i>
+            </div>
+            <label for="search_form_hotel" class="trans-on">Hotel</label>
+            <input type="text" id="search_form_hotel" name="hotel" value="<?php echo $_GET["hotel"]; ?>" placeholder="Összes Hotel" class="trans-on">
+            <input type="hidden" id="hotel_id" name="hid" value="<?php echo $_GET["hid"]; ?>">
+            <div class="autocomplete-result-conteiner" id="hotel_autocomplete"></div>
+          </div>
+          <div class="input w20 last-item">
+            <?php
+              $offers = explode(",", $_GET['offers']);
+            ?>
+            <div class="cb-labels">
+              <input type="checkbox" id="searcher_lm" <?=(in_array('lastminute', $offers))?'checked="checked"':''?> datacollector data-group="offers" value="lastminute"> <label for="searcher_lm">Lastminute</label>
+              <input type="checkbox" id="searcher_fm" <?=(in_array('firstminute', $offers))?'checked="checked"':''?>  datacollector data-group="offers" value="firstminute"> <label for="searcher_fm">Firstminute</label>
+              <input type="hidden" id="offers_dc_ids" name="offers" value="<?php echo $_GET["offers"]; ?>">
+            </div>
+          </div>
+          <div class="row-divider"></div>
+          <div class="input w20 row-bottom">
+            <div class="ico">
+              <i class="fa fa-star"></i>
+            </div>
+            <label for="search_form_kategoria" class="trans-on">Kategória</label>
+            <input type="text" class="tglwatcher" id="search_form_star" tglwatcher="cat_multiselect" placeholder="Bármilyen" readonly="readonly">
+            <i class="dropdown-ico fa fa-caret-down"></i>
+            <input type="hidden" id="cats" name="c">
+            <div class="multi-selector-holder" id="cat_multiselect">
+              <div class="selector-wrapper">
+                <?php
+                  $stars = array();
+                  if(!empty($_GET['c'])){
+                    $stars = (array)explode(",", $_GET['c']);
+                  }
+
+                if($hotelStars) foreach ($hotelStars as $star) { ?>
+                  <div class="lvl-0"><input <?=(in_array($star, $stars))?'checked="checked"':''?> class="" type="checkbox" id="cat_star<?=$star?>" value="<?=$star?>"> <label for="cat_star<?=$star?>"><?=$star?>*</label></div>
+                <?  } ?>
+              </div>
+            </div>
+
+          </div>
+          <div class="input w20 row-bottom">
+            <div class="ico">
+              <i class="fa fa-coffee"></i>
+            </div>
+            <label for="search_form_ellatas" class="trans-on">Ellátás</label>
+            <select class="trans-o" id="search_form_ellatas" name="e">
+              <option value="" selected="selected">Bármely</option>
+              <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
+              <? if($boardTypes) foreach ($boardTypes as $board_id => $board) { ?>
+                <option value="<?=$board_id?>" <?=($_GET['e'] == $board_id)? 'selected="selected"':''?>><?=ucfirst($board['fullName'])?></option>
+              <?  } ?>
+            </select>
+          </div>
+          <div class="input w20 row-bottom show-mob-at">
+            <div class="ico">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <label for="search_form_indulas" class="trans-on">Indulás</label>
+            <input type="text" class="search-datepicker trans-o" dtp="from" id="search_form_indulas" name="tf" value="<?php if(isset($_GET['tf'])) { echo str_replace('-'," / ", $_GET['tf']); } else { echo date('Y / m / d', strtotime('+1 day')); }  ?>" readonly="readonly">
+          </div>
+          <div class="input w20 row-bottom last-item show-mob-at">
+            <div class="ico">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <label for="search_form_erkezes" class="trans-on">Érkezés</label>
+            <input type="text" class="search-datepicker trans-o" dtp="to" id="search_form_erkezes" name="tt" value="<?php if(isset($_GET['tt'])) { echo str_replace('-'," / ", $_GET['tt']); } else { echo date('Y / m / d', strtotime('+60 days')); }  ?>">
+          </div>
+          <div class="input input-more-on-mobile show-mob-at">
+            <span id="searcher-mobile-tgl" data-status="closed">Részletesebb keresés <i class="fa fa-plus"></i></span>
+          </div>
+          <div class="input search-button w20 show-mob-at">
+            <div class="button-wrapper">
+              <button type="submit"><i class="fa fa-search"></i> Keresés</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </form>
+  </div>
+</div>
+<script type="text/javascript">
+var search_form_uri = {
+  'firstminute' : '/utazas-kereso',
+  'lastminute' : '/utazas-kereso',
+  'prog' : '/program-kereso',
+  'trans' : '/transzfer-kereso'
+};
+// Autocomplete
+(function ($) {
+    'use strict';
+
+    $('#search_form_hotel').autocomplete({
+        serviceUrl: 'http://viasale.net/api/v2/hotels/autocomplete',
+        appendTo: '#hotel_autocomplete',
+        paramName: 'term',
+        params : { "zones": 1 },
+        type: 'GET',
+        dataType: 'json',
+        transformResult: function(response) {
+            return {
+                suggestions: $.map(response, function(dataItem) {
+                    return { value: dataItem.label, data: dataItem.value };
+                })
+            };
+        },
+        onSelect: function(suggestion) {
+          $('#hotel_id').val(suggestion.data);
+        },
+        onSearchComplete: function(query, suggestions){
+
+        },
+        onSearchStart: function(query){
+          $('#hotel_id').val('');
+          // Pass current selected zones
+          $(this).autocomplete().options.params.zones = get_selected_zone_ids();
+        },
+        onSearchError: function(query, jqXHR, textStatus, errorThrown){
+            console.log('Autocomplete error: '+textStatus);
+        }
+    });
+
+    String.prototype.capitalizeFirstLetter = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+
+    function get_selected_zone_ids() {
+      var selected = $('#zones').val();
+      if(selected == '') return "1";
+      return selected;
+    }
+
+})(jQuery);
+// END: Autocomplete
+
+(function($) {
+  var szones = collect_zone_checkbox(true);
+  $('#zones').val(szones);
+  var sstars = collect_star_checkbox(true);
+  $('#cats').val(sstars);
+  bindSearchFormURI();
+
+  var dp_options = {
+  	closeText: "bezár",
+  	prevText: "vissza",
+  	nextText: "előre",
+  	currentText: "ma",
+  	monthNames: [ "Január", "Február", "Március", "Április", "Május", "Június",
+  	"Július", "Augusztus", "Szeptember", "Október", "November", "December" ],
+  	monthNamesShort: [ "Jan", "Feb", "Már", "Ápr", "Máj", "Jún",
+  	"Júl", "Aug", "Szep", "Okt", "Nov", "Dec" ],
+  	dayNames: [ "Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat" ],
+  	dayNamesShort: [ "Vas", "Hét", "Ked", "Sze", "Csü", "Pén", "Szo" ],
+  	dayNamesMin: [ "V", "H", "K", "Sze", "Cs", "P", "Szo" ],
+  	weekHeader: "Hét",
+  	dateFormat: "yy / mm / dd",
+  	firstDay: 1,
+  	isRTL: false,
+  	//minDate: +1,
+    minDate: new Date(),
+  	showMonthAfterYear: true,
+  	yearSuffix: "",
+    onSelect: function(dt, i){
+      if($(this).attr('dtp') == 'from')
+      {
+        var selected_date = new Date(i.currentYear, i.currentMonth, i.currentDay);
+        var end_date = $('#search_form_erkezes').val();
+        var end_date_ts = Date.parse(end_date);
+
+
+
+        if(!isNaN(selected_date.getTime())){
+            if( selected_date.getTime() < end_date_ts ){
+              return;
+            }
+            var enddate = selected_date;
+            enddate.setDate(selected_date.getDate() + 60);
+            $("#search_form_erkezes")
+              .val(enddate.toInputFormat())
+              /*.datepicker( "option", "minDate", new Date(i.currentYear, i.currentMonth, i.currentDay) )*/;
+        }
+      }
+    }
+  };
+
+  Date.prototype.toInputFormat = function() {
+    var yyyy = this.getFullYear().toString();
+    var mm = (this.getMonth()+1).toString();
+    var dd  = this.getDate().toString();
+    return yyyy + " / " + (mm[1]?mm:"0"+mm[0]) + " / " + (dd[1]?dd:"0"+dd[0]);
+  };
+
+  $( ".search-datepicker" ).datepicker( dp_options );
+
+  $('#search_form_hotel').blur(function(){
+    var text = $(this).val();
+
+    if(text == '') {
+      $('#hotel_id').val("");
+    }
+  });
+
+  $('#searcher-mobile-tgl').click(function(){
+    var co = $(this).data('status');
+
+    if(co == 'closed') {
+      $('.viasale-kereso-holder .inputs > .input:not(.show-mob-at)').addClass('show');
+      $(this).data('status', 'opened');
+      $(this).html('Egyszerűbb keresés <i class="fa fa-minus"></i>');
+    } else {
+      $('.viasale-kereso-holder .inputs > .input.show').removeClass('show');
+      $(this).data('status', 'closed');
+      $(this).html('Részletesebb keresés <i class="fa fa-plus"></i>');
+    }
+  });
+
+  $(window).click(function(event) {
+    if (!$(event.target).closest('.toggler-opener').length) {
+      $('.toggler-opener').removeClass('opened toggler-opener');
+      $('.tglwatcher.toggled').removeClass('toggled');
+    }
+  });
+
+  $('form#modul-page-searcher-form-v1 input[type=radio][name=cat]').change(function(e){
+    bindSearchFormURI();
+  });
+
+  $('.tglwatcher').click(function(event){
+    event.stopPropagation();
+    event.preventDefault();
+    var e = $(this);
+    var target_id = e.attr('tglwatcher');
+    var opened = e.hasClass('toggled');
+
+    if(opened) {
+      e.removeClass('toggled');
+      $('#'+target_id).removeClass('opened toggler-opener');
+    } else {
+      e.addClass('toggled');
+      $('#'+target_id).addClass('opened toggler-opener');
+    }
+  });
+
+  $('*[datacollector]').change(function(){
+    var group = $(this).data('group');
+    var values = [];
+
+    $('input[type=checkbox][datacollector]:checked').each(function(i,e){
+      values.push($(e).val());
+    });
+
+    $('#'+group+'_dc_ids').val(values.join(","));
+  });
+
+  $('#zone_multiselect input[type=checkbox]').change(function(){
+    var e = $(this);
+    var has_child = $(this).hasClass('has-childs');
+    var checkin = $(this).is(':checked');
+    var lvl = e.data('lvl');
+    var parent = e.data('parentid');
+    var sel_cat_key = $('form#modul-page-searcher-form-v1 input[type=radio][name=cat]:checked').val();
+
+    if(has_child && sel_cat_key == "") {
+      if(checkin) {
+        $('#zone_multiselect .childof'+e.val()+' input[type=checkbox]').prop('checked', false);
+        $('#zone_multiselect .childof'+e.val()).addClass('show');
+        //$('#zone_multiselect .sub-lvl.sub-lvl-of'+e.val()).hide();
+      } else {
+        $('#zone_multiselect .childof'+e.val()).removeClass('show');
+        //$('#zone_multiselect .sub-lvl.sub-lvl-of'+e.val()).show();
+      }
+    }
+
+    if(checkin) {
+      $('#zone_multiselect .zone'+parent+' input[type=checkbox]')
+        .prop('disabled', true);
+    } else {
+
+    }
+
+    var cnt_child = $('#zone_multiselect .childof'+parent+' input[type=checkbox]:checked').length;
+
+    if(cnt_child == 0) {
+      $('#zone_multiselect .zone'+parent+' input[type=checkbox]').prop('disabled', false);
+    }
+
+    var selected_zones = collect_zone_checkbox(false);
+
+    $('#zones').val(selected_zones);
+
+  });
+
+  $('#cat_multiselect input[type=checkbox]').change(function(){
+    var e = $(this);
+    var has_child = $(this).hasClass('has-childs');
+    var checkin = $(this).is(':checked');
+    var lvl = e.data('lvl');
+    var parent = e.data('parentid');
+
+    var selected_stars = collect_star_checkbox(false);
+
+    $('#cats').val(selected_stars);
+
+  });
+
+})( jQuery );
+
+function bindSearchFormURI() {
+  var sel_cat_key = jQuery('form#modul-page-searcher-form-v1 input[type=radio][name=cat]:checked').val();
+  if(typeof sel_cat_key === 'undefined') return;
+
+  resetSearchInputs();
+
+  switch(sel_cat_key){
+    case 'trans':
+      transferSearchPrepare();
+    break;
+    case 'prog':
+      programsSearchPrepare();
+    break;
+  }
+  jQuery('form#modul-page-searcher-form-v1').attr('action', search_form_uri[sel_cat_key]);
+}
+
+function transferSearchPrepare() {
+  jQuery('label[for=search_form_place]').text('Melyik régióba / városba keres transzfert?');
+
+  jQuery('label[for=search_form_hotel]').addClass('inactive');
+  jQuery('#search_form_hotel').prop('disabled', true);
+  jQuery('label[for=search_form_hotel]').addClass('inactive');
+  jQuery('#search_form_kategoria').prop('disabled', true);
+  jQuery('label[for=search_form_kategoria]').addClass('inactive');
+  jQuery('#search_form_ellatas').prop('disabled', true);
+  jQuery('label[for=search_form_ellatas]').addClass('inactive');
+  jQuery('#search_form_indulas').prop('disabled', true);
+  jQuery('label[for=search_form_indulas]').addClass('inactive');
+  jQuery('#search_form_erkezes').prop('disabled', true);
+  jQuery('label[for=search_form_erkezes]').addClass('inactive');
+
+  jQuery('#zone_multiselect .lvl-0').addClass('disabled');
+}
+
+function programsSearchPrepare() {
+  jQuery('label[for=search_form_place]').text('Melyik régióba / városba keres programokat?');
+
+  jQuery('label[for=search_form_hotel]').addClass('inactive');
+  jQuery('#search_form_hotel').prop('disabled', true);
+  jQuery('label[for=search_form_hotel]').addClass('inactive');
+  jQuery('#search_form_kategoria').prop('disabled', true);
+  jQuery('label[for=search_form_kategoria]').addClass('inactive');
+  jQuery('#search_form_ellatas').prop('disabled', true);
+  jQuery('label[for=search_form_ellatas]').addClass('inactive');
+  jQuery('#search_form_indulas').prop('disabled', true);
+  jQuery('label[for=search_form_indulas]').addClass('inactive');
+  jQuery('#search_form_erkezes').prop('disabled', true);
+  jQuery('label[for=search_form_erkezes]').addClass('inactive');
+
+  jQuery('#zone_multiselect .lvl-0').addClass('disabled');
+}
+
+function resetSearchInputs() {
+  jQuery('label[for=search_form_place]').text('Melyik régióba utazna?');
+
+  jQuery('#search_form_hotel').prop('disabled', false);
+  jQuery('label[for=search_form_hotel]').removeClass('inactive');
+  jQuery('#search_form_kategoria').prop('disabled', false);
+  jQuery('label[for=search_form_kategoria]').removeClass('inactive');
+  jQuery('#search_form_ellatas').prop('disabled', false);
+  jQuery('label[for=search_form_ellatas]').removeClass('inactive');
+  jQuery('#search_form_indulas').prop('disabled', false);
+  jQuery('label[for=search_form_indulas]').removeClass('inactive');
+  jQuery('#search_form_erkezes').prop('disabled', false);
+  jQuery('label[for=search_form_erkezes]').removeClass('inactive');
+
+  jQuery('#zone_multiselect .lvl-0').removeClass('disabled');
+}
+
+function collect_zone_checkbox(loader)
+{
+  var arr = [];
+  var str = [];
+  var seln = 0;
+
+  jQuery('#zone_multiselect input[type=checkbox]').each(function(e,i)
+  {
+    if(jQuery(this).is(':checked') && !jQuery(this).is(':disabled')){
+      seln++;
+      arr.push(jQuery(this).val());
+      str.push(jQuery(this).next('label').text());
+    }
+
+    if(loader) {
+      var e = jQuery(this);
+      var has_child = jQuery(this).hasClass('has-childs');
+      var checkin = jQuery(this).is(':checked');
+      var lvl = e.data('lvl');
+      var parent = e.data('parentid');
+
+      var cnt_child = jQuery('#zone_multiselect .childof'+parent+' input[type=checkbox]:checked').length;
+
+      if(cnt_child == 0) {
+        jQuery('#zone_multiselect .zone'+parent+' input[type=checkbox]').prop('disabled', false);
+      } else {
+        jQuery('#zone_multiselect .childof'+parent).addClass('show');
+        jQuery('#zone_multiselect .zone'+parent+' input[type=checkbox]').prop('checked', true).prop('disabled', true);
+      }
+    }
+  });
+
+  if(seln <= 3 ){
+    jQuery('#search_form_place').val(str.join(", "));
+  } else {
+    jQuery('#search_form_place').val(seln + " zóna kiválasztva");
+  }
+
+  return arr.join(",");
+}
+
+function collect_star_checkbox(loader)
+{
+  var arr = [];
+  var str = [];
+  var seln = 0;
+
+  jQuery('#cat_multiselect input[type=checkbox]').each(function(e,i)
+  {
+    if(jQuery(this).is(':checked') && !jQuery(this).is(':disabled')){
+      seln++;
+      arr.push(jQuery(this).val());
+      str.push(jQuery(this).next('label').text());
+    }
+
+    if(loader) {
+      var e = jQuery(this);
+      var has_child = jQuery(this).hasClass('has-childs');
+      var checkin = jQuery(this).is(':checked');
+      var lvl = e.data('lvl');
+      var parent = e.data('parentid');
+
+      var cnt_child = jQuery('#cat_multiselect .childof'+parent+' input[type=checkbox]:checked').length;
+
+      if(cnt_child == 0) {
+        jQuery('#cat_multiselect .zone'+parent+' input[type=checkbox]').prop('disabled', false);
+      } else {
+        jQuery('#cat_multiselect .childof'+parent).addClass('show');
+        jQuery('#cat_multiselect .zone'+parent+' input[type=checkbox]').prop('checked', true).prop('disabled', true);
+      }
+    }
+  });
+
+  if(seln <= 3 ){
+    jQuery('#search_form_star').val(str.join(", "));
+  } else {
+    jQuery('#search_form_star').val(seln + " db kiválasztva");
+  }
+
+  return arr.join(",");
+}
+
+</script>

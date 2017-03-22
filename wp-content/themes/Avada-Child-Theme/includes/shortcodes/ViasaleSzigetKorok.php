@@ -1,5 +1,5 @@
 <?php
-class ViasaleSzigetKorok
+class ViasaleSzigetKorok extends ViasaleAPIFactory
 {
     const SCTAG = 'sziget-korok';
 
@@ -14,20 +14,27 @@ class ViasaleSzigetKorok
 
     public function do_shortcode( $attr, $content = null )
     {
-        $output = '<div class="'.self::SCTAG.'-holder">';
-
+        $base_class = '';
     	  /* Set up the default arguments. */
         $defaults = apply_filters(
             self::SCTAG.'_defaults',
             array(
+              'control' => 'sziget'
             )
         );
 
         /* Parse the arguments. */
         $attr = shortcode_atts( $defaults, $attr );
 
+        if($attr['control'] != 'sziget') {
+          $base_class .= 'control-'.$attr['control'].' ';
+        }
+
+
         // Settings
         $sziget_holder_id = 38;
+
+        $output = '<div class="'.self::SCTAG.'-holder '.$base_class.'">';
 
         $szigetek = get_posts(array(
           'post_type'   => 'page',
@@ -42,7 +49,16 @@ class ViasaleSzigetKorok
 
           foreach ($szigetek as $sziget)
           {
-            $output .= $t->load_template($sziget);
+            $sziget->zone_id = (int)$this->sziget_ids[$sziget->post_name]['id'];
+
+            if($attr['control'] != 'sziget') {
+              $attr['active'] = ((int)$_GET['zona'] === $sziget->zone_id) ? true : false;
+            }
+
+            $output .= $t->load_template(array(
+              'sziget' => $sziget,
+              'param' => $attr,
+            ));
           }
         }
 
