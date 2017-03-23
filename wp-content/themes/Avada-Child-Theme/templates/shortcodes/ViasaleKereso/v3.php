@@ -57,7 +57,7 @@
               </div>
             </div>
           </div>
-          <div class="input w40">
+          <div class="input w30">
             <div class="ico">
               <i class="fa fa-building"></i>
             </div>
@@ -66,15 +66,19 @@
             <input type="hidden" id="hotel_id" name="hid" value="<?php echo $_GET["hid"]; ?>">
             <div class="autocomplete-result-conteiner" id="hotel_autocomplete"></div>
           </div>
-          <div class="input w20 last-item">
-            <?php
-              $offers = explode(",", $_GET['offers']);
-            ?>
-            <div class="cb-labels">
-              <input type="checkbox" id="searcher_lm" <?=(in_array('lastminute', $offers))?'checked="checked"':''?> datacollector data-group="offers" value="lastminute"> <label for="searcher_lm">Lastminute</label>
-              <input type="checkbox" id="searcher_fm" <?=(in_array('firstminute', $offers))?'checked="checked"':''?>  datacollector data-group="offers" value="firstminute"> <label for="searcher_fm">Firstminute</label>
-              <input type="hidden" id="offers_dc_ids" name="offers" value="<?php echo $_GET["offers"]; ?>">
+
+          <div class="input w30 last-item">
+            <div class="ico">
+              <i class="fa fa-clock-o"></i>
             </div>
+            <label for="search_form_turnus" class="trans-on">Utazás időtartama</label>
+            <select class="trans-o" id="search_form_turnus" name="tg">
+              <option value="" selected="selected">Mindegy</option>
+              <option value="" disabled="disabled" style="background: #f2f2f2; text-align: center; padding: 10px; font-size: 11px;">Válasszon:</option>
+              <? if($turnus_hossz) foreach ($turnus_hossz as $tid => $tunus) { if($tunus['term_result_num'] == 0) continue; ?>
+                <option value="<?=$tid?>" <?=($_GET['tg'] == $tid)? 'selected="selected"':''?>><?=ucfirst($tunus['name'])?> (<?=$tunus['term_result_num']?>)</option>
+              <?  } ?>
+            </select>
           </div>
           <div class="row-divider"></div>
           <div class="input w20 row-bottom">
@@ -113,14 +117,14 @@
               <?  } ?>
             </select>
           </div>
-          <div class="input w20 row-bottom show-mob-at">
+          <div class="input w30 row-bottom show-mob-at">
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
             <label for="search_form_indulas" class="trans-on">Indulás</label>
             <input type="text" class="search-datepicker trans-o" dtp="from" id="search_form_indulas" name="tf" value="<?php if(isset($_GET['tf'])) { echo str_replace('-'," / ", $_GET['tf']); } else { echo date('Y / m / d', strtotime('+1 day')); }  ?>" readonly="readonly">
           </div>
-          <div class="input w20 row-bottom last-item show-mob-at">
+          <div class="input w30 row-bottom last-item show-mob-at">
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
@@ -129,6 +133,19 @@
           </div>
           <div class="input input-more-on-mobile show-mob-at">
             <span id="searcher-mobile-tgl" data-status="closed">Részletesebb keresés <i class="fa fa-plus"></i></span>
+          </div>
+          <div class="input w20 last-item">
+            <?php
+              $offers = explode(",", $_GET['offers']);
+            ?>
+            <div class="cb-labels lmfm-labels">
+              <input type="checkbox" id="searcher_lm" <?=(in_array('lastminute', $offers))?'checked="checked"':''?> datacollector data-group="offers" value="lastminute"> <label for="searcher_lm">Lastminute</label>
+              <input type="checkbox" id="searcher_fm" <?=(in_array('firstminute', $offers))?'checked="checked"':''?>  datacollector data-group="offers" value="firstminute"> <label for="searcher_fm">Firstminute</label>
+              <input type="hidden" id="offers_dc_ids" name="offers" value="<?php echo $_GET["offers"]; ?>">
+            </div>
+          </div>
+          <div class="input w60">
+            &nbsp;
           </div>
           <div class="input search-button w20 show-mob-at">
             <div class="button-wrapper">

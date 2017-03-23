@@ -1,5 +1,5 @@
 <?php
-class ViasaleLista
+class ViasaleLista extends ViasaleAPIFactory
 {
     const SCTAG = 'viasale-lista';
     // Elérhető set-ek
@@ -213,6 +213,18 @@ class ViasaleLista
 
         if(isset($_GET[hid]) && !empty($_GET[hid])){
           $this->params[hotels] = explode(",",$_GET[hid]);
+        }
+
+        // Turnus csoport
+        if(isset($_GET[tg]) && !empty($_GET[tg])){
+            $tg = $_GET[tg];
+            $tg_data = $this->term_durration_groups;
+            $tgv = $tg_data[$tg];
+            $tg_min = $tgv['min'];
+            $tg_max = $tgv['max'];
+
+            $this->params[min_duration] = $tg_min;
+            $this->params[max_duration] = $tg_max;
         }
 
         if(isset($_GET[tt])){

@@ -1,5 +1,5 @@
 <?php
-class ViasaleKereso
+class ViasaleKereso extends ViasaleAPIFactory
 {
     const SCTAG = 'viasale-kereso';
     // Elérhető set-ek
@@ -30,6 +30,9 @@ class ViasaleKereso
         $attr           = shortcode_atts( $defaults, $attr );
         $this->params   = $attr;
 
+        // Turnus hosszak
+        $turnus_hossz = $this->load_term_durration_counts();
+
         $searcher = new ViasaleKeresok( $this->params );
         $t = new ShortcodeTemplates(__CLASS__.'/'.$attr['view']);
 
@@ -38,6 +41,7 @@ class ViasaleKereso
         $this->params[zone_deep] = $searcher->getZonesDeeps() - $searcher->min_zone_deep;
         $this->params[boardTypes] = $searcher->getBoardTypes();
         $this->params[hotelStars] = $searcher->getHotelStars();
+        $this->params[turnus_hossz] = $turnus_hossz;
         /*
         echo '<pre>';
         print_r($this->params[zones]);

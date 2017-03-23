@@ -14,6 +14,28 @@ class ViasaleAPIFactory
 
   // Settings
   protected $streamer_timeout = 30;
+  public $term_durration_groups = array(
+    0 => array(
+      'name' => '1 hétnél rövidebb',
+      'min' => 1,
+      'max' => 5
+    ),
+    1 => array(
+      'name' => '1 hetes',
+      'min' => 6,
+      'max' => 8
+    ),
+    2 => array(
+      'name' => '1 hétnél hosszabb',
+      'min' => 9,
+      'max' => 12
+    ),
+    3 => array(
+      'name' => '2 hét vagy több',
+      'min' => 13,
+      'max' => 15
+    )
+  );
 
   // Store
   public $zones_max_level   = 0;
@@ -386,6 +408,41 @@ class ViasaleAPIFactory
     unset($result);
 
     return $data;
+  }
+
+  public function load_term_durration_counts()
+  {
+    $groups = array();
+
+    $date_from = date('Y-m-d', strtotime('+1 days'));
+    $date_to = date('Y-m-d', strtotime('+60 days'));
+
+    if( isset($_GET['tf']) && !empty($_GET['tf']) ){
+      $date_from =  str_replace(' / ', '-', $_GET['tf']);
+    }
+
+    if( isset($_GET['tt']) && !empty($_GET['tt']) ){
+      $date_to = str_replace(' / ', '-', $_GET['tt']);
+    }
+
+    $date_src = '&date_from='.$date_from.'&date_to='.$date_to;
+
+    $list = $this->term_durration_groups;
+
+    $this->setApiVersion('v3');
+    $this->build_api_uri();
+
+    $url = $this->api_uri . self::TERMS_TAG . '?per_page=1'.$date_src;
+
+    foreach ((array)$list as $key => $group)
+    {
+      $url .= '&min_duration='.$group['min'].'&max_duration='.$group['max'];
+      $result = json_decode($this->load_api_content( $url ), JSON_UNESCAPE_UNICODE);
+      $group['term_result_num'] = (int)$result['total'];
+      $groups[$key] = $group;
+    }
+
+    return $groups;
   }
 
   private function load_api_content( $exc_uri = false )

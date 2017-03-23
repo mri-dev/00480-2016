@@ -59,6 +59,12 @@ class ViasaleAjanlatok extends ViasaleAPIFactory
     if(isset($this->arg['categories']) ) {
       $search['categories'] = $this->arg['categories'];
     }
+    if(isset($this->arg['min_duration']) ) {
+      $search['min_duration'] = $this->arg['min_duration'];
+    }
+    if(isset($this->arg['max_duration']) ) {
+      $search['max_duration'] = $this->arg['max_duration'];
+    }
 
 
     if(get_query_var('page')) {

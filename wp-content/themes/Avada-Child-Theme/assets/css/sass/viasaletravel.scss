@@ -2547,17 +2547,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             font-size: 15px;
 
             &.inactive {
-              color: #ffc075;
+              color: #ffc075; 
             }
           }
           &.w60{
             flex-basis: 60%;
           }
+          &.w50{
+            flex-basis: 50%;
+          }
           &.w40{
             flex-basis: 40%;
           }
+          &.w35{
+            flex-basis: 35%;
+          }
+          &.w30{
+            flex-basis: 30%;
+          }
           &.w20{
             flex-basis: 20%;
+          }
+          &.w15{
+            flex-basis: 15%;
           }
 
           .cb-labels {
@@ -2571,6 +2583,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               float: left;
               margin: 3px 10px 0 0;
             }
+          }
+
+          .lmfm-labels{
           }
 
           select, input[type=text] {
@@ -2655,15 +2670,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               border-radius:  10px 0 0 10px;
             }
           }
-          &.row-bottom{
-            padding-bottom: 20px;
-          }
           &.last-item{
-            padding-right: 8px;
-          }
-
-          &.row-bottom.last-item{
-            padding-right: 0;
+            padding-right: 10px;
           }
 
         }
@@ -4351,7 +4359,7 @@ body.hotel-travel-page
     text-transform: uppercase;
     padding: 10px 25px 10px 15px;
     font-size: 12px;
-    margin: 0; 
+    margin: 0;
 
     &:after {
       color: white;

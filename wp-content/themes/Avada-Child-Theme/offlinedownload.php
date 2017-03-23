@@ -255,8 +255,6 @@
     $pdf->Ln(5);
   endforeach;
 
-
-
   $pdf->Output('ViaSale Travel - Utazási ajánlat #'.$ajanlat->getTravelID().'.pdf', 'D');
   //$pdf->Output();
 ?>

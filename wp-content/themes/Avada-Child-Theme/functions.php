@@ -73,6 +73,7 @@ function vs_rewrite_rules() {
     add_rewrite_rule( UTAZAS_SLUG.'/'.SZIGET_SLUG.'/([^/]+)/([^/]+)/([^/]+)/([^/]+)', 'index.php?sziget=$matches[1]&varos=$matches[2]&utazas_id=$matches[4]', 'top' );
     add_rewrite_rule( PROGRAM_SLUG.'/([^/]+)/([^/]+)', 'index.php?program_id=$matches[2]', 'top' );
     add_rewrite_rule( UTAZAS_SLUG.'/download/([^/]+)', 'index.php?utazas_id=$matches[1]&templatekey=offlinedownload', 'top' );
+    add_rewrite_rule( UTAZAS_SLUG.'/print/([^/]+)', 'index.php?utazas_id=$matches[1]&templatekey=printoffer', 'top' );
 }
 add_action( 'init', 'vs_rewrite_rules' );
 
