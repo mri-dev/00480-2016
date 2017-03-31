@@ -10,6 +10,26 @@ html, body {
   display: none;
 }
 
+.fusion-mobile-menu-icons{
+  .fusion-icon.fusion-icon-search{
+    display: none !important;
+  }
+}
+
+.box-bg-orange {
+  background: $color-orange !important;
+}
+.box-bg-purple {
+  background: darken($color-purple, 15%) !important;
+}
+.button-style-orange{
+  background: $color-orange !important;
+  color: white;
+  margin: 0 auto;
+  &:hover {
+    color: white !important;
+  }
+}
 .fusion-secondary-main-menu{
     background: $color-purple;
     border: none !important;
@@ -24,6 +44,16 @@ html, body {
 .searchform .search-table .search-button input[type="submit"]{
     background: $color-orange;
     width: 50px;
+}
+.searchform .search-table .search-button input[type="submit"]:hover{
+    background: $color-purple !important;
+}
+.pagination .current {
+  background: $color-orange !important;
+  border-color: darken($color-orange, 10%) !important;
+}
+#wrapper .fusion-tabs.classic .nav-tabs > li.active .tab-link{
+  border-color: $color-orange !important;
 }
  #wrapper .search-table .search-field input{
     border: 1px solid #7d7d7d;
@@ -914,7 +944,7 @@ html, body {
               top: 50%;
               width: auto;
               max-width: initial;
-              height: 115%;
+              height: 115%; 
               -moz-transform: translate(-50%, -50%);
               -webkit-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%);
@@ -942,7 +972,7 @@ html, body {
           }
 
           .titles, .price, .star {
-            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.82);
+            text-shadow: 0 2px 3px rgba(0, 0, 0, 0.81);
           }
 
           .prices, .titles {
@@ -2547,7 +2577,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
             font-size: 15px;
 
             &.inactive {
-              color: #ffc075; 
+              color: #ffc075;
             }
           }
           &.w60{
@@ -3637,6 +3667,10 @@ body.hotel-travel-page
       .sep:last-child{
         display: none;
       }
+
+      a {
+        color: $color-orange !important;
+      }
     }
     .star{
       margin-bottom: 10px;
@@ -4135,7 +4169,7 @@ body.hotel-travel-page
 
         .n {
           line-height: 28px;
-          background: #f79447;
+          background: $color-orange;
           font-size: 12px;
           padding: 0 8px;
           margin-right: 10px;
@@ -4801,6 +4835,7 @@ body.search {
 }
 .fusion-tabs.fusion-tabs-1 .nav-tabs li a{
   background: $color-orange !important;
+  border-top-color: lighten($color-orange, 10%) !important;
 }
 .fusion-tabs.fusion-tabs-1 .nav-tabs li a:hover{
   background: $color-orange !important;
@@ -4851,7 +4886,7 @@ body.search {
 }
 
 .request-offer{
-  top: 219px;
+  top: 187px;
   z-index: 10000;
   background: lighten($color-orange, 5%);
 
@@ -4872,6 +4907,10 @@ body.search {
     display: block;
     padding: 8px;
   }
+}
+
+body.admin-bar .request-offer{
+    top: 219px;
 }
 
 @import "responsive_tablet";

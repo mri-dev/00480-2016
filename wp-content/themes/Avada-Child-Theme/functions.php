@@ -13,8 +13,6 @@ define('GOOGLE_MAP_API_KEY', 'AIzaSyDxeIuQwvCtMzBGo53tV7AdwG6QCDzmSsQ');
 define('EUB_URL', 'http://eub.hu/?pcode=29289');
 define('NOIMAGE_MID', IMAGES.'/viasale-travel-no-image-500.jpg');
 define('NOIMAGE_HD', IMAGES.'/viasale-travel-no-image-1024.jpg');
-define('CSSVERSION','201703221500');
-
 
 define('RESOURCES', IFROOT.'/assets' );
 //define('RESOURCES', '//cdn.viasaletravel.hu/res' );
@@ -23,6 +21,9 @@ define('IMAGES', IFROOT.'/images' );
 
 // Includes
 require_once "includes/include.php";
+
+//define('CLONEKEY','OTPTRAVEL');
+define('CSSVERSION','201703221500');
 
 function theme_enqueue_styles() {
   global $wp_query;
@@ -59,6 +60,9 @@ add_action( 'wp_enqueue_scripts', 'datetimepicker_enqueue_styles' );
 function custom_theme_enqueue_scripts() {
     //wp_enqueue_style('autocomplete', IFROOT . '/assets/js/autocomplete/content/styles.css');
     wp_enqueue_style( 'viasaletravel-css', RESOURCES . '/css/viasaletravel'.( (DEVMODE === false) ? '-v'.CSSVERSION : '' ) .'.css?' . ( (DEVMODE === true) ? 't='.time() : '' ) );
+    if (defined('CLONEKEY') && CLONEKEY == 'OTPTRAVEL') {
+      wp_enqueue_style( 'otptravel-css', RESOURCES . '/css/otptravel'.( (DEVMODE === false) ? '-v'.CSSVERSION : '' ) .'.css?' . ( (DEVMODE === true) ? 't='.time() : '' ) );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'custom_theme_enqueue_scripts', 100 );
 

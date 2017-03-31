@@ -1,0 +1,103 @@
+@import 'settings_otp';
+
+.eub-button.imaged-button-home{
+  background: $color-orange !important;
+}
+.weather-button.imaged-button-home{
+  background: $color-orange !important;
+}
+.fusion-footer-widget-area{
+  background: $color-orange !important;
+}
+
+.fusion-footer-copyright-area{
+  background: $color-purple !important;
+  border-color: darken($color-purple, 10%) !important;
+}
+
+.copy-info-box {
+  background: lighten(desaturate($color-orange, 90), 20%) !important;
+}
+
+.home-enav-buttons{
+  background: lighten(desaturate($color-purple, 20), 35%) !important;
+}
+
+.frontpage-post-list{
+  background: lighten(desaturate($color-purple, 20), 35%) !important;
+
+  .fusion-post-content-container{
+    color: #4a4a4a !important;
+  }
+  h2.entry-title > a {
+    color: $color-orange !important;
+  }
+}
+.fusion-main-menu .sub-menu li a{
+  background: $color-orange !important;
+  border-bottom: 1px solid lighten($color-orange, 10%) !important;
+}
+.fusion-main-menu .sub-menu li a:hover{
+  background: darken($color-orange, 10%) !important;
+}
+
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .features.feat-style-v2 .feature-wrapper > div i{
+  color: $color-orange !important;
+}
+.viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .link-read a.link-btn{
+  background: $color-purple !important;
+}
+
+body.utazas-travel-page .hotel-data h1.title, body.hotel-travel-page .hotel-data h1.title{
+  color: #626262 !important;
+}
+
+body.utazas-travel-page .travel-calculator-container .calc-content table.room .room-head,
+body.utazas-travel-page .travel-calculator-container .calc-content #selected-travel-room .room{
+  background: $color-orange !important;
+}
+
+body.utazas-travel-page .travel-calculator-container .calc-content #selected-travel-room .room .price{
+  color: $color-purple !important;
+}
+body.utazas-travel-page .travel-calculator-container .calc-content table.room .room-head .fullPrice{
+  color: $color-purple !important;
+}
+body.utazas-travel-page .travel-calculator-container .calc-content table.room.rejtve .room-head{
+  background: #666666 !important;
+}
+body.utazas-travel-page .travel-calculator-container .calc-content table.room.rejtve .room-head .fullPrice{
+  color: #aaaaaa !important;
+}
+
+body.utazas-travel-page .travel-offer .prices .origin.p-eur, body.hotel-travel-page .travel-offer .prices .origin.p-eur{
+  color: $color-purple !important;
+}
+
+body.utazas-travel-page .travel-offer .travel-info .info-link, body.hotel-travel-page .travel-offer .travel-info .info-link{
+  color: $color-orange !important;
+  &:hover {
+    color: $color-purple !important;
+  }
+}
+body.hotel-travel-page .utazas-ajanlat-container {
+    background: #bddca7;
+}
+body.hotel-travel-page .utazas-ajanlat-container .more-travel-list .more-travel-row > div.more-travel-priceplan .price-eur{
+  color: $color-purple !important;
+}
+body.hotel-travel-page .utazas-ajanlat-container .more-travel-list .more-travel-row > div[class^=more-travel-header]{
+  color: $color-orange !important;
+}
+
+.box-ajanlat-list{
+  background: darken(desaturate($color-orange, 30), 5%) !important;
+}
+body.utazas-travel-page .hotel-data .mode-list .aj{
+  &:hover {
+    background: $color-orange !important;
+  }
+}
+body.utazas-travel-page .hotel-data .mode-list .nl .badge, body.hotel-travel-page .hotel-data .mode-list .nl .badge{
+  background: $color-purple !important;
+}

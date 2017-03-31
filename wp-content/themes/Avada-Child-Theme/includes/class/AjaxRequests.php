@@ -62,6 +62,19 @@ class AjaxRequests
     }
 
 
+    // OK
+    $ajanlat = new ViasaleAjanlat($_POST['term']['id'], array('api_version' => 'v3'));
+    $ajanlat_zones = $ajanlat->getHotelZones();
+
+    $zones = array();
+    foreach ($ajanlat_zones as $zid => $z) {
+      $zones[] = array(
+        'id' => $zid,
+        'zone' => $z
+      );
+    }
+    $return['passed_params']['term']['zones'] = $zones;
+
     $to       = get_option('admin_email');
     $subject  = 'Megrendelés érkezett: '.$_POST['vezeteknev'] . ' '.$_POST['keresztnev'].' - '.$utasok_szama.' főre';
 

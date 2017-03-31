@@ -81,7 +81,7 @@
                 </div>
                 <div class="szuletesi_datum">
                   <label for="szuletesi_datum">Születési dátum</label>
-                  <input type="text" class="datepicker" ng-model="orderer.dob" ng-required ng-pattern="/^((\d{4})[ .-/](\d{2})[ .-/](\d{2})|(\d{2})\/(\d{2})\/(\d{4}))$/" id="szuletesi_datum" name="szuletesi_datum" placeholder="2000.01.01" value="">
+                  <input type="text" class="datepicker" ng-model="orderer.dob" ng-required ng-pattern="/^((\d{4})[ .-/](\d{2})[ .-/](\d{2})|(\d{2})\/(\d{2})\/(\d{4})|\d{8})$/" id="szuletesi_datum" name="szuletesi_datum" placeholder="2000.01.01" value="">
                 </div>
                 <div class="cim">
                   <label for="cim">Cím</label>
@@ -120,7 +120,6 @@
             <i class="fa fa-envelope"></i> Adja meg helyesen a megrendelő e-mail címét.<br>
             <em title="mail@example.com">Formátumok (?)</em>
           </div>
-          <button type="button" ng-show="orderer.dob && orderer.mail && orderer.tel"  class="print-offer fusion-button" onclick="PrintElem('travel-contact');">Ajánlat nyomtatása <i class="fa fa-print" aria-hidden="true"></i></button>
         </div>
         <div class="action-btns">
           <button type="button" class="print-offer fusion-button" onclick="PrintElem(<?php echo $ajanlat->getTravelID(); ?>);">Ajánlat nyomtatása <i class="fa fa-print" aria-hidden="true"></i></button>
@@ -263,8 +262,8 @@ function ajanlatkeresKuldes()
       mailparam,
       function(data){
         var resp = jQuery.parseJSON(data);
+        var redir_conv_url = '/sikeres-megrendeles?z='+resp.passed_params.term.zones[0].id+'&termid='+resp.passed_params.term.id+'&hotel='+resp.passed_params.hotel.name+'&email='+resp.passed_params.email;
 
-        var redir_conv_url = '/sikeres-megrendeles?termid='+resp.passed_params.term.id+'&hotel='+resp.passed_params.hotel.name+'&email='+resp.passed_params.email;
 
         if(resp.error == 0) {
           mail_sended = 1;
