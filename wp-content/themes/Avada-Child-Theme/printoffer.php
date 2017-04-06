@@ -180,7 +180,7 @@ $ztext = rtrim($ztext, ' / ');
 </head>
 <body>
   <header>
-    <img src="http://viasaletravel.ideafontana.eu/wp-content/uploads/2016/09/viasale-travel-logo-h120.png" alt="ViaSale Travel">
+    <img src="<?php echo get_option('siteurl', '/'); ?>/wp-content/uploads/2016/09/viasale-travel-logo-h120.png" alt="<?php echo get_option('blogname', ''); ?>">
     <div class="title">
       <h1 style="color: #f7941d;"><?php echo $ajanlat->getHotelName().str_repeat('*', $ajanlat->getStar()); ?></h1>
       <h2 style="color: #cccccc;"><?php echo $ztext; ?></h2>
