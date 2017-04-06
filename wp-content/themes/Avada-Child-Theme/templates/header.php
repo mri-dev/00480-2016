@@ -311,17 +311,7 @@ if ( ! function_exists( 'avada_header_content_3' ) ) {
             if( true ) {
             $html .= '
             <div class="primary-header-line">
-                <div class="mailchimp-header-subsc">
-                  <form action="//viasaletravel.us9.list-manage.com/subscribe/post?u=3e9a92238c6dea060038ac5f3&amp;id=1ec2d250a7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate searchform" target="_blank" novalidate>
-                    <label for="mce-EMAIL">Hírlevél feliratkozás <i class="fa fa-envelope-o"></i></label>
-                    <div class="search-table">
-                      <div class="search-field"><input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email cím megadása" required></div>
-                      <div class="search-button"><input type="submit" value="Küldés" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                    </div>
-                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3e9a92238c6dea060038ac5f3_1ec2d250a7" tabindex="-1" value=""></div>
-                  </form>
-                </div>
+                '.mailchimp_subscriber_html().'
                 <div class="head-search hide">' . get_search_form( false ) . '</div>
                 <div class="katalogus-header-link"><label>&nbsp;</label><a target="_blank" href="'.catalog_url().'">Katalógus</a></div>
             </div><div class="fusion-clearfix"></div>';
@@ -330,7 +320,7 @@ if ( ! function_exists( 'avada_header_content_3' ) ) {
             <div class="secondary-header-line">
                 <div class="fusion-secondary-menu-social">' . (new Avada_Social_Icons())->render_social_icons(array('position' => 'header')) . '</div>
                 <div class="contact-phone"><ul>
-                    <li><i class="fa fa-phone"></i> &nbsp; +36 (1) 445-4455</li>
+                    <li><i class="fa fa-phone"></i> &nbsp; '.get_option('contact_phone', true).'</li>
                 </ul></div>
             </div><div class="fusion-clearfix"></div>';
         } elseif ( 'Banner' == $header_content_3 ) {

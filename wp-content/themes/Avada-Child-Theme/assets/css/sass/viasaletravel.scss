@@ -1,4 +1,4 @@
-@import 'settings';
+@import 'settings_otp';
 @import 'fonts';
 
 html, body {
@@ -944,7 +944,7 @@ html, body {
               top: 50%;
               width: auto;
               max-width: initial;
-              height: 115%; 
+              height: 115%;
               -moz-transform: translate(-50%, -50%);
               -webkit-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%);

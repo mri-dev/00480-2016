@@ -22,7 +22,7 @@ define('IMAGES', IFROOT.'/images' );
 // Includes
 require_once "includes/include.php";
 
-//define('CLONEKEY','OTPTRAVEL');
+define('CLONEKEY','OTPTRAVEL');
 define('CSSVERSION','201703221500');
 
 function theme_enqueue_styles() {
@@ -58,8 +58,12 @@ function datetimepicker_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'datetimepicker_enqueue_styles' );
 
 function custom_theme_enqueue_scripts() {
+
+  if (defined('CLONEKEY') && CLONEKEY == 'OTPTRAVEL' && DEVMODE === false) {
+    $css_prefix = 'otp/';
+  }
     //wp_enqueue_style('autocomplete', IFROOT . '/assets/js/autocomplete/content/styles.css');
-    wp_enqueue_style( 'viasaletravel-css', RESOURCES . '/css/viasaletravel'.( (DEVMODE === false) ? '-v'.CSSVERSION : '' ) .'.css?' . ( (DEVMODE === true) ? 't='.time() : '' ) );
+    wp_enqueue_style( 'viasaletravel-css', RESOURCES . '/css/'.$css_prefix.'viasaletravel'.( (DEVMODE === false) ? '-v'.CSSVERSION : '' ) .'.css?' . ( (DEVMODE === true) ? 't='.time() : '' ) );
     if (defined('CLONEKEY') && CLONEKEY == 'OTPTRAVEL') {
       wp_enqueue_style( 'otptravel-css', RESOURCES . '/css/otptravel'.( (DEVMODE === false) ? '-v'.CSSVERSION : '' ) .'.css?' . ( (DEVMODE === true) ? 't='.time() : '' ) );
     }
@@ -414,7 +418,24 @@ function get_ajax_url( $function )
 // Katalógus hivatkozása
 function catalog_url()
 {
-  return 'https://issuu.com/viasaletravel/docs/pdf_nagy_viasale_katalogus_2017';
+  //return 'https://issuu.com/viasaletravel/docs/pdf_nagy_viasale_katalogus_2017';
+  return get_option('katalogus_link', '#');
+}
+
+// Mailchimp feliratkozó a fejlécbe
+function mailchimp_subscriber_html()
+{
+  return '<div class="mailchimp-header-subsc">
+    <form action="//viasaletravel.us9.list-manage.com/subscribe/post?u=3e9a92238c6dea060038ac5f3&amp;id=1ec2d250a7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate searchform" target="_blank" novalidate>
+      <label for="mce-EMAIL">Hírlevél feliratkozás <i class="fa fa-envelope-o"></i></label>
+      <div class="search-table">
+        <div class="search-field"><input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email cím megadása" required></div>
+        <div class="search-button"><input type="submit" value="Küldés" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3e9a92238c6dea060038ac5f3_1ec2d250a7" tabindex="-1" value=""></div>
+    </form>
+  </div>';
 }
 
 function after_body_tag()
