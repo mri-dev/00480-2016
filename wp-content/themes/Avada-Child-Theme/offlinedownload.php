@@ -198,19 +198,19 @@
   $pdf->setX(135);
   $pdf->SetFont('DejaVuSerif','B', 14);
   $pdf->SetTextColor(0);
-  $pdf->MultiCell( 0, 3, '+36 (1) 445-4455', 0, "C");
+  $pdf->MultiCell( 0, 3, get_option('contact_phone',''), 0, "C");
 
   $pdf->Ln(5);
   $pdf->setX(135);
   $pdf->SetFont('DejaVuSerif','B', 10);
   $pdf->SetTextColor(0);
-  $pdf->MultiCell( 0, 3, 'info@viasaletravel.hu', 0, "C");
+  $pdf->MultiCell( 0, 3, get_option('admin_email',''), 0, "C");
 
   $pdf->Ln(8);
   $pdf->setX(135);
-  $pdf->SetFont('DejaVuSerif','B', 14);
+  $pdf->SetFont('DejaVuSerif','B', 12);
   $pdf->SetTextColor(0);
-  $pdf->MultiCell( 0, 3, 'www.viasaletravel.hu', 0, "C");
+  $pdf->MultiCell( 0, 3, get_option('siteurl',''), 0, "C");
 
 
   $pdf->setY(32);
@@ -255,6 +255,6 @@
     $pdf->Ln(5);
   endforeach;
 
-  $pdf->Output('ViaSale Travel - Utazási ajánlat #'.$ajanlat->getTravelID().'.pdf', 'D');
+  $pdf->Output(get_option('blogname').' - Utazási ajánlat #'.$ajanlat->getTravelID().'.pdf', 'D');
   //$pdf->Output();
 ?>

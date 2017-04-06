@@ -151,7 +151,7 @@ $ztext = rtrim($ztext, ' / ');
     font-weight: bold;
   }
   .contact .web {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     margin-top: 10px;
   }
@@ -314,13 +314,13 @@ $ztext = rtrim($ztext, ' / ');
         </div>
         <div class="contact">
           <div class="phone">
-            +36 (1) 445-4455
+            <?php echo get_option('contact_phone', ''); ?>
           </div>
           <div class="email">
-            info@viasaletravel.hu
+            <?php echo get_option('admin_email', ''); ?>
           </div>
           <div class="web">
-            www.viasaletravel.hu
+            <?php echo get_option('siteurl', ''); ?>
           </div>
         </div>
       </div>
