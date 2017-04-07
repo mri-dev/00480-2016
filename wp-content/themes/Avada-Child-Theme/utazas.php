@@ -275,7 +275,12 @@
 									<div class="travel-info">
 										<label>Utazás száma</label>
 										<div class="travel-number"><?=$ajanlat->getTravelID()?></div>
-										<a href="<?=EUB_URL?>" target="_blank" class="info-link">EUB utazásbiztosítás <i class="fa fa-external-link"></i></a>
+										<?php if(!defined('CLONEKEY')): ?>
+											<a href="<?=biztosito_url()?>" target="_blank" class="info-link">EUB utazásbiztosítás <i class="fa fa-external-link"></i></a>
+										<? else: ?>
+											<a href="<?=biztosito_url()?>" target="_blank" class="info-link">Groupama utazásbiztosítás <i class="fa fa-external-link"></i></a>
+										<? endif;?>
+
 										<a href="/utazasi-szerzodes/" target="_blank"  class="info-link">Utazási szerződés <i class="fa fa-external-link"></i></a>
 									</div>
 								</div>

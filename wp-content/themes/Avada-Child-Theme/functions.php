@@ -431,6 +431,20 @@ function catalog_url()
   return get_option('katalogus_link', '#');
 }
 
+// Biztosító link
+function biztosito_url()
+{
+  if(defined('CLONEKEY')) {
+    switch(CLONEKEY){
+		case 'OTPTRAVEL':
+			return 'https://ugyfelportal.garancia-online.hu/wps/portal/utas-online?GP_661_forras_site=TRAVEL';
+		break;
+	}
+  }
+
+  return 'http://eub.hu/?pcode=29289';
+}
+
 // Mailchimp feliratkozó a fejlécbe
 function mailchimp_subscriber_html()
 {
