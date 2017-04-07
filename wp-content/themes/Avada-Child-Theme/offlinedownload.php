@@ -166,8 +166,8 @@
 
   // Init
   $pdf = new DownloadPDF('P', 'mm', 'A4');
-  $pdf->SetCreator('ViaSale Travel');
-  $pdf->SetTitle('ViaSale Travel - Utazási ajánlat #'.$ajanlat->getTravelID(), true);
+  $pdf->SetCreator(get_option('blogname'));
+  $pdf->SetTitle(get_option('blogname').' - Utazási ajánlat #'.$ajanlat->getTravelID(), true);
 
   $pdf->setParam($params);
   $pdf->AliasNbPages();

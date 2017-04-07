@@ -24,6 +24,7 @@ class AjaxRequests
       'passed_params' => false
     );
 
+    $_POST['room']['price_value'] = (float) str_replace(' €', '', $_POST['room']['price']);
     $return['passed_params'] = $_POST;
 
     $utasok_szama = count($_POST['utasok']['keresztnev']);

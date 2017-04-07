@@ -94,11 +94,13 @@ $c_pageID = Avada::c_pageID();
       </div> <!-- fusion-fusion-copyright-content -->
     </div> <!-- fusion-row -->
   </footer> <!-- #footer -->
-  <div class="copy-info-box fusion-footer-widget-area">
-      <div class="fusion-row">
-        <?php get_template_part('footerinfobox'); ?>
-      </div>
-  </div>
+  <?php if (!defined('CLONEKEY')): ?>
+    <div class="copy-info-box fusion-footer-widget-area">
+        <div class="fusion-row">
+          <?php get_template_part('footerinfobox'); ?>
+        </div>
+    </div>
+  <?php endif; ?>  
 <?php endif; // end footer copyright area check ?>
 </div> <!-- fusion-footer -->
 <?php endif; // end is not blank page check ?>

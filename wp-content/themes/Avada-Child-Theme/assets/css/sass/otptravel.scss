@@ -9,10 +9,21 @@
 .fusion-footer-widget-area{
   background: $color-orange !important;
 }
+.fusion-secondary-main-menu{
+    background: #252525 !important;
+}
+ .fusion-main-menu > ul > li > a{
+   color: #eaeaea;
+ }
 
 .fusion-footer-copyright-area{
   background: $color-purple !important;
   border-color: darken($color-purple, 10%) !important;
+}
+.eub-button:before{
+  background-color: #346337; 
+  background-image: url('#{$imgcdn}/groupama_log_picto.png') !important;
+  background-size: 65%;
 }
 
 .copy-info-box {

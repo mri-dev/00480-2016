@@ -8,4 +8,5 @@
 	require_once "ViasaleAirTicket.php";
 	require_once "WeatherIcon.php";
 	require_once "DButton.php";
+	require_once "GAConversationPage.php";
 ?>

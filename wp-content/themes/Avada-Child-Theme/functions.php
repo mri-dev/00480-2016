@@ -19,11 +19,12 @@ define('RESOURCES', IFROOT.'/assets' );
 define('IMAGES', IFROOT.'/images' );
 //define('IMAGES', '//cdn.viasaletravel.hu/images' );
 
+//define('CLONEKEY','OTPTRAVEL');
+define('CSSVERSION','201703221500');
+
+/////////////////////////////////////////
 // Includes
 require_once "includes/include.php";
-
-define('CLONEKEY','OTPTRAVEL');
-define('CSSVERSION','201703221500');
 
 function theme_enqueue_styles() {
   global $wp_query;
@@ -47,6 +48,14 @@ function theme_enqueue_styles() {
       (isset($wp_query->query_vars['hotel_id']) && !empty($wp_query->query_vars['hotel_id']))
     ) {
       wp_enqueue_script('g-map','https://maps.googleapis.com/maps/api/js?key='.GOOGLE_MAP_API_KEY.'&callback=initMap', array(), '1.0', true  );
+    }
+
+    if(!defined('CLONEKEY'))
+    {
+      define('ADWORDS_CALL_CONV', true);
+      echo '<script type="text/javascript">
+      (function(a,e,c,f,g,h,b,d){var k={ak:"858546762",cl:"0IT2CNLR-m8QysSxmQM"};a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};a[g]||(a[g]=k.ak);b=e.createElement(h);b.async=1;b.src="//www.gstatic.com/wcm/loader.js";d=e.getElementsByTagName(h)[0];d.parentNode.insertBefore(b,d);a[f]=function(b,d,e){a[c](2,b,k,d,null,new Date,e)};a[f]()})(window,document,"_googWcmImpl","_googWcmGet","_googWcmAk","script");
+      </script>';
     }
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
@@ -425,6 +434,10 @@ function catalog_url()
 // Mailchimp feliratkozó a fejlécbe
 function mailchimp_subscriber_html()
 {
+  if(defined('CLONEKEY')) {
+    return '';
+  }
+
   return '<div class="mailchimp-header-subsc">
     <form action="//viasaletravel.us9.list-manage.com/subscribe/post?u=3e9a92238c6dea060038ac5f3&amp;id=1ec2d250a7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate searchform" target="_blank" novalidate>
       <label for="mce-EMAIL">Hírlevél feliratkozás <i class="fa fa-envelope-o"></i></label>

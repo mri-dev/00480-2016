@@ -312,15 +312,15 @@ if ( ! function_exists( 'avada_header_content_3' ) ) {
             $html .= '
             <div class="primary-header-line">
                 '.mailchimp_subscriber_html().'
-                <div class="head-search hide">' . get_search_form( false ) . '</div>
-                <div class="katalogus-header-link"><label>&nbsp;</label><a target="_blank" href="'.catalog_url().'">Katalógus</a></div>
-            </div><div class="fusion-clearfix"></div>';
+                <div class="head-search hide">' . get_search_form( false ) . '</div>'.
+                ( (catalog_url() != '') ? '<div class="katalogus-header-link"><label>&nbsp;</label><a target="_blank" href="'.catalog_url().'">Katalógus</a></div>' : '' ).
+                '</div><div class="fusion-clearfix"></div>';
             }
             $html .= '
             <div class="secondary-header-line">
                 <div class="fusion-secondary-menu-social">' . (new Avada_Social_Icons())->render_social_icons(array('position' => 'header')) . '</div>
                 <div class="contact-phone"><ul>
-                    <li><i class="fa fa-phone"></i> &nbsp; '.get_option('contact_phone', true).'</li>
+                    <li><i class="fa fa-phone"></i> &nbsp; <span class="number"><a href="tel: '.get_option('contact_phone', true).'">'.get_option('contact_phone', true).'</a></span></li>
                 </ul></div>
             </div><div class="fusion-clearfix"></div>';
         } elseif ( 'Banner' == $header_content_3 ) {

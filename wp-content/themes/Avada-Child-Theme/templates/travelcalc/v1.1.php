@@ -89,7 +89,7 @@
                 </div>
                 <div class="telefon">
                   <label for="telefon">Mobilszám</label>
-                  <input type="text" id="telefon" name="telefon" ng-model="orderer.tel" ng-required ng-pattern="/^(?:0|\(?\+36\)?\s?|06\s?)[1-79](?:[\.\-\s]?\d\d){4}$/" placeholder="+36 XXXXXXXX" value="">
+                  <input type="text" id="telefon" name="telefon" ng-model="orderer.tel" ng-required ng-pattern="/^(?+)\d{8,}$/" placeholder="+36 XXXXXXXX" value="">
                 </div>
                 <div class="email">
                   <label for="email">E-mail cím</label>
@@ -262,10 +262,9 @@ function ajanlatkeresKuldes()
       mailparam,
       function(data){
         var resp = jQuery.parseJSON(data);
-        var redir_conv_url = '/sikeres-megrendeles?z='+resp.passed_params.term.zones[0].id+'&termid='+resp.passed_params.term.id+'&hotel='+resp.passed_params.hotel.name+'&email='+resp.passed_params.email;
-
 
         if(resp.error == 0) {
+          var redir_conv_url = '/sikeres-megrendeles?z='+resp.passed_params.term.zones[0].id+'&termid='+resp.passed_params.term.id+'&hotel='+resp.passed_params.hotel.name+'&email='+resp.passed_params.email+'&pv='+resp.passed_params.room.price_value;
           mail_sended = 1;
           jQuery('#mail-sending-btn').html('Megrendelés elküldve <i class="fa fa-check-circle"></i>').removeClass('in-progress').addClass('sended');
           jQuery('#mailsend #erremsg').text('');

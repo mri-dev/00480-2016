@@ -10,102 +10,116 @@
 .fusion-footer-widget-area {
   background: #017852 !important; }
 
-/* line 13, sass/otptravel.scss */
+/* line 12, sass/otptravel.scss */
+.fusion-secondary-main-menu {
+  background: #252525 !important; }
+
+/* line 15, sass/otptravel.scss */
+.fusion-main-menu > ul > li > a {
+  color: #eaeaea; }
+
+/* line 19, sass/otptravel.scss */
 .fusion-footer-copyright-area {
   background: #73cf30 !important;
   border-color: #5ca626 !important; }
 
-/* line 18, sass/otptravel.scss */
+/* line 23, sass/otptravel.scss */
+.eub-button:before {
+  background-color: #346337;
+  background-image: url("http://cdn.viasaletravel.hu/images/groupama_log_picto.png") !important;
+  background-size: 65%; }
+
+/* line 29, sass/otptravel.scss */
 .copy-info-box {
   background: #667973 !important; }
 
-/* line 22, sass/otptravel.scss */
+/* line 33, sass/otptravel.scss */
 .home-enav-buttons {
   background: #d6e9c9 !important; }
 
-/* line 26, sass/otptravel.scss */
+/* line 37, sass/otptravel.scss */
 .frontpage-post-list {
   background: #d6e9c9 !important; }
-  /* line 29, sass/otptravel.scss */
+  /* line 40, sass/otptravel.scss */
   .frontpage-post-list .fusion-post-content-container {
     color: #4a4a4a !important; }
-  /* line 32, sass/otptravel.scss */
+  /* line 43, sass/otptravel.scss */
   .frontpage-post-list h2.entry-title > a {
     color: #017852 !important; }
 
-/* line 36, sass/otptravel.scss */
+/* line 47, sass/otptravel.scss */
 .fusion-main-menu .sub-menu li a {
   background: #017852 !important;
   border-bottom: 1px solid #01ab75 !important; }
 
-/* line 40, sass/otptravel.scss */
+/* line 51, sass/otptravel.scss */
 .fusion-main-menu .sub-menu li a:hover {
   background: #01452f !important; }
 
-/* line 44, sass/otptravel.scss */
+/* line 55, sass/otptravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .features.feat-style-v2 .feature-wrapper > div i {
   color: #017852 !important; }
 
-/* line 47, sass/otptravel.scss */
+/* line 58, sass/otptravel.scss */
 .viasale-lista-holder .viasale-lista-set-ajanlat .style-standard .item .item-wrapper .actions .link-read a.link-btn {
   background: #73cf30 !important; }
 
-/* line 51, sass/otptravel.scss */
+/* line 62, sass/otptravel.scss */
 body.utazas-travel-page .hotel-data h1.title, body.hotel-travel-page .hotel-data h1.title {
   color: #626262 !important; }
 
-/* line 56, sass/otptravel.scss */
+/* line 67, sass/otptravel.scss */
 body.utazas-travel-page .travel-calculator-container .calc-content table.room .room-head,
 body.utazas-travel-page .travel-calculator-container .calc-content #selected-travel-room .room {
   background: #017852 !important; }
 
-/* line 60, sass/otptravel.scss */
+/* line 71, sass/otptravel.scss */
 body.utazas-travel-page .travel-calculator-container .calc-content #selected-travel-room .room .price {
   color: #73cf30 !important; }
 
-/* line 63, sass/otptravel.scss */
+/* line 74, sass/otptravel.scss */
 body.utazas-travel-page .travel-calculator-container .calc-content table.room .room-head .fullPrice {
   color: #73cf30 !important; }
 
-/* line 66, sass/otptravel.scss */
+/* line 77, sass/otptravel.scss */
 body.utazas-travel-page .travel-calculator-container .calc-content table.room.rejtve .room-head {
   background: #666666 !important; }
 
-/* line 69, sass/otptravel.scss */
+/* line 80, sass/otptravel.scss */
 body.utazas-travel-page .travel-calculator-container .calc-content table.room.rejtve .room-head .fullPrice {
   color: #aaaaaa !important; }
 
-/* line 73, sass/otptravel.scss */
+/* line 84, sass/otptravel.scss */
 body.utazas-travel-page .travel-offer .prices .origin.p-eur, body.hotel-travel-page .travel-offer .prices .origin.p-eur {
   color: #73cf30 !important; }
 
-/* line 77, sass/otptravel.scss */
+/* line 88, sass/otptravel.scss */
 body.utazas-travel-page .travel-offer .travel-info .info-link, body.hotel-travel-page .travel-offer .travel-info .info-link {
   color: #017852 !important; }
-  /* line 79, sass/otptravel.scss */
+  /* line 90, sass/otptravel.scss */
   body.utazas-travel-page .travel-offer .travel-info .info-link:hover, body.hotel-travel-page .travel-offer .travel-info .info-link:hover {
     color: #73cf30 !important; }
 
-/* line 83, sass/otptravel.scss */
+/* line 94, sass/otptravel.scss */
 body.hotel-travel-page .utazas-ajanlat-container {
   background: #bddca7; }
 
-/* line 86, sass/otptravel.scss */
+/* line 97, sass/otptravel.scss */
 body.hotel-travel-page .utazas-ajanlat-container .more-travel-list .more-travel-row > div.more-travel-priceplan .price-eur {
   color: #73cf30 !important; }
 
-/* line 89, sass/otptravel.scss */
+/* line 100, sass/otptravel.scss */
 body.hotel-travel-page .utazas-ajanlat-container .more-travel-list .more-travel-row > div[class^=more-travel-header] {
   color: #017852 !important; }
 
-/* line 93, sass/otptravel.scss */
+/* line 104, sass/otptravel.scss */
 .box-ajanlat-list {
   background: #0f503c !important; }
 
-/* line 97, sass/otptravel.scss */
+/* line 108, sass/otptravel.scss */
 body.utazas-travel-page .hotel-data .mode-list .aj:hover {
   background: #017852 !important; }
 
-/* line 101, sass/otptravel.scss */
+/* line 112, sass/otptravel.scss */
 body.utazas-travel-page .hotel-data .mode-list .nl .badge, body.hotel-travel-page .hotel-data .mode-list .nl .badge {
   background: #73cf30 !important; }
