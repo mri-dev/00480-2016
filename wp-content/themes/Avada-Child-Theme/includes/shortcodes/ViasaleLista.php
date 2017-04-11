@@ -158,6 +158,14 @@ class ViasaleLista extends ViasaleAPIFactory
           ';
         }
 
+        if($this->params['stilus'] == 'slidelist')
+        {
+          ob_start();
+          include(locate_template('templates/shortcodes/'.__CLASS__.'/js/program-slidelist.php'));
+          $o .= ob_get_contents();
+          ob_end_clean();
+        }
+
       } else {
         $o .= '<div class="no-search-result">
         <h3>Nem találtunk elérhető programokat.</h3>
@@ -346,6 +354,14 @@ class ViasaleLista extends ViasaleAPIFactory
             })(jQuery);
           </script>
           ';
+        }
+
+        if($this->params['stilus'] == 'slidelist')
+        {
+          ob_start();
+          include(locate_template('templates/shortcodes/'.__CLASS__.'/js/ajanlat-slidelist.php'));
+          $o .= ob_get_contents();
+          ob_end_clean();
         }
 
       } else {

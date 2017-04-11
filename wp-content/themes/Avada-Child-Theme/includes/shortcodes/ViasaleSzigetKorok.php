@@ -14,12 +14,14 @@ class ViasaleSzigetKorok extends ViasaleAPIFactory
 
     public function do_shortcode( $attr, $content = null )
     {
+        global $post;
         $base_class = '';
     	  /* Set up the default arguments. */
         $defaults = apply_filters(
             self::SCTAG.'_defaults',
             array(
-              'control' => 'sziget'
+              'control' => 'sziget',
+              'excby' => false
             )
         );
 
@@ -28,6 +30,10 @@ class ViasaleSzigetKorok extends ViasaleAPIFactory
 
         if($attr['control'] != 'sziget') {
           $base_class .= 'control-'.$attr['control'].' ';
+        }
+
+        if ($attr['excby'] == 'landing') {
+          $exc_post_slug = $post->post_name;
         }
 
 
@@ -49,6 +55,7 @@ class ViasaleSzigetKorok extends ViasaleAPIFactory
 
           foreach ($szigetek as $sziget)
           {
+            if(isset($exc_post_slug) && $exc_post_slug == $sziget->post_name) continue;
             $sziget->zone_id = (int)$this->sziget_ids[$sziget->post_name]['id'];
 
             if($attr['control'] != 'sziget') {
