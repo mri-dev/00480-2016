@@ -20,7 +20,13 @@ define('IMAGES', IFROOT.'/images' );
 //define('IMAGES', '//cdn.viasaletravel.hu/images' );
 
 //define('CLONEKEY','OTPTRAVEL');
-define('CSSVERSION','201703221500');
+define('CSSVERSION','201704261500');
+
+if(defined('CLONEKEY') && CLONEKEY == 'OTPTRAVEL') {
+  define('ASZF_URL',  get_option('siteurl') . '/files/aszf-170124.pdf');
+} else {
+  define('ASZF_URL',  get_option('siteurl') . '/files/aszf-170124.pdf');
+}
 
 /////////////////////////////////////////
 // Includes
@@ -35,6 +41,7 @@ function theme_enqueue_styles() {
     wp_enqueue_script('angular', '//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js', array('jquery'), '');
     wp_enqueue_style( 'slick', RESOURCES . '/vendor/slick/slick.css');
     wp_enqueue_style( 'slick-theme', RESOURCES . '/vendor/slick/slick-theme.css');
+    wp_enqueue_style( 'datepicker', RESOURCES . '/vendor/datepicker/datepicker3.css');
 
     wp_enqueue_script('jquery-base64', RESOURCES . '/vendor/jquery.base64/jquery.base64.min.js', array('jquery'), '');
     wp_enqueue_script('jquery-ui', RESOURCES . '/vendor/jquery-ui-1.12.1/jquery-ui.min.js', array('jquery'));
@@ -42,6 +49,8 @@ function theme_enqueue_styles() {
     wp_enqueue_script('autocomplete', RESOURCES . '/vendor/autocomplete/dist/jquery.autocomplete.min.js');
     wp_enqueue_script('slick', RESOURCES . '/vendor/slick/slick.min.js', array('jquery'), '');
     wp_enqueue_script('viasalebase-ang', RESOURCES . '/js/viasalebase.ang.js?t=' . ( (DEVMODE === true) ? time() : '' ) );
+    wp_enqueue_script('datepicker', RESOURCES . '/vendor/datepicker/bootstrap-datepicker.js', array('jquery'), '');
+    wp_enqueue_script('datepicker-hu', RESOURCES . '/vendor/datepicker/locales/bootstrap-datepicker.hu.js', array('datepicker'), '');
 
     if (
       (isset($wp_query->query_vars['utazas_id']) && !empty($wp_query->query_vars['utazas_id'])) ||
@@ -467,6 +476,10 @@ function mailchimp_subscriber_html()
 
 function after_body_tag()
 {
+  if(defined('CLONEKEY')) {
+    return '';
+  }
+
   echo '<div class="request-offer fixed-label hide-on-mobile"><a href="/ajanlatkeres/"><img src="'.IMAGES.'/palmas_h40_white.png"/>' . __('Ajánlatkérés', 'viasale') . '</a></div>';
 }
 add_action('avada_before_body_content', 'after_body_tag');

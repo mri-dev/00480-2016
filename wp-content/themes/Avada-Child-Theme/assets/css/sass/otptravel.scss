@@ -21,7 +21,7 @@
   border-color: darken($color-purple, 10%) !important;
 }
 .eub-button:before{
-  background-color: #346337; 
+  background-color: #346337;
   background-image: url('#{$imgcdn}/groupama_log_picto.png') !important;
   background-size: 65%;
 }
@@ -69,10 +69,12 @@ body.utazas-travel-page .travel-calculator-container .calc-content #selected-tra
 }
 
 body.utazas-travel-page .travel-calculator-container .calc-content #selected-travel-room .room .price{
-  color: $color-purple !important;
+  color: darken($color-orange, 20%) !important;
+  font-weight: bold !important;
 }
 body.utazas-travel-page .travel-calculator-container .calc-content table.room .room-head .fullPrice{
-  color: $color-purple !important;
+  color: darken($color-orange, 20%) !important;
+  font-weight: bold !important;
 }
 body.utazas-travel-page .travel-calculator-container .calc-content table.room.rejtve .room-head{
   background: #666666 !important;
@@ -86,7 +88,7 @@ body.utazas-travel-page .travel-offer .prices .origin.p-eur, body.hotel-travel-p
 }
 
 body.utazas-travel-page .travel-offer .travel-info .info-link, body.hotel-travel-page .travel-offer .travel-info .info-link{
-  color: $color-orange !important;
+  color: darken($color-orange, 20%) !important;
   &:hover {
     color: $color-purple !important;
   }
@@ -95,10 +97,10 @@ body.hotel-travel-page .utazas-ajanlat-container {
     background: #bddca7;
 }
 body.hotel-travel-page .utazas-ajanlat-container .more-travel-list .more-travel-row > div.more-travel-priceplan .price-eur{
-  color: $color-purple !important;
+  color: darken($color-purple, 20%) !important;
 }
 body.hotel-travel-page .utazas-ajanlat-container .more-travel-list .more-travel-row > div[class^=more-travel-header]{
-  color: $color-orange !important;
+  color: darken($color-orange, 10%) !important;
 }
 
 .box-ajanlat-list{

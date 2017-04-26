@@ -166,6 +166,9 @@ $ztext = rtrim($ztext, ' / ');
   .mainimg img {
     max-width: 100%;
   }
+  .page-break{
+    page-break-after: always;
+  }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -193,6 +196,7 @@ $ztext = rtrim($ztext, ' / ');
         <h1>Ajánlat leírása</h1>
         <?php
             $desc = $ajanlat->getDescription( 'utazas' );
+            $hotel_desc = $ajanlat->getDescription( 'hotel' );
 
             if($desc)
             foreach ($desc as $did => $de):
@@ -202,6 +206,7 @@ $ztext = rtrim($ztext, ' / ');
               <p><?php echo $des; ?></p>
               <?php
             endforeach;
+
 
             $image = $ajanlat->getProfilImage();
             $images = $ajanlat->getMoreImages();
@@ -324,6 +329,21 @@ $ztext = rtrim($ztext, ' / ');
           </div>
         </div>
       </div>
+    </div>
+    <div class="page-break"></div>
+    <div class="">
+      <?php
+        if($hotel_desc){
+          echo '<h1>Szálloda leírása</h1>';
+          foreach ($hotel_desc as $did => $de):
+            $des = $de['description'];
+            ?>
+            <h3><?php echo $de['name']; ?></h3>
+            <p><?php echo $des; ?></p>
+            <?php
+          endforeach;
+        }
+      ?>
     </div>
   </div>
 </body>

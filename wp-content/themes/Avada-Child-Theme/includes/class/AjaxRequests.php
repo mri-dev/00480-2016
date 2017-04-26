@@ -36,6 +36,7 @@ class AjaxRequests
     if(empty($_POST['telefon'])) $return['missing_elements'][] = 'telefon';
     if(empty($_POST['szuletesi_datum'])) $return['missing_elements'][] = 'szuletesi_datum';
     if(empty($_POST['email'])) $return['missing_elements'][] = 'email';
+    if(!isset($_POST['accept_aszf'])) $return['missing_elements'][] = 'accept_aszf';
 
     for ($i=0; $i < $utasok_szama ; $i++)
     {
@@ -47,7 +48,7 @@ class AjaxRequests
 
     if(!empty($return['missing_elements'])) {
       $return['error']  = 1;
-      $return['msg']    = 'Kérjük, hogy töltse ki az összes mezőt a megrendelés küldéséhez.';
+      $return['msg']    = 'Kérjük, hogy töltse ki az összes mezőt a megrendelés küldéséhez. ÁSZF elfogadása kötelező a megrendelés elküldéséhez.';
       $return['missing']= count($return['missing_elements']);
       $this->returnJSON($return);
     }
@@ -61,7 +62,6 @@ class AjaxRequests
       $return['missing_elements'][]= 'email';
       $this->returnJSON($return);
     }
-
 
     // OK
     $ajanlat = new ViasaleAjanlat($_POST['term']['id'], array('api_version' => 'v3'));

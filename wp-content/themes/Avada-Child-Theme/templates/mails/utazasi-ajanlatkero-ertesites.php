@@ -77,6 +77,14 @@
         <strong><?=$_POST['szuletesi_datum']?></strong>
       </td>
     </tr>
+    <tr>
+      <td>
+        Egyéb megjegyzés:
+      </td>
+      <td>
+        <strong><?=$_POST['comment']?></strong>
+      </td>
+    </tr>
   </table>
   <br>
   <h4>Kiválasztott konfiguráció:</h4>

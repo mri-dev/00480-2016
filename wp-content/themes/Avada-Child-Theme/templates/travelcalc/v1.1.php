@@ -81,11 +81,11 @@
                 </div>
                 <div class="szuletesi_datum">
                   <label for="szuletesi_datum">Születési dátum</label>
-                  <input type="text" class="datepicker" ng-model="orderer.dob" ng-required ng-pattern="/^((\d{4})[ .-/](\d{2})[ .-/](\d{2})|(\d{2})\/(\d{2})\/(\d{4})|\d{8})$/" id="szuletesi_datum" name="szuletesi_datum" placeholder="2000.01.01" value="">
+                  <input type="text" class="datepicker" ng-model="orderer.dob" ng-required ng-pattern="/^((\d{4})[ .-/](\d{2})[ .-/](\d{2})|(\d{2})\/(\d{2})\/(\d{4})|\d{8})$/" id="szuletesi_datum" name="szuletesi_datum" placeholder="2000/01/01" value="">
                 </div>
                 <div class="cim">
                   <label for="cim">Cím</label>
-                  <input type="text" class="datepicker" id="cim" name="cim" placeholder="" value="">
+                  <input type="text" id="cim" name="cim" placeholder="" value="">
                 </div>
                 <div class="telefon">
                   <label for="telefon">Mobilszám</label>
@@ -95,16 +95,23 @@
                   <label for="email">E-mail cím</label>
                   <input type="email" id="email" name="email" ng-model="orderer.mail" ng-pattern="/^[a-z]+[a-z0-9._-]+@[a-z_-]+\.[a-z.]{2,5}$/" ng-required placeholder="mail@example.com" value="">
                 </div>
+                <div class="comment">
+                  <label for="comment">Egyéb megjegyzés</label>
+                  <textarea name="comment" id="comment" ng-model="orderer.comment"></textarea>
+                </div>
               </div>
               <div id="copyordererdata"><a href="javascript:void(0);"><i class="fa fa-copy"></i> adatok másolása <strong>Utas #1</strong>-hez</a></div>
               <div id="utasok_adatai"></div>
+              <div class="accept_aszf">
+                <input type="checkbox" class="ccb" id="accept_aszf" ng-model="orderer.aszf" name="accept_aszf" value="1"> <label for="accept_aszf">Elfogadom az <a href="<?=ASZF_URL?>" target="_blank">Általános Szerződési Feltételek</a>et.</label>
+              </div>
           </div>
         </div>
         <div class="selected-travel-room">
           <h4>Kiválasztott ajánlat:</h4>
           <div id="selected-travel-room"></div>
         </div>
-        <div class="send-mail"><button type="button" ng-show="orderer.dob && orderer.mail && orderer.tel" id="mail-sending-btn" class="fusion-button" onclick="ajanlatkeresKuldes();" name="button">Megrendelés küldése <i class="fa fa-envelope-o"></i></button><div class="ng-alert-head" ng-show="!orderer.dob || !orderer.mail || !orderer.tel">
+        <div class="send-mail"><button type="button" ng-show="orderer.dob && orderer.mail && orderer.tel && orderer.aszf" id="mail-sending-btn" class="fusion-button" onclick="ajanlatkeresKuldes();" name="button">Megrendelés küldése <i class="fa fa-envelope-o"></i></button><div class="ng-alert-head" ng-show="!orderer.dob || !orderer.mail || !orderer.tel">
             <i class="fa fa-exclamation-triangle" style="font-size: 14px;"></i><br>
             A megrendeléshez töltse ki helyesen a megrendelőt!
           </div>
@@ -119,6 +126,10 @@
           <div class="ng-alert-msg" ng-show="!orderer.mail">
             <i class="fa fa-envelope"></i> Adja meg helyesen a megrendelő e-mail címét.<br>
             <em title="mail@example.com">Formátumok (?)</em>
+          </div>
+          <div class="ng-alert-msg" ng-show="!orderer.aszf">
+            <i class="fa fa-check-square-o"></i> ÁSZF elfogadás.<br>
+            <em>Kötelezően el kell fogadnia a megrendeléshez.</em>
           </div>
         </div>
         <div class="action-btns">
@@ -331,8 +342,8 @@ function trimChar(string, charToRemove) {
               result += "<tr class='priceLine rejtve' data-roomid='"+roomid+"' data-roompricetypeid='"+pricetypeid+"'>";
               result += "<td>" + pricetype['name'] + "</td>";
               result += "<td><span data-pricetypeid='"+pricetypeid+"' class='szorzo'></span></td>";
-              result += "<td class='price'>" + parseFloat(pricetype['price']).toFixed(2) + "€</td>";
-              result += "<td class='price phuf'>"+(parseFloat(pricetype['price'])*fxrate).toLocaleString('hu-HU', { maximumFractionDigits: 0, maximumFractionDigits: 2, style: 'currency', currency: 'HUF'})+"</td>";
+              result += "<td class='price'>" + parseFloat(pricetype['price']).toFixed(2) + " €/fő</td>";
+              result += "<td class='price phuf'>"+(parseFloat(pricetype['price'])*fxrate).toLocaleString('hu-HU', { maximumFractionDigits: 0, maximumFractionDigits: 2, style: 'currency', currency: 'HUF'})+"/fő</td>";
               result += "</tr>";
           });
 
@@ -391,6 +402,15 @@ function trimChar(string, charToRemove) {
       };
       resetRoomCheck();
       priceCalculate();
+  });
+
+  $('.datepicker').datepicker({
+    startView: 'decade',
+    format: 'yyyy/mm/dd',
+    language: 'hu',
+    weekStart: 1,
+    immediateUpdates: true,
+    autoclose: true
   });
 
   var selected_room = 0;

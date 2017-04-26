@@ -232,9 +232,15 @@
     $pdf->Ln(5);
   endforeach;
 
-  $pdf->Ln(5);
   $pdf->SetFont('DejaVuSerif','', 8);
   $pdf->Cell( 120, 4, '(i) '.$ajanlat->getHotelName().' szálloda leírása a következő oldalon', 0, "C");
+
+  // image
+  $profil_img = $ajanlat->getProfilImage();
+
+  $pdf->Ln(10);
+  $pdf->setX(10);
+  $pdf->Image($profil_img['url'], null, null, 120 );
 
   $pdf->AddPage();
 
