@@ -121,14 +121,14 @@
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
-            <label for="search_form_indulas" class="trans-on">Indulás</label>
+            <label for="search_form_indulas" class="trans-on">Legkorábbi indulás</label>
             <input type="text" class="search-datepicker trans-o" dtp="from" id="search_form_indulas" name="tf" value="<?php if(isset($_GET['tf'])) { echo str_replace('-'," / ", $_GET['tf']); } else { echo date('Y / m / d', strtotime('+1 day')); }  ?>" readonly="readonly">
           </div>
           <div class="input w30 row-bottom last-item show-mob-at">
             <div class="ico">
               <i class="fa fa-calendar"></i>
             </div>
-            <label for="search_form_erkezes" class="trans-on">Érkezés</label>
+            <label for="search_form_erkezes" class="trans-on">Legkésőbbi érkezés</label>
             <input type="text" class="search-datepicker trans-o" dtp="to" id="search_form_erkezes" name="tt" value="<?php if(isset($_GET['tt'])) { echo str_replace('-'," / ", $_GET['tt']); } else { echo date('Y / m / d', strtotime('+60 days')); }  ?>">
           </div>
           <div class="input input-more-on-mobile show-mob-at">
@@ -245,8 +245,6 @@ var search_form_uri = {
         var end_date = $('#search_form_erkezes').val();
         var end_date_ts = Date.parse(end_date);
 
-
-
         if(!isNaN(selected_date.getTime())){
             if( selected_date.getTime() < end_date_ts ){
               return;
@@ -261,6 +259,16 @@ var search_form_uri = {
     }
   };
 
+  var dp_options_bs = {
+    language: 'hu',
+    format: 'yyyy / mm / dd',
+    autoclose: true,
+    todayBtn: true,
+    todayHighlight: true,
+    weekStart: 1,
+    startDate: new Date()
+  };
+
   Date.prototype.toInputFormat = function() {
     var yyyy = this.getFullYear().toString();
     var mm = (this.getMonth()+1).toString();
@@ -268,7 +276,32 @@ var search_form_uri = {
     return yyyy + " / " + (mm[1]?mm:"0"+mm[0]) + " / " + (dd[1]?dd:"0"+dd[0]);
   };
 
-  $( ".search-datepicker" ).datepicker( dp_options );
+  //$( ".search-datepicker" ).datepicker( dp_options );
+
+  $( ".search-datepicker" )
+  .datepicker( dp_options_bs )
+  .on('changeDate', function(e){
+    console.log(e);
+    if($(this).attr('dtp') == 'from')
+    {
+      var selected_date = new Date(e.date);
+      var end_date = $('#search_form_erkezes').val();
+      var end_date_ts = Date.parse(end_date);
+
+      console.log(selected_date);
+
+      if(!isNaN(selected_date.getTime())){
+          if( selected_date.getTime() < end_date_ts ){
+            return;
+          }
+          var enddate = selected_date;
+          enddate.setDate(selected_date.getDate() + 60);
+          $("#search_form_erkezes")
+            .val(enddate.toInputFormat())
+
+      }
+    }
+  });
 
   $('#search_form_hotel').blur(function(){
     var text = $(this).val();

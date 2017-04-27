@@ -20,7 +20,7 @@ define('IMAGES', IFROOT.'/images' );
 //define('IMAGES', '//cdn.viasaletravel.hu/images' );
 
 //define('CLONEKEY','OTPTRAVEL');
-define('CSSVERSION','201704261500');
+define('CSSVERSION','201704271500');
 
 if(defined('CLONEKEY') && CLONEKEY == 'OTPTRAVEL') {
   define('ASZF_URL',  get_option('siteurl') . '/files/aszf-170124.pdf');

@@ -19,6 +19,7 @@
   class DownloadPDF extends tFPDF
   {
     private $param = array();
+    public $body_y_start = 0;
     function Header()
     {
       global $ajanlat;
@@ -27,9 +28,9 @@
         $this->SetFont('Arial','B', 18);
         $this->SetTextColor(247, 148, 29);
         $this->Cell(40);
-        $this->Cell(0, 2, $this->t($ajanlat->getHotelName()).str_repeat('*', $ajanlat->getStar()), 0, 0, 'L');
+        $this->MultiCell(0, 7, $this->t($ajanlat->getHotelName()).str_repeat('*', $ajanlat->getStar()), 0, 'L');
         // Line break
-        $this->Ln(5);
+        $this->Ln(1);
 
         $zones = $ajanlat->getHotelZones();
         if($zones):
@@ -42,8 +43,8 @@
           $this->SetFont('Arial','', 14);
           $this->SetTextColor(180);
           $this->Cell(40);
-          $this->Cell(0, 8, $this->t($ztext), 0, 0, 'L');
-          $this->Ln(18);
+          $this->Cell(0, 4, $this->t($ztext), 0, 0, 'L');
+          $this->body_y_start = $this->getY() + 10;
         endif;
     }
 
@@ -54,7 +55,7 @@
 
         $first_col_w = 25;
         $value_col_w = 40;
-        $this->SetXY( 135, 32 );
+        $this->SetXY( 135, $this->body_y_start );
 
         // Param
         $this->SetFont('DejaVuSerif','B', 12);
@@ -177,13 +178,11 @@
   $pdf->AddFont('DejaVuSerif','','DejaVuSerif.ttf',true);
   $pdf->AddFont('DejaVuSerif','B','DejaVuSerif-Bold.ttf',true);
 
-
-
   // Ellátás
   $pdf->paramTable('Utazás paraméterek');
   $pdf->SetLineWidth(1);
   $pdf->SetDrawColor(220);
-  $pdf->Line(132, 32.3, 132, 287);
+  $pdf->Line(132, $pdf->body_y_start, 132, 287);
 
   $pdf->SetLineWidth(0.4);
   $pdf->SetDrawColor(190);
@@ -208,12 +207,12 @@
 
   $pdf->Ln(8);
   $pdf->setX(135);
-  $pdf->SetFont('DejaVuSerif','B', 12);
+  $pdf->SetFont('DejaVuSerif','B', 10);
   $pdf->SetTextColor(0);
-  $pdf->MultiCell( 0, 3, get_option('siteurl',''), 0, "C");
+  $pdf->MultiCell( 0, 3, str_replace('http://', '', get_option('siteurl','')), 0, "C");
 
 
-  $pdf->setY(32);
+  $pdf->setY($pdf->body_y_start);
 
   $desc = $ajanlat->getDescription( 'utazas' );
 
@@ -233,7 +232,7 @@
   endforeach;
 
   $pdf->SetFont('DejaVuSerif','', 8);
-  $pdf->Cell( 120, 4, '(i) '.$ajanlat->getHotelName().' szálloda leírása a következő oldalon', 0, "C");
+  $pdf->MultiCell( 120, 4, '(i) '.$ajanlat->getHotelName().' szálloda leírása a következő oldalon', 0, "L");
 
   // image
   $profil_img = $ajanlat->getProfilImage();
@@ -243,11 +242,11 @@
   $pdf->Image($profil_img['url'], null, null, 120 );
 
   $pdf->AddPage();
-
+  $pdf->setXY(10, $pdf->body_y_start);
   $desc = $ajanlat->getDescription( 'hotel' );
 
   $pdf->SetFont('DejaVuSerif','B', 12);
-  $pdf->Cell( 120, 4, $ajanlat->getHotelName(). ' SZÁLLODA LEÍRÁSA', 0, "L");
+  $pdf->MultiCell( 0, 8, $ajanlat->getHotelName(). ' szálloda leírása', 0, "L");
   $pdf->Ln(10);
 
   if($desc)

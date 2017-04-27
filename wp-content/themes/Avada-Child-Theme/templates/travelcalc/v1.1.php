@@ -89,7 +89,7 @@
                 </div>
                 <div class="telefon">
                   <label for="telefon">Mobilszám</label>
-                  <input type="text" id="telefon" name="telefon" ng-model="orderer.tel" ng-required ng-pattern="/^(?+)\d{8,}$/" placeholder="+36 XXXXXXXX" value="">
+                  <input type="text" id="telefon" name="telefon" ng-model="orderer.tel" ng-required ng-pattern="" placeholder="+36 XXXXXXXX" value="">
                 </div>
                 <div class="email">
                   <label for="email">E-mail cím</label>
@@ -192,6 +192,9 @@ function PrintElem(tid) {
                        });
                        agelist.sort();
                        for (var c = 0; c < children; c++) {
+                          var agl = agelist[c];
+                          if(typeof agl === 'undefined') continue;
+
                            var bucketminage = parseInt(roomconfig['child_groups'][agelist[c]]['min_age']);
                            var bucketmaxage = parseInt(roomconfig['child_groups'][agelist[c]]['max_age']);
                            if ((parseInt(childarray[c]) < bucketminage ) || (parseInt(childarray[c]) > bucketmaxage)) {

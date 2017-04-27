@@ -1,4 +1,4 @@
-@import 'settings_otp';
+@import 'settings';
 @import 'fonts';
 
 html, body {
@@ -105,7 +105,7 @@ html, body {
 
    i{
      margin: 0 0 0 5px;
-     color: rgba(255, 255, 255, 0.76);
+     color: rgba(255, 255, 255, 0.75);
    }
    &:before {
      font-family: 'FontAwesome';
@@ -2140,9 +2140,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
     }
     .style-slidelist {
       margin: 0 -15px;
-      min-height: 360px;
+      min-height: 450px;
 
-      & > .item {
+      .slick-list{
+        height: 450px;
+        max-height: 450px;
+      }
+
+      .slick-dots li button:before {
+          opacity: 0.5;
+          filter:alpha(opacity=50);
+          color: white;
+      }
+
+      .slick-dots li.slick-active button:before {
+          opacity: 1;
+          filter:alpha(opacity=100);
+          color: white;
+      }
+
+      & .item {
         width: 50%;
         margin: 0 -1px;
         display: inline-block;
@@ -2153,53 +2170,44 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
           padding: 20px 15px;
           .item-wrapper{
             background: #fff;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-shadow: 8px 8px 38px -10px #984b03;
-            -moz-box-shadow: 8px 8px 38px -10px #984b03;
-            box-shadow: 8px 8px 38px -10px #984b03;
+            -webkit-box-shadow: 8px 8px 20px -10px #984b03;
+            -moz-box-shadow: 8px 8px 20px -10px #984b03;
+            box-shadow: 8px 8px 20px -10px #984b03;
             overflow: hidden;
 
-            & > div {
-              height: 183px;
-              flex-basis: 50%;
-              align-items: center;
-              vertical-align: middle;
-            }
-            .line-left {
-              overflow:hidden;
-              .image {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
+            .image {
+              position: relative;
+              width: 100%;
+              height: 240px;
+              max-height: 240px;
+              overflow: hidden;
 
-                img{
-                  position: absolute;
-                  top: 50%;
-                  left: 50%;
-                  -webkit-transform: translate(-50%, -50%);
-                  -moz-transform: translate(-50%, -50%);
-                  transform: translate(-50%, -50%);
-                }
-                &.orientation-l{
-                  img {
-                    height: 115%;
-                    max-height: 115%;
-                    width: auto;
-                    max-width: none;
-                  }
-                }
-                &.orientation-h{
-                  width: 115%;
-                  max-width: 115%;
-                  height: auto;
-                  max-height: none;
+              img{
+                position: absolute;
+
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+              }
+              &.orientation-l{
+                img {
+                  height: 115%;
+                  max-height: 115%;
+                  width: auto;
+                  max-width: none;
                 }
               }
+              &.orientation-h{
+                width: 115%;
+                max-width: 115%;
+                height: auto;
+                max-height: none;
+              }
             }
-            .line-right {
+
+            .line-data {
               padding: 10px;
               -webkit-box-shadow: 0 0 20px -7px #000;
               -moz-box-shadow: 0 0 20px -7px #000;
@@ -2217,15 +2225,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccfcd736', e
               a {
                 text-transform: uppercase;
                 color: $color-orange;
-                font-size: 16px;
+                font-size: 18px;
                 line-height: 1;
               }
             }
 
             .desc {
-              color: #9c9c9c;
+              color: #606060;
               text-align: justify;
-              font-size: 12px;
+              font-size: 14px;
               line-height: 1.2;
               margin: 10px 0;
               height: 70px;
@@ -5462,5 +5470,28 @@ body.admin-bar .request-offer{
     top: 219px;
 }
 
+.datepicker table tr td.today, .datepicker table tr td.today:hover, .datepicker table tr td.today.disabled, .datepicker table tr td.today.disabled:hover{
+  background: lighten($color-orange, 20%);
+}
+
+.datepicker table tr td.active:hover, .datepicker table tr td.active:hover:hover, .datepicker table tr td.active.disabled:hover, .datepicker table tr td.active.disabled:hover:hover, .datepicker table tr td.active:focus, .datepicker table tr td.active:hover:focus, .datepicker table tr td.active.disabled:focus, .datepicker table tr td.active.disabled:hover:focus, .datepicker table tr td.active:active, .datepicker table tr td.active:hover:active, .datepicker table tr td.active.disabled:active, .datepicker table tr td.active.disabled:hover:active, .datepicker table tr td.active.active, .datepicker table tr td.active:hover.active, .datepicker table tr td.active.disabled.active, .datepicker table tr td.active.disabled:hover.active, .open .dropdown-toggle.datepicker table tr td.active, .open .dropdown-toggle.datepicker table tr td.active:hover, .open .dropdown-toggle.datepicker table tr td.active.disabled, .open .dropdown-toggle.datepicker table tr td.active.disabled:hover{
+  background: $color-orange;
+  border: 1px solid darken($color-orange, 10%);
+}
+
+.datepicker.dropdown-menu tbody td{
+  background: #f1f1f1;
+  border: 1px solid #f1f1f1;
+}
+.datepicker.dropdown-menu table tr td.old.active, .datepicker.dropdown-menu table tr td.new.active{
+  background: desaturate(lighten($color-orange, 30%),10) !important;
+  color: darken($color-orange, 20%) !important;
+}
+.datepicker.dropdown-menu table tr td.old.today, .datepicker.dropdown-menu table tr td.new.today{
+  background: desaturate(lighten($color-orange, 40%),20) !important;
+}
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover{
+  color: #c8c8c8 !important;
+}
 @import "responsive_tablet";
 @import "responsive_mobile";
