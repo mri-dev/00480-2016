@@ -286,7 +286,7 @@
 								</div>
 							</div>
 					</div>
-					<? include(locate_template('templates/travelcalc/v1.1.php')); ?>
+					<? include(locate_template('templates/travelcalc/v1.2.php')); ?>
 				</div>
 			</div>
 		</div>
