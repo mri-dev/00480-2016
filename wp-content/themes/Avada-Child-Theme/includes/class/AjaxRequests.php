@@ -91,6 +91,17 @@ class AjaxRequests
     $headers    = array();
     $headers[]  = 'Reply-To: '.$_POST['vezeteknev'].' '.$_POST['keresztnev'].' <'.$_POST['email'].'>';
 
+    if ( defined('ORDER_MAIL_ALERT_CC') && ORDER_MAIL_ALERT_CC != '' )
+    {
+      $cc = explode(',', ORDER_MAIL_ALERT_CC);
+
+      foreach ((array)$cc as $ccc)
+      {
+        if(trim($ccc) == '') continue;
+        $headers[] = 'Cc: '.$ccc;
+      }
+    }
+
     /* */
     $alert = wp_mail( $to, $subject, $message, $headers );
 

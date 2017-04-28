@@ -23,6 +23,9 @@ define('IMAGES', IFROOT.'/images' );
 define('CSSVERSION','201704271500');
 
 if(defined('CLONEKEY') && CLONEKEY == 'OTPTRAVEL') {
+  if (defined('CLONEKEY') && DEVMODE === false) {
+    define('ORDER_MAIL_ALERT_CC', 'info@viasaletravel.hu');
+  }
   define('ASZF_URL',  get_option('siteurl') . '/files/aszf-170124.pdf');
 } else {
   define('ASZF_URL',  get_option('siteurl') . '/files/aszf-170124.pdf');
